@@ -1,0 +1,152 @@
+@font-face {
+  font-family: 'Noto Serif';
+  font-weight: 400;
+  src: url("../fonts/NotoSerifKR-Regular.eot");
+  src: url("../fonts/NotoSerifKR-Regular.woff") format("woff"), url("../fonts/NotoSerifKR-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 100;
+  src: url("../fonts/NotoSansCJKkr-Thin.eot");
+  src: url("../fonts/NotoSansCJKkr-Thin.woff") format("woff"), url("../fonts/NotoSansCJKkr-Thin.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 200;
+  src: url("../fonts/NotoSansCJKkr-Light.eot");
+  src: url("../fonts/NotoSansCJKkr-Light.woff") format("woff"), url("../fonts/NotoSansCJKkr-Light.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 300;
+  src: url("../fonts/NotoSansCJKkr-DemiLight.eot");
+  src: url("../fonts/NotoSansCJKkr-DemiLight.woff") format("woff"), url("../fonts/NotoSansCJKkr-DemiLight.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 400;
+  src: url("../fonts/NotoSansCJKkr-Regular.eot");
+  src: url("../fonts/NotoSansCJKkr-Regular.woff") format("woff"), url("../fonts/NotoSansCJKkr-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 500;
+  src: url("../fonts/NotoSansCJKkr-Medium.eot");
+  src: url("../fonts/NotoSansCJKkr-Medium.woff") format("woff"), url("../fonts/NotoSansCJKkr-Medium.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 600;
+  src: url("../fonts/NotoSansCJKkr-Bold.eot");
+  src: url("../fonts/NotoSansCJKkr-Bold.woff") format("woff"), url("../fonts/NotoSansCJKkr-Bold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 700;
+  src: url("../fonts/NotoSansCJKkr-Black.eot");
+  src: url("../fonts/NotoSansCJKkr-Black.woff") format("woff"), url("../fonts/NotoSansCJKkr-Black.otf") format("truetype");
+}
+
+.joins_gnb {
+  height: 32px;
+}
+
+h2, h3, h4, h5 {
+  font-weight: 600;
+  word-break: keep-all;
+}
+
+strong {
+  font-weight: 600;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+video {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+body {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  line-height: 1.4;
+  letter-spacing: -0.075em;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+#container {
+  min-width: 1200px;
+}
+
+h2 {
+  font-size: 50px;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  color: #1d1d1d;
+}
+
+h2 span {
+  font-weight: 300;
+}
+
+h2 + p {
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+section {
+  position: relative;
+  background-color: #fff;
+  z-index: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+em {
+  font-style: normal;
+}
+
+button {
+  padding: 0;
+  border: 0 none;
+  cursor: pointer;
+}
+
+p {
+  word-break: keep-all;
+}
+
+i {
+  font-style: normal;
+}
+
+.hide {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font: 0/0 Sans-serif;
+  visibility: hidden;
+}
+
+:focus {
+  outline: none;
+}
+
+#container {
+  padding-top: 78px;
+}
+/*# sourceMappingURL=common.css.map */

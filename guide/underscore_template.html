@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Menu</h3>
+    <div id="menu">
+      <dl></dl>
+    </div>
+  </body>
+
+  <script src="http://underscorejs.org/underscore-min.js" type="text/javascript"></script>
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
+
+  <script id="menuTemplate" type="text/template">
+    <dt><%- name %></dt>
+    <dd><%- desc %></dd>
+  </script>
+
+  <script type="text/javascript">
+    var template = _.template($('#menuTemplate').html());
+    $.each([
+        {name: 'Coffee', desc: 'Black hot drink'},
+        {name: 'Milk', desc: 'White cold drink'}
+      ], function(idx, drink) {
+        $('#menu').find('dl').append(template(drink));
+    });
+  </script>
+</html>

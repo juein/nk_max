@@ -1,0 +1,350 @@
+
+// ' = Yep , "  = Nope
+// css url도 '로 감싸기
+
+
+
+//[선택자]
+// 선택 연산자
+div {
+  color:black;
+  .foo {
+    color: black; // 자손(descendant) 선택자
+  }
+  > .foo {
+    color: black; // 자식(child) combinator
+  }
+  + .foo {
+    color: #000; // 인접형제(adjacent sibling) 선택자
+  }
+  ~ .foo {
+    color: yellow; // 일반형제(general sibling) 선택자
+  }
+  & .foo {
+    color: #fff; // Sass 부모(Parent) 참조 선택자
+  }
+  .foo & {
+    color: red; // Sass 부모(Parent) 참조 선택자
+  }
+  &.bar {
+    color: green;
+  }
+}
+
+
+//[수학 함수 - number function]
+//// 퍼센트 변경 함수
+//percentage(13/25) // 52%
+//
+//// 반올림 함수
+//round(2.4) // 2
+//
+//// 올림 함수
+//ceil(2.2) // 3
+//
+//// 내림 함수
+//floor(2.6) // 2
+//
+//// 절대값 함수
+//abs(-24) // 24
+//
+//// 비교하여 작은것을 반환하는 함수
+//min(10px, 12px) // 10px
+//
+//// 비교하여 큰것을 반환하는 함수
+//max(10px, 12px) // 12px
+//
+//// 난수 함수
+//random(1) // 0~1
+
+a {
+  font-size: ceil(2.2) + px;
+  padding: floor(2.6) + px;
+  margin: max(10px,12px);
+  top: min(10px,12px);
+}
+
+
+//[문자 연산]
+// 자바스크립트에서 "" 를 사용하지 않아도 됩니다.
+// cursor: poi + nter; // pointer
+
+
+//[확장]
+.test { color: #ddd; }
+.box{
+  @extend .test;    // less의 .test와 같은 확장기능
+}
+
+
+
+//[삼항 연산자]
+$main-bg: #000;
+.main {
+  // $main-bg 값이 black과 같다면,
+  // #fff로 설정
+  // 거짓이라면,
+  // #000으로 설정
+  color: if($main-bg == black, #fff, #000);
+}
+
+
+//[for]
+$total: 12;
+
+@for $i from 1 to $total {   
+    .grid-#{$i} {
+    width: 70px * $i;
+    }
+}
+// to vs through
+// to: ~까지 (12 미만 까지), through : 12 이하까지
+@for $i from 1 through $total {   
+    .grid-#{$i} {
+        width: 70px * $i;
+    }
+}
+
+
+//[each]
+// List(배열) 데이터 타입으로 활용가능합니다.
+@each $obj in phone, tablet, cup, mouse {
+    .item-#{$obj} {
+        background-image: url("img/#{$obj}.jpg");
+    }
+}
+
+// CSS compile 결과
+.item-phone {
+background-image: url("img/phone.jpg");
+}
+
+.item-tablet {
+background-image: url("img/tablet.jpg");
+}
+
+.item-cup {
+background-image: url("img/cup.jpg");
+}
+
+.item-mouse {
+background-image: url("img/mouse.jpg");
+}
+
+//Map 데이터 반복은 하나의 데이터, 두 개의 변수 필요
+@each $key변수, $value변수 in 데이터 {
+    // 반복 내용
+}
+
+$fruits-data: (
+  apple: korea,
+  orange: china,
+  banana: japan
+);
+
+@each $fruit, $country in $fruits-data {
+  .box-#{$fruit} {
+    background: url("/images/#{$country}.png");
+  }
+}
+
+// CSS compile 결과
+.box-apple {
+  background: url("/images/korea.png");
+}
+.box-orange {
+  background: url("/images/china.png");
+}
+.box-banana {
+  background: url("/images/japan.png");
+}
+
+
+//[미디어 쿼리에 보간법 활용]
+$i-phone: "only screen and (max-width: 320px)";
+
+@media #{i-phone} {
+  background-color: black;
+}
+
+
+
+//[content 지시어]
+/* @content 지시어를 이용한 미디어 쿼리 */
+@mixin media($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@include media(640px) {
+  background: red;
+}
+
+//////@content 지시어를 이용한 키프레임(keyframe)
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(fadeIn) {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+
+//[사용자 정의 함수 @function]
+//반드시 return 키워드가 있어야 계산된 결과가 돌려집니다.
+
+// 변수 설정
+$unit-width: 40px;
+$gutter-width: 10px;
+
+// grid-width 사용자 정의 함수(@function)
+@function grid-width($n:1) {
+  // 연산 결과 반환(@return)
+  @return $n * $unit-width + ($n - 1) * $gutter-width;
+}
+
+#sidebar {
+  // grid-width 함수 호출 결과 값 반환(전달인자 5)
+  width: grid-width(5); // 5 * 40 + (5-1) * 10 = 240px
+} 
+
+// px 값을 em 단위로 변경하는 함수
+@function px2em($font_size, $base_font_size: 16) {
+  @return $font_size / $base_font_size + em;
+}
+
+body {
+  // 함수 호출
+  color: px2em(12, 20); // 12/20 + em = 0.6em
+}
+
+// 단위 제거 함수
+@function deUnit($value) {
+  @return ($value / ($value * 0 + 1))
+}
+
+// PX → REM 함수
+@function PX2REM($px, $base: 16) {
+  @return (deUnit($px) / $base) * 1rem
+}
+.demo01 {
+  font-size: PX2REM(20px);
+}
+
+// REM → PX 함수
+@function REM2PX($rem, $base: 16) {
+  @return (deUnit($rem) * $base) * 1px
+}
+.demo02 {
+  font-size: REM2PX(1rem);
+}
+.demo03 {
+  font-size: REM2PX(1rem, 12);
+}
+
+// REM 단축 함수
+@function REM($px, $base: 16) {
+  @return PX2REM(deUnit($px), $base)
+}
+.demo04 {
+  font-size: REM(20px, 12);
+}
+
+// PX → EM 함수
+@function PX2EM($px, $base: 16) {
+  @return (deUnit($px) / $base) * 1em
+}
+.demo05 {
+  font-size: PX2EM(16px, 10);
+}
+
+// EM → PX 함수
+@function EM2PX($px, $base: 16) {
+  @return (deUnit($px) * $base) * 1px
+}
+.demo06 {
+  font-size: EM2PX(1em, 10);
+}
+
+
+//리스트 요소수 취득
+//length(10px)                        => 1
+//length(10px 20px 30px)              => 3
+//length((width: 10px, height: 20px)) => 2
+
+//리스트의 n번째 요소 취득
+//nth(10px 20px 30px, 1)                 => 10px
+//nth((Helvetica, Arial, sans-serif), 3) => sans-serif
+//nth((width: 10px, length: 20px), 2)    => length 20px
+
+//리스트의 마지막에 단일 요소 추가
+//append(10px 20px, 30px)      => 10px 20px 30px
+//append((blue, red), green)   => blue, red, green
+//append(10px 20px, 30px 40px) => 10px 20px (30px 40px)
+//append(10px, 20px, comma)    => 10px, 20px
+//append((blue, red), green, space) => blue red green
+
+//리스트와 리스트의 결합
+//join(10px 20px, 30px 40px)      => 10px 20px 30px 40px
+//join((blue, red), (#abc, #def)) => blue, red, #abc, #def
+//join(10px, 20px)                => 10px 20px
+//join(10px, 20px, comma)         => 10px, 20px
+//join((blue, red), (#abc, #def), space) => blue red #abc #def
+
+//복수의 리스트를 각자의 순서에 맞추어 재결합
+//zip(1px 1px 3px, solid dashed solid, red green blue)
+//=> 1px solid red, 1px dashed green, 3px solid blue
+
+//// key로 value 취득
+//map-get(("foo": 1, "bar": 2), "foo") => 1
+//map-get(("foo": 1, "bar": 2), "bar") => 2
+//map-get(("foo": 1, "bar": 2), "baz") => null
+
+
+//채도(saturation) 변경
+$base-color: #000;
+.saturate {
+  color: saturate($base-color, 20%);
+}
+//휘도(lightness) 변경
+.darken {
+  color: darken($base-color, 10%);
+}
+// alpha +
+// 불투명도를 증가시킨다.(더 불투명해진다)
+.opacify {
+  color: opacify($base-color, 0.3);
+}
+// alpha -
+// 불투명도를 감소시킨다.(더 투명해진다)
+.transparentize {
+  color: transparentize($base-color, 0.25);
+}
+
+
+// text 그라디언트
+@mixin gradationText( $gradation: linear-gradient(#000, #fff), $default: #000 ){
+  color: $default;
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+      background: $gradation;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+  }
+}

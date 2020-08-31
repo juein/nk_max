@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/* 하단 카피라이트 관련 클레스 영역 */
+.copyright {
+  position: relative;
+  width: 100%;
+  padding: 70px 0;
+  background: #efefef;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 200;
+  z-index: 1;
+}
+
+.copyright .wrap {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.copyright:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.copyright .copy_left {
+  width: 52%;
+  text-align: left;
+  float: left;
+}
+
+.copyright .copy_right {
+  width: 350px;
+  text-align: left;
+  float: right;
+}
+
+.copyright .copy_right p.p-text {
+  font-weight: 400;
+  color: #818181;
+  letter-spacing: .5px;
+  font-size: 14px;
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+}
+
+.copyright .copy_right p.p_colnom {
+  line-height: 22px;
+}
+
+.copyright .copy_right p .footer_mail {
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+  color: #818181;
+  text-decoration: none;
+  font-family: 'noto-sans-scott', 'Malgun Gothic', sans-serif;
+}
+
+.copyright .copy_right p .footer_mail i {
+  width: 18px;
+  height: 12px;
+  background: url(/ilab/img/sprite.png?v=2) no-repeat -150px 0;
+  background-size: 200px;
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+  vertical-align: baseline;
+  opacity: 0.5;
+}
+
+.copyright .copy_right p .footer_tel {
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+  color: #818181;
+  text-decoration: none;
+  font-family: 'noto-sans-scott', 'Malgun Gothic', sans-serif;
+}
+
+.copyright .copy_right p .footer_tel i {
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background: url(/ilab/img/sprite.png?v=2) no-repeat -170px 0;
+  background-size: 200px;
+  position: relative;
+  display: inline-block;
+  margin-right: 0px;
+  vertical-align: baseline;
+  margin-left: 10px;
+  opacity: .5;
+}
+
+.copyright p {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+  color: #666;
+}
+
+.copyright p.p-text {
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.copyright p .bold {
+  font-weight: 600;
+}
+
+.copyright p + p {
+  margin-top: 10px;
+}
+
+/* 하단 카피라이트 관련 클레스 영역 끝 */
+/*# sourceMappingURL=footer.css.map */

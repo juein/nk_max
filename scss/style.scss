@@ -1,0 +1,107 @@
+@import 'common';
+@import 'footer';
+
+//오픈시 제거하자
+.rooftop {opacity: 1;}
+
+@mixin clear{
+    clear: both;
+    display: table;
+    content : '';
+}
+
+$imgPath : '../img/';
+$white : #fff;
+
+@mixin box_container( $w:1200px, $mgTop:0 , $mgRight:0, $mgBottom:0, $mgLeft:-600px, $top:50%, $left:50% ){
+    position: absolute;
+    width: $w;
+    top: $top;
+    left: $left;
+    margin: $mgTop $mgRight $mgBottom $mgLeft;
+    outline: 1px solid #ddd;
+}
+
+@mixin coverBg($imgName){
+    background: url($imgPath + $imgName) no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin fontInfo($size, $lh, $ls){
+    font-size: $size;
+    line-height: $lh;
+    letter-spacing: $ls;
+}
+
+.content{
+    width: 100%;
+    overflow: hidden;
+    &__area{
+        &--index{
+            background: #f0f0f0;
+            height: calc(100vh - 78px);
+            .pannel__box{
+                @include box_container(1200px, 0, 0, 0, -600px, 0, 50%);
+            }
+        }
+        &--second{
+            background: #badc58;
+            height: 300px;
+        }
+        &--three{
+            background: #7ed6df;
+            height: 500px;
+        }
+
+        .panel__area{
+            ul{
+                li{
+                    float: left;
+                    outline: 1px solid;
+                    &:after{
+                        @include clear;
+                    }
+                }
+            }
+        }
+    }
+    
+    /*
+    &--first{
+        height: 200px;
+        background: #ddd;
+    }
+    &--second{
+        height: 100px;
+        background: #eee;
+    }
+    &--box{
+        @include box_container();
+    }
+    &--title{
+        &__main{
+            @include fontInfo(14px, normal, 0);
+        }
+        &__sub{
+            @include fontInfo(10px, normal, 0);
+        }
+    }
+    &--text{
+        color: rgb(67, 29, 129);
+    }
+    */
+
+}
+
+@keyframes test{
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@media all and (max-width: 1024px) and (max-height: 768px){
+    
+}

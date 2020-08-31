@@ -1,0 +1,124 @@
+@charset "UTF-8";
+/* 하단 카피라이트 관련 클레스 영역 */
+.copyright {
+  font-family: sans-serif;
+  position: relative;
+  padding: 40px 0;
+  text-align: center;
+  font-size: .75rem;
+  font-weight: 200;
+  background: #efefef;
+  color: #818181;
+}
+
+.copyright p {
+  letter-spacing: 0;
+  height: 16px;
+  font-size: .688rem;
+  margin: 8px 0;
+}
+
+.copyright p .bold {
+  font-weight: 700;
+}
+
+.copyright p.p-text {
+  font-weight: 400;
+  letter-spacing: 1px;
+  height: 15px;
+  margin: 8px 0;
+  color: #818181;
+}
+
+.copyright p.eng01 {
+  font-weight: 400;
+  letter-spacing: 1px;
+  height: 24px;
+  font-size: .6rem;
+  padding-top: 0px;
+  margin: 0px 0 30px 0;
+}
+
+.copyright .copyrightfooter_btnset {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.copyright .copyrightfooter_btnset:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.copyright .copyrightfooter_btnset .copy_footer_btn1 {
+  text-align: center;
+  min-height: 40px;
+  line-height: 40px;
+  letter-spacing: .5px;
+  border-top: 1px solid #ccc;
+}
+
+.copyright .copyrightfooter_btnset .copy_footer_btn2 {
+  float: left;
+  position: relative;
+  width: 50%;
+  text-align: center;
+  min-height: 40px;
+  line-height: 40px;
+  letter-spacing: .5px;
+  border-top: 1px solid #ccc;
+}
+
+.copyright .copyrightfooter_btnset .copy_footer_btn2:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: #ccc;
+}
+
+.copyright .copyrightfooter_btnset .footer_tel {
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+  color: #818181;
+  text-decoration: none;
+}
+
+.copyright .copyrightfooter_btnset .footer_tel i {
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background: url(/ilab/img/sprite.png?v=2) no-repeat -170px 0;
+  background-size: 200px;
+  position: relative;
+  display: inline-block;
+  margin-right: 0px;
+  vertical-align: baseline;
+  margin-left: 10px;
+  opacity: 0.5;
+}
+
+.copyright .footer_mail {
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+  color: #666;
+  text-decoration: none;
+}
+
+.copyright .footer_mail i {
+  width: 18px;
+  height: 12px;
+  background: url(/ilab/img/sprite.png?v=2) no-repeat -150px 0;
+  background-size: 200px;
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+  vertical-align: baseline;
+  opacity: 0.5;
+}
+
+/* 하단 카피라이트 관련 클레스 영역 끝 */
+/*# sourceMappingURL=mobile_footer.css.map */

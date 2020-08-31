@@ -1,0 +1,293 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Noto Serif';
+  font-weight: 400;
+  src: url("../../fonts/NotoSerifKR-Regular.eot");
+  src: url("../../fonts/NotoSerifKR-Regular.woff") format("woff"), url("../../fonts/NotoSerifKR-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 100;
+  src: url("../../fonts/NotoSansCJKkr-Thin.eot");
+  src: url("../../fonts/NotoSansCJKkr-Thin.woff") format("woff"), url("../../fonts/NotoSansCJKkr-Thin.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 200;
+  src: url("../../fonts/NotoSansCJKkr-Light.eot");
+  src: url("../../fonts/NotoSansCJKkr-Light.woff") format("woff"), url("../../fonts/NotoSansCJKkr-Light.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 300;
+  src: url("../../fonts/NotoSansCJKkr-DemiLight.eot");
+  src: url("../../fonts/NotoSansCJKkr-DemiLight.woff") format("woff"), url("../../fonts/NotoSansCJKkr-DemiLight.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 400;
+  src: url("../../fonts/NotoSansCJKkr-Regular.eot");
+  src: url("../../fonts/NotoSansCJKkr-Regular.woff") format("woff"), url("../../fonts/NotoSansCJKkr-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 500;
+  src: url("../../fonts/NotoSansCJKkr-Medium.eot");
+  src: url("../../fonts/NotoSansCJKkr-Medium.woff") format("woff"), url("../../fonts/NotoSansCJKkr-Medium.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 600;
+  src: url("../../fonts/NotoSansCJKkr-Bold.eot");
+  src: url("../../fonts/NotoSansCJKkr-Bold.woff") format("woff"), url("../../fonts/NotoSansCJKkr-Bold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-weight: 700;
+  src: url("../../fonts/NotoSansCJKkr-Black.eot");
+  src: url("../../fonts/NotoSansCJKkr-Black.woff") format("woff"), url("../../fonts/NotoSansCJKkr-Black.otf") format("truetype");
+}
+
+body {
+  height: 100vh;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  line-height: 1.4;
+  letter-spacing: -0.08em;
+}
+
+h2, h3 {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+}
+
+h2 {
+  font-size: 1.563rem;
+  line-height: 1.25;
+  letter-spacing: -0.062em;
+  color: #1d1d1d;
+  font-weight: normal;
+}
+
+h2 + p {
+  max-width: 600px;
+  font-size: 1rem;
+}
+
+h2 strong {
+  font-weight: 600;
+}
+
+section {
+  position: relative;
+  padding: 2.8125rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+em {
+  font-style: normal;
+}
+
+button {
+  padding: 0;
+  border: 0 none;
+  cursor: pointer;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+p {
+  word-break: keep-all;
+}
+
+.hide {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font: 0/0 Sans-serif;
+  visibility: hidden;
+}
+
+:focus {
+  outline: none;
+}
+
+.sns-modal .modal-head {
+  height: 50px;
+  font-size: 1.1em;
+}
+
+.brand-identity img {
+  top: 0;
+}
+
+.video_wrap {
+  font: 0/0 arial;
+}
+
+video {
+  display: block;
+  width: 100%;
+}
+
+/* 하단 카피라이트 관련 클레스 영역 */
+.copyright {
+  font-family: sans-serif;
+  position: relative;
+  padding: 40px 0;
+  text-align: center;
+  font-size: .75rem;
+  font-weight: 200;
+  background: #efefef;
+  color: #818181;
+}
+
+.copyright p {
+  letter-spacing: 0;
+  height: 16px;
+  font-size: .688rem;
+  margin: 8px 0;
+}
+
+.copyright p .bold {
+  font-weight: 700;
+}
+
+.copyright p.p-text {
+  font-weight: 400;
+  letter-spacing: 1px;
+  height: 15px;
+  margin: 8px 0;
+  color: #818181;
+}
+
+.copyright p.eng01 {
+  font-weight: 400;
+  letter-spacing: 1px;
+  height: 24px;
+  font-size: .6rem;
+  padding-top: 0px;
+  margin: 0px 0 30px 0;
+}
+
+.copyright .copyrightfooter_btnset {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.copyright .copyrightfooter_btnset:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.copyright .copyrightfooter_btnset .copy_footer_btn1 {
+  text-align: center;
+  min-height: 40px;
+  line-height: 40px;
+  letter-spacing: .5px;
+  border-top: 1px solid #ccc;
+}
+
+.copyright .copyrightfooter_btnset .copy_footer_btn2 {
+  float: left;
+  position: relative;
+  width: 50%;
+  text-align: center;
+  min-height: 40px;
+  line-height: 40px;
+  letter-spacing: .5px;
+  border-top: 1px solid #ccc;
+}
+
+.copyright .copyrightfooter_btnset .copy_footer_btn2:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: #ccc;
+}
+
+.copyright .copyrightfooter_btnset .footer_tel {
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+  color: #818181;
+  text-decoration: none;
+}
+
+.copyright .copyrightfooter_btnset .footer_tel i {
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background: url(/ilab/img/sprite.png?v=2) no-repeat -170px 0;
+  background-size: 200px;
+  position: relative;
+  display: inline-block;
+  margin-right: 0px;
+  vertical-align: baseline;
+  margin-left: 10px;
+  opacity: 0.5;
+}
+
+.copyright .footer_mail {
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+  color: #666;
+  text-decoration: none;
+}
+
+.copyright .footer_mail i {
+  width: 18px;
+  height: 12px;
+  background: url(/ilab/img/sprite.png?v=2) no-repeat -150px 0;
+  background-size: 200px;
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+  vertical-align: baseline;
+  opacity: 0.5;
+}
+
+/* 하단 카피라이트 관련 클레스 영역 끝 */
+#intro {
+  min-height: 100vh;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+#feature1 {
+  width: 100%;
+  height: 10vw;
+  padding: 0;
+  background: #c8c8c8;
+}
+
+#feature1 .box {
+  position: absolute;
+  width: 84vw;
+  top: 0;
+  left: 50%;
+  margin: 0 0 0 -40vw;
+  outline: 1px solid #ddd;
+}
+
+.feature1_pin {
+  background: #000;
+}
+/*# sourceMappingURL=mobile_style.css.map */

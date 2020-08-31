@@ -1,0 +1,98 @@
+/* 하단 카피라이트 관련 클레스 영역 */
+$defaultSkin : #efefef, #818181, #666, 0.5 ;
+$blackSkin : #020300, #cacaca, #cacaca, 1 ;
+
+.copyright{
+    position:relative;
+    width:100%;
+    padding:70px 0;
+    background:  #{nth($defaultSkin, 1)};
+    text-align:center;
+    font-size:13px;
+    font-weight:200;
+    z-index:1;
+    .wrap{
+        width:1100px;
+        margin:0 auto;
+    }
+    &:after{
+        clear:both;
+        content:'';
+        display:table;
+    }
+    .copy_left{
+        width:52%;
+        text-align:left;
+        float:left;
+    }
+    .copy_right{
+        width:350px;
+        text-align:left;
+        float:right;
+        p{
+            &.p-text{
+                font-weight:400;
+                color:  #{nth($defaultSkin, 2)};
+                letter-spacing:.5px;
+                font-size:14px;
+                font-family:'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            }
+            &.p_colnom{
+                line-height:22px;
+            }
+            .footer_mail{
+                transition:color .3s ease;
+                color:  #{nth($defaultSkin, 2)};
+                text-decoration:none;
+                font-family:'noto-sans-scott', 'Malgun Gothic', sans-serif;
+                i{
+                    width:18px;
+                    height:12px;
+                    background:url(/ilab/img/sprite.png?v=2) no-repeat -150px 0;
+                    background-size:200px;
+                    position:relative;
+                    display:inline-block;
+                    margin-right:2px;
+                    vertical-align:baseline;
+                    opacity:  #{nth($defaultSkin, 4)};
+                }
+            }
+            .footer_tel{
+                transition:color .3s ease;
+                color:#818181;
+                text-decoration:none;
+                font-family:'noto-sans-scott', 'Malgun Gothic', sans-serif;
+                i{
+                    top:2px;
+                    width:16px;
+                    height:16px;
+                    background:url(/ilab/img/sprite.png?v=2) no-repeat -170px 0;
+                    background-size:200px;
+                    position:relative;
+                    display:inline-block;
+                    margin-right:0px;
+                    vertical-align:baseline;
+                    margin-left:10px;
+                    opacity:.5;
+                }
+            }
+        }
+    }
+    p{
+        margin:0;
+        font-family:Arial, Helvetica, sans-serif;
+        letter-spacing:0;
+        color:  #{nth($defaultSkin, 3)};
+        &.p-text{
+            font-weight:400;
+            letter-spacing:1px;
+        }
+        .bold{
+            font-weight: 600;
+        }
+        &+p{
+            margin-top:10px;
+        }
+    }
+}
+/* 하단 카피라이트 관련 클레스 영역 끝 */
