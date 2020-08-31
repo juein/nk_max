@@ -265,68 +265,413 @@ i {
   opacity: 1;
 }
 
-.content {
+.visual-intro {
   width: 100%;
   overflow: hidden;
-  /*
-    &--first{
-        height: 200px;
-        background: #ddd;
-    }
-    &--second{
-        height: 100px;
-        background: #eee;
-    }
-    &--box{
-        @include box_container();
-    }
-    &--title{
-        &__main{
-            @include fontInfo(14px, normal, 0);
-        }
-        &__sub{
-            @include fontInfo(10px, normal, 0);
-        }
-    }
-    &--text{
-        color: rgb(67, 29, 129);
-    }
-    */
-}
-
-.content__area--index {
-  background: #f0f0f0;
   height: calc(100vh - 78px);
+  min-height: 700px;
+  background: #A00C19;
 }
 
-.content__area--index .pannel__box {
+.visual-intro__type-text {
   position: absolute;
-  width: 1200px;
-  top: 0;
+  width: 2080px;
+  height: 372px;
+  top: 50%;
   left: 50%;
-  margin: 0 0 0 -600px;
+  margin-left: -1062px;
+  margin-top: -185px;
+}
+
+.visual-intro__illust {
+  background: url("../img/intro_illust.png") no-repeat;
+  width: 1344px;
+  height: 800px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -400px;
+  margin-left: -672px;
+}
+
+.visual-intro__area {
+  position: absolute;
+  width: 1560px;
+  top: 50%;
+  left: 50%;
+  margin: -116px 0 0 -760px;
   outline: 1px solid #ddd;
+  height: 232px;
 }
 
-.content__area--second {
-  background: #badc58;
-  height: 300px;
+.visual-intro__area--headline-first, .visual-intro__area--headline-last {
+  text-indent: -99999px;
+  display: inline-block;
 }
 
-.content__area--three {
-  background: #7ed6df;
-  height: 500px;
-}
-
-.content__area .panel__area ul li {
-  float: left;
-  outline: 1px solid;
-}
-
-.content__area .panel__area ul li:after {
+.visual-intro__area--headline-first:after, .visual-intro__area--headline-last:after {
   clear: both;
   display: table;
   content: '';
+}
+
+.visual-intro__area--headline-first {
+  background: url("../img/title_text_1.png") no-repeat;
+  width: 617px;
+  height: 220px;
+  margin-top: 15px;
+  float: left;
+}
+
+.visual-intro__area--headline-last {
+  background: url("../img/title_text_2.png") no-repeat;
+  width: 597px;
+  height: 224px;
+  float: right;
+}
+
+.visual-intro__cell-polygon-icon {
+  display: inline-block;
+  position: absolute;
+  background: url("../img/polygon.svg") no-repeat;
+  background-size: 100% 100%;
+}
+
+.visual-intro__cell-polygon-icon:nth-of-type(1) {
+  width: 187px;
+  height: 186px;
+}
+
+.visual-intro__cell-polygon-icon:nth-of-type(2) {
+  width: 75px;
+  height: 74px;
+  left: 200px;
+}
+
+.quiz-area {
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+  background: #F2F2F2;
+}
+
+.quiz-area__inner {
+  position: absolute;
+  width: 1400px;
+  top: 50%;
+  left: 50%;
+  margin: -260px 0 0 -700px;
+  outline: 1px solid #ddd;
+  height: 520px;
+}
+
+.quiz-area__inner--headline {
+  text-align: center;
+}
+
+.quiz-area__inner--headline-text {
+  color: #181310;
+  font-size: 40px;
+  line-height: 53px;
+  letter-spacing: -0.05em;
+}
+
+.quiz-area__inner--headline-text .demilight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 300;
+}
+
+.quiz-area__inner--headline-text .highlight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+}
+
+.quiz-area__inner--headline-text-point {
+  margin-left: 15px;
+  color: #8B8B8B;
+  font-size: 49px;
+  line-height: 59px;
+  letter-spacing: -0.05em;
+}
+
+.quiz-area__inner--question {
+  margin-top: 74px;
+}
+
+.quiz-area__inner--question-sec {
+  margin: 0 auto;
+  background: #fff;
+  width: 740px;
+  height: 70px;
+  border-radius: 10px;
+}
+
+.quiz-area__inner--question-sec-text {
+  color: #212121;
+  text-align: center;
+  padding: 18px 0;
+  font-size: 38px;
+  line-height: 33px;
+  letter-spacing: -0.05em;
+}
+
+.quiz-area__inner--progress {
+  position: absolute;
+  width: 700px;
+  bottom: 100px;
+  left: 50%;
+  margin-left: -350px;
+}
+
+.quiz-area__inner--progress .mark {
+  position: absolute;
+  top: -9px;
+}
+
+.quiz-area__inner--progress .mark .radius {
+  display: inline-block;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  background: #D8D8D8;
+  float: left;
+}
+
+.quiz-area__inner--progress .mark .radius:not(:first-child) {
+  margin-left: 56px;
+}
+
+.quiz-area__inner--progress .mark .radius i {
+  background: #BA0000;
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-radius: 50%;
+  margin: 3px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.quiz-area__inner--progress .mark .radius.active i {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.quiz-area__inner--progress .mark .radius:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.quiz-area__inner--progress .line {
+  width: 680px;
+  height: 1px;
+  background: #D8D8D8;
+}
+
+.quiz-area__inner--progress .line .active-line {
+  background: #BA0000;
+  width: 43%;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.immunity-relation {
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.immunity-relation__inner {
+  position: absolute;
+  width: 1400px;
+  top: 50%;
+  left: 50%;
+  margin: -260px 0 0 -700px;
+  outline: 1px solid #ddd;
+  height: 520px;
+}
+
+.immunity-relation__inner--headline {
+  text-align: center;
+}
+
+.immunity-relation__inner--headline-text {
+  color: #181310;
+  font-size: 40px;
+  line-height: 53px;
+  letter-spacing: -0.05em;
+}
+
+.immunity-relation__inner--headline-text .demilight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 300;
+}
+
+.immunity-relation__inner--headline-text .highlight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+}
+
+.natural-killer {
+  width: 100%;
+  height: 1150px;
+  overflow: hidden;
+  background: #F2F2F2;
+}
+
+.natural-killer__explain {
+  position: absolute;
+  width: 1400px;
+  top: 50%;
+  left: 50%;
+  margin: -370px 0 0 -700px;
+  outline: 1px solid #ddd;
+  height: 500px;
+  text-align: center;
+}
+
+.natural-killer__explain--headline {
+  color: #181310;
+  font-size: 40px;
+  line-height: 53px;
+  letter-spacing: -0.05em;
+}
+
+.natural-killer__explain--headline .demilight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 300;
+}
+
+.natural-killer__explain--headline .highlight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+}
+
+.natural-killer__explain--text-box {
+  width: 910px;
+  margin: 45px auto 0 auto;
+  font-size: 20px;
+  line-height: 33px;
+  letter-spacing: -0.05em;
+}
+
+.natural-killer__explain--text-box-mg {
+  margin: 35px 0;
+}
+
+.natural-killer__type {
+  position: absolute;
+  width: 100%;
+  height: 350px;
+  outline: 1px solid #000;
+  bottom: 0;
+  text-align: center;
+  padding-top: 55px;
+}
+
+.assassin-info {
+  width: 100%;
+  overflow: hidden;
+}
+
+.assassin-info__visual--list-origin {
+  float: left;
+  width: 25%;
+  height: 800px;
+  background: url("../img/origin.png") no-repeat;
+  background-position: center;
+}
+
+.assassin-info__visual--list-origin:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.assassin-info__visual--list-talent {
+  float: left;
+  width: 25%;
+  height: 800px;
+  background: url("../img/talent.png") no-repeat;
+  background-position: center;
+}
+
+.assassin-info__visual--list-talent:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.assassin-info__visual--list-hero {
+  float: left;
+  width: 25%;
+  height: 800px;
+  background: url("../img/hero.png") no-repeat;
+  background-position: center;
+}
+
+.assassin-info__visual--list-hero:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.assassin-info__visual--list-villain {
+  float: left;
+  width: 25%;
+  height: 800px;
+  background: url("../img/villain.png") no-repeat;
+  background-position: center;
+}
+
+.assassin-info__visual--list-villain:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.assassin-info__visual--scene {
+  color: #fff;
+}
+
+.assassin-info__visual--scene-feature {
+  font-family: Alternate Gothic Compressed ATF;
+  font-size: 80px;
+  line-height: 115px;
+  letter-spacing: 0;
+  width: 250px;
+  border-bottom: 1px solid #fff;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.assassin-info__visual--scene-concise {
+  font-size: 29px;
+  line-height: 54px;
+  letter-spacing: -0.06em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+.epilogue__box {
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.epilogue__box--area {
+  color: #fff;
+}
+
+.outro__video {
+  width: 100%;
+  overflow: hidden;
 }
 
 @-webkit-keyframes test {

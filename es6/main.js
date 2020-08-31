@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', function(){
     console.log(pow); // [ 1, 4, 9 ]
 
 
-    document.querySelector('.test').innerHTML = 'test';
+    //document.querySelector('.test').innerHTML = 'test123';
 
 
 

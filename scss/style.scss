@@ -13,7 +13,7 @@
 $imgPath : '../img/';
 $white : #fff;
 
-@mixin box_container( $w:1200px, $mgTop:0 , $mgRight:0, $mgBottom:0, $mgLeft:-600px, $top:50%, $left:50% ){
+@mixin box_container( $w:1400px, $mgTop:0 , $mgRight:0, $mgBottom:0, $mgLeft:-700px, $top:50%, $left:50% ){
     position: absolute;
     width: $w;
     top: $top;
@@ -24,7 +24,6 @@ $white : #fff;
 
 @mixin coverBg($imgName){
     background: url($imgPath + $imgName) no-repeat;
-    background-size: cover;
     background-position: center;
     width: 100%;
     height: 100%;
@@ -36,65 +35,282 @@ $white : #fff;
     letter-spacing: $ls;
 }
 
-.content{
+@mixin headlineText( $cr:#181310, $fs: 40px, $lh: 53px, $ls:-0.05em ){
+    color: $cr;
+        @include fontInfo($fs, $lh, $ls);
+    .demilight{
+        @include fw-demilight;
+    }
+    .highlight{
+        @include fw-bold;
+    }
+}
+
+.visual-intro{
     width: 100%;
     overflow: hidden;
+    height: calc(100vh - 78px);
+    min-height: 700px;
+    background: #A00C19;
+    &__type-text{
+        position: absolute;
+        width: 2080px;
+        height: 372px;
+        top: 50%;
+        left: 50%;
+        margin-left: -1062px;
+        margin-top: -185px;
+    }
+    &__illust{
+        background: url($imgPath + 'intro_illust.png') no-repeat;
+        width: 1344px;
+        height: 800px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        //outline: 1px solid;
+        margin-top: -400px;
+        margin-left: -672px;
+    }
     &__area{
-        &--index{
-            background: #f0f0f0;
-            height: calc(100vh - 78px);
-            .pannel__box{
-                @include box_container(1200px, 0, 0, 0, -600px, 0, 50%);
+        @include box_container( 1560px, -116px, 0, 0, -760px, 50%, 50% );
+        height: 232px;
+        &--headline{
+            &-first, &-last{
+                text-indent: -99999px;
+                display: inline-block;
+                &:after{
+                    @include clear;
+                }
+            }
+            &-first{
+                background: url($imgPath + 'title_text_1.png') no-repeat;
+                width: 617px;
+                height: 220px;
+                margin-top: 15px;
+                float: left;
+            }
+            &-last{
+                background: url($imgPath + 'title_text_2.png') no-repeat;
+                width: 597px;
+                height: 224px;
+                float: right;
             }
         }
-        &--second{
-            background: #badc58;
-            height: 300px;
+    }
+    &__cell-polygon{
+        &-icon{
+            display: inline-block;
+            position: absolute;
+            background: url($imgPath + 'polygon.svg') no-repeat;
+            background-size: 100% 100%;
+            &:nth-of-type(1){
+                width: 187px;
+                height: 186px;
+            }
+            &:nth-of-type(2){
+                width: 75px;
+                height: 74px;
+                left: 200px;
+            }
         }
-        &--three{
-            background: #7ed6df;
-            height: 500px;
-        }
+    }
+}
 
-        .panel__area{
-            ul{
-                li{
+.quiz-area{
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    background: #F2F2F2;
+    &__inner{
+        @include box_container( 1400px, -260px, 0, 0, -700px, 50%, 50% );
+        height: 520px;
+        &--headline{
+            text-align: center;
+            &-text{
+                @include headlineText();
+                &-point{
+                    margin-left: 15px;
+                    color: #8B8B8B;
+                    @include fontInfo(49px, 59px, -0.05em);
+                }
+            }
+        }
+        &--question{
+            margin-top: 74px;
+            &-sec{
+                margin: 0 auto;
+                background: #fff;
+                width: 740px;
+                height: 70px;
+                border-radius: 10px;
+                &-text{
+                    color: #212121;
+                    text-align: center;
+                    padding: 18px 0;
+                    @include fontInfo(38px, 33px, -0.05em);
+                }
+            }
+        }
+        &--progress{
+            position: absolute;
+            width: 700px;
+            bottom: 100px;
+            left: 50%;
+            margin-left: -350px;
+            .mark{
+                position: absolute;
+                top: -9px;
+                .radius{
+                    display: inline-block;
+                    border-radius: 50%;
+                    width: 18px;
+                    height: 18px;
+                    background: #D8D8D8;
                     float: left;
-                    outline: 1px solid;
+                    &:not(:first-child){
+                        margin-left: 56px;
+                    }
+                    i{
+                        background: #BA0000;
+                        width: 12px;
+                        height: 12px;
+                        display: block;
+                        border-radius: 50%;
+                        margin: 3px;
+                        transform: scale(0);
+                    }
+                    &.active{
+                        i{
+                            transform: scale(1);
+                        }
+                    }
                     &:after{
                         @include clear;
                     }
                 }
             }
+            .line{
+                width: 680px;
+                height: 1px;
+                background: #D8D8D8;
+                .active-line{
+                    background: #BA0000;
+                    width: 43%;
+                    height: 1px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
         }
     }
-    
-    /*
-    &--first{
-        height: 200px;
-        background: #ddd;
-    }
-    &--second{
-        height: 100px;
-        background: #eee;
-    }
-    &--box{
-        @include box_container();
-    }
-    &--title{
-        &__main{
-            @include fontInfo(14px, normal, 0);
-        }
-        &__sub{
-            @include fontInfo(10px, normal, 0);
+}
+
+.immunity-relation{
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    background: #fff;
+    &__inner{
+        @include box_container( 1400px, -260px, 0, 0, -700px, 50%, 50% );
+        height: 520px;
+        &--headline{
+            text-align: center;
+            &-text{
+                @include headlineText();
+            }
         }
     }
-    &--text{
-        color: rgb(67, 29, 129);
+}
+
+.natural-killer{
+    width: 100%;
+    height: 1150px;
+    overflow: hidden;
+    background: #F2F2F2;
+    &__explain{
+        @include box_container( 1400px, -370px, 0, 0, -700px, 50%, 50% );
+        height: 500px;
+        text-align: center;
+        &--headline{
+            @include headlineText();
+        }
+        &--text-box{
+            width: 910px;
+            margin: 45px auto 0 auto;
+            @include fontInfo(20px, 33px, -0.05em);
+            &-mg{
+                margin: 35px 0;
+            }
+        }
     }
-    */
+    &__type{
+        position: absolute;
+        width: 100%;
+        height: 350px;
+        outline: 1px solid #000;
+        bottom: 0;
+        text-align: center;
+        padding-top: 55px;
+    }
+}
+
+.assassin-info{
+    width: 100%;
+    overflow: hidden;
+    &__visual{
+
+        @each $obj in origin, talent, hero, villain {
+            &--list-#{$obj} {
+                float: left;
+                width: 25%;
+                height: 800px;
+                background: url($imgPath + '#{$obj}.png') no-repeat;
+                background-position: center;
+                &:after{
+                    @include clear;
+                }
+            }
+        }
+
+        &--scene{
+            color: #fff;
+            &-feature{
+                font-family: Alternate Gothic Compressed ATF;
+                @include fontInfo(80px, 115px, 0);
+                width: 250px;
+                border-bottom: 1px solid #fff;
+                display: block;
+                text-align: center;
+                margin: 0 auto;
+            }
+            &-concise{
+                @include fontInfo(29px, 54px, -0.06em);
+                @include fw-bold;
+                text-align: center;
+            }
+
+        }
+
+    }
+}
+
+.epilogue__box{
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+    &--area{
+        color: #fff;
+    }
+}
+
+.outro__video{
+    width: 100%;
+    overflow: hidden;
 
 }
+
 
 @keyframes test{
     0% { opacity: 1; }
