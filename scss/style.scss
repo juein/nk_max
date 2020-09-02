@@ -46,11 +46,15 @@ $white : #fff;
     }
 }
 
+.content__container{
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vh - 78px);
+}
+
 .visual-intro{
     width: 100%;
-    overflow: hidden;
-    height: calc(100vh - 78px);
-    min-height: 700px;
+    height: 100%;
     background: #A00C19;
     &__type-text{
         position: absolute;
@@ -119,8 +123,7 @@ $white : #fff;
 
 .quiz-area{
     width: 100%;
-    height: 800px;
-    overflow: hidden;
+    height: 100%;
     background: #F2F2F2;
     &__inner{
         @include box_container( 1400px, -260px, 0, 0, -700px, 50%, 50% );
@@ -209,8 +212,7 @@ $white : #fff;
 
 .immunity-relation{
     width: 100%;
-    height: 800px;
-    overflow: hidden;
+    height: 100%;
     background: #fff;
     &__inner{
         @include box_container( 1400px, -260px, 0, 0, -700px, 50%, 50% );
@@ -226,8 +228,7 @@ $white : #fff;
 
 .natural-killer{
     width: 100%;
-    height: 1150px;
-    overflow: hidden;
+    height: 100%;
     background: #F2F2F2;
     &__explain{
         @include box_container( 1400px, -370px, 0, 0, -700px, 50%, 50% );
@@ -246,6 +247,7 @@ $white : #fff;
         }
     }
     &__type{
+        opacity: 0.2;
         position: absolute;
         width: 100%;
         height: 350px;
@@ -258,7 +260,15 @@ $white : #fff;
 
 .assassin-info{
     width: 100%;
-    overflow: hidden;
+    height: 100%;
+    background: #d00116; //임시 bg색
+
+    //$base-color : #d00116;
+    // color: saturate($base-color, 20%);
+    // color: darken($base-color, 10%);
+
+    //filter: grayscale(100%);
+    
     &__visual{
 
         @each $obj in origin, talent, hero, villain {
@@ -267,7 +277,10 @@ $white : #fff;
                 width: 25%;
                 height: 800px;
                 background: url($imgPath + '#{$obj}.png') no-repeat;
-                background-position: center;
+                //background-image: linear-gradient(black, black),url($imgPath + '#{$obj}.png');
+                //background-repeat: no-repeat;
+                //background-position: center;
+                //background-blend-mode: saturation;
                 &:after{
                     @include clear;
                 }
@@ -296,20 +309,53 @@ $white : #fff;
     }
 }
 
-.epilogue__box{
+.epilogue{
     width: 100%;
-    overflow: hidden;
+    height: 100%;
     background: #000;
-    &--area{
+    &__inner{
+        @include box_container( 1120px, -140px, 0, 0, -560px, 50%, 50% );
+        height: 280px;
         color: #fff;
+        &--area{
+            width: 450px;
+            float: right;
+            outline: 1px solid #fff;
+            &-headline{
+                @include headlineText(#fff);
+            }
+            &-explain{
+                margin-top: 55px;
+                @include fontInfo(20px, 33px, -0.05em);
+            }
+            &:after{
+                @include clear;
+            }
+        }
+    }
+    
+}
+
+.outro{
+    width: 100%;
+    height: 100%;
+    background: #F2F2F2;
+    &__inner{
+        @include box_container( 1120px, -270px, 0, 0, -560px, 50%, 50% );
+        height: 540px;
+        color: #212121;
+        &--headline{
+            @include headlineText();
+            @include fw-regular;
+        }
+        &--text{
+            @include fontInfo(20px, 33px, -0.05em);
+            @include fw-regular;
+            margin: 65px 0;
+        }
     }
 }
 
-.outro__video{
-    width: 100%;
-    overflow: hidden;
-
-}
 
 
 @keyframes test{

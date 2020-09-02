@@ -4,27 +4,52 @@
 //const pageIntroAction;
 
 // onload
-window.onload = function(){
-    //console.log('onload');
-}
+//window.onload = function(){
+//    console.log('onload');
+//}
+
 // onload
 
-
-
-window.addEventListener('DOMContentLoaded', function(){ 
+window.addEventListener('DOMContentLoaded', () => { 
 
     let pageNum = 0;
     let isAnimating = false;
     let verticallSwiper;
-    
 
     //리로드시 최상단으로
-    window.onbeforeunload = function () {
-        //window.scrollTo(0, 0);
-        //console.clear(); 
-    }
+    //window.onbeforeunload = function () {
+    //    //window.scrollTo(0, 0);
+    //    //console.clear(); 
+    //}
 
     const ctrl = new ScrollMagic.Controller();
+
+
+
+    // assassin-info
+    gsap.set('.assassin-info__visual--list .grayscale', {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)'});
+
+    const test = document.querySelector('.assassin-info__visual--list');
+    test.addEventListener("mouseover", areaEnter);
+    //test.addEventListener("mouseleave", areaLeave);
+    test.addEventListener("click", areaClick);
+
+    function areaEnter(e){
+        console.log('enter' + e.target.getAttribute('data-value'));
+        //console.log(e.target.className);
+        let targetClassName = e.target.className;
+        gsap.fromTo(e.target, 1, {opacity: 1}, {opacity: 0});
+    }
+    //function areaLeave(e){
+    //    console.log('leave' + e.target.getAttribute('data-value'));
+    //}
+    function areaClick(e){
+        console.log('click' + e.target.getAttribute('data-value'));
+    }
+
+    // assassin-info
+
+
 
     //swiper 제어
     //verticallSwiper.slideTo(0, 500);
@@ -41,102 +66,45 @@ window.addEventListener('DOMContentLoaded', function(){
         },
         direction: 'vertical',
         autoplay: false,
-        //keyboard : true,
-        //allowTouchMove : false,
-        //mousewheelControl: true,
-        //mousewheel: {
-        //  invert: false,
-        //},
         speed: 800,
+        simulateTouch : false
     });
 
 
     //page controll
-    function goToNextSlide(){
-        if( pageNum >= 15) return false; //총 페이지 수를 넘어가면 false처리
-
-        if(!isAnimating){
-            isAnimating = true;
-            pageNum += 1;
-
-            console.log('page = ' + pageNum);
-
-            
-            verticallSwiper.slideTo(pageNum, 500);
-            //verticallSwiper.slideNext();
-
-            setTimeout(() => {
-                onSlideChangeEnd();
-            }, 1000)
-            
-
-            
-            //switch
-            /*
-            switch(pageNum){
-                case 0:
-                    break;
-                case 1:
-                    console.log('page = ' + pageNum);
-                    setTimeout(() => {
-                        onSlideChangeEnd();
-                    }, 1000);
-                    break;
-                case 2:
-                    console.log('page = ' + pageNum);
-                    setTimeout(() => {
-                        onSlideChangeEnd();
-                    }, 1000);
-                    break;
-                default:
-                    //onSlideChangeEnd();
-                    break;
-            }
-            */
-            
+    const goToContentSlide = (ctr) => {
+        if(ctr == 'next' && pageNum >= 6){   //index: 0 기준 false 처리
+            return false;
+        }else if(ctr == 'prev' && pageNum <= 0){  //총 페이지 수를 넘어가면 false처리
+            return false;
         }
-    };
-
-    
-    function goToPrevSlide(){
-        if(pageNum <= 0) return false; //index: 0 기준 false
 
         if(!isAnimating){
             isAnimating = true;
-            pageNum -= 1;
+            if(ctr == 'next' ? pageNum += 1 : pageNum -= 1);
 
-            console.log('page = ' + pageNum);
-
-            //verticallSwiper.slidePrev();
+            console.log('this page = ' + pageNum);
             verticallSwiper.slideTo(pageNum, 500);
 
             setTimeout(() => {
                 onSlideChangeEnd();
-            }, 1000)
-
+            }, 800)
         }
-    };
-    
+    }
 
-    function onSlideChangeEnd(){
+    const onSlideChangeEnd = () => {
         console.log('isAnimating == false');
         isAnimating = false;
     }
 
-    //Math.sign 함수 대체
-    //function sgn(x) {
-    //    return (x > 0) - (x < 0);
-    //}
-
     // scroll controll
-    window.addEventListener("wheel", function (event) {
-        //let delta = sgn(event.deltaY);
+    window.addEventListener("wheel", (event) => {
         let delta = Math.sign(event.deltaY);
         
         if(delta > 0){ //down
-        goToNextSlide();
+            goToContentSlide('next');
         }else { //up
-            goToPrevSlide();
+            goToContentSlide('prev');
         }
     });
 
@@ -146,13 +114,13 @@ window.addEventListener('DOMContentLoaded', function(){
         UP  : 38,
         DOWN: 40
     }
-    window.addEventListener("keydown", function (event) {
+    window.addEventListener("keydown", (event) => {
         let PRESSED_KEY = event.keyCode;
         if(PRESSED_KEY == keyCodes.DOWN){
-            goToNextSlide();
+            goToContentSlide('next');
             event.preventDefault();
         }else if(PRESSED_KEY == keyCodes.UP){
-            goToPrevSlide();
+            goToContentSlide('prev');
             event.preventDefault();
         }
     });

@@ -265,11 +265,15 @@ i {
   opacity: 1;
 }
 
+.content__container {
+  overflow: hidden;
+  width: 100%;
+  height: calc(100vh - 78px);
+}
+
 .visual-intro {
   width: 100%;
-  overflow: hidden;
-  height: calc(100vh - 78px);
-  min-height: 700px;
+  height: 100%;
   background: #A00C19;
 }
 
@@ -350,8 +354,7 @@ i {
 
 .quiz-area {
   width: 100%;
-  height: 800px;
-  overflow: hidden;
+  height: 100%;
   background: #F2F2F2;
 }
 
@@ -480,8 +483,7 @@ i {
 
 .immunity-relation {
   width: 100%;
-  height: 800px;
-  overflow: hidden;
+  height: 100%;
   background: #fff;
 }
 
@@ -518,8 +520,7 @@ i {
 
 .natural-killer {
   width: 100%;
-  height: 1150px;
-  overflow: hidden;
+  height: 100%;
   background: #F2F2F2;
 }
 
@@ -564,6 +565,7 @@ i {
 }
 
 .natural-killer__type {
+  opacity: 0.2;
   position: absolute;
   width: 100%;
   height: 350px;
@@ -575,7 +577,8 @@ i {
 
 .assassin-info {
   width: 100%;
-  overflow: hidden;
+  height: 100%;
+  background: #d00116;
 }
 
 .assassin-info__visual--list-origin {
@@ -583,7 +586,6 @@ i {
   width: 25%;
   height: 800px;
   background: url("../img/origin.png") no-repeat;
-  background-position: center;
 }
 
 .assassin-info__visual--list-origin:after {
@@ -597,7 +599,6 @@ i {
   width: 25%;
   height: 800px;
   background: url("../img/talent.png") no-repeat;
-  background-position: center;
 }
 
 .assassin-info__visual--list-talent:after {
@@ -611,7 +612,6 @@ i {
   width: 25%;
   height: 800px;
   background: url("../img/hero.png") no-repeat;
-  background-position: center;
 }
 
 .assassin-info__visual--list-hero:after {
@@ -625,7 +625,6 @@ i {
   width: 25%;
   height: 800px;
   background: url("../img/villain.png") no-repeat;
-  background-position: center;
 }
 
 .assassin-info__visual--list-villain:after {
@@ -659,19 +658,102 @@ i {
   text-align: center;
 }
 
-.epilogue__box {
+.epilogue {
   width: 100%;
-  overflow: hidden;
+  height: 100%;
   background: #000;
 }
 
-.epilogue__box--area {
+.epilogue__inner {
+  position: absolute;
+  width: 1120px;
+  top: 50%;
+  left: 50%;
+  margin: -140px 0 0 -560px;
+  outline: 1px solid #ddd;
+  height: 280px;
   color: #fff;
 }
 
-.outro__video {
+.epilogue__inner--area {
+  width: 450px;
+  float: right;
+  outline: 1px solid #fff;
+}
+
+.epilogue__inner--area-headline {
+  color: #fff;
+  font-size: 40px;
+  line-height: 53px;
+  letter-spacing: -0.05em;
+}
+
+.epilogue__inner--area-headline .demilight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 300;
+}
+
+.epilogue__inner--area-headline .highlight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+}
+
+.epilogue__inner--area-explain {
+  margin-top: 55px;
+  font-size: 20px;
+  line-height: 33px;
+  letter-spacing: -0.05em;
+}
+
+.epilogue__inner--area:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.outro {
   width: 100%;
-  overflow: hidden;
+  height: 100%;
+  background: #F2F2F2;
+}
+
+.outro__inner {
+  position: absolute;
+  width: 1120px;
+  top: 50%;
+  left: 50%;
+  margin: -270px 0 0 -560px;
+  outline: 1px solid #ddd;
+  height: 540px;
+  color: #212121;
+}
+
+.outro__inner--headline {
+  color: #181310;
+  font-size: 40px;
+  line-height: 53px;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+}
+
+.outro__inner--headline .demilight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 300;
+}
+
+.outro__inner--headline .highlight {
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+}
+
+.outro__inner--text {
+  font-size: 20px;
+  line-height: 33px;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+  margin: 65px 0;
 }
 
 @-webkit-keyframes test {
