@@ -54,6 +54,12 @@
   src: url("../fonts/NotoSansCJKkr-Black.woff") format("woff"), url("../fonts/NotoSansCJKkr-Black.otf") format("truetype");
 }
 
+@font-face {
+  font-family: 'ProximaNova';
+  font-weight: 400;
+  src: url("../fonts/ProximaNova-Regular.otf") format("truetype");
+}
+
 .joins_gnb {
   height: 32px;
 }

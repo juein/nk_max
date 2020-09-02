@@ -1,58 +1,66 @@
 @charset "UTF-8";
+/*
+@font-face {font-family:'Noto Serif';font-weight:400;src:url('../fonts/NotoSerifKR-Regular.eot');src:url('../fonts/NotoSerifKR-Regular.woff') format('woff'), url('../fonts/NotoSerifKR-Regular.otf') format('truetype')}
+@font-face {font-family:'Noto Sans CJK KR';font-weight:100;src:url('../fonts/NotoSansCJKkr-Thin.eot');src:url('../fonts/NotoSansCJKkr-Thin.woff') format('woff'), url('../fonts/NotoSansCJKkr-Thin.otf') format('truetype')}
+@font-face {font-family:'Noto Sans CJK KR';font-weight:200;src:url('../fonts/NotoSansCJKkr-Light.eot');src:url('../fonts/NotoSansCJKkr-Light.woff') format('woff'), url('../fonts/NotoSansCJKkr-Light.otf') format('truetype')}
+@font-face {font-family:'Noto Sans CJK KR';font-weight:300;src:url('../fonts/NotoSansCJKkr-DemiLight.eot');src:url('../fonts/NotoSansCJKkr-DemiLight.woff') format('woff'), url('../fonts/NotoSansCJKkr-DemiLight.otf') format('truetype')}
+@font-face {font-family:'Noto Sans CJK KR';font-weight:400;src:url('../fonts/NotoSansCJKkr-Regular.eot');src:url('../fonts/NotoSansCJKkr-Regular.woff') format('woff'), url('../fonts/NotoSansCJKkr-Regular.otf') format('truetype')}
+@font-face {font-family:'Noto Sans CJK KR';font-weight:500;src:url('../fonts/NotoSansCJKkr-Medium.eot');src:url('../fonts/NotoSansCJKkr-Medium.woff') format('woff'), url('../fonts/NotoSansCJKkr-Medium.otf') format('truetype')}
+@font-face {font-family:'Noto Sans CJK KR';font-weight:600;src:url('../fonts/NotoSansCJKkr-Bold.eot');src:url('../fonts/NotoSansCJKkr-Bold.woff') format('woff'), url('../fonts/NotoSansCJKkr-Bold.otf') format('truetype')}
+@font-face {font-family:'Noto Sans CJK KR';font-weight:700;src:url('../fonts/NotoSansCJKkr-Black.eot');src:url('../fonts/NotoSansCJKkr-Black.woff') format('woff'), url('../fonts/NotoSansCJKkr-Black.otf') format('truetype')}
+*/
 @font-face {
   font-family: 'Noto Serif';
   font-weight: 400;
-  src: url("../fonts/NotoSerifKR-Regular.eot");
-  src: url("../fonts/NotoSerifKR-Regular.woff") format("woff"), url("../fonts/NotoSerifKR-Regular.otf") format("truetype");
+  src: url("../fonts/NotoSerifKR-Regular.otf") format("truetype");
 }
 
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 100;
-  src: url("../fonts/NotoSansCJKkr-Thin.eot");
-  src: url("../fonts/NotoSansCJKkr-Thin.woff") format("woff"), url("../fonts/NotoSansCJKkr-Thin.otf") format("truetype");
+  src: url("../fonts/NotoSansCJKkr-Thin.otf") format("truetype");
 }
 
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 200;
-  src: url("../fonts/NotoSansCJKkr-Light.eot");
-  src: url("../fonts/NotoSansCJKkr-Light.woff") format("woff"), url("../fonts/NotoSansCJKkr-Light.otf") format("truetype");
+  src: url("../fonts/NotoSansCJKkr-Light.otf") format("truetype");
 }
 
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 300;
-  src: url("../fonts/NotoSansCJKkr-DemiLight.eot");
-  src: url("../fonts/NotoSansCJKkr-DemiLight.woff") format("woff"), url("../fonts/NotoSansCJKkr-DemiLight.otf") format("truetype");
+  src: url("../fonts/NotoSansCJKkr-DemiLight.otf") format("truetype");
 }
 
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 400;
-  src: url("../fonts/NotoSansCJKkr-Regular.eot");
-  src: url("../fonts/NotoSansCJKkr-Regular.woff") format("woff"), url("../fonts/NotoSansCJKkr-Regular.otf") format("truetype");
+  src: url("../fonts/NotoSansCJKkr-Regular.otf") format("truetype");
 }
 
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 500;
-  src: url("../fonts/NotoSansCJKkr-Medium.eot");
-  src: url("../fonts/NotoSansCJKkr-Medium.woff") format("woff"), url("../fonts/NotoSansCJKkr-Medium.otf") format("truetype");
+  src: url("../fonts/NotoSansCJKkr-Medium.otf") format("truetype");
 }
 
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 600;
-  src: url("../fonts/NotoSansCJKkr-Bold.eot");
-  src: url("../fonts/NotoSansCJKkr-Bold.woff") format("woff"), url("../fonts/NotoSansCJKkr-Bold.otf") format("truetype");
+  src: url("../fonts/NotoSansCJKkr-Bold.otf") format("truetype");
 }
 
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 700;
-  src: url("../fonts/NotoSansCJKkr-Black.eot");
-  src: url("../fonts/NotoSansCJKkr-Black.woff") format("woff"), url("../fonts/NotoSansCJKkr-Black.otf") format("truetype");
+  src: url("../fonts/NotoSansCJKkr-Black.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  font-weight: 400;
+  src: url("../fonts/ProximaNova-Regular.otf") format("truetype");
 }
 
 .joins_gnb {
@@ -553,7 +561,7 @@ i {
 }
 
 .natural-killer__explain--text-box {
-  width: 910px;
+  width: 950px;
   margin: 45px auto 0 auto;
   font-size: 20px;
   line-height: 33px;
@@ -565,7 +573,7 @@ i {
 }
 
 .natural-killer__type {
-  opacity: 0.2;
+  opacity: 0;
   position: absolute;
   width: 100%;
   height: 350px;
@@ -578,14 +586,23 @@ i {
 .assassin-info {
   width: 100%;
   height: 100%;
+}
+
+.assassin-info__visual {
+  height: 100%;
   background: #d00116;
+}
+
+.assassin-info__visual--list {
+  height: 100%;
 }
 
 .assassin-info__visual--list-origin {
   float: left;
   width: 25%;
-  height: 800px;
+  height: 100%;
   background: url("../img/origin.png") no-repeat;
+  background-position: center;
 }
 
 .assassin-info__visual--list-origin:after {
@@ -597,8 +614,9 @@ i {
 .assassin-info__visual--list-talent {
   float: left;
   width: 25%;
-  height: 800px;
+  height: 100%;
   background: url("../img/talent.png") no-repeat;
+  background-position: center;
 }
 
 .assassin-info__visual--list-talent:after {
@@ -610,8 +628,9 @@ i {
 .assassin-info__visual--list-hero {
   float: left;
   width: 25%;
-  height: 800px;
+  height: 100%;
   background: url("../img/hero.png") no-repeat;
+  background-position: center;
 }
 
 .assassin-info__visual--list-hero:after {
@@ -623,8 +642,9 @@ i {
 .assassin-info__visual--list-villain {
   float: left;
   width: 25%;
-  height: 800px;
+  height: 100%;
   background: url("../img/villain.png") no-repeat;
+  background-position: center;
 }
 
 .assassin-info__visual--list-villain:after {
@@ -635,6 +655,10 @@ i {
 
 .assassin-info__visual--scene {
   color: #fff;
+  position: absolute;
+  bottom: 50px;
+  outline: 1px solid;
+  width: 100%;
 }
 
 .assassin-info__visual--scene-feature {
@@ -656,6 +680,35 @@ i {
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 600;
   text-align: center;
+}
+
+.assassin-info__visual--navigation {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  outline: 1px solid blue;
+  bottom: 0;
+  margin: 50px 100px;
+}
+
+.assassin-info__visual--navigation-btn {
+  cursor: pointer;
+  outline: 1px solid green;
+  float: left;
+  padding: 10px;
+}
+
+.assassin-info__visual--navigation-btn:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.assassin-info__visual--explain {
+  position: absolute;
+  top: 0;
+  background: #ddd;
+  opacity: 0.2;
 }
 
 .epilogue {
@@ -729,12 +782,12 @@ i {
 }
 
 .outro__inner--headline {
-  color: #181310;
-  font-size: 40px;
-  line-height: 53px;
-  letter-spacing: -0.05em;
-  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-family: 'ProximaNova', sans-serif;
   font-weight: 400;
+  color: #212121;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: 0;
 }
 
 .outro__inner--headline .demilight {
@@ -754,6 +807,14 @@ i {
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 400;
   margin: 65px 0;
+}
+
+.outro__inner--video-play {
+  font-family: 'ProximaNova', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 43px;
+  letter-spacing: 0;
 }
 
 @-webkit-keyframes test {
