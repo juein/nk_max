@@ -25,33 +25,63 @@ window.addEventListener('DOMContentLoaded', () => {
     // default setting
     const defaultSet = () => {
         gsap.set('.assassin-info__visual--list .grayscale', {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)'});
+        gsap.set('.assassin-info__visual--character-villain', {backgroundSize: '200%', backgroundPosition: 'center 100%'});
     }
-    
 
     // assassin-info
     $(".assassin-info .grayscale").hover(function(){
         hoverItem = $(this).attr('class').replace('grayscale', '');
         gsap.to( '.'+hoverItem, 1, {'-webkit-filter':'grayscale(0%)', filter: 'grayscale(0%)'} );
     }, function(){
-        gsap.to( '.'+hoverItem, 1, {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)'} );
+        if(listActiveNum == 0){
+            gsap.to( '.'+hoverItem, 1, {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)'} );
+        }
     });
+
+    const assassinContent = {
+        hideContent(){
+            //컨텐츠 display none
+            gsap.to('.assassin-info__visual--explain--origin', 0.3, {opacity: 0});
+            gsap.to('.assassin-info__visual--explain--talent', 0.3, {opacity: 0});
+            gsap.to('.assassin-info__visual--explain--hero', 0.3, {opacity: 0});
+            gsap.to('.assassin-info__visual--explain--villain', 0.3, {opacity: 0});
+        },
+        origin(){
+            console.log('origin content!!');
+            gsap.to('.assassin-info__visual--explain--origin', 1, {opacity: 1});
+            //$('.assassin-info__visual--explain--origin')
+        },
+        talent(){
+            console.log('talent content!!');
+        },
+        hero(){
+            console.log('hero content!!');
+        },
+        villain(){
+            console.log('villain content!!');
+        },
+    }
 
     const listOrigin = () => {
         const listOriginAction = new TimelineLite({paused: true})
-        .to('.assassin-info__visual--list-origin', 1.2, {x: "301%"}, 0.7)
+        .to('.assassin-info__visual--list-origin', 1.2, {y: "10%"}, 0.7)
+        //.to('.assassin-info__visual--list-origin .assasin_character', 1.2, {y: "10%"}, 0.7)
+        .to('.assassin-info__visual--bg-origin', 0.5, {opacity: 0}, 0)
         .to('.assassin-info__visual--list-talent', 1, {x: "301%"}, 0)
         .to('.assassin-info__visual--list-hero', 1, {x: "301%"}, 0)
         .to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
-        .to('.assassin-info__visual', 0.5, {background: '#ddd'}, 1);
-
+        .to('.assassin-info__visual', 0.5, {background: '#F2F2F2'}, 1)
+        
         $('.assassin-info__visual--list-origin').addClass('active');
         listActiveNum = 1;
         listOriginAction.restart();
+        assassinContent.origin();
     }
     const listTalent = () => {
         const listTalentAction = new TimelineLite({paused: true})
+        .to('.assassin-info__visual--bg-talent', 0.5, {opacity: 0}, 0)
         .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
-        .to('.assassin-info__visual--list-talent', 1.2, {x: "200%"}, 0.7)
+        .to('.assassin-info__visual--list-talent', 1.2, {x: "-80%"}, 0.7)
         .to('.assassin-info__visual--list-hero', 1, {x: "301%"}, 0)
         .to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
         .to('.assassin-info__visual', 0.5, {background: '#ddd'}, 1);
@@ -62,9 +92,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     const listHero = () => {
         const listHeroAction = new TimelineLite({paused: true})
+        .to('.assassin-info__visual--bg-hero', 0.5, {opacity: 0}, 0)
         .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
         .to('.assassin-info__visual--list-talent', 1, {x: "-201%"}, 0)
-        .to('.assassin-info__visual--list-hero', 1.2, {x: "100%"}, 0.7)
+        .to('.assassin-info__visual--list-hero', 1.2, {x: "90%", y: "20%"}, 0.7)
         .to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
         .to('.assassin-info__visual', 0.5, {background: '#ddd'}, 1);
 
@@ -74,11 +105,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     const listVillain = () => {
         const listVillainAction = new TimelineLite({paused: true})
+        .to('.assassin-info__visual--bg-villain', 0.5, {opacity: 0}, 0)
         .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
         .to('.assassin-info__visual--list-talent', 1, {x: "-201%"}, 0)
         .to('.assassin-info__visual--list-hero', 1, {x: "-301%"}, 0)
         //.to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
-        .to('.assassin-info__visual', 0.5, {background: '#ddd'}, 1);
+        .to('.assassin-info__visual', 0.5, {background: '#ddd'}, 1)
+        .to('.assassin-info__visual--character-villain', 1, {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 1)
 
         $('.assassin-info__visual--list-villain').addClass('active');
         listActiveNum = 4;
@@ -95,18 +128,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const naviHome = () => {
         const naviHomeAction = new TimelineLite({paused: true})
+        .to('.assassin-info__visual--character-villain', 0.5, {backgroundSize: '200%', backgroundPosition: 'center 100%'}, 0)
+        .set('.assasin_bg', {opacity: 1}, 0.4)
         .set('.assassin-info__visual--list-villain', {x: '101%'}, 0)
-        //.set('.assassin-info__visual--list li', {x: '500%'}, 0)
+        
         .to('.assassin-info__visual', 1, {background: '#d00116'}, 0)
-        .to('.assassin-info__visual--list li', 0.5, {x: 0, opacity: 1}, 0.2);
+        .to('.assassin-info__visual--list li', 0.5, {x: 0, y: 0, opacity: 1, filter: 'grayscale(100%)'}, 0.2);
 
         $('.assassin-info__visual--list li').removeClass('active');
         listActiveNum = 0;
         naviHomeAction.restart();
+        assassinContent.hideContent();
 
         setTimeout(() => {
             isListAnimating = false;
-        }, 1000);
+        }, 1200);
 
         if(naviFlag){
             naviFlag = false;
@@ -117,60 +153,66 @@ window.addEventListener('DOMContentLoaded', () => {
     const naviOrigin = () => {
         const naviOriginAction = new TimelineLite({paused: true})
         .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
-        .set('.assassin-info__visual--list-origin', {x: '250%', opacity: 0}, 0.2)
-        .to('.assassin-info__visual--list-origin', 1, {opacity: 1, x: '300%'}, 0.5)
+        .set('.assassin-info__visual--bg-origin', {opacity: 0}, 0)
+        .set('.assassin-info__visual--list-origin', {opacity: 0, x: 0, y: 0}, 0.2)
+        .to('.assassin-info__visual--list-origin', 0.8, {y: "10%", opacity: 1}, 0.4)
 
         setTimeout(() => {
             $('.assassin-info__visual--list li').removeClass('active');
             $('.assassin-info__visual--list-origin').addClass('active');
             listActiveNum = 1;
             isListAnimating = false;
-        }, 1000);
+        }, 1200);
 
         naviOriginAction.restart();
+        assassinContent.origin();
     }
     const naviTalent = () => {
         const naviTalentAction = new TimelineLite({paused: true})
         .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
-        .set('.assassin-info__visual--list-talent', {x: '150%', opacity: 0}, 0.2)
-        .to('.assassin-info__visual--list-talent', 1, {opacity: 1, x: '200%'}, 0.5)
+        .set('.assassin-info__visual--bg-talent', {opacity: 0}, 0)
+        .set('.assassin-info__visual--list-talent', {opacity: 0, x: "-50%"}, 0.2)
+        .to('.assassin-info__visual--list-talent', 0.8, {x: "-80%", opacity: 1}, 0.4)
 
         setTimeout(() => {
             $('.assassin-info__visual--list li').removeClass('active');
             $('.assassin-info__visual--list-talent').addClass('active');
             listActiveNum = 2;
             isListAnimating = false;
-        }, 1000);
+        }, 1200);
 
         naviTalentAction.restart();
     }
     const naviHero = () => {
         const naviHeroAction = new TimelineLite({paused: true})
         .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
-        .set('.assassin-info__visual--list-hero', {x: '50%', opacity: 0}, 0.2)
-        .to('.assassin-info__visual--list-hero', 1, {opacity: 1, x: '100%'}, 0.5)
+        .set('.assassin-info__visual--bg-hero', {opacity: 0}, 0)
+        .set('.assassin-info__visual--list-hero', {opacity: 0, x: "70%", y: "10%"}, 0.2)
+        .to('.assassin-info__visual--list-hero', 0.8, {x: "90%", y: "20%", opacity: 1}, 0.4)
 
         setTimeout(() => {
             $('.assassin-info__visual--list li').removeClass('active');
             $('.assassin-info__visual--list-hero').addClass('active');
             listActiveNum = 3;
             isListAnimating = false;
-        }, 1000);
+        }, 1200);
 
         naviHeroAction.restart();
     }
     const naviVillain = () => {
         const naviVillainAction = new TimelineLite({paused: true})
         .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
-        .set('.assassin-info__visual--list-villain', {x: '-50%', opacity: 0}, 0.2)
-        .to('.assassin-info__visual--list-villain', 1, {opacity: 1, x: '0%'}, 0.5)
+        .set('.assassin-info__visual--bg-villain', {opacity: 0}, 0)
+        .set('.assassin-info__visual--character-villain',  {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 0)
+        .set('.assassin-info__visual--list-villain', {opacity: 0, x: "0", y: "0"}, 0.2)
+        .to('.assassin-info__visual--list-villain', 0.8, {opacity: 1}, 0.4)
 
         setTimeout(() => {
             $('.assassin-info__visual--list li').removeClass('active');
             $('.assassin-info__visual--list-villain').addClass('active');
             listActiveNum = 4;
             isListAnimating = false;
-        }, 1000);
+        }, 1200);
 
         naviVillainAction.restart();
     }
@@ -230,7 +272,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
     }
-
     // assassin-info
 
 
