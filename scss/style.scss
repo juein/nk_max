@@ -151,6 +151,7 @@ $white : #fff;
             height: 190px;
             overflow: hidden;
             margin-top: 120px;
+            outline: 1px solid red;
             &-sec{
                 margin: 10px auto;
                 background: #fff;
@@ -176,15 +177,25 @@ $white : #fff;
             }
         }
         &--explain{
-            //margin: 10px auto;
-            //margin: 0 auto -10px auto;
             margin: 0 auto 10px auto;
-            height: 0; // to 125px + mg bottom 10px
+            height: 0;
             overflow: hidden;
             transform: translateY(0px);
             transform-origin: top;
             background: #212121;
             width: 710px;
+            transition: all 1s;
+            &.active{
+                height: 125px;
+                &.reHeight{
+                    height: 160px;
+                }
+            }
+            &.bottom{
+                transform-origin: bottom;
+                margin-bottom: 0px;
+            }
+            
             &-text{
                 color: #D0D0D0;
                 @include fontInfo(20px, 33px, -0.05em);
@@ -226,11 +237,10 @@ $white : #fff;
             
 
         }
-
         &--result{
             position: absolute;
             left: 50%;
-            margin-left: -50px;
+            margin-left: -125px;
             outline: 1px solid;
             top: 395px;
             opacity: 0;
@@ -239,7 +249,7 @@ $white : #fff;
             color: #FFFFFF;
             @include fontInfo(20px, 33px, -0.05em);
             @include fw-medium;
-            width: 100px;
+            width: 250px;
             height: 46px;
             border-radius: 3px;
         }
@@ -322,6 +332,9 @@ $white : #fff;
                     margin: 0 4px;
                     position: relative;
                     top: 7px;
+                    &.correct{
+                        background: #0965C1;
+                    }
                 }
                 + label.true{
                     > svg{
@@ -352,6 +365,9 @@ $white : #fff;
                                 stroke: #fff;
                                 transition: all 0.5s;
                             }
+                        }
+                        &.correct{
+                            background: #000;
                         }
                     }
                 }

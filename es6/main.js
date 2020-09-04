@@ -4,9 +4,10 @@
 //const pageIntroAction;
 
 // onload
-//window.onload = function(){
-//    console.log('onload');
-//}
+window.onload = function(){
+    //console.log('onload');
+    
+}
 
 // onload
 
@@ -297,7 +298,6 @@ window.addEventListener('DOMContentLoaded', () => {
             $('.quiz-area__inner--progress .mark .radius:nth-of-type('+quizNum+')').addClass('active');
         }, 600);
     }
-
     const quizFormScroll = (h) => {
         gsap.to("#quiz-area__form", 1, {y: h, delay: 0.5});
     }
@@ -307,30 +307,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
     $('.quiz-area__inner--result').click( () => {
         let quizResult = $('#quiz-area__form').serializeArray();
+        console.log(quizResult);
 
         gsap.to('.quiz-area__inner--headline', 0.5, {opacity: 0});
         gsap.to('.quiz-area__inner--result', 0.5, {opacity: 0});
         gsap.to('.quiz-area__inner--progress', 0.5, {opacity: 0});
-        gsap.to('.quiz-area__inner--question', 1, {height: 620, marginTop: -110});
+        gsap.to('.quiz-area__inner--question', 1, {height: 760, marginTop: -110});
         gsap.to('#quiz-area__form', 1, {y: 0});
         gsap.to('.explain__gloup', 1, {opacity: 1, delay: 0.8, pointerEvents: 'visible'});
+
+        //정답인 label에 .correct 붙이기, checked랑 중복되면 빨간색으로 적용되게 하자
     });
-
-    //$('.explainBtn').click( () => {
-    //    console.log( $(this).attr('class') ); return false;
-    //    let clickBtn = $(this).attr('class').replace('quiz-area__inner--explainBtn', '');
-    //    console.log(clickBtn);
-    //});
-
-    
-    const explainBtn = document.querySelector('.quiz-area__inner--explainBtn');
-    explainBtn.addEventListener("click", explainBtnClick);
-    function explainBtnClick(e){
-        let clickBtn = Number(e.target.getAttribute('data-value'));
-        console.log(e.target);
-        console.log(clickBtn);
-    }
-    
 
 
     $('.quix-form__button label').click( () => {
@@ -435,7 +422,6 @@ window.addEventListener('DOMContentLoaded', () => {
             gsap.to('.outro', 1.2, {y: "100vh", ease: "power4.out"});
         }
     }
-
 
     const horizontalEvent = (htEvent) => {
         console.log('horizontalEvent');
@@ -567,3 +553,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
 });
 
+var explainBtnActive;
+const explainBtn = (flag, num) => {
+    if(flag == 'show'){
+        $('.quiz-area__inner--question-sec .quiz-area__inner--explain').removeClass('active');
+        gsap.to('.quiz-area__inner--explainBtn .quiz-area__inner--explainBtn-hide', 0.3, {opacity: 0, pointerEvents:'none'});
+        gsap.to('.quiz-area__inner--explainBtn.q'+num+' .quiz-area__inner--explainBtn-hide', 0.3, {opacity: 1, pointerEvents:'visible'});
+        $('.quiz-area__inner--question-sec:nth-of-type('+num+') .quiz-area__inner--explain').addClass('active');
+        explainBtnActive = num;
+    }else {
+        gsap.to('.quiz-area__inner--explainBtn.q'+num+' .quiz-area__inner--explainBtn-hide', 0.3, {opacity: 0, pointerEvents:'none'});
+        if(explainBtnActive == num){
+            $('.quiz-area__inner--question-sec:nth-of-type('+num+') .quiz-area__inner--explain').removeClass('active');
+        }
+    }
+}

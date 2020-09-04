@@ -6,13 +6,12 @@
 //const pageIntroAction;
 
 // onload
-//window.onload = function(){
-//    console.log('onload');
-//}
+window.onload = function () {}
+//console.log('onload');
 
 // onload
 
-window.addEventListener('DOMContentLoaded', function () {
+;window.addEventListener('DOMContentLoaded', function () {
 
     var pageNum = 0,
         isAnimating = false,
@@ -253,7 +252,6 @@ window.addEventListener('DOMContentLoaded', function () {
             $('.quiz-area__inner--progress .mark .radius:nth-of-type(' + quizNum + ')').addClass('active');
         }, 600);
     };
-
     var quizFormScroll = function quizFormScroll(h) {
         gsap.to("#quiz-area__form", 1, { y: h, delay: 0.5 });
     };
@@ -263,29 +261,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
     $('.quiz-area__inner--result').click(function () {
         var quizResult = $('#quiz-area__form').serializeArray();
+        console.log(quizResult);
 
         gsap.to('.quiz-area__inner--headline', 0.5, { opacity: 0 });
         gsap.to('.quiz-area__inner--result', 0.5, { opacity: 0 });
         gsap.to('.quiz-area__inner--progress', 0.5, { opacity: 0 });
-        gsap.to('.quiz-area__inner--question', 1, { height: 620, marginTop: -110 });
+        gsap.to('.quiz-area__inner--question', 1, { height: 760, marginTop: -110 });
         gsap.to('#quiz-area__form', 1, { y: 0 });
         gsap.to('.explain__gloup', 1, { opacity: 1, delay: 0.8, pointerEvents: 'visible' });
     });
-
-    //$('.explainBtn').click( () => {
-    //    console.log( $(this).attr('class') ); return false;
-    //    let clickBtn = $(this).attr('class').replace('quiz-area__inner--explainBtn', '');
-    //    console.log(clickBtn);
-    //});
-
-
-    var explainBtn = document.querySelector('.quiz-area__inner--explainBtn');
-    explainBtn.addEventListener("click", explainBtnClick);
-    function explainBtnClick(e) {
-        var clickBtn = Number(e.target.getAttribute('data-value'));
-        console.log(e.target);
-        console.log(clickBtn);
-    }
 
     $('.quix-form__button label').click(function () {
         console.log('quizNum = ' + quizNum);
@@ -515,3 +499,19 @@ window.addEventListener('DOMContentLoaded', function () {
 
     defaultSet(); // 기본 셋팅 실행
 });
+
+var explainBtnActive;
+var explainBtn = function explainBtn(flag, num) {
+    if (flag == 'show') {
+        $('.quiz-area__inner--question-sec .quiz-area__inner--explain').removeClass('active');
+        gsap.to('.quiz-area__inner--explainBtn .quiz-area__inner--explainBtn-hide', 0.3, { opacity: 0, pointerEvents: 'none' });
+        gsap.to('.quiz-area__inner--explainBtn.q' + num + ' .quiz-area__inner--explainBtn-hide', 0.3, { opacity: 1, pointerEvents: 'visible' });
+        $('.quiz-area__inner--question-sec:nth-of-type(' + num + ') .quiz-area__inner--explain').addClass('active');
+        explainBtnActive = num;
+    } else {
+        gsap.to('.quiz-area__inner--explainBtn.q' + num + ' .quiz-area__inner--explainBtn-hide', 0.3, { opacity: 0, pointerEvents: 'none' });
+        if (explainBtnActive == num) {
+            $('.quiz-area__inner--question-sec:nth-of-type(' + num + ') .quiz-area__inner--explain').removeClass('active');
+        }
+    }
+};

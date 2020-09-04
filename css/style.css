@@ -414,6 +414,7 @@ i {
   height: 190px;
   overflow: hidden;
   margin-top: 120px;
+  outline: 1px solid red;
 }
 
 .quiz-area__inner--question-sec {
@@ -458,6 +459,22 @@ i {
           transform-origin: top;
   background: #212121;
   width: 710px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.quiz-area__inner--explain.active {
+  height: 125px;
+}
+
+.quiz-area__inner--explain.active.reHeight {
+  height: 160px;
+}
+
+.quiz-area__inner--explain.bottom {
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  margin-bottom: 0px;
 }
 
 .quiz-area__inner--explain-text {
@@ -512,7 +529,7 @@ i {
 .quiz-area__inner--result {
   position: absolute;
   left: 50%;
-  margin-left: -50px;
+  margin-left: -125px;
   outline: 1px solid;
   top: 395px;
   opacity: 0;
@@ -524,7 +541,7 @@ i {
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 500;
-  width: 100px;
+  width: 250px;
   height: 46px;
   border-radius: 3px;
 }
@@ -627,6 +644,10 @@ i {
   top: 7px;
 }
 
+.quiz-area #quiz-area__form .quix-form__button input[type='radio'] + label.correct {
+  background: #0965C1;
+}
+
 .quiz-area #quiz-area__form .quix-form__button input[type='radio'] + label.true > svg {
   width: 15px;
   height: 14px;
@@ -657,6 +678,10 @@ i {
   stroke: #fff;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+}
+
+.quiz-area #quiz-area__form .quix-form__button input[type='radio']:checked + label.correct {
+  background: #000;
 }
 
 .quiz-area #quiz-area__form .before input[type='radio']:checked + label {
