@@ -31,7 +31,7 @@
 
         <!-- Content Style -->
         <link rel="stylesheet" href="https://innovationlab.co.kr/common/css/common.css?v=1">
-        <link rel="stylesheet" href="css/swiper.min.css">
+        <!-- <link rel="stylesheet" href="css/swiper.min.css"> -->
         <link rel="stylesheet" href="css/style.css">
         <!-- // Content Style -->
 
@@ -50,8 +50,8 @@
         <script src="js/animation.gsap.min.js"></script>
         <script src="js/debug.addIndicators.min.js"></script>
         <script src="js/jquery.rwdImageMaps.min.js"></script>
-        <script src="js/swiper.min.js"></script>
-        <script src="js/underscore-min.js"></script>
+        <!-- <script src="js/swiper.min.js"></script> -->
+        <!-- <script src="js/underscore-min.js"></script> -->
         <script src="js/functions.js"></script>
         <script src="js/main.js"></script>
         <!-- // Custom JS -->
@@ -119,21 +119,337 @@
                             <span class="quiz-area__inner--headline-text-point">TEST</span>
                         </h4>
                     </div>
-                    <div class="quiz-area--inner--question">
-                        <div class="quiz-area__inner--question-sec">
-                            <p class="quiz-area__inner--question-sec-text">급격한 체온 변화를 겪으면 면역력이 떨어진다</p>
+                    <div class="quiz-area__inner--question">
+                        <form id="quiz-area__form">
+                            <div class="quiz-area__inner--question-sec active">
+                                <p class="quiz-area__inner--question-sec-text">우리 몸속 면역 세포는 후천적으로 발생한다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q1_true" name="q1" value="true">
+                                        <label for="q1_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q1_false" name="q1" value="false">
+                                        <label for="q1_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>                                                  
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-area__inner--explain">
+                                    <p class="quiz-area__inner--explain-text">면역 세포는 선천적 면역세포와 후천적 면역세포로 나뉜다. 선천적 면역세포에는 NK세포와 백혈구 등이 있고, 후천적 면역세포에는 T세포와 B세포가 있다.</p>
+                                </div>
+                            </div>
+                            
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">급격한 체온 변화는 면역력에 영향을 줄 수 있다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q2_true" name="q2" value="true">
+                                        <label for="q2_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q2_false" name="q2" value="false">
+                                        <label for="q2_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">면역세포는 림프구에만 존재한다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q3_true" name="q3" value="true">
+                                        <label for="q3_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q3_false" name="q3" value="false">
+                                        <label for="q3_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">면역세포치료는 줄기세포를 이용하는 치료법이다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q4_true" name="q4" value="true">
+                                        <label for="q4_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q4_false" name="q4" value="false">
+                                        <label for="q4_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">자주 웃으면 면역력 활성화에 도움이 된다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q5_true" name="q5" value="true">
+                                        <label for="q5_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q5_false" name="q5" value="false">
+                                        <label for="q5_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">T세포는 암세포와 종양세포를 단번에 식별, 공격한다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q6_true" name="q6" value="true">
+                                        <label for="q6_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q6_false" name="q6" value="false">
+                                        <label for="q6_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">NK세포는 줄기세포 중 하나로, 우리 몸속 세포의 재생능력을 강화한다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q7_true" name="q7" value="true">
+                                        <label for="q7_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q7_false" name="q7" value="false">
+                                        <label for="q7_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">모든 암세포는 외부로 들어온 바이러스균에 의해 발생한다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q8_true" name="q8" value="true">
+                                        <label for="q8_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q8_false" name="q8" value="false">
+                                        <label for="q8_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">면역력은 검사를 통해 수치화 할 수 있다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q9_true" name="q9" value="true">
+                                        <label for="q9_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q9_false" name="q9" value="false">
+                                        <label for="q9_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-area__inner--question-sec">
+                                <p class="quiz-area__inner--question-sec-text">수지상세포는 일반세포로 면역 활성화에 도움을 준다.</p>
+                                <div class="quix-form__button">
+                                    <div class="md-radio">
+                                        <input type="radio" id="q10_true" name="q10" value="true">
+                                        <label for="q10_true" class="true">
+                                            <svg viewBox="0 0 16 16">
+                                                <g fill="none" stroke-width="3">
+                                                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                                                    <circle cx="8" cy="8" r="6.5" fill="none"/>
+                                                </g>
+                                            </svg>
+                                        </label>
+
+                                        <input type="radio" id="q10_false" name="q10" value="false">
+                                        <label for="q10_false" class="false">
+                                            <svg viewBox="0 0 12.815 12.815">
+                                                <g transform="translate(5966.561 21412.561)">
+                                                    <line x2="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                    <line x1="10.693" y2="10.693" transform="translate(-5965.5 -21411.5)" fill="none" stroke-width="3"/>
+                                                </g>
+                                            </svg>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="explain__gloup">
+                            <div class="quiz-area__inner--explainBtn">
+                                <button type="button" class="quiz-area__inner--explainBtn-show" data-value="1">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide" data-value="1">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn">
+                                <button type="button" class="quiz-area__inner--explainBtn-show" data-value="2">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide" data-value="2">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn explainBtn q3">
+                                <button type="button" class="quiz-area__inner--explainBtn-show">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn explainBtn q4">
+                                <button type="button" class="quiz-area__inner--explainBtn-show">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn explainBtn q5">
+                                <button type="button" class="quiz-area__inner--explainBtn-show">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn explainBtn q6">
+                                <button type="button" class="quiz-area__inner--explainBtn-show">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn explainBtn q7">
+                                <button type="button" class="quiz-area__inner--explainBtn-show">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn explainBtn q8">
+                                <button type="button" class="quiz-area__inner--explainBtn-show">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn explainBtn q9">
+                                <button type="button" class="quiz-area__inner--explainBtn-show">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide">닫기</button>
+                            </div>
+                            <div class="quiz-area__inner--explainBtn explainBtn q10">
+                                <button type="button" class="quiz-area__inner--explainBtn-show">해설보기</button>
+                                <button type="button" class="quiz-area__inner--explainBtn-hide">닫기</button>
+                            </div>
                         </div>
                     </div>
+                    <button type="button" class="quiz-area__inner--result" >결과보기</button>
                     <div class="quiz-area__inner--progress">
                         <div class="line">
                             <i class="active-line"></i>
                         </div>
                         <div class="mark">
                             <i class="radius active"><i></i></i>
-                            <i class="radius active"><i></i></i>
-                            <i class="radius active"><i></i></i>
-                            <i class="radius active"><i></i></i>
-                            <i class="radius active"><i></i></i>
+                            <i class="radius"><i></i></i>
+                            <i class="radius"><i></i></i>
+                            <i class="radius"><i></i></i>
+                            <i class="radius"><i></i></i>
                             <i class="radius"><i></i></i>
                             <i class="radius"><i></i></i>
                             <i class="radius"><i></i></i>

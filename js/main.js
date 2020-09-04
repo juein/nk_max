@@ -19,7 +19,9 @@ window.addEventListener('DOMContentLoaded', function () {
         isListAnimating = false,
         naviFlag = false,
         hoverItem = void 0,
-        listActiveNum = 0;
+        listActiveNum = 0,
+        quizAnimation = false,
+        quizNum = 1;
 
     //리로드시 최상단으로
     //window.onbeforeunload = function () {
@@ -236,6 +238,108 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
     // assassin-info
+
+
+    // quiz-area
+    var quizSecChange = function quizSecChange() {
+        setTimeout(function () {
+            console.log('quizNum222 = ' + quizNum);
+            $('.quiz-area__inner--question-sec.active').addClass('before').removeClass('active');
+            quizNum++;
+        }, 500);
+
+        setTimeout(function () {
+            $('.quiz-area__inner--question-sec:nth-of-type(' + quizNum + ')').addClass('active');
+            $('.quiz-area__inner--progress .mark .radius:nth-of-type(' + quizNum + ')').addClass('active');
+        }, 600);
+    };
+
+    var quizFormScroll = function quizFormScroll(h) {
+        gsap.to("#quiz-area__form", 1, { y: h, delay: 0.5 });
+    };
+    var quizProgress = function quizProgress(xs) {
+        gsap.to(".quiz-area__inner--progress .line .active-line", 1, { x: xs });
+    };
+
+    $('.quiz-area__inner--result').click(function () {
+        var quizResult = $('#quiz-area__form').serializeArray();
+
+        gsap.to('.quiz-area__inner--headline', 0.5, { opacity: 0 });
+        gsap.to('.quiz-area__inner--result', 0.5, { opacity: 0 });
+        gsap.to('.quiz-area__inner--progress', 0.5, { opacity: 0 });
+        gsap.to('.quiz-area__inner--question', 1, { height: 620, marginTop: -110 });
+        gsap.to('#quiz-area__form', 1, { y: 0 });
+        gsap.to('.explain__gloup', 1, { opacity: 1, delay: 0.8, pointerEvents: 'visible' });
+    });
+
+    //$('.explainBtn').click( () => {
+    //    console.log( $(this).attr('class') ); return false;
+    //    let clickBtn = $(this).attr('class').replace('quiz-area__inner--explainBtn', '');
+    //    console.log(clickBtn);
+    //});
+
+
+    var explainBtn = document.querySelector('.quiz-area__inner--explainBtn');
+    explainBtn.addEventListener("click", explainBtnClick);
+    function explainBtnClick(e) {
+        var clickBtn = Number(e.target.getAttribute('data-value'));
+        console.log(e.target);
+        console.log(clickBtn);
+    }
+
+    $('.quix-form__button label').click(function () {
+        console.log('quizNum = ' + quizNum);
+        if (!quizAnimation) {
+            quizAnimation = true;
+
+            quizSecChange();
+
+            switch (quizNum) {
+                case 1:
+                    quizProgress(-600);
+                    break;
+                case 2:
+                    quizFormScroll(-64);
+                    quizProgress(-530);
+                    break;
+                case 3:
+                    quizFormScroll(-124);
+                    quizProgress(-450);
+                    break;
+                case 4:
+                    quizFormScroll(-184);
+                    quizProgress(-380);
+                    break;
+                case 5:
+                    quizFormScroll(-246);
+                    quizProgress(-300);
+                    break;
+                case 6:
+                    quizFormScroll(-308);
+                    quizProgress(-230);
+                    break;
+                case 7:
+                    quizFormScroll(-368);
+                    quizProgress(-155);
+                    break;
+                case 8:
+                    quizFormScroll(-430);
+                    quizProgress(-85);
+                    break;
+                case 9:
+                    quizProgress(-5);
+                    break;
+                case 10:
+                    gsap.to('.quiz-area__inner--result', 0.8, { opacity: 1, pointerEvents: 'visible', delay: 0.5 });
+                    break;
+            }
+
+            setTimeout(function () {
+                quizAnimation = false;
+            }, 1200); //모션 끝나는 타이밍에
+        }
+    });
+    // quiz-area
 
 
     //content swiper
