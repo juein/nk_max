@@ -272,6 +272,7 @@ i {
 }
 
 .content__container {
+  position: absolute;
   overflow: hidden;
   width: 100%;
   height: calc(100vh - 78px);
@@ -362,6 +363,10 @@ i {
   width: 100%;
   height: 100%;
   background: #F2F2F2;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+  position: absolute;
+  top: 0;
 }
 
 .quiz-area__inner {
@@ -493,6 +498,10 @@ i {
   width: 100%;
   height: 100%;
   background: #fff;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+  position: absolute;
+  top: 0;
 }
 
 .immunity-relation__inner {
@@ -530,6 +539,10 @@ i {
   width: 100%;
   height: 100%;
   background: #F2F2F2;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+  position: absolute;
+  top: 0;
 }
 
 .natural-killer__explain {
@@ -591,6 +604,10 @@ i {
 .assassin-info {
   width: 100%;
   height: 100%;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+  position: absolute;
+  top: 0;
 }
 
 .assassin-info__visual {
@@ -842,6 +859,10 @@ i {
   width: 100%;
   height: 100%;
   background: #000;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+  position: absolute;
+  top: 0;
 }
 
 .epilogue__inner {
@@ -895,6 +916,10 @@ i {
   width: 100%;
   height: 100%;
   background: #F2F2F2;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+  position: absolute;
+  top: 0;
 }
 
 .outro__inner {

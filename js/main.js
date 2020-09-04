@@ -18,7 +18,6 @@ window.addEventListener('DOMContentLoaded', function () {
         isAnimating = false,
         isListAnimating = false,
         naviFlag = false,
-        verticallSwiper = void 0,
         hoverItem = void 0,
         listActiveNum = 0;
 
@@ -70,38 +69,40 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    var listOrigin = function listOrigin() {
-        var listOriginAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list-origin', 1.2, { y: "10%" }, 0.7)
-        //.to('.assassin-info__visual--list-origin .assasin_character', 1.2, {y: "10%"}, 0.7)
-        .to('.assassin-info__visual--bg-origin', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-talent', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#F2F2F2' }, 1);
+    var visualList = {
+        origin: function origin() {
+            var listOriginAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list-origin', 1.2, { y: "10%" }, 0.7)
+            //.to('.assassin-info__visual--list-origin .assasin_character', 1.2, {y: "10%"}, 0.7)
+            .to('.assassin-info__visual--bg-origin', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-talent', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#F2F2F2' }, 1);
 
-        $('.assassin-info__visual--list-origin').addClass('active');
-        listActiveNum = 1;
-        listOriginAction.restart();
-        assassinContent.origin();
-    };
-    var listTalent = function listTalent() {
-        var listTalentAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-talent', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1.2, { x: "-80%" }, 0.7).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#ddd' }, 1);
+            $('.assassin-info__visual--list-origin').addClass('active');
+            listActiveNum = 1;
+            listOriginAction.restart();
+            assassinContent.origin();
+        },
+        talent: function talent() {
+            var listTalentAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-talent', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1.2, { x: "-80%" }, 0.7).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#ddd' }, 1);
 
-        $('.assassin-info__visual--list-talent').addClass('active');
-        listActiveNum = 2;
-        listTalentAction.restart();
-    };
-    var listHero = function listHero() {
-        var listHeroAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-hero', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1.2, { x: "90%", y: "20%" }, 0.7).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#ddd' }, 1);
+            $('.assassin-info__visual--list-talent').addClass('active');
+            listActiveNum = 2;
+            listTalentAction.restart();
+        },
+        hero: function hero() {
+            var listHeroAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-hero', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1.2, { x: "90%", y: "20%" }, 0.7).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#ddd' }, 1);
 
-        $('.assassin-info__visual--list-hero').addClass('active');
-        listActiveNum = 3;
-        listHeroAction.restart();
-    };
-    var listVillain = function listVillain() {
-        var listVillainAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-villain', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "-301%" }, 0)
-        //.to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
-        .to('.assassin-info__visual', 0.5, { background: '#ddd' }, 1).to('.assassin-info__visual--character-villain', 1, { backgroundSize: '140%', backgroundPosition: 'center 10%' }, 1);
+            $('.assassin-info__visual--list-hero').addClass('active');
+            listActiveNum = 3;
+            listHeroAction.restart();
+        },
+        villain: function villain() {
+            var listVillainAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-villain', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "-301%" }, 0)
+            //.to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
+            .to('.assassin-info__visual', 0.5, { background: '#ddd' }, 1).to('.assassin-info__visual--character-villain', 1, { backgroundSize: '140%', backgroundPosition: 'center 10%' }, 1);
 
-        $('.assassin-info__visual--list-villain').addClass('active');
-        listActiveNum = 4;
-        listVillainAction.restart();
+            $('.assassin-info__visual--list-villain').addClass('active');
+            listActiveNum = 4;
+            listVillainAction.restart();
+        }
     };
 
     var navigationShow = function navigationShow(flag) {
@@ -112,72 +113,73 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    var naviHome = function naviHome() {
-        var naviHomeAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--character-villain', 0.5, { backgroundSize: '200%', backgroundPosition: 'center 100%' }, 0).set('.assasin_bg', { opacity: 1 }, 0.4).set('.assassin-info__visual--list-villain', { x: '101%' }, 0).to('.assassin-info__visual', 1, { background: '#d00116' }, 0).to('.assassin-info__visual--list li', 0.5, { x: 0, y: 0, opacity: 1, filter: 'grayscale(100%)' }, 0.2);
+    var navi = {
+        home: function home() {
+            var naviHomeAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--character-villain', 0.5, { backgroundSize: '200%', backgroundPosition: 'center 100%' }, 0).set('.assasin_bg', { opacity: 1 }, 0.4).set('.assassin-info__visual--list-villain', { x: '101%' }, 0).to('.assassin-info__visual', 1, { background: '#d00116' }, 0).to('.assassin-info__visual--list li', 0.5, { x: 0, y: 0, opacity: 1, filter: 'grayscale(100%)' }, 0.2);
 
-        $('.assassin-info__visual--list li').removeClass('active');
-        listActiveNum = 0;
-        naviHomeAction.restart();
-        assassinContent.hideContent();
+            $('.assassin-info__visual--list li').removeClass('active');
+            listActiveNum = 0;
+            naviHomeAction.restart();
+            assassinContent.hideContent();
 
-        setTimeout(function () {
-            isListAnimating = false;
-        }, 1200);
+            setTimeout(function () {
+                isListAnimating = false;
+            }, 1200);
 
-        if (naviFlag) {
-            naviFlag = false;
-            //네비 비활성화
-            navigationShow(naviFlag);
+            if (naviFlag) {
+                naviFlag = false;
+                navigationShow(naviFlag); //네비 비활성화
+            }
+        },
+        origin: function origin() {
+            var naviOriginAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-origin', { opacity: 0 }, 0).set('.assassin-info__visual--list-origin', { opacity: 0, x: 0, y: 0 }, 0.2).to('.assassin-info__visual--list-origin', 0.8, { y: "10%", opacity: 1 }, 0.4);
+
+            setTimeout(function () {
+                $('.assassin-info__visual--list li').removeClass('active');
+                $('.assassin-info__visual--list-origin').addClass('active');
+                listActiveNum = 1;
+                isListAnimating = false;
+            }, 1200);
+
+            naviOriginAction.restart();
+            assassinContent.origin();
+        },
+        talent: function talent() {
+            var naviTalentAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-talent', { opacity: 0 }, 0).set('.assassin-info__visual--list-talent', { opacity: 0, x: "-50%" }, 0.2).to('.assassin-info__visual--list-talent', 0.8, { x: "-80%", opacity: 1 }, 0.4);
+
+            setTimeout(function () {
+                $('.assassin-info__visual--list li').removeClass('active');
+                $('.assassin-info__visual--list-talent').addClass('active');
+                listActiveNum = 2;
+                isListAnimating = false;
+            }, 1200);
+
+            naviTalentAction.restart();
+        },
+        hero: function hero() {
+            var naviHeroAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-hero', { opacity: 0 }, 0).set('.assassin-info__visual--list-hero', { opacity: 0, x: "70%", y: "10%" }, 0.2).to('.assassin-info__visual--list-hero', 0.8, { x: "90%", y: "20%", opacity: 1 }, 0.4);
+
+            setTimeout(function () {
+                $('.assassin-info__visual--list li').removeClass('active');
+                $('.assassin-info__visual--list-hero').addClass('active');
+                listActiveNum = 3;
+                isListAnimating = false;
+            }, 1200);
+
+            naviHeroAction.restart();
+        },
+        villain: function villain() {
+            var naviVillainAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-villain', { opacity: 0 }, 0).set('.assassin-info__visual--character-villain', { backgroundSize: '140%', backgroundPosition: 'center 10%' }, 0).set('.assassin-info__visual--list-villain', { opacity: 0, x: "0", y: "0" }, 0.2).to('.assassin-info__visual--list-villain', 0.8, { opacity: 1 }, 0.4);
+
+            setTimeout(function () {
+                $('.assassin-info__visual--list li').removeClass('active');
+                $('.assassin-info__visual--list-villain').addClass('active');
+                listActiveNum = 4;
+                isListAnimating = false;
+            }, 1200);
+
+            naviVillainAction.restart();
         }
-    };
-    var naviOrigin = function naviOrigin() {
-        var naviOriginAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-origin', { opacity: 0 }, 0).set('.assassin-info__visual--list-origin', { opacity: 0, x: 0, y: 0 }, 0.2).to('.assassin-info__visual--list-origin', 0.8, { y: "10%", opacity: 1 }, 0.4);
-
-        setTimeout(function () {
-            $('.assassin-info__visual--list li').removeClass('active');
-            $('.assassin-info__visual--list-origin').addClass('active');
-            listActiveNum = 1;
-            isListAnimating = false;
-        }, 1200);
-
-        naviOriginAction.restart();
-        assassinContent.origin();
-    };
-    var naviTalent = function naviTalent() {
-        var naviTalentAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-talent', { opacity: 0 }, 0).set('.assassin-info__visual--list-talent', { opacity: 0, x: "-50%" }, 0.2).to('.assassin-info__visual--list-talent', 0.8, { x: "-80%", opacity: 1 }, 0.4);
-
-        setTimeout(function () {
-            $('.assassin-info__visual--list li').removeClass('active');
-            $('.assassin-info__visual--list-talent').addClass('active');
-            listActiveNum = 2;
-            isListAnimating = false;
-        }, 1200);
-
-        naviTalentAction.restart();
-    };
-    var naviHero = function naviHero() {
-        var naviHeroAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-hero', { opacity: 0 }, 0).set('.assassin-info__visual--list-hero', { opacity: 0, x: "70%", y: "10%" }, 0.2).to('.assassin-info__visual--list-hero', 0.8, { x: "90%", y: "20%", opacity: 1 }, 0.4);
-
-        setTimeout(function () {
-            $('.assassin-info__visual--list li').removeClass('active');
-            $('.assassin-info__visual--list-hero').addClass('active');
-            listActiveNum = 3;
-            isListAnimating = false;
-        }, 1200);
-
-        naviHeroAction.restart();
-    };
-    var naviVillain = function naviVillain() {
-        var naviVillainAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-villain', { opacity: 0 }, 0).set('.assassin-info__visual--character-villain', { backgroundSize: '140%', backgroundPosition: 'center 10%' }, 0).set('.assassin-info__visual--list-villain', { opacity: 0, x: "0", y: "0" }, 0.2).to('.assassin-info__visual--list-villain', 0.8, { opacity: 1 }, 0.4);
-
-        setTimeout(function () {
-            $('.assassin-info__visual--list li').removeClass('active');
-            $('.assassin-info__visual--list-villain').addClass('active');
-            listActiveNum = 4;
-            isListAnimating = false;
-        }, 1200);
-
-        naviVillainAction.restart();
     };
 
     var assassinList = document.querySelector('.assassin-info__visual--list');
@@ -185,23 +187,22 @@ window.addEventListener('DOMContentLoaded', function () {
     function assassinListClick(e) {
         var listValue = Number(e.target.getAttribute('data-value'));
         //console.log(e.target);
-
         if (!naviFlag) {
             naviFlag = true;
             navigationShow(naviFlag);
         }
         switch (listValue) {
             case 1:
-                listOrigin();
+                visualList.origin();
                 break;
             case 2:
-                listTalent();
+                visualList.talent();
                 break;
             case 3:
-                listHero();
+                visualList.hero();
                 break;
             case 4:
-                listVillain();
+                visualList.villain();
                 break;
         }
     };
@@ -217,19 +218,19 @@ window.addEventListener('DOMContentLoaded', function () {
             isListAnimating = true;
             switch (naviValue) {
                 case 0:
-                    naviHome();
+                    navi.home();
                     break;
                 case 1:
-                    naviOrigin();
+                    navi.origin();
                     break;
                 case 2:
-                    naviTalent();
+                    navi.talent();
                     break;
                 case 3:
-                    naviHero();
+                    navi.hero();
                     break;
                 case 4:
-                    naviVillain();
+                    navi.villain();
                     break;
             }
         }
@@ -237,78 +238,143 @@ window.addEventListener('DOMContentLoaded', function () {
     // assassin-info
 
 
-    //swiper 제어
-    //verticallSwiper.slideTo(0, 500);
-    //verticallSwiper.slideNext();
-    //goToSlide(0);
-
     //content swiper
-    verticallSwiper = new Swiper('.content__container', {
-        on: {
-            slideChangeTransitionStart: function slideChangeTransitionStart() {
-                var idx = this.realIndex;
-                console.log('vertical idx : ' + idx);
-            }
+    var verticalPageSwapNext = {
+        visual: function visual() {
+            gsap.to('.quiz-area', 1.2, { y: 0, ease: "power4.out" });
         },
-        direction: 'vertical',
-        autoplay: false,
-        speed: 800,
-        simulateTouch: false
-    });
+        quiz: function quiz() {
+            gsap.to('.immunity-relation', 1.2, { y: 0, ease: "power4.out" });
+        },
+        immunity: function immunity() {
+            gsap.to('.natural-killer', 1.2, { y: 0, ease: "power4.out" });
+        },
+        natural: function natural() {
+            gsap.to('.assassin-info', 1.2, { y: 0, ease: "power4.out" });
+        },
+        assassin: function assassin() {
+            gsap.to('.epilogue', 1.2, { y: 0, ease: "power4.out" });
+        },
+        epilogue: function epilogue() {
+            gsap.to('.outro', 1.2, { y: 0, ease: "power4.out" });
+        },
+        outro: function outro() {}
+    };
+
+    var verticalPageSwapPrev = {
+        quiz: function quiz() {
+            gsap.to('.quiz-area', 1.2, { y: "100vh", ease: "power4.out" });
+        },
+        immunity: function immunity() {
+            gsap.to('.immunity-relation', 1.2, { y: "100vh", ease: "power4.out" });
+        },
+        natural: function natural() {
+            gsap.to('.natural-killer', 1.2, { y: "100vh", ease: "power4.out" });
+        },
+        assassin: function assassin() {
+            gsap.to('.assassin-info', 1.2, { y: "100vh", ease: "power4.out" });
+        },
+        epilogue: function epilogue() {
+            gsap.to('.epilogue', 1.2, { y: "100vh", ease: "power4.out" });
+        },
+        outro: function outro() {
+            gsap.to('.outro', 1.2, { y: "100vh", ease: "power4.out" });
+        }
+    };
 
     var horizontalEvent = function horizontalEvent(htEvent) {
         console.log('horizontalEvent');
         if (htEvent == 1) {
-            pageNum = 5;
             gsap.to('.natural-killer__type', 1, { opacity: 1 });
             gsap.to('.natural-killer__explain', 0.5, { opacity: 0 });
         } else {
-            pageNum = 3;
             gsap.to('.natural-killer__type', 0.5, { opacity: 0 });
             gsap.to('.natural-killer__explain', 1, { opacity: 1 });
         }
         setTimeout(function () {
             onSlideChangeEnd();
-        }, 800);
+        }, 1200);
     };
 
     //page controll
-    var goToContentSlide = function goToContentSlide(ctr) {
-        if (ctr == 'next' && pageNum >= 8) {
-            //index: 0 기준 false 처리
-            return false;
-        } else if (ctr == 'prev' && pageNum <= 0) {
-            //총 페이지 수를 넘어가면 false처리
-            return false;
-        }
+    var goToNextSlide = function goToNextSlide() {
+        if (pageNum >= 7) return false; //index: 0 기준 false 처리
 
         if (!isAnimating) {
             isAnimating = true;
-            if (ctr == 'next' ? pageNum += 1 : pageNum -= 1) ;
+            pageNum += 1;
 
-            console.log('this page = ' + pageNum);
+            console.log('next page = ' + pageNum);
 
-            //예외, hrogental 이벤트
-            if (pageNum == 4) {
-                console.log('!!!!!');
-                var htEvent = void 0;
-                if (ctr == 'next' ? htEvent = 1 : htEvent = 2) ;
-                horizontalEvent(htEvent);
-                return false;
-            }
-
-            if (pageNum >= 5) {
-                verticallSwiper.slideTo(pageNum - 2, 500);
-            } else {
-                verticallSwiper.slideTo(pageNum, 500);
+            switch (pageNum) {
+                case 0:
+                    break;
+                case 1:
+                    verticalPageSwapNext.visual();
+                    break;
+                case 2:
+                    verticalPageSwapNext.quiz();
+                    break;
+                case 3:
+                    verticalPageSwapNext.immunity();
+                    break;
+                case 4:
+                    horizontalEvent(1);
+                    break;
+                case 5:
+                    verticalPageSwapNext.natural();
+                    break;
+                case 6:
+                    verticalPageSwapNext.assassin();
+                    break;
+                case 7:
+                    verticalPageSwapNext.epilogue();
+                    break;
             }
 
             setTimeout(function () {
                 onSlideChangeEnd();
-            }, 800);
+            }, 1200);
         }
     };
+    var goToPrevSlide = function goToPrevSlide() {
+        if (pageNum <= 0) return false; //총 페이지 수를 넘어가면 false처리
 
+        if (!isAnimating) {
+            isAnimating = true;
+            pageNum -= 1;
+
+            console.log('prev page = ' + pageNum);
+
+            switch (pageNum) {
+                case 0:
+                    verticalPageSwapPrev.quiz();
+                    break;
+                case 1:
+                    verticalPageSwapPrev.immunity();
+                    break;
+                case 2:
+                    verticalPageSwapPrev.natural();
+                    break;
+                case 3:
+                    horizontalEvent(2);
+                    break;
+                case 4:
+                    verticalPageSwapPrev.assassin();
+                    break;
+                case 5:
+                    verticalPageSwapPrev.epilogue();
+                    break;
+                case 6:
+                    verticalPageSwapPrev.outro();
+                    break;
+            }
+
+            setTimeout(function () {
+                onSlideChangeEnd();
+            }, 1200);
+        }
+    };
     var onSlideChangeEnd = function onSlideChangeEnd() {
         console.log('isAnimating == false');
         isAnimating = false;
@@ -320,10 +386,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (delta > 0) {
             //down
-            goToContentSlide('next');
+            goToNextSlide();
         } else {
             //up
-            goToContentSlide('prev');
+            goToPrevSlide();
         }
     });
 
@@ -335,10 +401,10 @@ window.addEventListener('DOMContentLoaded', function () {
     window.addEventListener("keydown", function (event) {
         var PRESSED_KEY = event.keyCode;
         if (PRESSED_KEY == keyCodes.DOWN) {
-            goToContentSlide('next');
+            goToNextSlide();
             event.preventDefault();
         } else if (PRESSED_KEY == keyCodes.UP) {
-            goToContentSlide('prev');
+            goToPrevSlide();
             event.preventDefault();
         }
     });
