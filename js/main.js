@@ -361,6 +361,14 @@ window.onload = function () {}
     // quiz-area
 
 
+    // immunity-relation
+    //MorphSVGPlugin.convertToPath("circle, rect, polygon");
+
+    //gsap.to("#test1", {duration: 1, morphSVG:"#test2", fill:"#3B5AC3"});
+    //gsap.to(".scene_one_from", {duration: 1, morphSVG:".scene_one_to", fill:"#3B5AC3"});
+    // immunity-relation
+
+
     //content swiper
     var verticalPageSwapNext = {
         visual: function visual() {

@@ -411,6 +411,60 @@ $white : #fff;
                 @include headlineText();
             }
         }
+        &--chart{
+            outline: 1px solid red;
+            width: 710px;
+            height: 470px;
+            position: absolute;
+            left: 50%;
+            margin-left: -355px;
+            .imsi{
+                background: url($imgPath + '임시.PNG') no-repeat;
+                width: 732px;
+                height: 316px;
+                opacity: 0.3;
+                position: absolute;
+                top: 104px;
+                left: -25px;
+            }
+            .cell-area{
+                width: 640px;
+                height: 260px;
+                outline: 1px solid;
+                position: absolute;
+                left: 50%;
+                margin-left: -320px;
+                top: 120px;
+                path{
+                    fill: #4e4e4e;
+                }
+                
+                /*
+                .scene_one_to{
+                    visibility: hidden;
+                }
+                g{
+                    
+                    &:nth-of-type(1){
+                        transform: scale(0.9) translate(68px, 132px) rotate(-125deg);
+                    }
+                    &:nth-of-type(2){
+                        transform: scale(0.65) translate(0px, 170px);
+                    }
+                    &:nth-of-type(3){
+                        transform: scale(0.5) translate(25px, 380px);
+                    }
+                    &:nth-of-type(4){
+                        transform: scale(0.3) translate(220px, 540px);
+                    }
+                    &:nth-of-type(5){
+                        transform: scale(0.5) translate(190px, 240px);
+                    }
+                    
+                }
+                */
+            }
+        }
     }
 }
 
