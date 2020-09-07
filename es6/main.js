@@ -410,10 +410,70 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     // immunity-relation
-    //MorphSVGPlugin.convertToPath("circle, rect, polygon");
+    MorphSVGPlugin.convertToPath("circle, rect, polygon");
 
-    //gsap.to("#test1", {duration: 1, morphSVG:"#test2", fill:"#3B5AC3"});
-    //gsap.to(".scene_one_from", {duration: 1, morphSVG:".scene_one_to", fill:"#3B5AC3"});
+    
+    const immunityChart = {
+        mothion(){
+            //const immunityMorph = new TimelineLite({paused: true, repeat: -1})
+            const immunityMorph = new TimelineLite({paused: true})
+            
+            .set(".bar-graph-active", {width: '10%'}, 0)
+            .set(".cell-bar-graph-pointer", {left: 50}, 0)
+            .add(function(){
+                immunityMorph.play();
+            }, 0)
+            .to(".scene_one_from_1", {duration: 0.8, morphSVG:".scene_one_to_1", fill:"#3B5AC3"}, 0)
+            .to(".scene_one_from_9", {duration: 0.5, morphSVG:".scene_one_to_9", fill:"#3B5AC3"}, 0.2)
+            .to(".scene_one_from_3", {duration: 0.8, morphSVG:".scene_one_to_3", fill:"#3B5AC3"}, 0.3)
+            .to(".scene_one_from_4", {duration: 0.5, morphSVG:".scene_one_to_4", fill:"#3B5AC3"}, 0.6)
+            .to(".scene_one_from_6", {duration: 0.8, morphSVG:".scene_one_to_6", fill:"#3B5AC3"}, 0.8)
+            .to(".scene_one_from_7", {duration: 0.5, morphSVG:".scene_one_to_7", fill:"#3B5AC3"}, 1.2)
+            .to(".scene_one_from_2", {duration: 0.8, morphSVG:".scene_one_to_2", fill:"#3B5AC3"}, 1.4)
+            .to(".scene_one_from_5", {duration: 0.5, morphSVG:".scene_one_to_5", fill:"#3B5AC3"}, 1.7)
+            .to(".scene_one_from_8", {duration: 0.8, morphSVG:".scene_one_to_8", fill:"#3B5AC3"}, 1.9)
+            
+            .to(".scene_two_from_1", {duration: 0.8, morphSVG:".scene_two_to_1", fill:"#3B5AC3"}, 2.1)
+            .to(".scene_two_from_3", {duration: 0.5, morphSVG:".scene_two_to_3", fill:"#3B5AC3"}, 2.4)
+            .to(".scene_two_from_5", {duration: 0.8, morphSVG:".scene_two_to_5", fill:"#3B5AC3", x: 10, y: -10}, 2.7)
+            .to(".scene_two_from_4", {duration: 0.5, morphSVG:".scene_two_to_4", fill:"#3B5AC3", x: -10}, 3)
+            .to(".scene_two_from_2", {duration: 0.8, morphSVG:".scene_two_to_2", fill:"#3B5AC3", y: -10}, 3.2)
+
+            .to(".bar-graph-active", 2, {width: '49%', ease: 'none'}, 0)
+            .to(".cell-bar-graph-pointer", 2, {left: 290, ease: 'none'}, 0)
+            .to(".bar-graph-active", 2, {width: '83%', ease: 'none'}, 2)
+            .to(".cell-bar-graph-pointer", 2, {left: 500, ease: 'none'}, 2)
+            
+            .add(function(){
+                immunityMorph.reverse();
+            }, 4)
+            
+            /*
+            .to(".scene_two_from_1", {duration: 1, morphSVG:".scene_before_two_1", fill:"#4e4e4e"}, 2.1)
+            .to(".scene_two_from_2", {duration: 1, morphSVG:".scene_before_two_2", fill:"#4e4e4e", y: 0}, 2.2)
+            .to(".scene_two_from_3", {duration: 1, morphSVG:".scene_before_two_3", fill:"#4e4e4e"}, 2.3)
+            .to(".scene_two_from_4", {duration: 1, morphSVG:".scene_before_two_4", fill:"#4e4e4e", x: 0}, 2.4)
+            .to(".scene_two_from_5", {duration: 1, morphSVG:".scene_before_two_5", fill:"#4e4e4e", x: 0, y: 0}, 2.5)
+            .to(".bar-graph-active", 1, {width: '49%', ease: 'none'}, 2)
+            .to(".cell-bar-graph-pointer", 1, {left: 290, ease: 'none'}, 2)
+
+            .to(".scene_one_from_1", {duration: 1, morphSVG:".scene_before_one_1", fill:"#4e4e4e"}, 3.1)
+            .to(".scene_one_from_2", {duration: 1, morphSVG:".scene_before_one_2", fill:"#4e4e4e"}, 3.2)
+            .to(".scene_one_from_3", {duration: 1, morphSVG:".scene_before_one_3", fill:"#4e4e4e"}, 3.3)
+            .to(".scene_one_from_4", {duration: 1, morphSVG:".scene_before_one_4", fill:"#4e4e4e"}, 3.4)
+            .to(".scene_one_from_5", {duration: 1, morphSVG:".scene_before_one_5", fill:"#4e4e4e"}, 3.5)
+            .to(".scene_one_from_6", {duration: 1, morphSVG:".scene_before_one_6", fill:"#4e4e4e"}, 3.6)
+            .to(".scene_one_from_7", {duration: 1, morphSVG:".scene_before_one_7", fill:"#4e4e4e"}, 3.7)
+            .to(".scene_one_from_8", {duration: 1, morphSVG:".scene_before_one_8", fill:"#4e4e4e"}, 3.8)
+            .to(".scene_one_from_9", {duration: 1, morphSVG:".scene_before_one_9", fill:"#4e4e4e"}, 3.9)
+            .to(".bar-graph-active", 1, {width: '10%', ease: 'none'}, 3)
+            .to(".cell-bar-graph-pointer", 1, {left: 50, ease: 'none'}, 3)
+            */
+
+            immunityMorph.play();
+            // 정지 immunityMorph.pause();
+        }
+    };
     // immunity-relation
 
 
@@ -424,6 +484,7 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         quiz(){
             gsap.to('.immunity-relation', 1.2, {y: 0, ease: "power4.out"});
+            immunityChart.mothion();
         },
         immunity(){
             gsap.to('.natural-killer', 1.2, {y: 0, ease: "power4.out"});
@@ -463,18 +524,36 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const naturalTypeOn = new TimelineLite({paused: true})
+    .to('.natural-killer__type', 1, {opacity: 1}, 0)
+    .to('.natural-killer__explain', 0.5, {opacity: 0}, 0)
+    .to('.natural-killer', 1, {background: '#A5001A'}, 0.2)
+    .to('.natural-killer__type .deep', 1.4, {fill: '#900017', opacity: 0}, 0.8)
+    .to('.natural-killer__type .light', 1, {fill: '#ffffff'}, 0.8)
+
+    .to('.natural-killer__type .text_n', 1, {x: 130}, 1.8)
+    .to('.natural-killer__type .text_k', 1, {x: -275}, 1.8)
+    .to('.natural-killer__type .text_cell', 1, {x: -520}, 1.8)
+
     const horizontalEvent = (htEvent) => {
         console.log('horizontalEvent');
         if(htEvent == 1){
-            gsap.to('.natural-killer__type', 1, {opacity: 1});
-            gsap.to('.natural-killer__explain', 0.5, {opacity: 0});
+            naturalTypeOn.play();
+            //setTimeout(() => {
+            //    onSlideChangeEnd();
+            //}, 1200)
         }else {
-            gsap.to('.natural-killer__type', 0.5, {opacity: 0});
-            gsap.to('.natural-killer__explain', 1, {opacity: 1});
+            //reverse말고 1200초 안에 들어오는 모션 별도생성
+            naturalTypeOn.reverse();
+
+            //const naturalTypeOff = new TimelineLite({paused: true})
+            //.to('.natural-killer', 0.5, {background: '#F2F2F2'}, 0.1)
+            //.to('.natural-killer__type', 0.5, {opacity: 0}, 0.1)
+            //.to('.natural-killer__explain', 1, {opacity: 1}, 0.1)
+            //naturalTypeOff.restart();
+
         }
-        setTimeout(() => {
-            onSlideChangeEnd();
-        }, 1200)
+        
     }
 
     //page controll

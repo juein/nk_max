@@ -60,6 +60,12 @@
   src: url("../fonts/ProximaNova-Regular.otf") format("truetype");
 }
 
+@font-face {
+  font-family: 'AppleSDGothicNeoM';
+  font-weight: 400;
+  src: url("../fonts/AppleSDGothicNeoM.ttf") format("truetype");
+}
+
 .joins_gnb {
   height: 32px;
 }

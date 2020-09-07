@@ -151,7 +151,6 @@ $white : #fff;
             height: 190px;
             overflow: hidden;
             margin-top: 120px;
-            outline: 1px solid red;
             &-sec{
                 margin: 10px auto;
                 background: #fff;
@@ -412,57 +411,116 @@ $white : #fff;
             }
         }
         &--chart{
-            outline: 1px solid red;
             width: 710px;
             height: 470px;
             position: absolute;
             left: 50%;
             margin-left: -355px;
-            .imsi{
-                background: url($imgPath + '임시.PNG') no-repeat;
-                width: 732px;
-                height: 316px;
-                opacity: 0.3;
+            .cell-data{
+                width: 100px;
+                height: 50px;
                 position: absolute;
-                top: 104px;
-                left: -25px;
+                top: 60px;
+                right: -20px;
+                &-immunocyte, &-cancer{
+                    &--icon{
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+                        margin-right: 5px;
+                        display: inline-block;
+                    }
+                    &--text{
+                        @include fontInfo(18px, 24px, 0);
+                        @include AppleSDGothicNeoREgular;
+                        color: #212121;
+                    }
+                }
+                &-immunocyte{
+                    &--icon{
+                        background: #3B5AC3;
+                    }
+                }
+                &-cancer{
+                    &--icon{
+                        background: #4E4E4E;
+                    }
+                }
             }
             .cell-area{
                 width: 640px;
                 height: 260px;
-                outline: 1px solid;
                 position: absolute;
                 left: 50%;
                 margin-left: -320px;
                 top: 120px;
+                svg{
+                    overflow: visible;
+                }
                 path{
                     fill: #4e4e4e;
+                    &.static{
+                        fill: #3B5AC3;
+                    }
                 }
-                
-                /*
-                .scene_one_to{
+                .scene_two{
+                    visibility: hidden;
+                    transform: translate(-5px, -4px);
+                }
+                .scene_three{
+                    visibility: hidden;
+                    transform: translate(-5px, -10px);
+                }
+                .scene_four, .scene_five{
                     visibility: hidden;
                 }
-                g{
-                    
-                    &:nth-of-type(1){
-                        transform: scale(0.9) translate(68px, 132px) rotate(-125deg);
-                    }
-                    &:nth-of-type(2){
-                        transform: scale(0.65) translate(0px, 170px);
-                    }
-                    &:nth-of-type(3){
-                        transform: scale(0.5) translate(25px, 380px);
-                    }
-                    &:nth-of-type(4){
-                        transform: scale(0.3) translate(220px, 540px);
-                    }
-                    &:nth-of-type(5){
-                        transform: scale(0.5) translate(190px, 240px);
-                    }
-                    
+            }
+            .cell-bar-graph{
+                position: absolute;
+                bottom: 0;
+                left: 5px;
+                
+                &-low, &-high{
+                    @include fontInfo(12px, 33px, 0);
+                    @include fw-light;
+                    color: #C5C5C5;
                 }
-                */
+
+                &--chart{
+                    width: 620px;
+                    height: 16px;
+                    background: #E8E8E8;
+                    display: inline-block;
+                    border-radius: 10px;
+                    position: relative;
+                    top: 4px;
+                    margin: 0 10px;
+                    .bar-graph-active{
+                        background: #3B5AC3;
+                        height: 8px;
+                        margin: 4px 5px;
+                        border-radius: 10px;
+                        width: 10%;
+                    }
+                }
+                &-pointer{
+                    width: 100px;
+                    text-align: center;
+                    position: absolute;
+                    left: 50px;
+                    &--icon{
+                        background: url($imgPath + 'graph-pointer.png') no-repeat;
+                        width: 16px;
+                        height: 13px;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                    &--text{
+                        @include fontInfo(14px, 17px, 0);
+                        @include AppleSDGothicNeoREgular;
+                        color: #212121;
+                    }
+                }
             }
         }
     }
@@ -476,7 +534,7 @@ $white : #fff;
     position: absolute;
     top: 0;
     &__explain{
-        @include box_container( 1400px, -370px, 0, 0, -700px, 50%, 50% );
+        @include box_container( 1400px, -250px, 0, 0, -700px, 50%, 50% );
         height: 500px;
         text-align: center;
         &--headline{
@@ -493,17 +551,30 @@ $white : #fff;
     }
     &__type{
         opacity: 0;
-        position: absolute;
-        width: 100%;
-        height: 350px;
         outline: 1px solid #000;
+        position: absolute;
+        width: 1560px;
+        left: 50%;
+        //width: 100%;
+        height: 350px;
+        top: 50%;
         bottom: 0;
+        margin-left: -780px;
+        margin-top: -175px;
         text-align: center;
         padding-top: 55px;
         &--text{
             width: 1560px;
             height: 170px;
+            
         }
+        .st0{
+            fill:#BA0000;
+        }
+        .st1{
+            fill:#212121;
+        }
+
     }
 }
 
