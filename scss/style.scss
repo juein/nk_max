@@ -334,6 +334,11 @@ $white : #fff;
                     top: 7px;
                     &.correct{
                         background: #0965C1;
+                        svg{
+                            line, g{
+                                stroke: #FFFFFF !important;
+                            }
+                        }
                     }
                 }
                 + label.true{
@@ -367,7 +372,12 @@ $white : #fff;
                             }
                         }
                         &.correct{
-                            background: #000;
+                            background: #BA0000;
+                            svg{
+                                line, g{
+                                    stroke: #ffffff !important;
+                                }
+                            }
                         }
                     }
                 }

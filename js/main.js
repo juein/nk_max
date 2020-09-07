@@ -20,7 +20,8 @@ window.onload = function () {}
         hoverItem = void 0,
         listActiveNum = 0,
         quizAnimation = false,
-        quizNum = 1;
+        quizNum = 1,
+        quizMyChk = [];
 
     //리로드시 최상단으로
     //window.onbeforeunload = function () {
@@ -240,9 +241,11 @@ window.onload = function () {}
 
 
     // quiz-area
+    var quizCorrectResult = [2, 1, 2, 2, 1, 2, 2, 2, 1, 2];
+
     var quizSecChange = function quizSecChange() {
         setTimeout(function () {
-            console.log('quizNum222 = ' + quizNum);
+            //console.log('quizNum222 = ' + quizNum);
             $('.quiz-area__inner--question-sec.active').addClass('before').removeClass('active');
             quizNum++;
         }, 500);
@@ -261,7 +264,8 @@ window.onload = function () {}
 
     $('.quiz-area__inner--result').click(function () {
         var quizResult = $('#quiz-area__form').serializeArray();
-        console.log(quizResult);
+        //console.log('선택한 ox답');
+        //console.log(quizResult);
 
         gsap.to('.quiz-area__inner--headline', 0.5, { opacity: 0 });
         gsap.to('.quiz-area__inner--result', 0.5, { opacity: 0 });
@@ -269,10 +273,41 @@ window.onload = function () {}
         gsap.to('.quiz-area__inner--question', 1, { height: 760, marginTop: -110 });
         gsap.to('#quiz-area__form', 1, { y: 0 });
         gsap.to('.explain__gloup', 1, { opacity: 1, delay: 0.8, pointerEvents: 'visible' });
+
+        //정답이랑 내가 체크한 값 비교하기
+        var quizScore = 0;
+
+        //const quizCorrectResult = [ 2, 1, 2, 2, 1, 2, 2, 2, 1, 2 ];
+
+        for (var k = 0; k < quizCorrectResult.length; k++) {
+
+            if (quizCorrectResult[k] == Number(quizResult[k].value)) {
+                //맞은 개수
+                quizScore += 1;
+
+                if (quizCorrectResult[k] == 1) {
+                    // true가 정답일때의 css
+                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type(" + (k + 1) + ") .quix-form__button input[type='radio']:checked + label.true").addClass('correct');
+                } else {
+                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type(" + (k + 1) + ") .quix-form__button input[type='radio']:checked + label.false").addClass('correct');
+                }
+            } else {
+
+                if (quizCorrectResult[k] == 1) {
+                    // true가 정답일때의 css
+                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type(" + (k + 1) + ") .quix-form__button input[type='radio'] + label.true").addClass('correct');
+                } else {
+                    //false가 정답일때의 css
+                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type(" + (k + 1) + ") .quix-form__button input[type='radio'] + label.false").addClass('correct');
+                }
+            }
+        }
+
+        console.log('quizScore = ' + quizScore);
     });
 
     $('.quix-form__button label').click(function () {
-        console.log('quizNum = ' + quizNum);
+        //console.log('quizNum = ' + quizNum);
         if (!quizAnimation) {
             quizAnimation = true;
 
@@ -320,7 +355,7 @@ window.onload = function () {}
 
             setTimeout(function () {
                 quizAnimation = false;
-            }, 1200); //모션 끝나는 타이밍에
+            }, 600); //모션 끝나는 타이밍에
         }
     });
     // quiz-area

@@ -648,6 +648,10 @@ i {
   background: #0965C1;
 }
 
+.quiz-area #quiz-area__form .quix-form__button input[type='radio'] + label.correct svg line, .quiz-area #quiz-area__form .quix-form__button input[type='radio'] + label.correct svg g {
+  stroke: #FFFFFF !important;
+}
+
 .quiz-area #quiz-area__form .quix-form__button input[type='radio'] + label.true > svg {
   width: 15px;
   height: 14px;
@@ -681,7 +685,11 @@ i {
 }
 
 .quiz-area #quiz-area__form .quix-form__button input[type='radio']:checked + label.correct {
-  background: #000;
+  background: #BA0000;
+}
+
+.quiz-area #quiz-area__form .quix-form__button input[type='radio']:checked + label.correct svg line, .quiz-area #quiz-area__form .quix-form__button input[type='radio']:checked + label.correct svg g {
+  stroke: #ffffff !important;
 }
 
 .quiz-area #quiz-area__form .before input[type='radio']:checked + label {
