@@ -19,7 +19,7 @@ $white : #fff;
     top: $top;
     left: $left;
     margin: $mgTop $mgRight $mgBottom $mgLeft;
-    outline: 1px solid #ddd;
+    //outline: 1px solid #ddd;
 }
 
 @mixin coverBg($imgName){
@@ -73,7 +73,6 @@ $white : #fff;
         position: absolute;
         left: 50%;
         top: 50%;
-        //outline: 1px solid;
         margin-top: -400px;
         margin-left: -672px;
     }
@@ -240,7 +239,7 @@ $white : #fff;
             position: absolute;
             left: 50%;
             margin-left: -125px;
-            outline: 1px solid;
+            //outline: 1px solid;
             top: 395px;
             opacity: 0;
             pointer-events: none;
@@ -551,7 +550,7 @@ $white : #fff;
     }
     &__type{
         opacity: 0;
-        outline: 1px solid #000;
+        //outline: 1px solid #000;
         position: absolute;
         width: 1560px;
         left: 50%;
@@ -598,9 +597,7 @@ $white : #fff;
                 float: left;
                 width: 25%;
                 height: 100%;
-                //background: url($imgPath + '#{$obj}.png') no-repeat;
-                //background-position: center;
-                //background: #d00116;
+                cursor: pointer;
                 &:after{
                     @include clear;
                 }
@@ -634,7 +631,7 @@ $white : #fff;
             color: #fff;
             position: absolute;
             bottom: 50px;
-            outline: 1px solid;
+            //outline: 1px solid;
             width: 100%;
             &-feature{
                 font-family: Alternate Gothic Compressed ATF;
@@ -657,54 +654,204 @@ $white : #fff;
             opacity: 0;
             pointer-events: none;
             position: absolute;
-            outline: 1px solid blue;
             bottom: 0;
-            margin: 50px 100px;
+            left: 50%;
+            margin-left: -61px;
+            margin-top: 50px;
+            margin-bottom: 50px;
            &-btn{
                cursor: pointer;
-               outline: 1px solid green;
                float: left;
-               padding: 10px;
+               padding: 5px 6px;
+               svg, i{
+                    transition: all 0.5s;
+               }
+               .item{
+                   width: 12px;
+                   height: 12px;
+                   border-radius: 50%;
+                   background: #D0D0D0;
+                   display: inline-block;
+                   pointer-events: none;
+               }
+               .home{
+                   padding: 0;
+                   path{
+                       fill: #D0D0D0;
+                   }
+               }
+               &.active{
+                    .item{
+                        background: #000;
+                    }
+                    .home{
+                        fill: #000;
+                    }
+               }
                &:after{
                     @include clear;
                }
            }
         }
 
-        &--explain{
+        &--content{
             position: absolute;
             top: 0;
-            width: 100%;
-            height: 100%;
+            width: 1200px;
+            height: 600px;
+            left: 50%;
+            top: 50%;
+            margin-top: -300px;
+            margin-left: -600px;
             pointer-events: none;
+            .content--title{
+                @include fontInfo(40px, 54px, -0.06em);
+                color: #212121;
+                .title-thin{
+                    @include fw-demilight;
+                }
+                .title-strong{
+                    @include fw-bold;
+                }
+            }
+            .text-pro{
+                @include fontInfo(20px, 33px, -0.05em);
+                color: #212121;
+                margin: 35px 0;
+                text-align: justify;
+            }
             &--origin{
                 position: absolute;
-                right: 0;
+                top: 0;
                 opacity: 0;
-                width: 1150px;
-                height: 590px;
-                outline: 1px solid red;
+                width: 100%;
+                height: 100%;
+                .content--title{
+                    position: absolute;
+                    top: 235px;
+                    left: 315px;
+                    .title-thin{
+                        display: block;
+                    }
+                }
+                &-text-area{
+                    position: absolute;
+                    width: 530px;
+                    top: 10px;
+                    right: 10px;
+                }
             }
             &--talent{
+                position: absolute;
                 opacity: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                .content--title{
+                    position: absolute;
+                    top: 55px;
+                    left: 130px;
+                }
+                &-text-area{
+                    position: absolute;
+                    width: 630px;
+                    top: 145px;
+                    left: 225px;
+                }
             }
             &--hero{
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
                 opacity: 0;
+                .content--title{
+                    text-align: center;
+                    margin-top: -15px;
+                }
+                &-text-area{
+                    position: absolute;
+                    width: 915px;
+                    left: 50%;
+                    margin-left: -457.5px;
+                    .text-pro{
+                        text-align: center;
+                    }
+                }
             }
             &--villain{
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
                 opacity: 0;
+                .content--title{
+                    text-align: center;
+                }
+                &-card{
+                    .card-list{
+                        &__panel{
+                            width: 378px;
+                            height: 527px;
+                            background: #fff;
+                            float: left;
+                            margin-top: 25px;
+                            color: #212121;
+                            padding: 30px 24px 0 24px;
+                            &:nth-of-type(2){
+                                margin: 25px 33px 0 33px;
+                            }
+                            &--title{
+                                @include fontInfo(30px, 33px, -0.05em);
+                                @include fw-bold;
+                                display: block;
+                                text-align: center;
+                            }
+                            &--detail{
+                                @include fontInfo(20px, 33px, -0.05em);
+                                @include fw-regular;
+                                margin-top: 25px;
+                            }
+                            &:after{
+                                @include clear;
+                            }
+                        }
+                    }
+                }
             }
+
+            $typoWidth: (
+                origin: 1146,
+                talent: 1291,
+                hero: 884,
+                villain: 1313
+            );
+            $typoHeight: (
+                origin: 599,
+                talent: 580,
+                hero: 599,
+                villain: 580
+            );
+            $typoPosition: (
+                origin: 195,
+                talent: -40,
+                hero: 160,
+                villain: -55
+            );
 
             @each $exContent in origin, talent, hero, villain {
                 &--#{$exContent}-typo{
                     background: url($imgPath + '#{$exContent}__typo.png') no-repeat;
                     background-size: 100% 100%;
-                    width: 100%;
-                    height: 100%;
+                    width: #{map-get( $typoWidth, $exContent )}px;
+                    height: #{map-get( $typoHeight, $exContent )}px;
+                    left: #{map-get( $typoPosition, $exContent )}px;
+                    opacity: 0;
+                    position: absolute;
                 }
             }
-            //background: #ddd;
-            //opacity: 0.2;
+            
+
         }
 
     }
@@ -724,13 +871,14 @@ $white : #fff;
         &--area{
             width: 450px;
             float: right;
-            outline: 1px solid #fff;
+            //outline: 1px solid #fff;
             &-headline{
                 @include headlineText(#fff);
             }
             &-explain{
                 margin-top: 55px;
                 @include fontInfo(20px, 33px, -0.05em);
+                @include fw-regular;
             }
             &:after{
                 @include clear;
@@ -769,6 +917,23 @@ $white : #fff;
             height: 95px;
         }
     }
+    &__video{
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 998px;
+        height: 561px;
+        margin-left: -499px;
+        margin-top: -280px;
+        &--panel{
+            &-in{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
 }
 
 
@@ -779,6 +944,10 @@ $white : #fff;
     100% { opacity: 1; }
 }
 
-@media all and (max-width: 1024px) and (max-height: 768px){
-    
+@media all and (max-width: 1599px){
+    .natural-killer__type{
+        width: 1200px;
+        margin-left: -600px;
+        margin-top: -140px;
+    }
 }
