@@ -287,28 +287,33 @@ i {
 .visual-intro {
   width: 100%;
   height: 100%;
-  background: #A00C19;
+  background: #A81B21;
 }
 
 .visual-intro__type-text {
+  background: url("../img/intro-NatureKillerCell.png") no-repeat;
   position: absolute;
-  width: 2080px;
-  height: 372px;
-  top: 50%;
+  width: 1416px;
+  height: 224px;
   left: 50%;
-  margin-left: -1062px;
-  margin-top: -185px;
+  margin-left: -708px;
+  top: 50%;
+  margin-top: -112px;
+}
+
+.visual-intro__type-text.overlay {
+  background: url("../img/intro-NatureKillerCell_overlay.png") no-repeat;
 }
 
 .visual-intro__illust {
   background: url("../img/intro_illust.png") no-repeat;
-  width: 1344px;
-  height: 800px;
+  width: 450px;
+  height: 1208px;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-top: -400px;
-  margin-left: -672px;
+  margin-left: -280px;
+  margin-top: -320px;
 }
 
 .visual-intro__area {
@@ -333,35 +338,20 @@ i {
 
 .visual-intro__area--headline-first {
   background: url("../img/title_text_1.png") no-repeat;
-  width: 617px;
-  height: 220px;
-  margin-top: 15px;
+  width: 548px;
+  height: 148px;
   float: left;
+  margin-top: 45px;
+  margin-left: 10px;
 }
 
 .visual-intro__area--headline-last {
   background: url("../img/title_text_2.png") no-repeat;
-  width: 597px;
-  height: 224px;
+  width: 560px;
+  height: 144px;
   float: right;
-}
-
-.visual-intro__cell-polygon-icon {
-  display: inline-block;
-  position: absolute;
-  background: url("../img/polygon.svg") no-repeat;
-  background-size: 100% 100%;
-}
-
-.visual-intro__cell-polygon-icon:nth-of-type(1) {
-  width: 187px;
-  height: 186px;
-}
-
-.visual-intro__cell-polygon-icon:nth-of-type(2) {
-  width: 75px;
-  height: 74px;
-  left: 200px;
+  margin-top: 36px;
+  margin-right: 65px;
 }
 
 .quiz-area {
@@ -957,6 +947,7 @@ i {
           transform: translateY(100vh);
   position: absolute;
   top: 0;
+  overflow: hidden;
 }
 
 .assassin-info__visual {
@@ -965,7 +956,12 @@ i {
 }
 
 .assassin-info__visual--list {
+  position: absolute;
+  width: 100%;
   height: 100%;
+  top: 0;
+  margin-top: 0;
+  overflow: hidden;
 }
 
 .assassin-info__visual--list-origin {
@@ -973,6 +969,7 @@ i {
   width: 25%;
   height: 100%;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .assassin-info__visual--list-origin:after {
@@ -986,9 +983,13 @@ i {
   background-position: center;
   pointer-events: none;
   position: absolute;
-  top: 0;
   width: 100%;
+  bottom: 0;
+  background-size: 100%;
   height: 100%;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  background-position: 0% 70%;
 }
 
 .assassin-info__visual--bg-origin {
@@ -1006,6 +1007,7 @@ i {
   width: 25%;
   height: 100%;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .assassin-info__visual--list-talent:after {
@@ -1019,13 +1021,19 @@ i {
   background-position: center;
   pointer-events: none;
   position: absolute;
-  top: 0;
   width: 100%;
+  bottom: 0;
+  background-size: 100%;
   height: 100%;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  top: 80px;
 }
 
 .assassin-info__visual--bg-talent {
-  background: #d00116;
+  background: url("../img/talent__bg.jpg") no-repeat;
+  background-position: right;
+  background-size: 200% 100%;
   background-position: center;
   position: absolute;
   width: 100%;
@@ -1039,6 +1047,7 @@ i {
   width: 25%;
   height: 100%;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .assassin-info__visual--list-hero:after {
@@ -1052,13 +1061,17 @@ i {
   background-position: center;
   pointer-events: none;
   position: absolute;
-  top: 0;
   width: 100%;
+  bottom: 0;
+  background-size: 100%;
   height: 100%;
+  background-size: 72%;
 }
 
 .assassin-info__visual--bg-hero {
-  background: #d00116;
+  background: url("../img/hero__bg.jpg") no-repeat;
+  background-position: center;
+  background-size: 300% 100%;
   background-position: center;
   position: absolute;
   width: 100%;
@@ -1072,6 +1085,7 @@ i {
   width: 25%;
   height: 100%;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .assassin-info__visual--list-villain:after {
@@ -1085,13 +1099,22 @@ i {
   background-position: center;
   pointer-events: none;
   position: absolute;
-  top: 0;
   width: 100%;
+  bottom: 0;
+  background-size: 100%;
   height: 100%;
+  background-position: bottom;
+  height: 150%;
+  background-size: 160%;
+  -webkit-transform: scale(1.2) translateY(-50px);
+          transform: scale(1.2) translateY(-50px);
 }
 
 .assassin-info__visual--bg-villain {
-  background: #d00116;
+  background: url("../img/villain__bg.jpg") no-repeat;
+  background-size: 300% 120%;
+  background-position: 50% 160%;
+  height: 120%;
   background-position: center;
   position: absolute;
   width: 100%;
@@ -1543,6 +1566,15 @@ i {
     width: 1200px;
     margin-left: -600px;
     margin-top: -140px;
+  }
+  .visual-intro__area--headline {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    margin-top: 30px;
+  }
+  .visual-intro__type-text {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
   }
 }
 /*# sourceMappingURL=style.css.map */

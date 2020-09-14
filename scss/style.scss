@@ -56,25 +56,30 @@ $white : #fff;
 .visual-intro{
     width: 100%;
     height: 100%;
-    background: #A00C19;
+    background: #A81B21;
+    
     &__type-text{
+        background: url($imgPath + 'intro-NatureKillerCell.png') no-repeat;
         position: absolute;
-        width: 2080px;
-        height: 372px;
-        top: 50%;
+        width: 1416px;
+        height: 224px;
         left: 50%;
-        margin-left: -1062px;
-        margin-top: -185px;
+        margin-left: -708px;
+        top: 50%;
+        margin-top: -112px;
+        &.overlay{
+            background: url($imgPath + 'intro-NatureKillerCell_overlay.png') no-repeat;
+        }
     }
     &__illust{
         background: url($imgPath + 'intro_illust.png') no-repeat;
-        width: 1344px;
-        height: 800px;
+        width: 450px;
+        height: 1208px;
         position: absolute;
         left: 50%;
         top: 50%;
-        margin-top: -400px;
-        margin-left: -672px;
+        margin-left: -280px;
+        margin-top: -320px;
     }
     &__area{
         @include box_container( 1560px, -116px, 0, 0, -760px, 50%, 50% );
@@ -89,33 +94,19 @@ $white : #fff;
             }
             &-first{
                 background: url($imgPath + 'title_text_1.png') no-repeat;
-                width: 617px;
-                height: 220px;
-                margin-top: 15px;
+                width: 548px;
+                height: 148px;
                 float: left;
+                margin-top: 45px;
+                margin-left: 10px;
             }
             &-last{
                 background: url($imgPath + 'title_text_2.png') no-repeat;
-                width: 597px;
-                height: 224px;
+                width: 560px;
+                height: 144px;
                 float: right;
-            }
-        }
-    }
-    &__cell-polygon{
-        &-icon{
-            display: inline-block;
-            position: absolute;
-            background: url($imgPath + 'polygon.svg') no-repeat;
-            background-size: 100% 100%;
-            &:nth-of-type(1){
-                width: 187px;
-                height: 186px;
-            }
-            &:nth-of-type(2){
-                width: 75px;
-                height: 74px;
-                left: 200px;
+                margin-top: 36px;
+                margin-right: 65px;
             }
         }
     }
@@ -583,39 +574,120 @@ $white : #fff;
     transform: translateY(100vh);
     position: absolute;
     top: 0;
+    overflow: hidden;
     &__visual{
         height: 100%;
         background: #d00116; //임시 bg색
+        //background: #000;
 
         &--list{
+            //height: 100%;
+            //height: 800px;
+            position: absolute;
+            width: 100%;
+            ////overflow: visible;
+            //top: 50%;
+            //margin-top: -380px;
+
             height: 100%;
+            top: 0;
+            margin-top: 0;
+            overflow: hidden;
+            
+            
         }
 
-        
+        //$characterWidth: (
+        //    origin: 673,
+        //    talent: 553,
+        //    hero: 424,
+        //    villain: 944
+        //);
+        //$characterHeight: (
+        //    origin: ,
+        //    talent: ,
+        //    hero: ,
+        //    villain: 
+        //);
+
         @each $obj in origin, talent, hero, villain {
             &--list-#{$obj} {
                 float: left;
                 width: 25%;
                 height: 100%;
                 cursor: pointer;
+                overflow: hidden;
+                //overflow: visible;
                 &:after{
                     @include clear;
                 }
             }
             //캐릭터
+            
             &--character-#{$obj} {
                 background: url($imgPath + '#{$obj}__character.png') no-repeat;
                 background-position: center;
                 pointer-events: none;
                 position: absolute;
-                top: 0;
+                //width: #{map-get( $characterWidth, $obj )}px;
                 width: 100%;
+                //height: 1000px;
+                bottom: 0;
+                background-size: 100%;
                 height: 100%;
+
+                @if($obj == 'origin'){
+                    transform: scale(1.5);
+                    background-position: 0% 70%;
+                }
+                @if($obj == 'talent'){
+                    transform: scale(1.3);
+                    top: 80px;
+                }
+                @if($obj == 'hero'){
+                    background-size: 72%;
+                }
+                @if($obj == 'villain'){
+                    background-position: bottom;
+                    height: 150%;
+                    //background-size: 200%;
+
+                    background-size: 160%;
+                    transform: scale(1.2) translateY(-50px)
+
+                    //transform: scale(2);
+                    //background-position: 0;
+                }
+                
+
+                //height: #{map-get( $characterHeight, $obj )}px;
+                //top: 0;
+                //width: 100%;
+                //height: 100%;
             }
             //배경
             &--bg-#{$obj}{
-                //background: url($imgPath + '#{$obj}.png') no-repeat;
-                background: #d00116; // 임시
+                @if($obj == 'origin'){
+                    background: #d00116;
+                }@else {
+                    background: url($imgPath + '#{$obj}__bg.jpg') no-repeat;
+                }
+
+                @if($obj == 'talent'){
+                    background-position: right;
+                    background-size: 200% 100%;
+                }
+                @if($obj == 'hero'){
+                    background-position: center;
+                    background-size: 300% 100%;
+                }
+                @if($obj == 'villain'){
+                    background-size: 300% 120%;
+                    background-position: 50% 160%;
+                    height: 120%;
+
+                }
+                
 
                 background-position: center;
                 position: absolute;
@@ -839,6 +911,7 @@ $white : #fff;
                 villain: -55
             );
 
+
             @each $exContent in origin, talent, hero, villain {
                 &--#{$exContent}-typo{
                     background: url($imgPath + '#{$exContent}__typo.png') no-repeat;
@@ -950,4 +1023,12 @@ $white : #fff;
         margin-left: -600px;
         margin-top: -140px;
     }
+    .visual-intro__area--headline {
+        transform: scale(0.8);
+        margin-top: 30px;
+    }
+    .visual-intro__type-text{
+        transform: scale(0.8);
+    }
+    
 }

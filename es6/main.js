@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // default setting
     const defaultSet = () => {
         gsap.set('.assassin-info__visual--list .grayscale', {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)'});
-        gsap.set('.assassin-info__visual--character-villain', {backgroundSize: '200%', backgroundPosition: 'center 100%'});
+        //gsap.set('.assassin-info__visual--character-villain', {backgroundSize: '200%', backgroundPosition: 'center 100%'});
     }
 
     // quiz-area
@@ -163,7 +163,6 @@ window.addEventListener('DOMContentLoaded', () => {
     // immunity-relation
     MorphSVGPlugin.convertToPath("circle, rect, polygon");
 
-    
     const immunityChart = {
         mothion(){
             //const immunityMorph = new TimelineLite({paused: true, repeat: -1})
@@ -306,6 +305,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const visualList = {
         origin(){
             const listOriginAction = new TimelineLite({paused: true})
+            .set('.assassin-info__visual--list-origin', {overflow: 'visible'}, 0)
+            .set('.assassin-info__visual--list-talent', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-hero', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-villain', {overflow: 'hidden'}, 0)
+
             .to('.assassin-info__visual--list-origin', 1.2, {y: "10%"}, 0.7)
             //.to('.assassin-info__visual--list-origin .assasin_character', 1.2, {y: "10%"}, 0.7)
             .to('.assassin-info__visual--bg-origin', 0.5, {opacity: 0}, 0)
@@ -321,6 +325,11 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         talent(){
             const listTalentAction = new TimelineLite({paused: true})
+            .set('.assassin-info__visual--list-origin', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-talent', {overflow: 'visible'}, 0)
+            .set('.assassin-info__visual--list-hero', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-villain', {overflow: 'hidden'}, 0)
+
             .to('.assassin-info__visual--bg-talent', 0.5, {opacity: 0}, 0)
             .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
             .to('.assassin-info__visual--list-talent', 1.2, {x: "-80%"}, 0.7)
@@ -335,6 +344,11 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         hero(){
             const listHeroAction = new TimelineLite({paused: true})
+            .set('.assassin-info__visual--list-origin', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-talent', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-hero', {overflow: 'visible'}, 0)
+            .set('.assassin-info__visual--list-villain', {overflow: 'hidden'}, 0)
+
             .to('.assassin-info__visual--bg-hero', 0.5, {opacity: 0}, 0)
             .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
             .to('.assassin-info__visual--list-talent', 1, {x: "-201%"}, 0)
@@ -349,13 +363,18 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         villain(){
             const listVillainAction = new TimelineLite({paused: true})
+            .set('.assassin-info__visual--list-origin', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-talent', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-hero', {overflow: 'hidden'}, 0)
+            .set('.assassin-info__visual--list-villain', {overflow: 'visible'}, 0)
+
             .to('.assassin-info__visual--bg-villain', 0.5, {opacity: 0}, 0)
             .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
             .to('.assassin-info__visual--list-talent', 1, {x: "-201%"}, 0)
             .to('.assassin-info__visual--list-hero', 1, {x: "-301%"}, 0)
             //.to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
             .to('.assassin-info__visual', 0.5, {background: '#f2f2f2'}, 0.5)
-            .to('.assassin-info__visual--character-villain', 1, {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 1)
+            //.to('.assassin-info__visual--character-villain', 1, {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 1)
     
             $('.assassin-info__visual--list-villain').addClass('active');
             listActiveNum = 4;
@@ -380,7 +399,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const navi = {
         home(){
             const naviHomeAction = new TimelineLite({paused: true})
-            .to('.assassin-info__visual--character-villain', 0.5, {backgroundSize: '200%', backgroundPosition: 'center 100%'}, 0)
+            //.to('.assassin-info__visual--character-villain', 0.5, {backgroundSize: '200%', backgroundPosition: 'center 100%'}, 0)
+            .set('.assassin-info__visual--list-origin', {overflow: 'hidden'}, 0.3)
+            .set('.assassin-info__visual--list-talent', {overflow: 'hidden'}, 0.3)
+            .set('.assassin-info__visual--list-hero', {overflow: 'hidden'}, 0.3)
+            .set('.assassin-info__visual--list-villain', {overflow: 'hidden'}, 0.3)
+
             .set('.assasin_bg', {opacity: 1}, 0.4)
             .set('.assassin-info__visual--list-villain', {x: '101%'}, 0)
             
@@ -403,6 +427,7 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         origin(){
             const naviOriginAction = new TimelineLite({paused: true})
+            .set('.assassin-info__visual--list-origin', {overflow: 'visible'}, 0.2)
             .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
             .set('.assassin-info__visual--bg-origin', {opacity: 0}, 0)
             .set('.assassin-info__visual--list-origin', {opacity: 0, x: 0, y: 0}, 0.2)
@@ -420,6 +445,7 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         talent(){
             const naviTalentAction = new TimelineLite({paused: true})
+            .set('.assassin-info__visual--list-talent', {overflow: 'visible'}, 0.2)
             .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
             .set('.assassin-info__visual--bg-talent', {opacity: 0}, 0)
             .set('.assassin-info__visual--list-talent', {opacity: 0, x: "-50%"}, 0.2)
@@ -437,6 +463,7 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         hero(){
             const naviHeroAction = new TimelineLite({paused: true})
+            .set('.assassin-info__visual--list-hero', {overflow: 'visible'}, 0.2)
             .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
             .set('.assassin-info__visual--bg-hero', {opacity: 0}, 0)
             .set('.assassin-info__visual--list-hero', {opacity: 0, x: "70%", y: "10%"}, 0.2)
@@ -454,9 +481,10 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         villain(){
             const naviVillainAction = new TimelineLite({paused: true})
+            .set('.assassin-info__visual--list-villain', {overflow: 'visible'}, 0.2)
             .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
             .set('.assassin-info__visual--bg-villain', {opacity: 0}, 0)
-            .set('.assassin-info__visual--character-villain',  {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 0)
+            //.set('.assassin-info__visual--character-villain',  {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 0)
             .set('.assassin-info__visual--list-villain', {opacity: 0, x: "0", y: "0"}, 0.2)
             .to('.assassin-info__visual--list-villain', 0.8, {opacity: 1}, 0.4)
     

@@ -34,7 +34,7 @@ window.onload = function () {}
     // default setting
     var defaultSet = function defaultSet() {
         gsap.set('.assassin-info__visual--list .grayscale', { '-webkit-filter': 'grayscale(100%)', filter: 'grayscale(100%)' });
-        gsap.set('.assassin-info__visual--character-villain', { backgroundSize: '200%', backgroundPosition: 'center 100%' });
+        //gsap.set('.assassin-info__visual--character-villain', {backgroundSize: '200%', backgroundPosition: 'center 100%'});
     };
 
     // quiz-area
@@ -272,7 +272,7 @@ window.onload = function () {}
 
     var visualList = {
         origin: function origin() {
-            var listOriginAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list-origin', 1.2, { y: "10%" }, 0.7)
+            var listOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0).to('.assassin-info__visual--list-origin', 1.2, { y: "10%" }, 0.7)
             //.to('.assassin-info__visual--list-origin .assasin_character', 1.2, {y: "10%"}, 0.7)
             .to('.assassin-info__visual--bg-origin', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-talent', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#F2F2F2' }, 0.5);
 
@@ -282,7 +282,7 @@ window.onload = function () {}
             assassinContent.origin();
         },
         talent: function talent() {
-            var listTalentAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-talent', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1.2, { x: "-80%" }, 0.7).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5);
+            var listTalentAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0).to('.assassin-info__visual--bg-talent', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1.2, { x: "-80%" }, 0.7).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5);
 
             $('.assassin-info__visual--list-talent').addClass('active');
             listActiveNum = 2;
@@ -290,7 +290,7 @@ window.onload = function () {}
             assassinContent.talent();
         },
         hero: function hero() {
-            var listHeroAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-hero', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1.2, { x: "90%", y: "20%" }, 0.7).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5);
+            var listHeroAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0).to('.assassin-info__visual--bg-hero', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1.2, { x: "90%", y: "20%" }, 0.7).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5);
 
             $('.assassin-info__visual--list-hero').addClass('active');
             listActiveNum = 3;
@@ -298,9 +298,10 @@ window.onload = function () {}
             assassinContent.hero();
         },
         villain: function villain() {
-            var listVillainAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--bg-villain', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "-301%" }, 0)
+            var listVillainAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'visible' }, 0).to('.assassin-info__visual--bg-villain', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "-301%" }, 0)
             //.to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
-            .to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5).to('.assassin-info__visual--character-villain', 1, { backgroundSize: '140%', backgroundPosition: 'center 10%' }, 1);
+            .to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5);
+            //.to('.assassin-info__visual--character-villain', 1, {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 1)
 
             $('.assassin-info__visual--list-villain').addClass('active');
             listActiveNum = 4;
@@ -324,7 +325,9 @@ window.onload = function () {}
 
     var navi = {
         home: function home() {
-            var naviHomeAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--character-villain', 0.5, { backgroundSize: '200%', backgroundPosition: 'center 100%' }, 0).set('.assasin_bg', { opacity: 1 }, 0.4).set('.assassin-info__visual--list-villain', { x: '101%' }, 0).to('.assassin-info__visual', 1, { background: '#d00116' }, 0).to('.assassin-info__visual--list li', 0.5, { x: 0, y: 0, opacity: 1, filter: 'grayscale(100%)' }, 0.2);
+            var naviHomeAction = new TimelineLite({ paused: true })
+            //.to('.assassin-info__visual--character-villain', 0.5, {backgroundSize: '200%', backgroundPosition: 'center 100%'}, 0)
+            .set('.assassin-info__visual--list-origin', { overflow: 'hidden' }, 0.3).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0.3).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0.3).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0.3).set('.assasin_bg', { opacity: 1 }, 0.4).set('.assassin-info__visual--list-villain', { x: '101%' }, 0).to('.assassin-info__visual', 1, { background: '#d00116' }, 0).to('.assassin-info__visual--list li', 0.5, { x: 0, y: 0, opacity: 1, filter: 'grayscale(100%)' }, 0.2);
 
             $('.assassin-info__visual--list li').removeClass('active');
             listActiveNum = 0;
@@ -341,7 +344,7 @@ window.onload = function () {}
             }
         },
         origin: function origin() {
-            var naviOriginAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-origin', { opacity: 0 }, 0).set('.assassin-info__visual--list-origin', { opacity: 0, x: 0, y: 0 }, 0.2).to('.assassin-info__visual--list-origin', 0.8, { y: "10%", opacity: 1 }, 0.4);
+            var naviOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-origin', { opacity: 0 }, 0).set('.assassin-info__visual--list-origin', { opacity: 0, x: 0, y: 0 }, 0.2).to('.assassin-info__visual--list-origin', 0.8, { y: "10%", opacity: 1 }, 0.4);
 
             setTimeout(function () {
                 $('.assassin-info__visual--list li').removeClass('active');
@@ -354,7 +357,7 @@ window.onload = function () {}
             assassinContent.origin();
         },
         talent: function talent() {
-            var naviTalentAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-talent', { opacity: 0 }, 0).set('.assassin-info__visual--list-talent', { opacity: 0, x: "-50%" }, 0.2).to('.assassin-info__visual--list-talent', 0.8, { x: "-80%", opacity: 1 }, 0.4);
+            var naviTalentAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-talent', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-talent', { opacity: 0 }, 0).set('.assassin-info__visual--list-talent', { opacity: 0, x: "-50%" }, 0.2).to('.assassin-info__visual--list-talent', 0.8, { x: "-80%", opacity: 1 }, 0.4);
 
             setTimeout(function () {
                 $('.assassin-info__visual--list li').removeClass('active');
@@ -367,7 +370,7 @@ window.onload = function () {}
             assassinContent.talent();
         },
         hero: function hero() {
-            var naviHeroAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-hero', { opacity: 0 }, 0).set('.assassin-info__visual--list-hero', { opacity: 0, x: "70%", y: "10%" }, 0.2).to('.assassin-info__visual--list-hero', 0.8, { x: "90%", y: "20%", opacity: 1 }, 0.4);
+            var naviHeroAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-hero', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-hero', { opacity: 0 }, 0).set('.assassin-info__visual--list-hero', { opacity: 0, x: "70%", y: "10%" }, 0.2).to('.assassin-info__visual--list-hero', 0.8, { x: "90%", y: "20%", opacity: 1 }, 0.4);
 
             setTimeout(function () {
                 $('.assassin-info__visual--list li').removeClass('active');
@@ -380,7 +383,9 @@ window.onload = function () {}
             assassinContent.hero();
         },
         villain: function villain() {
-            var naviVillainAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-villain', { opacity: 0 }, 0).set('.assassin-info__visual--character-villain', { backgroundSize: '140%', backgroundPosition: 'center 10%' }, 0).set('.assassin-info__visual--list-villain', { opacity: 0, x: "0", y: "0" }, 0.2).to('.assassin-info__visual--list-villain', 0.8, { opacity: 1 }, 0.4);
+            var naviVillainAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-villain', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-villain', { opacity: 0 }, 0)
+            //.set('.assassin-info__visual--character-villain',  {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 0)
+            .set('.assassin-info__visual--list-villain', { opacity: 0, x: "0", y: "0" }, 0.2).to('.assassin-info__visual--list-villain', 0.8, { opacity: 1 }, 0.4);
 
             setTimeout(function () {
                 $('.assassin-info__visual--list li').removeClass('active');
