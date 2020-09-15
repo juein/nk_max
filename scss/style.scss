@@ -577,39 +577,49 @@ $white : #fff;
     overflow: hidden;
     &__visual{
         height: 100%;
-        background: #d00116; //임시 bg색
-        //background: #000;
-
+        background: #d00116;
         &--list{
-            //height: 100%;
-            //height: 800px;
             position: absolute;
             width: 100%;
-            ////overflow: visible;
-            //top: 50%;
-            //margin-top: -380px;
-
             height: 100%;
             top: 0;
             margin-top: 0;
             overflow: hidden;
-            
+
+            $talentObjWidth : 448, 514, 664, 399;
+            $talentObjHeight : 156, 315, 425, 197;
+
+            @for $i from 1 through 4{
+                .talent__object-#{$i}{
+                    opacity: 0;
+                    background: url($imgPath + 'talent__object-#{$i}.png') no-repeat;
+                    pointer-events: none;
+                    position: absolute;
+                    width: 100%;
+                    bottom: 0;
+                    background-size: 100%;
+                    height: 100%;
+                    transform: scale(1.6);
+                    top: 80px;
+                    background-position: center;
+                }
+            }
+            .villain__object-1{
+                background: url($imgPath + 'villain__object-1.png') no-repeat;
+                pointer-events: none;
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                height: 100%;
+                
+                background-position: 50% 100%;
+                height: 150%;
+                background-size: 160%;
+                transform: scale(1.3) translateY(-350px);
+                opacity: 0;
+            }
             
         }
-
-        //$characterWidth: (
-        //    origin: 673,
-        //    talent: 553,
-        //    hero: 424,
-        //    villain: 944
-        //);
-        //$characterHeight: (
-        //    origin: ,
-        //    talent: ,
-        //    hero: ,
-        //    villain: 
-        //);
-
         @each $obj in origin, talent, hero, villain {
             &--list-#{$obj} {
                 float: left;
@@ -623,15 +633,12 @@ $white : #fff;
                 }
             }
             //캐릭터
-            
             &--character-#{$obj} {
                 background: url($imgPath + '#{$obj}__character.png') no-repeat;
                 background-position: center;
                 pointer-events: none;
                 position: absolute;
-                //width: #{map-get( $characterWidth, $obj )}px;
                 width: 100%;
-                //height: 1000px;
                 bottom: 0;
                 background-size: 100%;
                 height: 100%;
@@ -641,29 +648,20 @@ $white : #fff;
                     background-position: 0% 70%;
                 }
                 @if($obj == 'talent'){
-                    transform: scale(1.3);
+                    transform: scale(1.6) translateX(40px);
                     top: 80px;
                 }
                 @if($obj == 'hero'){
                     background-size: 72%;
+                    transform: translate(30px, -20px);
                 }
                 @if($obj == 'villain'){
-                    background-position: bottom;
+                    //background-position: bottom;
+                    background-position: 50% 100%;
                     height: 150%;
-                    //background-size: 200%;
-
                     background-size: 160%;
                     transform: scale(1.2) translateY(-50px)
-
-                    //transform: scale(2);
-                    //background-position: 0;
                 }
-                
-
-                //height: #{map-get( $characterHeight, $obj )}px;
-                //top: 0;
-                //width: 100%;
-                //height: 100%;
             }
             //배경
             &--bg-#{$obj}{
@@ -672,7 +670,6 @@ $white : #fff;
                 }@else {
                     background: url($imgPath + '#{$obj}__bg.jpg') no-repeat;
                 }
-
                 @if($obj == 'talent'){
                     background-position: right;
                     background-size: 200% 100%;
@@ -682,13 +679,12 @@ $white : #fff;
                     background-size: 300% 100%;
                 }
                 @if($obj == 'villain'){
-                    background-size: 300% 120%;
-                    background-position: 50% 160%;
+                    //background-size: 300% 120%;
+                    //background-position: 50% 160%;
                     height: 120%;
-
+                    background-position: 50% 100%;
+                    background-size: 350% 150%;
                 }
-                
-
                 background-position: center;
                 position: absolute;
                 width: 100%;
@@ -705,6 +701,7 @@ $white : #fff;
             bottom: 50px;
             //outline: 1px solid;
             width: 100%;
+            pointer-events: none;
             &-feature{
                 font-family: Alternate Gothic Compressed ATF;
                 @include fontInfo(80px, 115px, 0);
@@ -713,11 +710,13 @@ $white : #fff;
                 display: block;
                 text-align: center;
                 margin: 0 auto;
+                pointer-events: none;
             }
             &-concise{
                 @include fontInfo(29px, 54px, -0.06em);
                 @include fw-bold;
                 text-align: center;
+                pointer-events: none;
             }
 
         }
@@ -779,6 +778,7 @@ $white : #fff;
             .content--title{
                 @include fontInfo(40px, 54px, -0.06em);
                 color: #212121;
+                pointer-events: none;
                 .title-thin{
                     @include fw-demilight;
                 }
@@ -787,6 +787,7 @@ $white : #fff;
                 }
             }
             .text-pro{
+                pointer-events: none;
                 @include fontInfo(20px, 33px, -0.05em);
                 color: #212121;
                 margin: 35px 0;
@@ -857,6 +858,7 @@ $white : #fff;
                 width: 100%;
                 height: 100%;
                 opacity: 0;
+                z-index: 10;
                 .content--title{
                     text-align: center;
                 }
