@@ -20,6 +20,7 @@ window.onload = function () {}
         hoverItem = void 0,
         hoverAction = void 0,
         listActiveNum = 0,
+        quizStep = 1,
         quizAnimation = false,
         quizNum = 1,
         quizMyChk = [];
@@ -38,82 +39,68 @@ window.onload = function () {}
         //gsap.set('.assassin-info__visual--character-villain', {backgroundSize: '200%', backgroundPosition: 'center 100%'});
         //gsap.set('.assassin-info__visual--character-talent', {x: 40});
         //gsap.set('.assassin-info__visual--character-hero', {x: 30, y: -20});
+
+        //quizStep = 1
+        gsap.set('.quiz-area__inner--question-step1', { opacity: 1, pointerEvents: 'visible' });
     };
 
-    // quiz-area
-    var quizCorrectResult = [2, 1, 2, 2, 1, 2, 2, 2, 1, 2];
-
-    var quizSecChange = function quizSecChange() {
-        setTimeout(function () {
+    // quiz-area - before
+    /*
+    const quizCorrectResult = [ 2, 1, 2, 2, 1, 2, 2, 2, 1, 2 ];
+      const quizSecChange = () => {
+        setTimeout(() => {
             //console.log('quizNum222 = ' + quizNum);
             $('.quiz-area__inner--question-sec.active').addClass('before').removeClass('active');
             quizNum++;
         }, 500);
-
-        setTimeout(function () {
-            $('.quiz-area__inner--question-sec:nth-of-type(' + quizNum + ')').addClass('active');
-            $('.quiz-area__inner--progress .mark .radius:nth-of-type(' + quizNum + ')').addClass('active');
+          setTimeout(() => {
+            $('.quiz-area__inner--question-sec:nth-of-type('+quizNum+')').addClass('active');
+            $('.quiz-area__inner--progress .mark .radius:nth-of-type('+quizNum+')').addClass('active');
         }, 600);
-    };
-    var quizFormScroll = function quizFormScroll(h) {
-        gsap.to("#quiz-area__form", 1, { y: h, delay: 0.5 });
-    };
-    var quizProgress = function quizProgress(xs) {
-        gsap.to(".quiz-area__inner--progress .line .active-line", 1, { x: xs });
-    };
-
-    $('.quiz-area__inner--result').click(function () {
-        var quizResult = $('#quiz-area__form').serializeArray();
+    }
+    const quizFormScroll = (h) => {
+        gsap.to("#quiz-area__form", 1, {y: h, delay: 0.5});
+    }
+    const quizProgress = (xs) => {
+        gsap.to(".quiz-area__inner--progress .line .active-line", 1, {x : xs});
+    }
+      $('.quiz-area__inner--result').click( () => {
+        let quizResult = $('#quiz-area__form').serializeArray();
         //console.log('선택한 ox답');
         //console.log(quizResult);
-
-        gsap.to('.quiz-area__inner--headline', 0.5, { opacity: 0 });
-        gsap.to('.quiz-area__inner--result', 0.5, { opacity: 0 });
-        gsap.to('.quiz-area__inner--progress', 0.5, { opacity: 0 });
-        gsap.to('.quiz-area__inner--question', 1, { height: 760, marginTop: -110 });
-        gsap.to('#quiz-area__form', 1, { y: 0 });
-        gsap.to('.explain__gloup', 1, { opacity: 1, delay: 0.8, pointerEvents: 'visible' });
-
-        //정답이랑 내가 체크한 값 비교하기
-        var quizScore = 0;
-
-        //const quizCorrectResult = [ 2, 1, 2, 2, 1, 2, 2, 2, 1, 2 ];
-
-        for (var k = 0; k < quizCorrectResult.length; k++) {
-
-            if (quizCorrectResult[k] == Number(quizResult[k].value)) {
-                //맞은 개수
+          gsap.to('.quiz-area__inner--headline', 0.5, {opacity: 0});
+        gsap.to('.quiz-area__inner--result', 0.5, {opacity: 0});
+        gsap.to('.quiz-area__inner--progress', 0.5, {opacity: 0});
+        gsap.to('.quiz-area__inner--question', 1, {height: 760, marginTop: -110});
+        gsap.to('#quiz-area__form', 1, {y: 0});
+        gsap.to('.explain__gloup', 1, {opacity: 1, delay: 0.8, pointerEvents: 'visible'});
+            //정답이랑 내가 체크한 값 비교하기
+        let quizScore = 0;
+          //const quizCorrectResult = [ 2, 1, 2, 2, 1, 2, 2, 2, 1, 2 ];
+          for(let k = 0; k < quizCorrectResult.length; k++){
+              if( quizCorrectResult[k] == Number(quizResult[k].value) ){ //맞은 개수
                 quizScore += 1;
-
-                if (quizCorrectResult[k] == 1) {
-                    // true가 정답일때의 css
-                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type(" + (k + 1) + ") .quix-form__button input[type='radio']:checked + label.true").addClass('correct');
-                } else {
-                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type(" + (k + 1) + ") .quix-form__button input[type='radio']:checked + label.false").addClass('correct');
+                  if( quizCorrectResult[k] == 1 ){ // true가 정답일때의 css
+                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type("+(k+1)+") .quix-form__button input[type='radio']:checked + label.true").addClass('correct');
+                }else {
+                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type("+(k+1)+") .quix-form__button input[type='radio']:checked + label.false").addClass('correct');
                 }
-            } else {
-
-                if (quizCorrectResult[k] == 1) {
-                    // true가 정답일때의 css
-                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type(" + (k + 1) + ") .quix-form__button input[type='radio'] + label.true").addClass('correct');
-                } else {
-                    //false가 정답일때의 css
-                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type(" + (k + 1) + ") .quix-form__button input[type='radio'] + label.false").addClass('correct');
+              }else {
+                  if( quizCorrectResult[k] == 1 ){ // true가 정답일때의 css
+                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type("+(k+1)+") .quix-form__button input[type='radio'] + label.true").addClass('correct');
+                }else { //false가 정답일때의 css
+                    $("#quiz-area__form .quiz-area__inner--question-sec:nth-of-type("+(k+1)+") .quix-form__button input[type='radio'] + label.false").addClass('correct');
                 }
-            }
+              }
         }
-
-        console.log('quizScore = ' + quizScore);
+          console.log('quizScore = ' + quizScore);
     });
-
-    $('.quix-form__button label').click(function () {
+        $('.quix-form__button label').click( () => {
         //console.log('quizNum = ' + quizNum);
-        if (!quizAnimation) {
+        if(!quizAnimation){
             quizAnimation = true;
-
-            quizSecChange();
-
-            switch (quizNum) {
+              quizSecChange();
+              switch(quizNum){
                 case 1:
                     quizProgress(-600);
                     break;
@@ -149,16 +136,108 @@ window.onload = function () {}
                     quizProgress(-5);
                     break;
                 case 10:
-                    gsap.to('.quiz-area__inner--result', 0.8, { opacity: 1, pointerEvents: 'visible', delay: 0.5 });
+                    gsap.to('.quiz-area__inner--result', 0.8, {opacity: 1, pointerEvents: 'visible', delay: 0.5});
                     break;
             }
-
-            setTimeout(function () {
+              setTimeout(() => {
                 quizAnimation = false;
             }, 600); //모션 끝나는 타이밍에
         }
+        
+        
+    } );
+    */
+    // quiz-area - before
+
+
+    // quiz-area - after // after 개발 완료후 before 항목들 정리/삭제
+    $('.start-btn').click(function () {
+        gsap.to('.quiz-area__inner--start', 0.6, { opacity: 0, pointerEvents: 'none' });
+        gsap.to('.quiz-area__inner--question', 0.5, { opacity: 1, pointerEvents: 'visible', delay: 0.4 });
     });
-    // quiz-area
+
+    var _loop = function _loop($i) {
+        $('input:radio[name=q' + $i + ']').click(function () {
+            if ($i == 10) {
+                gsap.to('.quiz__btn--finish', 0.5, { opacity: 1, pointerEvents: 'visible' });
+            } else {
+                gsap.to('.quiz__btn--next', 0.5, { opacity: 1, pointerEvents: 'visible' });
+            }
+        });
+    };
+
+    for (var $i = 1; $i <= 10; $i++) {
+        _loop($i);
+    }
+
+    $('.quiz__btn--next').click(function () {
+        $('.this-quoetion').removeClass('thisActive');
+        gsap.to('.quiz-area__inner--question-step' + quizStep, 0.5, { opacity: 0, pointerEvents: 'none' });
+        gsap.to('.quiz__btn--next', 0.5, { opacity: 0, pointerEvents: 'none' });
+        quizStep += 1;
+        gsap.to('.quiz-area__inner--question-step' + quizStep, 0.5, { opacity: 1, pointerEvents: 'visible', delay: 0.4 });
+        $('.progress__box:nth-of-type(' + quizStep + ') .chk').addClass('active');
+        $('.progress__box:nth-of-type(' + quizStep + ') .this-quoetion').addClass('thisActive');
+    });
+
+    $('.quiz__btn--finish').click(function () {
+        console.log('fisish!!');
+
+        var quizResult = $('#quiz-area__form').serializeArray();
+        console.log(quizResult);
+
+        //정답이랑 내가 체크한 값 비교하기
+        var quizScore = 0;
+        var quizCorrectResult = [2, 1, 2, 2, 1, 2, 2, 2, 1, 2];
+        for (var k = 0; k < quizCorrectResult.length; k++) {
+            if (quizCorrectResult[k] == Number(quizResult[k].value)) {
+                //맞은 개수
+                quizScore += 1;
+            }
+        }
+        //해설지에 ox표기
+
+        console.log('quizScore = ' + quizScore);
+
+        quizResultPage(quizScore);
+    });
+
+    var quizResultPage = function quizResultPage(score) {
+        // score graph 표기
+        for (var $j = 1; $j <= score; $j++) {
+            $('.number-graph path:nth-of-type(' + $j + ')').addClass('active');
+        }
+        $('.number-text-strong .sc-num').html(score * 10);
+        $('.number-text-default .sc-num').html(score);
+
+        // grade 표기
+        var gradeTitle = void 0,
+            gradeEtc = void 0;
+        if (score == 0) {
+            gradeTitle = '당신은 면역 상식이 전혀 없습니다.';
+            gradeEtc = '아직 면역에 대해 모르시네요. <br>NK세포와 함께 더 알아가는 건 어떨까요?';
+        } else if (score <= 3) {
+            gradeTitle = '당신은 면역 상식 어린이 수준입니다.';
+            gradeEtc = '아직 면역에 대해 잘 모르시네요. <br>NK세포와 함께 더 알아가는 건 어떨까요?';
+        } else if (score <= 7) {
+            gradeTitle = '당신은 면역 상식은 학생수준 입니다.';
+            gradeEtc = '어느 정도 더 관심을 기울인다면, <br>곧 면역 상식왕이 되겠습니다!';
+        } else if (score <= 8) {
+            gradeTitle = '당신은 면역 상식 박사입니다.';
+            gradeEtc = '혹시 면역학 공부를 따로 하셨나요? <br>면역 상식으론 따라 잡을 이가 없네요.';
+        }
+        $('.grade-title').html(gradeTitle);
+        $('.grade-etc').html(gradeEtc);
+
+        gsap.to('.quiz-area__inner--question', 0.5, { opacity: 0, pointerEvents: 'none' });
+        gsap.to('.quiz-area__inner--result', 0.5, { opacity: 1, pointerEvents: 'visible' });
+    };
+
+    $('.quiz-explain-btn').click(function () {
+        console.log('정답 및 해설보기');
+    });
+
+    // quiz-area - after
 
 
     // immunity-relation
@@ -722,18 +801,30 @@ window.onload = function () {}
     defaultSet(); // 기본 셋팅 실행
 });
 
+/*
 var explainBtnActive;
-var explainBtn = function explainBtn(flag, num) {
-    if (flag == 'show') {
+const explainBtn = (flag, num) => {
+    if(flag == 'show'){
         $('.quiz-area__inner--question-sec .quiz-area__inner--explain').removeClass('active');
-        gsap.to('.quiz-area__inner--explainBtn .quiz-area__inner--explainBtn-hide', 0.3, { opacity: 0, pointerEvents: 'none' });
-        gsap.to('.quiz-area__inner--explainBtn.q' + num + ' .quiz-area__inner--explainBtn-hide', 0.3, { opacity: 1, pointerEvents: 'visible' });
-        $('.quiz-area__inner--question-sec:nth-of-type(' + num + ') .quiz-area__inner--explain').addClass('active');
+        gsap.to('.quiz-area__inner--explainBtn .quiz-area__inner--explainBtn-hide', 0.3, {opacity: 0, pointerEvents:'none'});
+        gsap.to('.quiz-area__inner--explainBtn.q'+num+' .quiz-area__inner--explainBtn-hide', 0.3, {opacity: 1, pointerEvents:'visible'});
+        $('.quiz-area__inner--question-sec:nth-of-type('+num+') .quiz-area__inner--explain').addClass('active');
         explainBtnActive = num;
-    } else {
-        gsap.to('.quiz-area__inner--explainBtn.q' + num + ' .quiz-area__inner--explainBtn-hide', 0.3, { opacity: 0, pointerEvents: 'none' });
-        if (explainBtnActive == num) {
-            $('.quiz-area__inner--question-sec:nth-of-type(' + num + ') .quiz-area__inner--explain').removeClass('active');
+    }else {
+        gsap.to('.quiz-area__inner--explainBtn.q'+num+' .quiz-area__inner--explainBtn-hide', 0.3, {opacity: 0, pointerEvents:'none'});
+        if(explainBtnActive == num){
+            $('.quiz-area__inner--question-sec:nth-of-type('+num+') .quiz-area__inner--explain').removeClass('active');
         }
     }
+}
+*/
+
+var explainBtnActive;
+var explainBtn = function explainBtn(num) {
+    if (explainBtnActive == num) return false;
+
+    //console.log('flag = ' + flag );
+    console.log('num = ' + num);
+
+    explainBtnActive = num;
 };

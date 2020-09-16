@@ -115,12 +115,447 @@ $white : #fff;
 .quiz-area{
     width: 100%;
     height: 100%;
-    background: #F2F2F2;
+    background: #A81B21;
 
     transform: translateY(100vh);
     position: absolute;
     top: 0;
 
+    &__inner{
+        opacity: 0;
+
+        @include box_container( 1400px, -300px, 0, 0, -700px, 50%, 50% );
+        height: 600px;
+        &--headline{
+            text-align: center;
+            &-text{
+                @include headlineText(#fff, 30px, 40px, -0.05em);
+                .highlight{
+                    @include fw-medium;
+                }
+            }
+        }
+
+        &--cover{
+            background: #fff;
+            width: 848px;
+            height: 354px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -177px;
+            margin-left: -424px;
+            box-shadow: 30px 30px 40px #00000027;
+        }
+        &--start{
+            .start-explanatory{
+                text-align: center;
+                @include fontInfo(26px, 42px, -0.05em);
+                @include fw-demilight;
+                padding: 114px 0;
+                &-point{
+                    color: #BA0000;
+                }
+            }
+            .start-btn{
+                color: #fff;
+                @include fontInfo(20px, 33px, -0.05em);
+                @include fw-medium;
+                border: 2px solid #fff;
+                width: 280px;
+                height: 58px;
+                text-align: center;
+                background: #A81B21;
+                margin-top: 87px;
+                position: absolute;
+                left: 50%;
+                margin-left: -140px;
+            }
+        }
+        &--progress{
+            width: 850px;
+            position: absolute;
+            top: -40px;
+            .progress__box{
+                width: 82px;
+                float: left;
+                margin-right: 3px;
+                text-align: center;
+                .this-quoetion{
+                    color: #fff;
+                    @include fontInfo(12px, 33px, 0);
+                    @include ProximaNova;
+                    opacity: 0;
+                    transition: opacity 0.5s;
+                    &.thisActive{
+                        opacity: 1;
+                    }
+                    &:before{
+                        content: '';
+                        background: url($imgPath + 'progress-chk.png') no-repeat;
+                        width: 9px;
+                        height: 9px;
+                        display: inline-block;
+                        position: absolute;
+                        margin-top: -2px;
+                        margin-left: 20px;
+                    }
+                }
+                .chk{
+                    background: #fff;
+                    width: 100%;
+                    height: 2px;
+                    display: block;
+                    transition: opacity 0.5s;
+                    opacity: 0.35;
+                    &.active{
+                        opacity: 1;
+                    }
+                }
+                &:after{
+                    @include clear;
+                }
+            }
+        }
+        &--question{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            @for $i from 1 through 10{
+                &-step#{$i}{
+                    opacity: 0;
+                    pointer-events: none;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .question--text{
+                color: #000000;
+                @include fontInfo(38px, 52px, -0.05em);
+                @include fw-medium;
+                text-align: center;
+                padding: 75px 0;
+            }
+            .question__input{
+                text-align: center;
+                input[type='radio']{
+                    display:none;
+                    + label{
+                        display: inline-block;
+                        cursor: pointer;
+                        width: 152px;
+                        height: 45px;
+                        text-align: center;
+                        border-radius: 28px;
+                        position: relative;
+                        border: 2px solid #A81B21;
+                        color: #A81B21;
+                        background: #fff;
+                        margin: 0 30px;
+                        transition: all 0.3s;
+                        @include fontInfo(24px, 40px, 0);
+                        @include ProximaNova;
+                    }
+                    &:checked{
+                        + label{
+                            background: #A81B21;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            .quiz__btn--next, .quiz__btn--finish{
+                opacity: 0;
+                pointer-events: none;
+                @include fontInfo(30px, 33px, 0);
+                @include fw-medium;
+                color: #fff;
+                background: none;
+                position: absolute;
+                bottom: -110px;
+                width: 125px;
+                left: 50%;
+                margin-left: -62.5px;
+                text-align: center;
+                &:after{
+                    content: '';
+                    background: url($imgPath + 'quiz__btn-underline.png') no-repeat;
+                    width: 132px;
+                    height: 13px;
+                    position: absolute;
+                    bottom: -8px;
+                    left: 50%;
+                    margin-left: -66px;
+
+                }
+            }
+        }
+        &--result{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            .result-area{
+                width: 100%;
+                height: 100%;
+                .score-number{
+                    width: 420px;
+                    height: 240px;
+                    margin-top: 56px;
+                    display: inline-block;
+                    border-right: 1px solid #212121;
+                    .number-graph{
+                        position: absolute;
+                        width: 240px;
+                        left: 100px;
+                        path{
+                            fill: #f2f2f2;
+                            &.active{
+                                fill: #A81B21;
+                            }
+                        }
+                    }
+                    .number-text-strong{
+                        @include fontInfo(23px, 31px, -0.05em);
+                        @include fw-regular;
+                        color: #242424;
+                        position: absolute;
+                        top: 155px;
+                        left: 150px;
+                        width: 150px;
+                        text-align: center;
+                        .sc-num{
+                            color: #A81B21;
+                            @include fontInfo(58px, 33px, 0);
+                            @include fw-medium;
+                        }
+                    }
+                    .number-text-default{
+                        position: absolute;
+                        top: 205px;
+                        left: 155px;
+                        width: 150px;
+                        text-align: center;
+                        color: #242424;
+                        @include fontInfo(14px, 19px, -0.05em);
+                        @include fw-regular;
+                    }
+                }
+                .score-grade{
+                    position: absolute;
+                    top: 0;
+                    width: 420px;
+                    height: 240px;
+                    margin-top: 56px;
+                    display: inline-block;
+                    padding: 65px 0px 0px 50px;
+                    .grade-title{
+                        color: #A81B21;
+                        @include fontInfo(22px, 37px, -0.04em);
+                        @include fw-bold;
+                    }
+                    .grade-etc{
+                        color: #242424;
+                        margin-top: 25px;
+                        @include fontInfo(20px, 29px, -0.04em);
+                        @include fw-light;
+                    }
+                }
+            }
+            .quiz-explain-btn{
+                color: #fff;
+                @include fontInfo(20px, 33px, -0.05em);
+                @include fw-medium;
+                border: 2px solid #fff;
+                width: 280px;
+                height: 58px;
+                text-align: center;
+                background: #A81B21;
+                margin-top: 87px;
+                position: absolute;
+                left: 50%;
+                margin-left: -140px;
+            }
+        }
+    }
+
+    &__explain{
+        @include box_container( 830px, -375px, 0, 0, -415px, 50%, 50% );
+        height: 750px;
+        .explain__header{
+            width: 100%;
+            height: 40px;
+            display: block;
+            &--list{
+                &-title{
+                    color: #fff;
+                    float: left;
+                    text-align: center;
+                    @include fontInfo(12px, 33px, -0.06em);
+                    @include fw-bold;
+                    &:nth-of-type(1){
+                        width: 620px;
+                        text-align: left;
+                        padding-left: 30px;
+                    }
+                    &:nth-of-type(2){
+                        width: 80px;
+                    }
+                    &:nth-of-type(3){
+                        width: 65px;
+                    }
+                    &:nth-of-type(4){
+                        width: 65px;
+                    }
+                    &:after{
+                        @include clear;
+                    }
+                }
+            }
+        }
+        .explain__list{
+            &-item{
+                background: #fff;
+                width: 100%;
+                height: 57px;
+                //margin-bottom: 10px;
+                position: relative;
+                .number{
+                    color: #212121;
+                    @include fontInfo(20px, 33px, 0);
+                    @include fw-medium;
+                    width: 60px;
+                    display: inline-block;
+                    text-align: center;
+                    padding-top: 12px;
+                }
+                .quistion-text{
+                    color: #212121;
+                    @include fontInfo(20px, 33px, -0.05em);
+                    @include fw-medium;
+                    display: inline-block;
+                    width: 590px;
+                }
+                .answer-status--true{
+                    background: url($imgPath + 'answer-status--true.png') no-repeat;
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 18px;
+                    opacity: 0;
+                    &.active{
+                        opacity: 1;
+                    }
+                }
+                .answer-status--false{
+                    background: url($imgPath + 'answer-status--false.png') no-repeat;
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 18px;
+                    opacity: 0;
+                    &.active{
+                        opacity: 1;
+                    }
+                }
+                .select_true{
+                    background: url($imgPath + 'select_true.png') no-repeat;
+                    width: 21px;
+                    height: 21px;
+                    display: inline-block;
+                    width: 30px;
+                    margin-left: 55px;
+                    position: relative;
+                    top: 3px;
+                }
+                .select_false{
+                    background: url($imgPath + 'select_false.png') no-repeat;
+                    width: 21px;
+                    height: 21px;
+                    display: inline-block;
+                    position: relative;
+                    top: 3px;
+                }
+                .moreExplain{
+                    background: url($imgPath + 'more-explain.png') no-repeat;
+                    background-position: center;
+                    display: inline-block;
+                    text-indent: -99999px;
+                    width: 60px;
+                    height: 55px;
+                    margin: 0 auto;
+                }
+
+            }
+            &-more{
+                width: 100%;
+                background: #212121;
+                //height: 135px;
+                margin-bottom: 10px;
+                position: relative;
+                padding-top: 20px;
+                height: 0;
+                &.long{
+                    //height: 205px;
+                }
+                .status-chk{
+                    width: 50px;
+                    display: inline-block;
+                    position: absolute;
+                    top: 20px;
+                    left: 75px;
+                    //position: relative;
+                    //top: -20px;
+                    //margin-left: 70px;
+                    &--title{
+                        color: #D0D0D0;
+                        @include fontInfo(14px, 33px, -0.05em);
+                        @include fw-regular;
+                        display: block;
+                        text-align: center;
+                    }
+                    .chk-false{
+                        background: url($imgPath + 'chk-false.png') no-repeat;
+                        position: relative;
+                        height: 32px;
+                        width: 100%;
+                        background-size: 32px 32px;
+                        background-position: center;
+                        display: inline-block;
+                    }
+                    .chk-true{
+                        background: url($imgPath + 'chk-true.png') no-repeat;
+                        position: relative;
+                        height: 32px;
+                        width: 100%;
+                        background-size: 32px 32px;
+                        background-position: center;
+                        display: inline-block;
+                    }
+                }
+                .status-explain{
+                    display: inline-block;
+                    width: 525px;
+                    color: #D0D0D0;
+                    text-align: justify;
+                    margin-left: 140px;
+                    @include fontInfo(20px, 33px, -0.05em);
+                    @include fw-regular;
+                    
+                }
+            }
+        }
+    }
+
+
+    /*
     &__inner{
         @include box_container( 1400px, -260px, 0, 0, -700px, 50%, 50% );
         height: 520px;
@@ -382,6 +817,7 @@ $white : #fff;
             }
         }
     }
+    */
 }
 
 .immunity-relation{
