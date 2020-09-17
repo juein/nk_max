@@ -299,13 +299,18 @@ i {
   margin-left: -708px;
   top: 50%;
   margin-top: -112px;
+  opacity: 0;
 }
 
 .visual-intro__type-text.overlay {
   background: url("../img/intro-NatureKillerCell_overlay.png") no-repeat;
+  opacity: 0;
 }
 
 .visual-intro__illust {
+  opacity: 0;
+  -webkit-transform: translate(20px, 20px);
+          transform: translate(20px, 20px);
   background: url("../img/intro_illust.png") no-repeat;
   width: 450px;
   height: 1208px;
@@ -326,6 +331,7 @@ i {
 }
 
 .visual-intro__area--headline-first, .visual-intro__area--headline-last {
+  opacity: 0;
   text-indent: -99999px;
   display: inline-block;
 }
@@ -337,6 +343,8 @@ i {
 }
 
 .visual-intro__area--headline-first {
+  -webkit-transform: translateX(440px);
+          transform: translateX(440px);
   background: url("../img/title_text_1.png") no-repeat;
   width: 548px;
   height: 148px;
@@ -346,6 +354,8 @@ i {
 }
 
 .visual-intro__area--headline-last {
+  -webkit-transform: translateX(-500px);
+          transform: translateX(-500px);
   background: url("../img/title_text_2.png") no-repeat;
   width: 560px;
   height: 144px;
@@ -1394,6 +1404,7 @@ i {
   height: 100%;
   cursor: pointer;
   overflow: hidden;
+  position: relative;
 }
 
 .assassin-info__visual--list-origin:after {
@@ -1432,6 +1443,7 @@ i {
   height: 100%;
   cursor: pointer;
   overflow: hidden;
+  position: relative;
 }
 
 .assassin-info__visual--list-talent:after {
@@ -1472,6 +1484,7 @@ i {
   height: 100%;
   cursor: pointer;
   overflow: hidden;
+  position: relative;
 }
 
 .assassin-info__visual--list-hero:after {
@@ -1490,8 +1503,8 @@ i {
   background-size: 100%;
   height: 100%;
   background-size: 72%;
-  -webkit-transform: translate(30px, -20px);
-          transform: translate(30px, -20px);
+  -webkit-transform: translate(30px, 0px);
+          transform: translate(30px, 0px);
 }
 
 .assassin-info__visual--bg-hero {
@@ -1512,6 +1525,7 @@ i {
   height: 100%;
   cursor: pointer;
   overflow: hidden;
+  position: relative;
 }
 
 .assassin-info__visual--list-villain:after {
@@ -1709,7 +1723,7 @@ i {
 .assassin-info__visual--content--talent .content--title {
   position: absolute;
   top: 55px;
-  left: 130px;
+  left: 160px;
 }
 
 .assassin-info__visual--content--talent-text-area {
@@ -1717,6 +1731,143 @@ i {
   width: 630px;
   top: 145px;
   left: 225px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box {
+  position: absolute;
+  width: 410px;
+  right: -160px;
+  height: 100%;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--title {
+  color: #212121;
+  font-size: 12px;
+  line-height: 33px;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+  padding-top: 5px;
+  padding-left: 15px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--t, .assassin-info__visual--content--talent .mechanism__box--nk {
+  background: #fff;
+  width: 100%;
+  height: 215px;
+  position: relative;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--t .cancer-cell, .assassin-info__visual--content--talent .mechanism__box--nk .cancer-cell {
+  background: url("../img/cancer-cell.png") no-repeat;
+  width: 132px;
+  height: 132px;
+  position: absolute;
+  top: 50px;
+  left: 235px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--t {
+  margin-top: 125px;
+  margin-bottom: 25px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--t .t-cell-1 {
+  position: absolute;
+  background: url("../img/t-cell-1.png") no-repeat;
+  width: 31px;
+  height: 31px;
+  top: 75px;
+  left: 55px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--t .t-cell-2 {
+  position: absolute;
+  background: url("../img/t-cell-2.png") no-repeat;
+  width: 51px;
+  height: 51px;
+  top: 130px;
+  left: 55px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--t .t-cell-3 {
+  position: absolute;
+  background: url("../img/t-cell-3.png") no-repeat;
+  width: 90px;
+  height: 90px;
+  top: 70px;
+  left: 110px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--t .t-cell-3 {
+  z-index: 2;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .nk-cell-1 {
+  position: absolute;
+  background: url("../img/nk-cell-1.png") no-repeat;
+  width: 35px;
+  height: 35px;
+  top: 75px;
+  left: 55px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .nk-cell-2 {
+  position: absolute;
+  background: url("../img/nk-cell-2.png") no-repeat;
+  width: 50px;
+  height: 50px;
+  top: 130px;
+  left: 55px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .nk-cell-3 {
+  position: absolute;
+  background: url("../img/nk-cell-3.png") no-repeat;
+  width: 90px;
+  height: 90px;
+  top: 70px;
+  left: 110px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .nk-cell-2 {
+  left: 35px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .nk-boom {
+  position: absolute;
+  background: url("../img/nk-boom.png") no-repeat;
+  width: 71px;
+  height: 50px;
+  top: 40px;
+  left: 188px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .nk-weapon-1, .assassin-info__visual--content--talent .mechanism__box--nk .nk-weapon-2 {
+  position: absolute;
+  background: #3B5AC3;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .nk-weapon-1 {
+  width: 63px;
+  height: 8px;
+  top: 105px;
+  left: 195px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .nk-weapon-2 {
+  width: 28px;
+  height: 8px;
+  top: 125px;
+  left: 195px;
+}
+
+.assassin-info__visual--content--talent .mechanism__box--nk .cancer-cell {
+  z-index: 2;
 }
 
 .assassin-info__visual--content--hero {
@@ -1843,6 +1994,7 @@ i {
           transform: translateY(100vh);
   position: absolute;
   top: 0;
+  overflow: hidden;
 }
 
 .epilogue__inner {
@@ -1892,14 +2044,71 @@ i {
   content: '';
 }
 
+.epilogue__background {
+  width: 100%;
+  height: 100%;
+}
+
+.epilogue__background-illust {
+  background: url("../img/epilogue_illust.png") no-repeat;
+  width: 970px;
+  height: 1600px;
+  position: absolute;
+  left: 50%;
+  margin-left: -640px;
+  background-size: 80%;
+}
+
+.epilogue__background-rain1 {
+  background: url("../img/epilogue_rain_1.png") no-repeat;
+}
+
+.epilogue__background-rain2 {
+  background: url("../img/epilogue_rain_2.png") no-repeat;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.epilogue__background-rain3 {
+  background: url("../img/epilogue_rain_3.png") no-repeat;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.epilogue__background-rain1 {
+  z-index: 2;
+  width: 970px;
+  height: 1600px;
+  position: absolute;
+  left: 50%;
+  margin-left: -640px;
+  background-size: 80%;
+}
+
 .outro {
   width: 100%;
   height: 100%;
-  background: #F2F2F2;
+  background: #000;
   -webkit-transform: translateY(100vh);
           transform: translateY(100vh);
   position: absolute;
   top: 0;
+  overflow: hidden;
+}
+
+.outro__background {
+  background: url("../img/epilogue_rain_2.png") no-repeat;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
 }
 
 .outro__inner {
@@ -1913,12 +2122,13 @@ i {
 }
 
 .outro__inner--headline {
+  color: #fff;
+  font-size: 60px;
+  line-height: 73px;
+  letter-spacing: 0;
   font-family: 'ProximaNova', sans-serif;
   font-weight: 400;
-  color: #212121;
-  font-size: 40px;
-  line-height: 48px;
-  letter-spacing: 0;
+  font-weight: 600;
 }
 
 .outro__inner--headline .demilight {
@@ -1931,7 +2141,8 @@ i {
   font-weight: 600;
 }
 
-.outro__inner--text {
+.outro__inner--text-first, .outro__inner--text-second {
+  color: #B5B5B5;
   font-size: 20px;
   line-height: 33px;
   letter-spacing: -0.05em;
@@ -1940,16 +2151,32 @@ i {
   margin: 65px 0;
 }
 
-.outro__inner--video-play {
-  font-family: 'ProximaNova', sans-serif;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 43px;
-  letter-spacing: 0;
+.outro__inner--text-second {
   color: #fff;
-  background: #000;
-  width: 375px;
-  height: 95px;
+  font-size: 20px;
+  line-height: 33px;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+}
+
+.outro__inner--video-play {
+  border: 2px solid #A81B21;
+  border-radius: 70px;
+  width: 298px;
+  height: 76px;
+  background: none;
+  margin-top: 75px;
+  margin-left: 10px;
+}
+
+.outro__inner--video-play-text {
+  background: url("../img/play_video.png") no-repeat;
+  text-indent: -99999px;
+  display: block;
+  width: 177px;
+  height: 24px;
+  margin: 0 auto;
 }
 
 .outro__video {
@@ -1967,6 +2194,28 @@ i {
 .outro__video--panel-in {
   width: 100%;
   height: 100%;
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 @media all and (max-height: 820px) {
@@ -1991,5 +2240,36 @@ i {
     -webkit-transform: scale(0.8);
             transform: scale(0.8);
   }
+  .quiz-area__inner--start .start-btn {
+    margin-top: 80px;
+  }
+  .assassin-info__visual--content--origin,
+  .assassin-info__visual--content--talent,
+  .assassin-info__visual--content--hero,
+  .assassin-info__visual--content--villain {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+@media all and (min-width: 1921px) {
+  .epilogue__background-illust, .epilogue__background-rain1 {
+    background-size: 100%;
+    margin-left: -750px;
+  }
+}
+
+@media all and (max-width: 1920px) and (min-height: 1350px) {
+  .epilogue__background-illust, .epilogue__background-rain1 {
+    background-size: 86%;
+  }
+}
+
+body.ie11 .quiz__btn--next:after, body.ie11 .quiz__btn--finish:after, body.ie10 .quiz__btn--next:after, body.ie10 .quiz__btn--finish:after {
+  bottom: 0;
+}
+
+body.ie11 .quiz-area__inner--result .result-area .score-number .number-graph, body.ie10 .quiz-area__inner--result .result-area .score-number .number-graph {
+  top: 0;
 }
 /*# sourceMappingURL=style.css.map */

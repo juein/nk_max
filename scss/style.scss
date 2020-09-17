@@ -67,11 +67,15 @@ $white : #fff;
         margin-left: -708px;
         top: 50%;
         margin-top: -112px;
+        opacity: 0;
         &.overlay{
             background: url($imgPath + 'intro-NatureKillerCell_overlay.png') no-repeat;
+            opacity: 0;
         }
     }
     &__illust{
+        opacity: 0;
+        transform: translate(20px, 20px);
         background: url($imgPath + 'intro_illust.png') no-repeat;
         width: 450px;
         height: 1208px;
@@ -86,6 +90,7 @@ $white : #fff;
         height: 232px;
         &--headline{
             &-first, &-last{
+                opacity: 0;
                 text-indent: -99999px;
                 display: inline-block;
                 &:after{
@@ -93,6 +98,7 @@ $white : #fff;
                 }
             }
             &-first{
+                transform: translateX(440px);
                 background: url($imgPath + 'title_text_1.png') no-repeat;
                 width: 548px;
                 height: 148px;
@@ -101,6 +107,7 @@ $white : #fff;
                 margin-left: 10px;
             }
             &-last{
+                transform: translateX(-500px);
                 background: url($imgPath + 'title_text_2.png') no-repeat;
                 width: 560px;
                 height: 144px;
@@ -790,8 +797,8 @@ $white : #fff;
             margin-top: 0;
             overflow: hidden;
 
-            $talentObjWidth : 448, 514, 664, 399;
-            $talentObjHeight : 156, 315, 425, 197;
+            //$talentObjWidth : 448, 514, 664, 399;
+            //$talentObjHeight : 156, 315, 425, 197;
 
             @for $i from 1 through 4{
                 .talent__object-#{$i}{
@@ -832,6 +839,7 @@ $white : #fff;
                 cursor: pointer;
                 overflow: hidden;
                 //overflow: visible;
+                position: relative;
                 &:after{
                     @include clear;
                 }
@@ -857,7 +865,8 @@ $white : #fff;
                 }
                 @if($obj == 'hero'){
                     background-size: 72%;
-                    transform: translate(30px, -20px);
+                    //transform: translate(30px, -20px);
+                    transform: translate(30px, 0px);
                 }
                 @if($obj == 'villain'){
                     //background-position: bottom;
@@ -1027,13 +1036,108 @@ $white : #fff;
                 .content--title{
                     position: absolute;
                     top: 55px;
-                    left: 130px;
+                    left: 160px;
                 }
                 &-text-area{
                     position: absolute;
                     width: 630px;
                     top: 145px;
                     left: 225px;
+                }
+                .mechanism__box{
+                    position: absolute;
+                    width: 410px;
+                    right: -160px;
+                    height: 100%;
+                    //right: 300px;
+                    &--title{
+                        color: #212121;
+                        @include fontInfo(12px, 33px, -0.05em);
+                        @include fw-regular;
+                        padding-top: 5px;
+                        padding-left: 15px;
+                    }
+                    &--t, &--nk{
+                        background: #fff;
+                        width: 100%;
+                        height: 215px;
+                        position: relative;
+                        .cancer-cell{
+                            background: url($imgPath + 'cancer-cell.png') no-repeat;
+                            width: 132px;
+                            height: 132px;
+                            position: absolute;
+                            //animation: rotating 10s linear infinite;
+                            top: 50px;
+                            left: 235px;
+                        }
+                    }
+                    $cellTopData : 75, 130, 70;
+                    $cellLeftData : 55, 55, 110;
+
+                    &--t{
+                        margin-top: 125px;
+                        margin-bottom: 25px;
+                        $tCellSize: 31, 51, 90;
+                        @for $i from 1 through 3{
+                            .t-cell-#{$i}{
+                                position: absolute;
+                                background: url($imgPath + 't-cell-#{$i}.png') no-repeat;
+                                width: #{nth($tCellSize, $i)}px;
+                                height: #{nth($tCellSize, $i)}px;
+                                top: #{nth($cellTopData, $i)}px;
+                                left: #{nth($cellLeftData, $i)}px;
+                            }
+                        }
+                        .t-cell-3{
+                            z-index: 2;
+                        }
+                    }
+                    &--nk{
+                        $nkCellSize: 35, 50, 90;
+                        @for $i from 1 through 3{
+                            .nk-cell-#{$i}{
+                                position: absolute;
+                                background: url($imgPath + 'nk-cell-#{$i}.png') no-repeat;
+                                width: #{nth($nkCellSize, $i)}px;
+                                height: #{nth($nkCellSize, $i)}px;
+                                top: #{nth($cellTopData, $i)}px;
+                                left: #{nth($cellLeftData, $i)}px;
+                            }
+                        }
+                        .nk-cell-2{
+                            left: 35px;
+                        }
+                        .nk-boom{
+                            position: absolute;
+                            background: url($imgPath + 'nk-boom.png') no-repeat;
+                            width: 71px;
+                            height: 50px;
+                            top: 40px;
+                            left: 188px;
+                            transform: scale(0);
+                        }
+                        .nk-weapon-1, .nk-weapon-2{
+                            position: absolute;
+                            background: #3B5AC3;
+                            transform-origin: left;
+                        }
+                        .nk-weapon-1{
+                            width: 63px;
+                            height: 8px;
+                            top: 105px;
+                            left: 195px;
+                        }
+                        .nk-weapon-2{
+                            width:28px;
+                            height: 8px;
+                            top: 125px;
+                            left: 195px;
+                        }
+                        .cancer-cell{
+                            z-index: 2;
+                        }
+                    }
                 }
             }
             &--hero{
@@ -1117,7 +1221,6 @@ $white : #fff;
                 villain: -55
             );
 
-
             @each $exContent in origin, talent, hero, villain {
                 &--#{$exContent}-typo{
                     background: url($imgPath + '#{$exContent}__typo.png') no-repeat;
@@ -1129,10 +1232,7 @@ $white : #fff;
                     position: absolute;
                 }
             }
-            
-
         }
-
     }
 }
 
@@ -1143,6 +1243,7 @@ $white : #fff;
     transform: translateY(100vh);
     position: absolute;
     top: 0;
+    overflow: hidden;
     &__inner{
         @include box_container( 1120px, -140px, 0, 0, -560px, 50%, 50% );
         height: 280px;
@@ -1164,36 +1265,98 @@ $white : #fff;
             }
         }
     }
+    &__background{
+        width: 100%;
+        height: 100%;
+        &-illust{
+            background: url($imgPath + 'epilogue_illust.png') no-repeat;
+            width: 970px;
+            height: 1600px;
+            position: absolute;
+            left: 50%;
+            margin-left: -640px;
+            background-size: 80%;
+
+        }
+        @for $i from 1 through 3{
+            &-rain#{$i}{
+                background: url($imgPath + 'epilogue_rain_#{$i}.png') no-repeat;
+                @if $i >= 2{
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-size: cover;
+                }
+            }
+        }
+        &-rain1{
+            z-index: 2;
+            width: 970px;
+            height: 1600px;
+            position: absolute;
+            left: 50%;
+            margin-left: -640px;
+            background-size: 80%;
+        }
+    }
     
 }
 
 .outro{
     width: 100%;
     height: 100%;
-    background: #F2F2F2;
+    background: #000;
     transform: translateY(100vh);
     position: absolute;
     top: 0;
+    overflow: hidden;
+    &__background{
+        background: url($imgPath + 'epilogue_rain_2.png') no-repeat;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
     &__inner{
         @include box_container( 1120px, -270px, 0, 0, -560px, 50%, 50% );
         height: 540px;
         color: #212121;
         &--headline{
+            @include headlineText(#fff, 60px, 73px, 0);
             @include ProximaNova;
-            @include headlineText(#212121, 40px, 48px, 0);
+            font-weight: 600;
         }
-        &--text{
+        &--text-first, &--text-second{
+            color: #B5B5B5;
             @include fontInfo(20px, 33px, -0.05em);
             @include fw-regular;
             margin: 65px 0;
         }
+        &--text{
+            &-second{
+                color: #fff;
+                @include fontInfo(20px, 33px, -0.05em);
+                @include fw-regular;
+            }
+        }
         &--video-play{
-            @include ProximaNova;
-            @include fontInfo(40px, 43px, 0);
-            color: #fff;
-            background: #000;
-            width: 375px;
-            height: 95px;
+            border: 2px solid #A81B21;
+            border-radius: 70px;
+            width: 298px;
+            height: 76px;
+            background: none;
+            margin-top: 75px;
+            margin-left: 10px;
+            &-text{
+                background: url($imgPath + 'play_video.png') no-repeat;
+                text-indent: -99999px;
+                display: block;
+                width: 177px;
+                height: 24px;
+                margin: 0 auto;
+            }
         }
     }
     &__video{
@@ -1215,6 +1378,22 @@ $white : #fff;
     }
 }
 
+@keyframes rotating {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
 
 @media all and (max-height: 820px){
     .quiz-area__explain{
@@ -1235,5 +1414,39 @@ $white : #fff;
     .visual-intro__type-text{
         transform: scale(0.8);
     }
-    
+    .quiz-area__inner--start .start-btn{
+        margin-top: 80px;
+    }
+    .assassin-info__visual--content--origin,
+    .assassin-info__visual--content--talent,
+    .assassin-info__visual--content--hero,
+    .assassin-info__visual--content--villain{
+        transform: scale(0.8);
+    }
+}
+
+@media all and (min-width: 1921px){
+    .epilogue__background-illust, .epilogue__background-rain1{
+        background-size: 100%;
+        margin-left: -750px;
+    }
+}
+
+@media all and (max-width: 1920px) and (min-height: 1350px){
+    .epilogue__background-illust, .epilogue__background-rain1{
+        background-size: 86%;
+    }
+}
+
+body{
+    &.ie11, &.ie10{
+        .quiz__btn--next, .quiz__btn--finish{
+            &:after{
+                bottom: 0;
+            }
+        }
+        .quiz-area__inner--result .result-area .score-number .number-graph{
+            top: 0;
+        }
+    }
 }
