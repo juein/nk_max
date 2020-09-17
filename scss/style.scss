@@ -122,8 +122,7 @@ $white : #fff;
     top: 0;
 
     &__inner{
-        opacity: 0;
-
+        //opacity: 0;
         @include box_container( 1400px, -300px, 0, 0, -700px, 50%, 50% );
         height: 600px;
         &--headline{
@@ -389,11 +388,17 @@ $white : #fff;
     &__explain{
         @include box_container( 830px, -375px, 0, 0, -415px, 50%, 50% );
         height: 750px;
+        opacity: 0;
+        pointer-events: none;
         .explain__header{
             width: 100%;
             height: 40px;
             display: block;
+            position: absolute;
+            z-index: 2;
+            background: #A81B21; 
             &--list{
+                
                 &-title{
                     color: #fff;
                     float: left;
@@ -420,7 +425,18 @@ $white : #fff;
                 }
             }
         }
+        .explain__container{
+            width: 100%;
+            height: 1000px;
+            overflow: hidden;
+            position: relative;
+        }
         .explain__list{
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            overflow: hidden;
+            z-index: 1;
             &-item{
                 background: #fff;
                 width: 100%;
@@ -474,6 +490,10 @@ $white : #fff;
                     margin-left: 55px;
                     position: relative;
                     top: 3px;
+                    opacity: 0.3;
+                    &.active{
+                        opacity: 1;
+                    }
                 }
                 .select_false{
                     background: url($imgPath + 'select_false.png') no-repeat;
@@ -482,6 +502,10 @@ $white : #fff;
                     display: inline-block;
                     position: relative;
                     top: 3px;
+                    opacity: 0.3;
+                    &.active{
+                        opacity: 1;
+                    }
                 }
                 .moreExplain{
                     background: url($imgPath + 'more-explain.png') no-repeat;
@@ -497,13 +521,21 @@ $white : #fff;
             &-more{
                 width: 100%;
                 background: #212121;
-                //height: 135px;
+                height: 135px;
                 margin-bottom: 10px;
                 position: relative;
-                padding-top: 20px;
+                //padding-top: 20px;
                 height: 0;
-                &.long{
-                    //height: 205px;
+                overflow: hidden;
+                transition: all 0.6s;
+                //&.view-long{
+                //    height: 205px;
+                //}
+                &.view{
+                    height: 135px;
+                    &.long{
+                        height: 205px;
+                    }
                 }
                 .status-chk{
                     width: 50px;
@@ -546,6 +578,7 @@ $white : #fff;
                     color: #D0D0D0;
                     text-align: justify;
                     margin-left: 140px;
+                    margin-top: 20px;
                     @include fontInfo(20px, 33px, -0.05em);
                     @include fw-regular;
                     
@@ -553,271 +586,6 @@ $white : #fff;
             }
         }
     }
-
-
-    /*
-    &__inner{
-        @include box_container( 1400px, -260px, 0, 0, -700px, 50%, 50% );
-        height: 520px;
-        &--headline{
-            text-align: center;
-            &-text{
-                @include headlineText();
-                &-point{
-                    margin-left: 15px;
-                    color: #8B8B8B;
-                    @include fontInfo(49px, 59px, 0);
-                    @include ProximaNova;
-
-                }
-            }
-        }
-        &--question{
-            height: 190px;
-            overflow: hidden;
-            margin-top: 120px;
-            &-sec{
-                margin: 10px auto;
-                background: #fff;
-                width: 710px;
-                pointer-events: none;
-                transition: all 0.8s;
-                &-text{
-                    color: #C5C5C5;
-                    min-width: 620px;
-                    display: inline-block;
-                    padding: 9px 10px 9px 35px;
-                    @include fontInfo(20px, 33px, -0.05em);
-                    @include fw-regular;
-                }
-                &.active{
-                    pointer-events: visible;
-                    background: #212121;
-                    .quiz-area__inner--question-sec-text{
-                        color: #FFFFFF;
-                        @include fw-black;
-                    }
-                }
-            }
-        }
-        &--explain{
-            margin: 0 auto 10px auto;
-            height: 0;
-            overflow: hidden;
-            transform: translateY(0px);
-            transform-origin: top;
-            background: #212121;
-            width: 710px;
-            transition: all 1s;
-            &.active{
-                height: 125px;
-                &.reHeight{
-                    height: 160px;
-                }
-            }
-            &.bottom{
-                transform-origin: bottom;
-                margin-bottom: 0px;
-            }
-            
-            &-text{
-                color: #D0D0D0;
-                @include fontInfo(20px, 33px, -0.05em);
-                @include fw-regular;
-                padding: 15px 30px;
-            }
-        }
-        .explain__gloup{
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            left: 50%;
-            height: 600px;
-            top: -40px;
-            margin-left: 350px;
-        }
-        &--explainBtn{
-            position: absolute;
-            width: 58px;
-            top: 0;
-            position: relative;
-            height: 50px;
-            margin: 11px 20px 10px 20px;
-            &-show, &-hide{
-                position: absolute;
-                top: 0;
-                width: 100%;
-                height: 26px;
-                background: #212121;
-                color: #FFFFFF;
-                @include fontInfo(12px, 28px, -0.05em);
-                @include fw-medium;
-                border-radius: 3px;
-            }
-            &-hide{
-                opacity: 0;
-                pointer-events: none;
-            }
-            
-
-        }
-        &--result{
-            position: absolute;
-            left: 50%;
-            margin-left: -125px;
-            //outline: 1px solid;
-            top: 395px;
-            opacity: 0;
-            pointer-events: none;
-            background: #BA0000;
-            color: #FFFFFF;
-            @include fontInfo(20px, 33px, -0.05em);
-            @include fw-medium;
-            width: 250px;
-            height: 46px;
-            border-radius: 3px;
-        }
-        &--progress{
-            position: absolute;
-            width: 700px;
-            top: 510px;
-            left: 50%;
-            margin-left: -350px;
-            .mark{
-                position: absolute;
-                top: -9px;
-                .radius{
-                    border-radius: 50%;
-                    width: 18px;
-                    height: 18px;
-                    background: #D8D8D8;
-                    float: left;
-                    &:not(:first-child){
-                        margin-left: 56px;
-                    }
-                    i{
-                        background: #BA0000;
-                        width: 12px;
-                        height: 12px;
-                        display: block;
-                        border-radius: 50%;
-                        margin: 3px;
-                        transform: scale(0);
-                        transition: all 0.5s;
-                    }
-                    &.active{
-                        i{
-                            transform: scale(1);
-                        }
-                    }
-                    &:after{
-                        @include clear;
-                    }
-                }
-            }
-            .line{
-                width: 680px;
-                height: 2px;
-                background: #D8D8D8;
-                overflow: hidden;
-                position: relative;
-                left: 2px;
-                .active-line{
-                    transform-origin: left;
-                    transform: translateX(-670px);
-                    background: #BA0000;
-                    width: 680px;
-                    height: 2px;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
-            }
-        }
-    }
-    #quiz-area__form{
-        .quix-form__button{
-            display: inline-block;
-            min-width: 80px;
-            .md-radio{
-                width: 100%;
-                height: 45px;
-                display: inline-block;
-            }
-            input[type='radio']{
-                display:none;
-                + label{
-                    display: inline-block;
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    background: #F4F4F4;
-                    cursor: pointer;
-                    margin: 0 4px;
-                    position: relative;
-                    top: 7px;
-                    &.correct{
-                        background: #0965C1;
-                        svg{
-                            line, g{
-                                stroke: #FFFFFF !important;
-                            }
-                        }
-                    }
-                }
-                + label.true{
-                    > svg{
-                        width: 15px;
-                        height: 14px;
-                        margin: 8px;
-                        g{
-                            stroke: #CECECE;
-                        }
-                    }
-                }
-                + label.false{
-                    > svg{
-                        width: 15px;
-                        height: 12px;
-                        margin: 9px 8px;
-                        line{
-                            stroke: #CECECE;
-                        }
-                    }
-                }
-                &:checked{
-                    + label{
-                        background: #BA0000;
-                        transition: all 0.5s;
-                        > svg{
-                            g, line{
-                                stroke: #fff;
-                                transition: all 0.5s;
-                            }
-                        }
-                        &.correct{
-                            background: #BA0000;
-                            svg{
-                                line, g{
-                                    stroke: #ffffff !important;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .before{
-            input[type='radio']{
-                &:checked{
-                    + label{
-                        background: #ADADAD;
-                    }
-                }
-            }
-        }
-    }
-    */
 }
 
 .immunity-relation{
@@ -1448,11 +1216,10 @@ $white : #fff;
 }
 
 
-
-@keyframes test{
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+@media all and (max-height: 820px){
+    .quiz-area__explain{
+        transform: scale(0.8);
+    }
 }
 
 @media all and (max-width: 1599px){
