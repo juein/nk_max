@@ -6,7 +6,7 @@ $blackSkin : #020300, #cacaca, #cacaca, 1 ;
     position:relative;
     width:100%;
     padding:70px 0;
-    background:  #{nth($defaultSkin, 1)};
+    background:  #{nth($blackSkin, 1)};
     text-align:center;
     font-size:13px;
     font-weight:200;
@@ -32,7 +32,7 @@ $blackSkin : #020300, #cacaca, #cacaca, 1 ;
         p{
             &.p-text{
                 font-weight:400;
-                color:  #{nth($defaultSkin, 2)};
+                color:  #{nth($blackSkin, 2)};
                 letter-spacing:.5px;
                 font-size:14px;
                 font-family:'Noto Sans KR', 'Malgun Gothic', sans-serif;
@@ -42,7 +42,7 @@ $blackSkin : #020300, #cacaca, #cacaca, 1 ;
             }
             .footer_mail{
                 transition:color .3s ease;
-                color:  #{nth($defaultSkin, 2)};
+                color:  #{nth($blackSkin, 2)};
                 text-decoration:none;
                 font-family:'noto-sans-scott', 'Malgun Gothic', sans-serif;
                 i{
@@ -54,7 +54,7 @@ $blackSkin : #020300, #cacaca, #cacaca, 1 ;
                     display:inline-block;
                     margin-right:2px;
                     vertical-align:baseline;
-                    opacity:  #{nth($defaultSkin, 4)};
+                    opacity:  #{nth($blackSkin, 4)};
                 }
             }
             .footer_tel{
@@ -82,7 +82,7 @@ $blackSkin : #020300, #cacaca, #cacaca, 1 ;
         margin:0;
         font-family:Arial, Helvetica, sans-serif;
         letter-spacing:0;
-        color:  #{nth($defaultSkin, 3)};
+        color:  #{nth($blackSkin, 3)};
         &.p-text{
             font-weight:400;
             letter-spacing:1px;

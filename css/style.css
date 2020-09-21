@@ -168,7 +168,7 @@ i {
   position: relative;
   width: 100%;
   padding: 70px 0;
-  background: #efefef;
+  background: #020300;
   text-align: center;
   font-size: 13px;
   font-weight: 200;
@@ -200,7 +200,7 @@ i {
 
 .copyright .copy_right p.p-text {
   font-weight: 400;
-  color: #818181;
+  color: #cacaca;
   letter-spacing: .5px;
   font-size: 14px;
   font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
@@ -213,7 +213,7 @@ i {
 .copyright .copy_right p .footer_mail {
   -webkit-transition: color .3s ease;
   transition: color .3s ease;
-  color: #818181;
+  color: #cacaca;
   text-decoration: none;
   font-family: 'noto-sans-scott', 'Malgun Gothic', sans-serif;
 }
@@ -227,7 +227,7 @@ i {
   display: inline-block;
   margin-right: 2px;
   vertical-align: baseline;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .copyright .copy_right p .footer_tel {
@@ -256,7 +256,7 @@ i {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 0;
-  color: #666;
+  color: #cacaca;
 }
 
 .copyright p.p-text {
@@ -1050,7 +1050,7 @@ i {
 .immunity-relation {
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: #EDEDED;
   -webkit-transform: translateY(100vh);
           transform: translateY(100vh);
   position: absolute;
@@ -1088,87 +1088,572 @@ i {
 }
 
 .immunity-relation__inner--chart {
-  width: 710px;
+  width: 1025px;
   height: 470px;
   position: absolute;
   left: 50%;
-  margin-left: -355px;
+  margin-top: 35px;
+  margin-left: -512px;
+  -webkit-box-shadow: 30px 30px 40px #00000027;
+          box-shadow: 30px 30px 40px #00000027;
+  background: #fff;
 }
 
-.immunity-relation__inner--chart .cell-data {
-  width: 100px;
+.immunity-relation__inner--chart .test1 {
+  background: url("../img/test1.PNG") no-repeat;
+  width: 1124px;
+  height: 770px;
+  position: absolute;
+  top: -145px;
+  left: -50px;
+  opacity: 0;
+}
+
+.immunity-relation__inner--chart .test2 {
+  background: url("../img/test2.PNG") no-repeat;
+  width: 1146px;
+  height: 747px;
+  position: absolute;
+  top: -135px;
+  left: -60px;
+  opacity: 0;
+}
+
+.immunity-relation__inner--chart .test3 {
+  background: url("../img/test3.PNG") no-repeat;
+  width: 1148px;
+  height: 723px;
+  position: absolute;
+  top: -120px;
+  left: -35px;
+  opacity: 0;
+}
+
+.immunity-relation__inner--chart .test4 {
+  background: url("../img/test4.PNG") no-repeat;
+  width: 1142px;
+  height: 772px;
+  position: absolute;
+  top: -150px;
+  left: -55px;
+  opacity: 0;
+}
+
+.immunity-relation__inner--chart .test5 {
+  background: url("../img/test5.PNG") no-repeat;
+  width: 1139px;
+  height: 763px;
+  position: absolute;
+  top: -145px;
+  left: -55px;
+  opacity: 0;
+}
+
+.immunity-relation__inner--chart .cell-area .cancer {
+  background: url("../img/immunity-cancer.png") no-repeat;
+  width: 130px;
+  height: 130px;
+  background-size: 100% 100%;
+  position: absolute;
+}
+
+.immunity-relation__inner--chart .cell-area .cell-1 {
+  background: url("../img/immunity-cell1.png") no-repeat;
+  width: 90px;
+  height: 90px;
+  background-size: 100% 100%;
+  position: absolute;
+}
+
+.immunity-relation__inner--chart .cell-area .cell-2 {
+  background: url("../img/immunity-cell2.png") no-repeat;
+  width: 124px;
+  height: 124px;
+  background-size: 100% 100%;
+  position: absolute;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num1 {
+  width: 30px;
+  height: 30px;
+  top: 40px;
+  left: 30px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num2 {
+  width: 110px;
+  height: 110px;
+  top: 165px;
+  left: 40px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num3 {
+  width: 45px;
+  height: 45px;
+  top: 380px;
+  left: 40px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num4 {
+  width: 30px;
+  height: 30px;
+  top: 140px;
+  left: 145px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num5 {
+  width: 30px;
+  height: 30px;
+  top: 35px;
+  left: 200px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num6 {
+  width: 65px;
+  height: 65px;
+  top: 200px;
+  left: 200px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num7 {
+  width: 90px;
+  height: 90px;
+  top: 290px;
+  left: 150px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num8 {
+  width: 60px;
+  height: 60px;
+  top: 30px;
+  left: 330px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num9 {
+  width: 30px;
+  height: 30px;
+  top: 95px;
+  left: 415px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num10 {
+  width: 120px;
+  height: 120px;
+  top: 150px;
+  left: 310px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num11 {
+  width: 110px;
+  height: 110px;
+  top: 310px;
+  left: 290px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num12 {
+  width: 70px;
+  height: 70px;
+  top: 40px;
+  left: 490px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num13 {
+  width: 80px;
+  height: 80px;
+  top: 220px;
+  left: 470px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num14 {
+  width: 70px;
+  height: 70px;
+  top: 140px;
+  left: 580px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num15 {
+  width: 130px;
+  height: 130px;
+  top: 280px;
+  left: 540px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num16 {
+  width: 110px;
+  height: 110px;
+  top: 40px;
+  left: 660px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num17 {
+  width: 30px;
+  height: 30px;
+  top: 390px;
+  left: 700px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num18 {
+  width: 30px;
+  height: 30px;
+  top: 40px;
+  left: 800px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num19 {
+  width: 55px;
+  height: 55px;
+  top: 140px;
+  left: 790px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num20 {
+  width: 55px;
+  height: 55px;
+  top: 340px;
+  left: 770px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num21 {
+  width: 80px;
+  height: 80px;
+  top: 40px;
+  left: 880px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num22 {
+  width: 30px;
+  height: 30px;
+  top: 170px;
+  left: 940px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num23 {
+  width: 130px;
+  height: 130px;
+  top: 200px;
+  left: 700px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cancer.num24 {
+  width: 70px;
+  height: 70px;
+  top: 360px;
+  left: 900px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_one .cell-1.num1 {
+  width: 50px;
   height: 50px;
-  position: absolute;
   top: 60px;
-  right: -20px;
+  left: 100px;
 }
 
-.immunity-relation__inner--chart .cell-data-immunocyte--icon, .immunity-relation__inner--chart .cell-data-cancer--icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  margin-right: 5px;
-  display: inline-block;
+.immunity-relation__inner--chart .cell-area .scene_one .cell-1.num2 {
+  width: 25px;
+  height: 25px;
+  top: 320px;
+  left: 90px;
 }
 
-.immunity-relation__inner--chart .cell-data-immunocyte--text, .immunity-relation__inner--chart .cell-data-cancer--text {
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: 0;
-  font-family: 'AppleSDGothicNeoM', sans-serif;
-  font-weight: 400;
-  color: #212121;
+.immunity-relation__inner--chart .cell-area .scene_one .cell-1.num3 {
+  width: 25px;
+  height: 25px;
+  top: 405px;
+  left: 225px;
 }
 
-.immunity-relation__inner--chart .cell-data-immunocyte--icon {
-  background: #3B5AC3;
+.immunity-relation__inner--chart .cell-area .scene_one .cell-1.num4 {
+  width: 23px;
+  height: 23px;
+  top: 150px;
+  left: 510px;
 }
 
-.immunity-relation__inner--chart .cell-data-cancer--icon {
-  background: #4E4E4E;
+.immunity-relation__inner--chart .cell-area .scene_one .cell-1.num5 {
+  width: 45px;
+  height: 45px;
+  top: 365px;
+  left: 460px;
 }
 
-.immunity-relation__inner--chart .cell-area {
-  width: 640px;
-  height: 260px;
-  position: absolute;
-  left: 50%;
-  margin-left: -320px;
-  top: 120px;
+.immunity-relation__inner--chart .cell-area .scene_one .cell-1.num6 {
+  width: 90px;
+  height: 90px;
+  top: 60px;
+  left: 230px;
 }
 
-.immunity-relation__inner--chart .cell-area svg {
-  overflow: visible;
+.immunity-relation__inner--chart .cell-area .scene_one .cell-2.num1 {
+  width: 80px;
+  height: 80px;
+  top: 85px;
+  left: 225px;
 }
 
-.immunity-relation__inner--chart .cell-area path {
-  fill: #4e4e4e;
+.immunity-relation__inner--chart .cell-area .scene_one .cell-2.num2 {
+  width: 95px;
+  height: 95px;
+  top: 230px;
+  left: 890px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
-.immunity-relation__inner--chart .cell-area path.static {
-  fill: #3B5AC3;
+.immunity-relation__inner--chart .cell-area .scene_two .cancer.num1 {
+  width: 40px;
+  height: 40px;
+  top: 140px;
+  left: 180px;
 }
 
-.immunity-relation__inner--chart .cell-area .scene_two {
-  visibility: hidden;
-  -webkit-transform: translate(-5px, -4px);
-          transform: translate(-5px, -4px);
+.immunity-relation__inner--chart .cell-area .scene_two .cancer.num2 {
+  width: 35px;
+  height: 35px;
+  top: 360px;
+  left: 320px;
 }
 
-.immunity-relation__inner--chart .cell-area .scene_three {
-  visibility: hidden;
-  -webkit-transform: translate(-5px, -10px);
-          transform: translate(-5px, -10px);
+.immunity-relation__inner--chart .cell-area .scene_two .cancer.num3 {
+  width: 40px;
+  height: 40px;
+  top: 240px;
+  left: 480px;
 }
 
-.immunity-relation__inner--chart .cell-area .scene_four, .immunity-relation__inner--chart .cell-area .scene_five {
-  visibility: hidden;
+.immunity-relation__inner--chart .cell-area .scene_two .cancer.num4 {
+  width: 35px;
+  height: 35px;
+  top: 150px;
+  left: 790px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num1 {
+  width: 40px;
+  height: 40px;
+  top: 45px;
+  left: 40px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num2 {
+  width: 40px;
+  height: 40px;
+  top: 55px;
+  left: 170px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num3 {
+  width: 70px;
+  height: 70px;
+  top: 100px;
+  left: 90px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num4 {
+  width: 25px;
+  height: 25px;
+  top: 220px;
+  left: 50px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num5 {
+  width: 45px;
+  height: 45px;
+  top: 375px;
+  left: 50px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num6 {
+  width: 50px;
+  height: 50px;
+  top: 360px;
+  left: 200px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num7 {
+  width: 90px;
+  height: 90px;
+  top: 45px;
+  left: 300px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num8 {
+  width: 50px;
+  height: 50px;
+  top: 160px;
+  left: 270px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num9 {
+  width: 40px;
+  height: 40px;
+  top: 160px;
+  left: 380px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num10 {
+  width: 70px;
+  height: 70px;
+  top: 230px;
+  left: 320px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num11 {
+  width: 25px;
+  height: 25px;
+  top: 300px;
+  left: 265px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num12 {
+  width: 20px;
+  height: 20px;
+  top: 295px;
+  left: 425px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num13 {
+  width: 45px;
+  height: 45px;
+  top: 40px;
+  left: 440px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num14 {
+  width: 90px;
+  height: 90px;
+  top: 330px;
+  left: 440px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num15 {
+  width: 25px;
+  height: 25px;
+  top: 45px;
+  left: 560px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num16 {
+  width: 50px;
+  height: 50px;
+  top: 80px;
+  left: 640px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num17 {
+  width: 25px;
+  height: 25px;
+  top: 165px;
+  left: 715px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num18 {
+  width: 50px;
+  height: 50px;
+  top: 240px;
+  left: 725px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num19 {
+  width: 50px;
+  height: 50px;
+  top: 320px;
+  left: 600px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num20 {
+  width: 25px;
+  height: 25px;
+  top: 400px;
+  left: 575px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num21 {
+  width: 90px;
+  height: 90px;
+  top: 335px;
+  left: 705px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num22 {
+  width: 25px;
+  height: 25px;
+  top: 395px;
+  left: 845px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num23 {
+  width: 25px;
+  height: 25px;
+  top: 190px;
+  left: 940px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-1.num24 {
+  width: 50px;
+  height: 50px;
+  top: 380px;
+  left: 920px;
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-2.num1 {
+  width: 125px;
+  height: 125px;
+  top: 220px;
+  left: 110px;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-2.num2 {
+  width: 80px;
+  height: 80px;
+  top: 105px;
+  left: 460px;
+  -webkit-transform: rotate(120deg);
+          transform: rotate(120deg);
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-2.num3 {
+  width: 110px;
+  height: 110px;
+  top: 155px;
+  left: 575px;
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-2.num4 {
+  width: 80px;
+  height: 80px;
+  top: 50px;
+  left: 740px;
+  -webkit-transform: rotate(325deg);
+          transform: rotate(325deg);
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-2.num5 {
+  width: 90px;
+  height: 90px;
+  top: 45px;
+  left: 865px;
+  -webkit-transform: rotate(35deg);
+          transform: rotate(35deg);
+}
+
+.immunity-relation__inner--chart .cell-area .scene_two .cell-2.num6 {
+  width: 90px;
+  height: 90px;
+  top: 210px;
+  left: 830px;
+  -webkit-transform: rotate(175deg);
+          transform: rotate(175deg);
 }
 
 .immunity-relation__inner--chart .cell-bar-graph {
   position: absolute;
-  bottom: 0;
-  left: 5px;
+  bottom: -80px;
+  left: 50%;
+  margin-left: -320px;
 }
 
 .immunity-relation__inner--chart .cell-bar-graph-low, .immunity-relation__inner--chart .cell-bar-graph-high {
@@ -1177,24 +1662,24 @@ i {
   letter-spacing: 0;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 200;
-  color: #C5C5C5;
+  color: #212121;
 }
 
 .immunity-relation__inner--chart .cell-bar-graph--chart {
   width: 620px;
-  height: 16px;
-  background: #E8E8E8;
+  height: 20px;
+  background: #fff;
   display: inline-block;
   border-radius: 10px;
   position: relative;
-  top: 4px;
+  top: 7px;
   margin: 0 10px;
 }
 
 .immunity-relation__inner--chart .cell-bar-graph--chart .bar-graph-active {
   background: #3B5AC3;
-  height: 8px;
-  margin: 4px 5px;
+  height: 10px;
+  margin: 5px 5px;
   border-radius: 10px;
   width: 10%;
 }
@@ -1212,6 +1697,7 @@ i {
   height: 13px;
   display: block;
   margin: 0 auto;
+  margin-bottom: 8px;
 }
 
 .immunity-relation__inner--chart .cell-bar-graph-pointer--text {
@@ -1894,6 +2380,183 @@ i {
   text-align: center;
 }
 
+.assassin-info__visual--content--hero .procedure {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin-left: -570px;
+  width: 1100px;
+  height: 580px;
+}
+
+.assassin-info__visual--content--hero .procedure__inner-text {
+  font-size: 22px;
+  line-height: 34px;
+  letter-spacing: -0.06em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+  color: #212121;
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.assassin-info__visual--content--hero .procedure__inner-text-str {
+  font-size: 22px;
+  line-height: 54px;
+  letter-spacing: -0.06em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+  color: #fff;
+  position: relative;
+  top: 60px;
+  display: block;
+  text-align: center;
+}
+
+.assassin-info__visual--content--hero .procedure-nk {
+  background: url("../img/procedure-nk.png") no-repeat;
+  width: 181px;
+  height: 181px;
+  position: absolute;
+  top: 162px;
+  left: 308px;
+}
+
+.assassin-info__visual--content--hero .procedure-cancer {
+  background: url("../img/procedure-cancer.png") no-repeat;
+  width: 197px;
+  height: 197px;
+  position: absolute;
+  top: 155px;
+  right: 50px;
+}
+
+.assassin-info__visual--content--hero .procedure-etc {
+  background: #C6C6C6;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 30px;
+}
+
+.assassin-info__visual--content--hero .procedure-etc.num2 {
+  left: 40px;
+}
+
+.assassin-info__visual--content--hero .procedure-etc.num3 {
+  left: 190px;
+}
+
+.assassin-info__visual--content--hero .procedure-etc.num4 {
+  left: 610px;
+}
+
+.assassin-info__visual--content--hero .procedure-etc.num4 .procedure__inner-text {
+  margin-top: 30px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-arrow-text {
+  color: #212121;
+  font-size: 14px;
+  line-height: 0;
+  letter-spacing: -0.06em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+}
+
+.assassin-info__visual--content--hero .procedure-line {
+  height: 2px;
+  background: #C6C6C6;
+  display: inline-block;
+}
+
+.assassin-info__visual--content--hero .procedure-arrow {
+  background: url("../img/procedure-arrow.png") no-repeat;
+  width: 8px;
+  height: 9px;
+  display: inline-block;
+  position: absolute;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step1 {
+  position: absolute;
+  top: 230px;
+  left: 525px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step1 .procedure-line {
+  width: 290px;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step1 .procedure-arrow {
+  top: 12px;
+  right: -2px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step2 {
+  position: absolute;
+  top: 360px;
+  left: 240px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step2 .procedure-line {
+  width: 110px;
+  position: absolute;
+  left: -81px;
+  top: -54px;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step2 .procedure-arrow {
+  top: 20px;
+  left: -51px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step3 {
+  position: absolute;
+  top: 465px;
+  left: 360px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step3 .procedure-line {
+  width: 220px;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step3 .procedure-arrow {
+  top: 12px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step4 {
+  position: absolute;
+  right: 230px;
+  top: 360px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step4 .procedure-line {
+  position: absolute;
+  width: 110px;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  top: 30px;
+  left: -60px;
+}
+
+.assassin-info__visual--content--hero .procedure .procedure-step4 .procedure-arrow {
+  -webkit-transform: rotate(75deg);
+          transform: rotate(75deg);
+  top: -52px;
+  left: 16px;
+}
+
 .assassin-info__visual--content--villain {
   position: absolute;
   top: 0;
@@ -2194,6 +2857,13 @@ i {
 .outro__video--panel-in {
   width: 100%;
   height: 100%;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 0;
+  -webkit-transform: translateY(195px);
+          transform: translateY(195px);
 }
 
 @-webkit-keyframes rotating {

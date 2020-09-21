@@ -598,7 +598,7 @@ $white : #fff;
 .immunity-relation{
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #EDEDED;
     transform: translateY(100vh);
     position: absolute;
     top: 0;
@@ -611,95 +611,216 @@ $white : #fff;
                 @include headlineText();
             }
         }
+
         &--chart{
-            width: 710px;
+            width: 1025px;
             height: 470px;
             position: absolute;
             left: 50%;
-            margin-left: -355px;
-            .cell-data{
-                width: 100px;
-                height: 50px;
+            margin-top: 35px;
+            margin-left: -512px;
+            box-shadow: 30px 30px 40px #00000027;
+            background: #fff;
+
+            .test1{
+                background: url($imgPath + 'test1.PNG') no-repeat;
+                width: 1124px;
+                height: 770px;
                 position: absolute;
-                top: 60px;
-                right: -20px;
-                &-immunocyte, &-cancer{
-                    &--icon{
-                        width: 14px;
-                        height: 14px;
-                        border-radius: 50%;
-                        margin-right: 5px;
-                        display: inline-block;
-                    }
-                    &--text{
-                        @include fontInfo(18px, 24px, 0);
-                        @include AppleSDGothicNeoREgular;
-                        color: #212121;
-                    }
-                }
-                &-immunocyte{
-                    &--icon{
-                        background: #3B5AC3;
-                    }
-                }
-                &-cancer{
-                    &--icon{
-                        background: #4E4E4E;
-                    }
-                }
+                top: -145px;
+                left: -50px;
+                opacity: 0;
+                
+                
+            }
+            .test2{
+                background: url($imgPath + 'test2.PNG') no-repeat;
+                width: 1146px;
+                height: 747px;
+                position: absolute;
+                top: -135px;
+                left: -60px;
+                opacity: 0;
+                //opacity: 0.2;
+            }
+            .test3{
+                background: url($imgPath + 'test3.PNG') no-repeat;
+                width: 1148px;
+                height: 723px;
+                position: absolute;
+                top: -120px;
+                left: -35px;
+                opacity: 0;
+                
+            }
+            .test4{
+                background: url($imgPath + 'test4.PNG') no-repeat;
+                width: 1142px;
+                height: 772px;
+                position: absolute;
+                top: -150px;
+                left: -55px;
+                opacity: 0;
+            }
+            .test5{
+                background: url($imgPath + 'test5.PNG') no-repeat;
+                width: 1139px;
+                height: 763px;
+                position: absolute;
+                top: -145px;
+                left: -55px;
+                opacity: 0;
+                
             }
             .cell-area{
-                width: 640px;
-                height: 260px;
-                position: absolute;
-                left: 50%;
-                margin-left: -320px;
-                top: 120px;
-                svg{
-                    overflow: visible;
+                .cancer{
+                    background: url($imgPath + 'immunity-cancer.png') no-repeat;
+                    width: 130px;
+                    height: 130px;
+                    background-size: 100% 100%;
+                    position: absolute;
                 }
-                path{
-                    fill: #4e4e4e;
-                    &.static{
-                        fill: #3B5AC3;
+                .cell-1{
+                    background: url($imgPath + 'immunity-cell1.png') no-repeat;
+                    width: 90px;
+                    height: 90px;
+                    background-size: 100% 100%;
+                    position: absolute;
+                }
+                .cell-2{
+                    background: url($imgPath + 'immunity-cell2.png') no-repeat;
+                    width: 124px;
+                    height: 124px;
+                    background-size: 100% 100%;
+                    position: absolute;
+                }
+
+                .scene_one{
+                    
+                    $sceneOneCancer-size: 30, 110, 45, 30, 30, 65, 90, 60, 30, 120, 110, 70, 80, 70, 130, 110, 30, 30, 55, 55, 80, 30, 130, 70;
+                    $sceneOneCancer-top: 40, 165, 380, 140, 35, 200, 290, 30, 95, 150, 310, 40, 220, 140, 280, 40, 390, 40, 140, 340, 40, 170, 200, 360;
+                    $sceneOneCancer-left: 30, 40, 40, 145, 200, 200, 150, 330, 415, 310, 290, 490, 470, 580, 540, 660, 700, 800, 790, 770, 880, 940, 700, 900;
+
+                    @for $i from 1 through 24{
+                        .cancer{
+                            &.num#{$i}{
+                                width: #{nth($sceneOneCancer-size, $i)}px;
+                                height: #{nth($sceneOneCancer-size, $i)}px;
+                                top: #{nth($sceneOneCancer-top, $i)}px;
+                                left: #{nth($sceneOneCancer-left, $i)}px;
+
+                            }
+                        }
+                    }
+
+                    $sceneOneCell-1-size: 50, 25, 25, 23, 45, 90;
+                    $sceneOneCell-1-top: 60, 320, 405, 150, 365, 60; 
+                    $sceneOneCell-1-left: 100, 90, 225, 510, 460, 230;
+
+                    @for $i from 1 through 6{
+                        .cell-1{
+                            &.num#{$i}{
+                                width: #{nth($sceneOneCell-1-size, $i)}px;
+                                height: #{nth($sceneOneCell-1-size, $i)}px;
+                                top: #{nth($sceneOneCell-1-top, $i)}px;
+                                left: #{nth($sceneOneCell-1-left, $i)}px;
+                            }
+                        }
+                    }
+
+                    $sceneOneCell-2-size: 80, 95;
+                    $sceneOneCell-2-top: 85, 230;
+                    $sceneOneCell-2-left: 225, 890;
+
+                    @for $i from 1 through 2{
+                        .cell-2{
+                            &.num#{$i}{
+                                width: #{nth($sceneOneCell-2-size, $i)}px;
+                                height: #{nth($sceneOneCell-2-size, $i)}px;
+                                top: #{nth($sceneOneCell-2-top, $i)}px;
+                                left: #{nth($sceneOneCell-2-left, $i)}px;
+                                @if $i == 2{
+                                    transform: rotate(45deg);
+                                }
+                            }
+                        }
                     }
                 }
                 .scene_two{
-                    visibility: hidden;
-                    transform: translate(-5px, -4px);
-                }
-                .scene_three{
-                    visibility: hidden;
-                    transform: translate(-5px, -10px);
-                }
-                .scene_four, .scene_five{
-                    visibility: hidden;
+                    $sceneTwoCancer-size: 40, 35, 40, 35;
+                    $sceneTwoCancer-top: 140, 360, 240, 150;
+                    $sceneTwoCancer-left: 180, 320, 480, 790;
+
+                    @for $i from 1 through 4{
+                        .cancer{
+                            &.num#{$i}{
+                                width: #{nth($sceneTwoCancer-size, $i)}px;
+                                height: #{nth($sceneTwoCancer-size, $i)}px;
+                                top: #{nth($sceneTwoCancer-top, $i)}px;
+                                left: #{nth($sceneTwoCancer-left, $i)}px;
+                            }
+                        }
+                    }
+
+                    $sceneTwoCell-1-size: 40, 40, 70, 25, 45, 50, 90, 50, 40, 70, 25, 20, 45, 90, 25, 50, 25, 50, 50, 25, 90, 25, 25, 50;
+                    $sceneTwoCell-1-top: 45, 55, 100, 220, 375, 360, 45, 160, 160, 230, 300, 295, 40, 330, 45, 80, 165, 240, 320, 400, 335, 395, 190, 380;
+                    $sceneTwoCell-1-left: 40, 170, 90, 50, 50, 200, 300, 270, 380, 320, 265, 425, 440, 440, 560, 640, 715, 725, 600, 575, 705, 845, 940, 920;
+
+                    @for $i from 1 through 24{
+                        .cell-1{
+                            &.num#{$i}{
+                                width: #{nth($sceneTwoCell-1-size, $i)}px;
+                                height: #{nth($sceneTwoCell-1-size, $i)}px;
+                                top: #{nth($sceneTwoCell-1-top, $i)}px;
+                                left: #{nth($sceneTwoCell-1-left, $i)}px;
+                            }
+                        }
+                    }
+
+                    $sceneTwoCell-2-size: 125, 80, 110, 80, 90, 90;
+                    $sceneTwoCell-2-top: 220, 105, 155, 50, 45, 210;
+                    $sceneTwoCell-2-left: 110, 460, 575, 740, 865, 830;
+                    $sceneTwoCell-2-rotate: 0, 120, 60, 325, 35, 175;
+
+                    @for $i from 1 through 6{
+                        .cell-2{
+                            &.num#{$i}{
+                                width: #{nth($sceneTwoCell-2-size, $i)}px;
+                                height: #{nth($sceneTwoCell-2-size, $i)}px;
+                                top: #{nth($sceneTwoCell-2-top, $i)}px;
+                                left: #{nth($sceneTwoCell-2-left, $i)}px;
+                                transform: rotate(#{nth($sceneTwoCell-2-rotate, $i)}deg);
+                            }
+                        }
+                    }
                 }
             }
+
             .cell-bar-graph{
                 position: absolute;
-                bottom: 0;
-                left: 5px;
+                bottom: -80px;
+                left: 50%;
+                margin-left: -320px;
                 
                 &-low, &-high{
                     @include fontInfo(12px, 33px, 0);
                     @include fw-light;
-                    color: #C5C5C5;
+                    color: #212121;
                 }
 
                 &--chart{
                     width: 620px;
-                    height: 16px;
-                    background: #E8E8E8;
+                    height: 20px;
+                    background: #fff;
                     display: inline-block;
                     border-radius: 10px;
                     position: relative;
-                    top: 4px;
+                    top: 7px;
                     margin: 0 10px;
                     .bar-graph-active{
                         background: #3B5AC3;
-                        height: 8px;
-                        margin: 4px 5px;
+                        height: 10px;
+                        margin: 5px 5px;
                         border-radius: 10px;
                         width: 10%;
                     }
@@ -715,6 +836,7 @@ $white : #fff;
                         height: 13px;
                         display: block;
                         margin: 0 auto;
+                        margin-bottom: 8px;
                     }
                     &--text{
                         @include fontInfo(14px, 17px, 0);
@@ -1159,6 +1281,145 @@ $white : #fff;
                         text-align: center;
                     }
                 }
+                .procedure{
+                    position: absolute;
+                    top: 30px;
+                    left: 50%;
+                    margin-left: -570px;
+                    width: 1100px;
+                    height: 580px;
+                    &__inner-text{
+                        @include fontInfo(22px, 34px, -0.06em);
+                        @include fw-regular;
+                        color: #212121;
+                        display: block;
+                        text-align: center;
+                        margin-top: 50px;
+                        &-str{
+                            @include fontInfo(22px, 54px, -0.06em);
+                            @include fw-regular;
+                            color: #fff;
+                            position: relative;
+                            top: 60px;
+                            display: block;
+                            text-align: center;
+                        }
+                    }
+                    &-nk{
+                        background: url($imgPath + 'procedure-nk.png') no-repeat;
+                        width: 181px;
+                        height: 181px;
+                        position: absolute;
+                        top: 162px;
+                        left: 308px;
+                    }
+                    &-cancer{
+                        background: url($imgPath + 'procedure-cancer.png') no-repeat;
+                        width: 197px;
+                        height: 197px;
+                        position: absolute;
+                        top: 155px;
+                        right: 50px;
+                    }
+                    &-etc{
+                        background: #C6C6C6;
+                        width: 130px;
+                        height: 130px;
+                        border-radius: 50%;
+                        position: absolute;
+                        bottom: 30px;
+                        &.num2{
+                            left: 40px;
+                        }
+                        &.num3{
+                            left: 190px;
+                        }
+                        &.num4{
+                            left: 610px;
+                            .procedure__inner-text{
+                                margin-top: 30px;
+                            }
+                        }
+                    }
+                    .procedure-arrow-text{
+                        color: #212121;
+                        @include fontInfo(14px, 0, -0.06em);
+                        @include fw-demilight;
+                        text-align: center;
+                        display: block;
+                    }
+                    &-line{
+                        height: 2px;
+                        background: #C6C6C6;
+                        display: inline-block;
+                    }
+                    &-arrow{
+                        background: url($imgPath + 'procedure-arrow.png') no-repeat;
+                        width: 8px;
+                        height: 9px;
+                        display: inline-block;
+                        position: absolute;
+                    }
+                    .procedure-step1{
+                        position: absolute;
+                        top: 230px;
+                        left: 525px;
+                        .procedure-line{
+                            width: 290px;
+                            transform-origin: left;
+                        }
+                        .procedure-arrow{
+                            top: 12px;
+                            right: -2px;
+                        }
+                    }
+                    .procedure-step2{
+                        position: absolute;
+                        top: 360px;
+                        left: 240px;
+                        .procedure-line{
+                            width: 110px;
+                            position: absolute;
+                            left: -81px;
+                            top: -54px;
+                            transform-origin: right;
+                        }
+                        .procedure-arrow{
+                            top: 20px;
+                            left: -51px;
+                        }
+                    }
+                    .procedure-step3{
+                        position: absolute;
+                        top: 465px;
+                        left: 360px;
+                        .procedure-line{
+                           width: 220px;
+                           transform-origin: left;
+                        }
+                        .procedure-arrow{
+                            top: 12px;
+                        }
+                    }
+                    .procedure-step4{
+                        position: absolute;
+                        right: 230px;
+                        top: 360px;
+                        .procedure-line{
+                            position: absolute;
+                            width: 110px;
+                            transform-origin: left;
+                            top: 30px;
+                            left: -60px;
+                        }
+                        .procedure-arrow{
+                            transform: rotate(75deg);
+                            top: -52px;
+                            left: 16px;
+                        }
+                    }
+
+                }
             }
             &--villain{
                 position: absolute;
@@ -1376,6 +1637,12 @@ $white : #fff;
             }
         }
     }
+}
+
+.copyright{
+    position: absolute;
+    bottom: 0;
+    transform: translateY(195px);
 }
 
 @keyframes rotating {
