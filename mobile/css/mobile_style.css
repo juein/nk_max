@@ -55,6 +55,18 @@
   src: url("../../fonts/NotoSansCJKkr-Black.woff") format("woff"), url("../../fonts/NotoSansCJKkr-Black.otf") format("truetype");
 }
 
+@font-face {
+  font-family: 'ProximaNova';
+  font-weight: 400;
+  src: url("../../fonts/ProximaNova-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'AppleSDGothicNeoM';
+  font-weight: 400;
+  src: url("../../fonts/AppleSDGothicNeoM.ttf") format("truetype");
+}
+
 body {
   height: 100vh;
   font-family: 'Noto Sans CJK KR', sans-serif;
@@ -264,30 +276,112 @@ video {
 }
 
 /* 하단 카피라이트 관련 클레스 영역 끝 */
-#intro {
-  min-height: 100vh;
-  padding: 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-#feature1 {
-  width: 100%;
-  height: 10vw;
-  padding: 0;
-  background: #c8c8c8;
-}
-
-#feature1 .box {
+.quiz-area {
   position: absolute;
-  width: 84vw;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  overflow: hidden;
+  background: #BA0000;
+}
+
+.quiz-area__inner {
+  position: absolute;
+  width: 88vw;
   top: 0;
   left: 50%;
-  margin: 0 0 0 -40vw;
+  margin: 0 0 0 -44vw;
   outline: 1px solid #ddd;
+  height: 100%;
+  color: #fff;
 }
 
-.feature1_pin {
-  background: #000;
+.quiz-area__inner--headline {
+  font-size: 10vw;
+  line-height: 12vw;
+  letter-spacing: -0.05em;
+  text-align: center;
+  margin-top: 21vh;
+}
+
+.quiz-area__inner--headline .demilight {
+  display: block;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 200;
+}
+
+.quiz-area__inner--headline .highlight {
+  display: block;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 500;
+}
+
+.quiz-area__start {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 48vh;
+  color: #fff;
+}
+
+.quiz-area__start--default, .quiz-area__start--cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.quiz-area__start .start-explanatory {
+  font-size: 4vw;
+  line-height: 6vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+  text-align: justify;
+  width: 80vw;
+  position: absolute;
+  bottom: 25vh;
+  left: 50%;
+  margin-left: -40vw;
+}
+
+.quiz-area__start .start-explanatory--center {
+  display: block;
+  text-align: center;
+}
+
+.quiz-area__start .start-btn {
+  position: absolute;
+  left: 50%;
+  width: 66vw;
+  margin-left: -33vw;
+  bottom: 8vh;
+  height: 16vw;
+  color: #fff;
+  border: 1px solid #fff;
+  background: none;
+  font-size: 6vw;
+  line-height: 11vw;
+  letter-spacing: 0;
+  font-family: 'ProximaNova', sans-serif;
+  font-weight: 400;
+}
+
+.quiz-area__start--cover {
+  clip: rect(120px, 400px, 340px, 0px);
+  background: #fff;
+  color: #B10000;
+}
+
+.quiz-area__start--cover .start-btn {
+  color: #B10000;
+  border: 1px solid #B10000;
+}
+
+.rooftop {
+  z-index: 0;
+}
+
+.brand-identity img {
+  top: 5px;
 }
 /*# sourceMappingURL=mobile_style.css.map */

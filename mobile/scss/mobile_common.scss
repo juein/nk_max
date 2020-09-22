@@ -9,6 +9,10 @@
 @font-face {font-family:'Noto Sans CJK KR';font-weight:600;src:url('../../fonts/NotoSansCJKkr-Bold.eot');src:url('../../fonts/NotoSansCJKkr-Bold.woff') format('woff'), url('../../fonts/NotoSansCJKkr-Bold.otf') format('truetype')}
 @font-face {font-family:'Noto Sans CJK KR';font-weight:700;src:url('../../fonts/NotoSansCJKkr-Black.eot');src:url('../../fonts/NotoSansCJKkr-Black.woff') format('woff'), url('../../fonts/NotoSansCJKkr-Black.otf') format('truetype')}
 
+@font-face {font-family:'ProximaNova';font-weight:400;src:url('../../fonts/ProximaNova-Regular.otf') format('truetype')}
+
+@font-face {font-family:'AppleSDGothicNeoM';font-weight:400;src:url('../../fonts/AppleSDGothicNeoM.ttf') format('truetype')}
+
 @mixin fw-thin {font-family: 'Noto Sans CJK KR', sans-serif; font-weight:100;}
 @mixin fw-light {font-family: 'Noto Sans CJK KR', sans-serif; font-weight:200;}
 @mixin fw-demilight {font-family: 'Noto Sans CJK KR', sans-serif; font-weight:300;}
@@ -16,6 +20,10 @@
 @mixin fw-medium {font-family: 'Noto Sans CJK KR', sans-serif; font-weight:500;}
 @mixin fw-bold {font-family: 'Noto Sans CJK KR', sans-serif; font-weight:600;}
 @mixin fw-black {font-family: 'Noto Sans CJK KR', sans-serif; font-weight:700;}
+
+@mixin ProximaNova {font-family: 'ProximaNova', sans-serif; font-weight:400;}
+
+@mixin AppleSDGothicNeoREgular {font-family: 'AppleSDGothicNeoM', sans-serif; font-weight:400;}
 
 body{height:100vh;font-family:'Noto Sans CJK KR', sans-serif;line-height:1.4;letter-spacing:-0.08em;}
 

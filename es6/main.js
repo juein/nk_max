@@ -2,11 +2,13 @@
 // onload
 window.onload = function(){
     const pageIntroAction = new TimelineMax({paused:true})
-    .to('.visual-intro__type-text', 0.8, {opacity: 1}, 0.2)
-    .to('.visual-intro__illust', 0.6, {opacity: 1, x: 0, y: 0}, 0.4)
-    .to('.visual-intro__type-text.before', 0.8, {opacity: 0}, 0.8)
-    .to('.visual-intro__area--headline-first', 0.6, {opacity: 1, x: 0}, 0.8)
-    .to('.visual-intro__area--headline-last', 0.6, {opacity: 1, x: 0}, 0.8)
+    .to('.visual-intro__type-text', 1, {opacity: 1}, 0.2)
+    .to('.visual-intro__illust', 1, {opacity: 1, x: 0, y: 0}, 0.5)
+    .to('.visual-intro__type-text.before', 1, {opacity: 0}, 1)
+    .to('.visual-intro__area--headline-first', 1, {opacity: 1, x: 0}, 1)
+    .to('.visual-intro__area--headline-last', 1, {opacity: 1, x: 0}, 1)
+    .to('.visual-intro__area--goToTest', 1.2, {opacity: 1}, 1.5)
+    .to('.visual-intro__area--goToStory', 1.2, {opacity: 1}, 1.8)
     pageIntroAction.play();
 }
 // onload
@@ -21,6 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
     hoverAction,
     listActiveNum = 0,
     quizStep = 1,
+    furstquizAreaFlag = false,
+    quizAreaFlag = false,
     hoveHeroFlag = false;
 
     // default setting
@@ -36,16 +40,20 @@ window.addEventListener('DOMContentLoaded', () => {
         gsap.to('.quiz-area__inner--question', 0.5, {opacity: 1, pointerEvents: 'visible', delay: 0.4});
     })
 
+    
     for( let $i = 1; $i <= 10; $i++ ){
         $('input:radio[name=q'+$i+']').click( () => { 
             if($i == 10){
                 gsap.to('.quiz__btn--finish', 0.5, {opacity: 1, pointerEvents: 'visible'});
+                
             }else {
-                gsap.to('.quiz__btn--next', 0.5, {opacity: 1, pointerEvents: 'visible'});
+                quizNextQuestion( $i );
+                //gsap.to('.quiz__btn--next', 0.5, {opacity: 1, pointerEvents: 'visible'});
             }
         });
     }
 
+    /*
    $('.quiz__btn--next').click( () => {
         $('.this-quoetion').removeClass('thisActive');
         gsap.to('.quiz-area__inner--question-step'+quizStep, 0.5, {opacity: 0, pointerEvents:'none'});
@@ -55,6 +63,16 @@ window.addEventListener('DOMContentLoaded', () => {
         $('.progress__box:nth-of-type('+quizStep+') .chk').addClass('active');
         $('.progress__box:nth-of-type('+quizStep+') .this-quoetion').addClass('thisActive');
    });
+   */
+   const quizNextQuestion = (num) => {
+        console.log('test ==== ' + num);
+        gsap.to('.quiz-area__inner--question-step'+quizStep, 0.5, {opacity: 0, pointerEvents:'none'});
+        quizStep += 1;
+        gsap.to('.quiz-area__inner--question-step'+quizStep, 0.5, {opacity: 1, pointerEvents:'visible', delay: 0.4});
+        $('.progress__box:nth-of-type('+quizStep+') .chk').addClass('active');
+        $('.progress__box:nth-of-type('+quizStep+') .this-quoetion').addClass('thisActive');
+   }
+
 
    $('.quiz__btn--finish').click( ()=>{
         let quizResult = $('#quiz-area__form').serializeArray();
@@ -118,156 +136,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // immunity-relation
     MorphSVGPlugin.convertToPath("circle, rect, polygon");
 
-    const immunityMorph = new TimelineLite({paused: true, repeat: -1})
-    .set('.cell-area .scene_one .cell-1.num6', {scale: 0}, 0)
-    .set('.cell-area .scene_two i', {scale: 0}, 0)
-    .set(".bar-graph-active", {width: '10%'}, 0)
-    .set(".cell-bar-graph-pointer", {left: 50}, 0)
-
-    .to(".bar-graph-active", 4.5, {width: '94%', ease: 'none'}, 0)
-    .to(".cell-bar-graph-pointer", 4.5, {left: 570, ease: 'none'}, 0)
-    .to(".bar-graph-active", 4.5, {width: '10%', ease: 'none'}, 4.7)
-    .to(".cell-bar-graph-pointer", 4.5, {left: 50, ease: 'none'}, 4.7)
-
-    .to('.cell-area .scene_one .cancer.num21', 0.5, {scale: 0, ease: 'none'}, 0.1)
-    .to('.cell-area .scene_two .cell-2.num5', 0.7, {scale: 1, ease: 'none'}, 0.2)
-    .to('.cell-area .scene_one .cancer.num10', 0.5, {scale: 0, ease: 'none'}, 0.2)
-    .to('.cell-area .scene_two .cell-1.num9', 0.7, {scale: 1, ease: 'none'}, 0.3)
-    .to('.cell-area .scene_two .cell-1.num10', 0.4, {scale: 1, ease: 'none'}, 0.4)
-    .to('.cell-area .scene_one .cancer.num15', 0.5, {scale: 0, ease: 'none'}, 0.5)
-
-    .to('.cell-area .scene_two .cell-1.num19', 0.8, {scale: 1, ease: 'none'}, 0.6)
-    .to('.cell-area .scene_two .cell-1.num20', 0.4, {scale: 1, ease: 'none'}, 0.7)
-    .to('.cell-area .scene_one .cancer.num15', 0.5, {scale: 0, ease: 'none'}, 0.8)
-    .to('.cell-area .scene_one .cancer.num3', 0.5, {scale: 0, ease: 'none'}, 0.8)
-    .to('.cell-area .scene_two .cell-1.num5', 0.6, {scale: 1, ease: 'none'}, 0.9)
-    .to('.cell-area .scene_one .cancer.num8', 0.5, {scale: 0, ease: 'none'}, 1)
-
-    .to('.cell-area .scene_one .cancer.num6', 0.5, {scale: 0, ease: 'none'}, 1)
-    .to('.cell-area .scene_one .cell-2.num1', 0.7, {scale: 0, ease: 'none'}, 1.1)
-    .to('.cell-area .scene_two .cell-1.num8', 0.6, {scale: 1, ease: 'none'}, 1.2)
-    .to('.cell-area .scene_two .cell-1.num7', 0.6, {scale: 1, ease: 'none'}, 1.2)
-    .to('.cell-area .scene_one .cancer.num19', 0.5, {scale: 0.6, ease: 'none'}, 1.3)
-    .to('.cell-area .scene_two .cell-1.num22', 0.6, {scale: 1, ease: 'none'}, 1.4)
-    .to('.cell-area .scene_one .cancer.num24', 0.8, {scale: 0, ease: 'none'}, 1.4)
-    .to('.cell-area .scene_one .cell-2.num2', 0.5, {scale: 0, ease: 'none'}, 1.5)
-    .to('.cell-area .scene_one .cancer.num9', 0.7, {scale: 0, ease: 'none'}, 1.5)
-
-    .to('.cell-area .scene_two .cell-2.num6', 0.6, {scale: 1, ease: 'none'}, 1.6)
-    .to('.cell-area .scene_two .cell-1.num24', 0.6, {scale: 1, ease: 'none'}, 1.6)
-    .to('.cell-area .scene_one .cancer.num11', 0.7, {scale: 0.4, ease: 'none'}, 1.7)
-    .to('.cell-area .scene_one .cancer.num1', 0.5, {scale: 0, ease: 'none'}, 1.7)
-    .to('.cell-area .scene_one .cancer.num23', 0.9, {scale: 0, ease: 'none'}, 1.8)
-    .to('.cell-area .scene_two .cell-1.num1', 0.6, {scale: 1, ease: 'none'}, 1.9)
-    .to('.cell-area .scene_one .cancer.num2', 0.6, {scale: 0, ease: 'none'}, 1.9)
-    .to('.cell-area .scene_one .cancer.num4', 0.5, {x: 40, ease: 'none'}, 2)
-
-    .to('.cell-area .scene_one .cell-1.num1', 0.5, {scale: 0, ease: 'none'}, 2.1)
-    .to('.cell-area .scene_one .cancer.num22', 0.5, {scale: 0, ease: 'none'}, 2.2)
-    .to('.cell-area .scene_two .cell-1.num18', 0.7, {scale: 1, ease: 'none'}, 2.2)
-    .to('.cell-area .scene_two .cell-1.num3', 0.5, {scale: 1, ease: 'none'}, 2.3)
-    .to('.cell-area .scene_two .cell-1.num23', 0.7, {scale: 1, ease: 'none'}, 2.4)
-    .to('.cell-area .scene_two .cell-1.num17', 0.5, {scale: 1, ease: 'none'}, 2.5)
-
-    .to('.cell-area .scene_one .cancer.num16', 0.5, {scale: 0, ease: 'none'}, 2.6)
-    .to('.cell-area .scene_one .cancer.num5', 0.6, {scale: 0, ease: 'none'}, 2.6)
-    .to('.cell-area .scene_two .cell-1.num2', 0.7, {scale: 1, ease: 'none'}, 2.7)
-    .to('.cell-area .scene_one .cell-1.num5', 0.5, {scale: 1.9, ease: 'none'}, 2.7)
-    .to('.cell-area .scene_one .cancer.num7', 0.5, {scale: 0, ease: 'none'}, 2.7)
-    .to('.cell-area .scene_one .cancer.num17', 0.5, {scale: 0, ease: 'none'}, 2.8)
-    .to('.cell-area .scene_two .cell-1.num16', 0.5, {scale: 1, ease: 'none'}, 2.8)
-    .to('.cell-area .scene_one .cancer.num13', 0.8, {scale: 0.6, ease: 'none'}, 2.9)
-    .to('.cell-area .scene_two .cell-1.num11', 0.7, {scale: 1, ease: 'none'}, 2.9)
-    .to('.cell-area .scene_one .cancer.num20', 0.5, {scale: 0, ease: 'none'}, 3)
-    .to('.cell-area .scene_one .cancer.num12', 0.8, {scale: 0, ease: 'none'}, 3)
-    .to('.cell-area .scene_two .cell-2.num4', 0.6, {scale: 1, ease: 'none'}, 3)
-
-    .to('.cell-area .scene_two .cell-1.num15', 0.7, {scale: 1, ease: 'none'}, 3.1)
-    .to('.cell-area .scene_two .cell-1.num4', 0.5, {scale: 1, ease: 'none'}, 3.1)
-    .to('.cell-area .scene_one .cell-1.num2', 0.5, {scale: 0, ease: 'none'}, 3.2)
-    .to('.cell-area .scene_one .cell-1.num3', 0.3, {scale: 1.8, x: -5, y: -18, ease: 'none'}, 3.2)
-    .to('.cell-area .scene_one .cancer.num14', 0.5, {scale: 0, ease: 'none'}, 3.3)
-    .to('.cell-area .scene_two .cell-2.num3', 0.4, {scale: 1, ease: 'none'}, 3.3)
-    .to('.cell-area .scene_one .cell-1.num4', 0.3, {scale: 0, ease: 'none'}, 3.3)
-    .to('.cell-area .scene_two .cell-2.num1', 0.8, {scale: 1, ease: 'none'}, 3.4)
-    .to('.cell-area .scene_two .cell-1.num13', 0.5, {scale: 1, ease: 'none'}, 3.5)
-    .to('.cell-area .scene_one .cancer.num18', 0.6, {scale: 0, ease: 'none'}, 3.5)
-    
-    .to('.cell-area .scene_two .cell-1.num21', 0.7, {scale: 1, ease: 'none'}, 3.6)
-    .to('.cell-area .scene_two .cell-2.num2', 0.5, {scale: 1, ease: 'none'}, 3.5)
-    .to('.cell-area .scene_two .cell-1.num12', 0.8, {scale: 1, ease: 'none'}, 3.7)
-    
-    //back
-    .to('.cell-area .scene_two .cell-1.num21', 0.5, {scale: 0, ease: 'none'}, 5)
-    .to('.cell-area .scene_two .cell-2.num2', 0.4, {scale: 0, ease: 'none'}, 5.2)
-    .to('.cell-area .scene_two .cell-1.num12', 0.3, {scale: 0, ease: 'none'}, 5.4)
-
-    .to('.cell-area .scene_two .cell-1.num15', 0.7, {scale: 0, ease: 'none'}, 5.4)
-    .to('.cell-area .scene_two .cell-1.num4', 0.5, {scale: 0, ease: 'none'}, 5.4)
-    .to('.cell-area .scene_one .cell-1.num2', 0.5, {scale: 1, ease: 'none'}, 5.5)
-    .to('.cell-area .scene_one .cell-1.num3', 0.3, {scale: 1, x: 0, y: 0, ease: 'none'}, 5.5)
-    .to('.cell-area .scene_one .cancer.num14', 0.5, {scale: 1, ease: 'none'}, 5.5)
-    .to('.cell-area .scene_two .cell-2.num3', 0.4, {scale: 0, ease: 'none'}, 5.6)
-    .to('.cell-area .scene_one .cell-1.num4', 0.3, {scale: 1, ease: 'none'}, 5.7)
-    .to('.cell-area .scene_two .cell-2.num1', 0.8, {scale: 0, ease: 'none'}, 5.7)
-    .to('.cell-area .scene_two .cell-1.num13', 0.5, {scale: 0, ease: 'none'}, 5.7)
-    .to('.cell-area .scene_one .cancer.num18', 0.6, {scale: 1, ease: 'none'}, 5.7)
-
-    .to('.cell-area .scene_two .cell-2.num4', 0.6, {scale: 0, ease: 'none'}, 5.8)
-    .to('.cell-area .scene_one .cancer.num16', 0.5, {scale: 1, ease: 'none'}, 5.8)
-    .to('.cell-area .scene_one .cancer.num5', 0.6, {scale: 1, ease: 'none'}, 5.8)
-    .to('.cell-area .scene_two .cell-1.num2', 0.7, {scale: 0, ease: 'none'}, 5.8)
-    .to('.cell-area .scene_one .cell-1.num5', 0.5, {scale: 1, ease: 'none'}, 5.8)
-    .to('.cell-area .scene_one .cancer.num7', 0.5, {scale: 1, ease: 'none'}, 5.9)
-    .to('.cell-area .scene_one .cancer.num17', 0.5, {scale: 1, ease: 'none'}, 5.9)
-    .to('.cell-area .scene_two .cell-1.num16', 0.5, {scale: 0, ease: 'none'}, 5.9)
-    .to('.cell-area .scene_one .cancer.num13', 0.8, {scale: 1, ease: 'none'}, 6)
-    .to('.cell-area .scene_two .cell-1.num11', 0.7, {scale: 0, ease: 'none'}, 6)
-    .to('.cell-area .scene_one .cancer.num20', 0.5, {scale: 1, ease: 'none'}, 6)
-    .to('.cell-area .scene_one .cancer.num12', 0.8, {scale: 1, ease: 'none'}, 6.1)
-
-    .to('.cell-area .scene_one .cell-1.num1', 0.5, {scale: 1, ease: 'none'}, 6.1)
-    .to('.cell-area .scene_one .cancer.num22', 0.5, {scale: 1, ease: 'none'}, 6.1)
-    .to('.cell-area .scene_two .cell-1.num18', 0.7, {scale: 0, ease: 'none'}, 6.2)
-    .to('.cell-area .scene_two .cell-1.num3', 0.5, {scale: 0, ease: 'none'}, 6.3)
-    .to('.cell-area .scene_two .cell-1.num23', 0.7, {scale: 0, ease: 'none'}, 6.3)
-    .to('.cell-area .scene_two .cell-1.num17', 0.5, {scale: 0, ease: 'none'}, 6.3)
-
-    .to('.cell-area .scene_two .cell-2.num6', 0.6, {scale: 0, ease: 'none'}, 6.3)
-    .to('.cell-area .scene_two .cell-1.num24', 0.6, {scale: 0, ease: 'none'}, 6.3)
-    .to('.cell-area .scene_one .cancer.num11', 0.7, {scale: 1, ease: 'none'}, 6.4)
-    .to('.cell-area .scene_one .cancer.num1', 0.5, {scale: 1, ease: 'none'}, 6.4)
-    .to('.cell-area .scene_one .cancer.num23', 0.9, {scale: 1, ease: 'none'}, 6.5)
-    .to('.cell-area .scene_two .cell-1.num1', 0.6, {scale: 0, ease: 'none'}, 6.6)
-    .to('.cell-area .scene_one .cancer.num2', 0.6, {scale: 1, ease: 'none'}, 6.7)
-    .to('.cell-area .scene_one .cancer.num4', 0.5, {x: 0, ease: 'none'}, 6.7)
-
-    .to('.cell-area .scene_one .cancer.num6', 0.5, {scale: 1, ease: 'none'}, 6.8)
-    .to('.cell-area .scene_one .cell-2.num1', 0.7, {scale: 1, ease: 'none'}, 6.8)
-    .to('.cell-area .scene_two .cell-1.num8', 0.6, {scale: 0, ease: 'none'}, 6.9)
-    .to('.cell-area .scene_two .cell-1.num7', 0.6, {scale: 0, ease: 'none'}, 6.9)
-    .to('.cell-area .scene_one .cancer.num19', 0.5, {scale: 1, ease: 'none'}, 7.1)
-    .to('.cell-area .scene_two .cell-1.num22', 0.6, {scale: 0, ease: 'none'}, 7.1)
-    .to('.cell-area .scene_one .cancer.num24', 0.8, {scale: 1, ease: 'none'}, 7.2)
-    .to('.cell-area .scene_one .cell-2.num2', 0.5, {scale: 1, ease: 'none'}, 7.2)
-    .to('.cell-area .scene_one .cancer.num9', 0.7, {scale: 1, ease: 'none'}, 7.4)
-    
-    .to('.cell-area .scene_two .cell-1.num19', 0.8, {scale: 0, ease: 'none'}, 7.6)
-    .to('.cell-area .scene_two .cell-1.num20', 0.4, {scale: 0, ease: 'none'}, 7.6)
-    .to('.cell-area .scene_one .cancer.num15', 0.5, {scale: 1, ease: 'none'}, 7.7)
-    .to('.cell-area .scene_one .cancer.num3', 0.5, {scale: 1, ease: 'none'}, 7.8)
-    .to('.cell-area .scene_two .cell-1.num5', 0.6, {scale: 0, ease: 'none'}, 7.9)
-    .to('.cell-area .scene_one .cancer.num8', 0.5, {scale: 1, ease: 'none'}, 7.9)
-
-    .to('.cell-area .scene_one .cancer.num21', 0.5, {scale: 1, ease: 'none'}, 8)
-    .to('.cell-area .scene_two .cell-2.num5', 0.7, {scale: 0, ease: 'none'}, 8)
-    .to('.cell-area .scene_one .cancer.num10', 0.5, {scale: 1, ease: 'none'}, 8.1)
-    .to('.cell-area .scene_two .cell-1.num9', 0.2, {scale: 0, ease: 'none'}, 8.2)
-    .to('.cell-area .scene_two .cell-1.num10', 0.2, {scale: 0, ease: 'none'}, 8.5)
-    .to('.cell-area .scene_one .cancer.num15', 0.5, {scale: 1, ease: 'none'}, 8.5)
-
-
     // immunity-relation
+
     const hoverOriginAction = new TimelineLite({paused: true})
     .to('.assassin-info__visual--character-origin', 2, {x: -80}, 0)
 
@@ -561,6 +431,7 @@ window.addEventListener('DOMContentLoaded', () => {
             gsap.set('.assassin-info__visual--navigation', {pointerEvents: 'none', opacity: 0});
             gsap.to('.assassin-info__visual--scene', 0.7, {opacity: 1});
             $('.assassin-info__visual--navigation-btn').removeClass('active');
+            $('.assassin-info__visual--navigation-btn .active-motion').removeClass('bounce');
 
             const naviHomeAction = new TimelineLite({paused: true})
             .set('.assassin-info__visual--list', {opacity: 0}, 0)
@@ -693,6 +564,7 @@ window.addEventListener('DOMContentLoaded', () => {
             gsap.to('.assassin-info__visual--list .grayscale', 0.4, {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)', delay: 0.5 });
         }
         $('.assassin-info__visual--navigation-btn:nth-of-type('+ (listValue + 1) +')').addClass('active');
+        $('.assassin-info__visual--navigation-btn:nth-of-type('+ (listValue + 1) +') .active-motion').addClass('bounce');
         gsap.set('.assassin-info__visual--list', {pointerEvents: 'none'});
         gsap.to('.assassin-info__visual--navigation', 0.5, {opacity: 1, pointerEvents: "visible", delay: 0.8});
         gsap.to('.assassin-info__visual--scene', 0.7, {opacity: 0});
@@ -724,6 +596,11 @@ window.addEventListener('DOMContentLoaded', () => {
         if(!isListAnimating){
             isListAnimating = true;
             //console.log('isListAnimating == ' + isListAnimating);
+            $('.assassin-info__visual--navigation-btn').removeClass('active');
+            $('.assassin-info__visual--navigation-btn .active-motion').removeClass('bounce');
+            $('.assassin-info__visual--navigation-btn:nth-of-type('+ (naviValue + 1) +')').addClass('active');
+            $('.assassin-info__visual--navigation-btn:nth-of-type('+ (naviValue + 1) +') .active-motion').addClass('bounce');
+
             switch ( naviValue ){
                 case 0:
                     navi.home();
@@ -741,23 +618,56 @@ window.addEventListener('DOMContentLoaded', () => {
                     navi.villain();
                     break;
             }
-            $('.assassin-info__visual--navigation-btn').removeClass('active');
-            $('.assassin-info__visual--navigation-btn:nth-of-type('+ (naviValue + 1) +')').addClass('active');
+            
         }
     }
     // assassin-info
 
     // outro
     $('.outro__inner--video-play').click( () => {
-        gsap.to('.outro', 1, {background: '#212121'});
+        //gsap.to('.outro', 1, {background: '#212121'});
+        isAnimating = true;
+
+        gsap.to('.epilogue', 1, {background: '#212121'});
+        gsap.to('.epilogue__background', 0.5, {opacity: 0});
+
         gsap.to('.outro__inner', 0.5, {opacity: 0});
-        gsap.to('.outro__video', 0.8, {opacity: 1, pointerEvents: 'visible', delay: 0.2});
+        gsap.to('.outro__video', 0.5, {opacity: 1, pointerEvents: 'visible', delay: 0.2});
         gsap.to('.outro__background', 0.5, {opacity: 0});
+
         setTimeout(() => {
             $(".outro__video--panel-in").get(0).play();
-        }, 800)
+        }, 800);
+        setTimeout(() => {
+            onSlideChangeEnd();
+        }, 1200);
+    });
+
+    $('.outro__inner--quiz').click( () => {
+        quizAreaFlag = true;
+        console.log('★quizAreaFlag = true');
+        gsap.set('.quiz-area',{zIndex: 10, y: "100vh", delay: 0});
+        gsap.to('.quiz-area', 1.2, {y: 0, ease: "power4.out"});
     });
     // outro
+
+   
+   const naturalTypeOn = new TimelineLite({paused: true})
+    .to('.natural-killer-cell', 1, {background: '#A5001A'}, 0.2)
+    .to('.natural-killer-cell__type .deep', 1.4, {fill: '#900017', opacity: 0}, 0.8)
+    .to('.natural-killer-cell__type .light', 1, {fill: '#ffffff'}, 0.8)
+    .to('.natural-killer-cell__type .text_n', 1, {x: 130}, 1.8)
+    .to('.natural-killer-cell__type .text_k', 1, {x: -275}, 1.8)
+    .to('.natural-killer-cell__type .text_cell', 1, {x: -520}, 1.8)
+
+    const naturalTypeOff = new TimelineLite({paused: true})
+    .to('.natural-killer-cell', 0.5, {background: '#F2F2F2'}, 0)
+    .set('.natural-killer-cell__type .deep.st0', {fill: '#BA0000', opacity: 1}, 0)
+    .set('.natural-killer-cell__type .deep.st1', {fill: '#212121', opacity: 1}, 0)
+    .set('.natural-killer-cell__type .light', {fill: '#BA0000'}, 0)
+    .set('.natural-killer-cell__type .text_n', {x: 0}, 0)
+    .set('.natural-killer-cell__type .text_k', {x: 0}, 0)
+    .set('.natural-killer-cell__type .text_cell', {x: 0}, 0)
 
    const pageNextScene = {
         quiz(){
@@ -771,6 +681,9 @@ window.addEventListener('DOMContentLoaded', () => {
             .to('.start-explanatory', 0.8, {opacity: 1, y: 0}, 0.7)
             .to('.start-btn', 0.8, {opacity: 1}, 0.8)
             visualPageScene.restart();
+        },
+        naturalKillerCell(){
+            naturalTypeOn.restart();
         },
         immunity(){
             const quizPageScene = new TimelineLite({paused: true})
@@ -795,12 +708,13 @@ window.addEventListener('DOMContentLoaded', () => {
             .set('.epilogue__background-illust', {opacity: 0}, 0)
             .set('.epilogue__background-rain1', {opacity: 0, y: -30}, 0)
             .set('.epilogue__background-rain2', {opacity: 0, y: -50, scale: 1.2}, 0)
-            .set('.epilogue__background-rain3', {opacity: 0, y: -100, scale: 1.2}, 0)
+            .set('.epilogue__background-rain3', {opacity: 0, scale: 1.2}, 0)
             .set('.epilogue__inner--area-headline', {opacity: 0, y: 40}, 0)
             .set('.epilogue__inner--area-explain', {opacity: 0, y: 40}, 0)
+
             .to('.epilogue__background-illust', 0.5, {opacity: 1}, 0.5)
             .to('.epilogue__background-rain2', 0.8, {opacity: 1, y: 0}, 0.5)
-            .to('.epilogue__background-rain3', 1.5, {opacity: 1, y: 0}, 1.3)
+            //.to('.epilogue__background-rain3', 1.5, {opacity: 1, y: 0}, 1.3)
             .to('.epilogue__background-rain1', 1.2, {opacity: 1, y: 0}, 1.3)
             .to('.epilogue__inner--area-headline', 0.8, {opacity: 1, y: 0}, 0.5)
             .to('.epilogue__inner--area-explain', 0.8, {opacity: 1, y: 0}, 0.9)
@@ -808,22 +722,55 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         outro(){
             const outroPageScene = new TimelineLite({paused: true})
-            .set('.outro__background', {y: -200, scaleY: 1.5}, 0)
+            .set('.epilogue .outro__inner', {opacity: 0, pointerEvents: 'none'}, 0)
             .set('.outro__inner--headline', {opacity: 0, y: 40}, 0)
             .set('.outro__inner--text-first', {opacity: 0, y: 40}, 0)
             .set('.outro__inner--text-second', {opacity: 0, y: 40}, 0)
             .set('.outro__inner--video-play', {opacity: 0}, 0)
-            .to('.outro__background', 3, {y: 0, scaleY: 1.5}, 0.2)
+            .set('.outro__inner--quiz', {opacity: 0}, 0)
+
+            .to('.epilogue__background-rain3', 1, {opacity: 1}, 0.5)
+            .to('.epilogue__inner', 1, {opacity: 0}, 0.5)
+            .to('.epilogue__background-illust', 1, {opacity: 0}, 0.5)
+            .to('.epilogue__background-rain1', 1, {opacity: 0}, 0.5)
+            .to('.epilogue .outro__inner', 1, {opacity: 1, pointerEvents: 'visible'}, 0.8)
             .to('.outro__inner--headline', 0.8, {opacity: 1, y: 0}, 0.5)
             .to('.outro__inner--text-first', 0.8, {opacity: 1, y: 0}, 0.8)
             .to('.outro__inner--text-second', 0.8, {opacity: 1, y: 0}, 1.1)
             .to('.outro__inner--video-play', 1, {opacity: 1}, 1.3)
+            .to('.outro__inner--quiz', 1, {opacity: 1}, 1.5)
+
             outroPageScene.restart();
+
         }
     }
-
+    
     //content swiper
     const verticalPageSwapNext = {
+        naturalKillerCell(){
+            gsap.to('.natural-killer-cell', 1.2, {y: 0, ease: "power4.out"});
+            pageNextScene.naturalKillerCell();
+        },
+        natural(){
+            gsap.to('.natural-killer', 1.2, {y: 0, ease: "power4.out"});
+            pageNextScene.natural();
+        },
+        assassin(){
+            gsap.to('.assassin-info', 1.2, {y: 0, ease: "power4.out"});
+        },
+        epilogue(){
+            gsap.to('.epilogue', 1.2, {y: 0, ease: "power4.out"});
+            pageNextScene.epilogue();
+        },
+        outro(){
+            //gsap.to('.outro', 1.2, {y: 0, ease: "power4.out"});
+            pageNextScene.outro();
+        },
+        copyright(){
+            gsap.to('.copyright', 1.2, {y: 0, ease: "power4.out"});
+        }
+
+        /*
         visual() {
             gsap.to('.quiz-area', 1.2, {y: 0, ease: "power4.out"});
             pageNextScene.quiz();
@@ -833,6 +780,10 @@ window.addEventListener('DOMContentLoaded', () => {
             gsap.to('.immunity-relation', 1.2, {y: 0, ease: "power4.out"});
             pageNextScene.immunity();
             immunityMorph.restart();
+        },
+        naturalKillerCell(){
+            gsap.to('.natural-killer-cell', 1.2, {y: 0, ease: "power4.out"});
+            pageNextScene.naturalKillerCell();
         },
         immunity(){
             gsap.to('.natural-killer', 1.2, {y: 0, ease: "power4.out"});
@@ -853,18 +804,22 @@ window.addEventListener('DOMContentLoaded', () => {
         outro(){
             gsap.to('.copyright', 1.2, {y: 0, ease: "power4.out"});
         }
+        */
     }
-
+    
     const verticalPageSwapPrev = {
         quiz(){
             gsap.to('.quiz-area', 1.2, {y: "100vh", ease: "power4.out"});
+        },
+        naturalKillerCell(){
+            gsap.to('.natural-killer-cell', 1.2, {y: "100vh", ease: "power4.out"});
+            naturalTypeOff.restart();
         },
         immunity(){
             gsap.to('.immunity-relation', 1.2, {y: "100vh", ease: "power4.out"});
         },
         natural(){
             gsap.to('.natural-killer', 1.2, {y: "100vh", ease: "power4.out"});
-            immunityMorph.restart();
         },
         assassin(){
             gsap.to('.assassin-info', 1.2, {y: "100vh", ease: "power4.out"});
@@ -873,49 +828,76 @@ window.addEventListener('DOMContentLoaded', () => {
             gsap.to('.epilogue', 1.2, {y: "100vh", ease: "power4.out"});
         },
         outro(){
-            gsap.to('.outro', 1.2, {y: "100vh", ease: "power4.out"});
+            gsap.to('.epilogue .outro__inner', 0.5, {opacity: 0, pointerEvents: 'none'});
+            gsap.to('.epilogue__inner', 0.8, {opacity: 1, delay: 0.4})
+            gsap.to('.epilogue__background-illust', 0.4, {opacity: 1, delay: 0.4})
+            gsap.to('.epilogue__background-rain1', 0.5, {opacity: 1, delay: 0.4})
+            gsap.to('.epilogue__background-rain3', 0.4, {opacity: 0, delay: 0.2})
+
+            gsap.to('.epilogue', 1, {background: '#000'});
+            gsap.to('.epilogue__background', 0.5, {opacity: 1});
+            gsap.to('.outro__video', 0.3, {opacity: 0, pointerEvents: 'none'});
+            $(".outro__video--panel-in").get(0).pause();
+
         },
         copyright(){
             gsap.to('.copyright', 1.2, {y: 195, ease: "power4.out"});
         }
     }
 
-    const horizontalEvent = (htEvent) => {
-        //console.log('horizontalEvent');
-        if(htEvent == 1){
-            const naturalTypeOn = new TimelineLite({paused: true})
-            .to('.natural-killer__type', 1, {opacity: 1}, 0)
-            .to('.natural-killer__explain', 0.5, {opacity: 0}, 0)
-            .to('.natural-killer', 1, {background: '#A5001A'}, 0.2)
-            .to('.natural-killer__type .deep', 1.4, {fill: '#900017', opacity: 0}, 0.8)
-            .to('.natural-killer__type .light', 1, {fill: '#ffffff'}, 0.8)
-            .to('.natural-killer__type .text_n', 1, {x: 130}, 1.8)
-            .to('.natural-killer__type .text_k', 1, {x: -275}, 1.8)
-            .to('.natural-killer__type .text_cell', 1, {x: -520}, 1.8)
-            naturalTypeOn.restart();
-        }else {
-            const naturalTypeOff = new TimelineLite({paused: true})
-            .to('.natural-killer', 0.5, {background: '#F2F2F2'}, 0)
-            .to('.natural-killer__type', 0.5, {opacity: 0}, 0)
-            .to('.natural-killer__explain', 1, {opacity: 1}, 0)
-            .set('.natural-killer__type .deep.st0', {fill: '#BA0000', opacity: 1}, 1.1)
-            .set('.natural-killer__type .deep.st1', {fill: '#212121', opacity: 1}, 1.1)
-            .set('.natural-killer__type .light', {fill: '#BA0000'}, 1.1)
-            .set('.natural-killer__type .text_n', {x: 0}, 1.1)
-            .set('.natural-killer__type .text_k', {x: 0}, 1.1)
-            .set('.natural-killer__type .text_cell', {x: 0}, 1.1)
-            naturalTypeOff.restart();
-        }
-    }
+    $('.visual-intro__area--goToStory').click( () => {
+        pageNum = 0;
+        goToNextSlide();
+    });
+    $('.visual-intro__area--goToTest').click( () => {
+        //pageNum = -1;
+        //goToNextSlide();
+        //verticalPageSwapNext.quiz();
+        //pageNum = 0;
+        
+        gsap.to('.quiz-area', 1.2, {y: 0, ease: "power4.out"});
+        furstquizAreaFlag = true;
+        //quizAreaFlag = true;
+
+            
+            
+    });
 
     //page controll
     const goToNextSlide = () => {
-        if(pageNum >= 8) return false; //index: 0 기준 false 처리
+        if(quizAreaFlag){
+            return false;
+        }
+
+        if(pageNum >= 6) return false; //index: 0 기준 false 처리
         if(!isAnimating){
             isAnimating = true;
             pageNum +=1;
-            //console.log('next page = ' + pageNum);
+            console.log('next page = ' + pageNum);
             switch(pageNum){
+                case 0:
+                    //verticalPageSwapNext.quiz();
+                    break;
+                case 1:
+                    verticalPageSwapNext.naturalKillerCell();
+                    break;
+                case 2:
+                    verticalPageSwapNext.natural();
+                    break;
+                case 3:
+                    verticalPageSwapNext.assassin();
+                    break;
+                case 4:
+                    verticalPageSwapNext.epilogue();
+                    break;
+                case 5:
+                    verticalPageSwapNext.outro();
+                    break;
+                case 6:
+                    $(".outro__video--panel-in").get(0).pause();
+                    verticalPageSwapNext.copyright();
+                    break;
+                /*
                 case 0:
                     break;
                 case 1:
@@ -943,6 +925,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     verticalPageSwapNext.outro();
                     $(".outro__video--panel-in").get(0).pause();
                     break;
+                */
             }
             setTimeout(() => {
                 onSlideChangeEnd();
@@ -950,12 +933,73 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
     const goToPrevSlide = () => {
+        if(quizAreaFlag){
+            isAnimating = true;
+            gsap.to('.quiz-area', 1, {y: "100vh", ease: "power4.out"});
+            gsap.set('.quiz-area',{zIndex: 1, delay: 1});
+            quizAreaFlag = false;
+            setTimeout(() => {
+                onSlideChangeEnd();
+            }, 1000)
+            return false;
+        }
+        if(furstquizAreaFlag){
+            gsap.to('.quiz-area', 1.2, {y: "100vh", ease: "power4.out"});
+            furstquizAreaFlag = false;
+        }
+
         if(pageNum <= 0) return false; //총 페이지 수를 넘어가면 false처리
         if(!isAnimating){
             isAnimating = true;
             pageNum -=1;
-            //console.log('prev page = ' + pageNum);
+            console.log('prev page = ' + pageNum);
             switch(pageNum){
+                case 0:
+                    gsap.set('.quiz-area', {y: "100vh"});
+                    verticalPageSwapPrev.naturalKillerCell();
+                    break;
+                case 1:
+                    verticalPageSwapPrev.natural();
+                    break;
+                case 2:
+                    verticalPageSwapPrev.assassin();
+                    break;
+                case 3:
+                    verticalPageSwapPrev.epilogue();
+                    $(".outro__video--panel-in").get(0).pause();
+                    break;
+                case 4:
+                    /*
+                    if(quizAreaFlag){
+                        gsap.to('.quiz-area', 1.2, {y: "100vh", ease: "power4.out"});
+                        gsap.set('.quiz-area',{zIndex: 1, delay: 1});
+                        quizAreaFlag = false;
+                        
+                        //setTimeout(() => {
+                            //verticalPageSwapPrev.outro();
+                        //}, 400)
+                    }else {
+                        verticalPageSwapPrev.outro();
+                    }
+                    */
+                   verticalPageSwapPrev.outro();
+                    //console.log('여기서 변화 및 체크');
+                    
+                    
+                    break;
+                case 5:
+                    //console.log('여기서 변화 및 체크');
+                    /*
+                    if(quizAreaFlag){
+                        gsap.to('.quiz-area', 1.2, {y: "100vh", ease: "power4.out"});
+                        gsap.set('.quiz-area',{zIndex: 1, delay: 1});
+                        quizAreaFlag = false;
+                    }
+                    */
+                    //gsap.to('.quiz-area', 1.2, {y: 0, ease: "power4.out"});
+                    verticalPageSwapPrev.copyright();
+                    break;
+                /*
                 case 0:
                     verticalPageSwapPrev.quiz();
                     break;
@@ -981,6 +1025,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 case 7:
                     verticalPageSwapPrev.copyright();
                     break;
+                */
             }
             setTimeout(() => {
                 onSlideChangeEnd();
@@ -1019,7 +1064,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     defaultSet(); // 기본 셋팅 실행
-    
+
 });
 
 var explainBtnActive;

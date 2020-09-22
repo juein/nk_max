@@ -26,28 +26,108 @@ $white : #fff;
     letter-spacing: $ls;
 }
 
-#intro{
-    min-height:100vh;
-    padding:0;
+.quiz-area{
+    position: absolute;
     width: 100%;
-    overflow:hidden;
-}
-#feature1{
-    width: 100%;
-    height: 10vw;
-    padding: 0;
-    background: #c8c8c8;
-    .box{
-        @include box_container( 84vw, 0, 0, 0, -40vw );
+    //height: calc(100vh - 50px);
+    height: 100vh;
+    top: 0;
+    overflow: hidden;
+    background: #BA0000;
+    &__inner{
+        @include box_container(88vw, 0, 0, 0, -44vw, 0, 50%);
+        height: 100%;
+        color: #fff;
+        &--headline{
+            @include fontInfo(10vw, 12vw, -0.05em);
+            text-align: center;
+            margin-top: 21vh;
+            .demilight{
+                display: block;
+                @include fw-light;
+            }
+            .highlight{
+                display: block;
+                @include fw-medium;
+            }
+        }
     }
-    
+    &__start{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 48vh;
+        color: #fff;
+        &--default, &--cover{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .start-explanatory{
+            @include fontInfo(4vw, 6vw, -0.05em);
+            @include fw-regular;
+            text-align: justify;
+            width: 80vw;
+            position: absolute;
+            bottom: 25vh;
+            left: 50%;
+            margin-left: -40vw;
+
+            //position: relative;
+            //width: 80vw;
+            //left: 10vw;
+            //top: 12vh;
+
+           &--center{
+                display: block;
+                text-align: center;
+            }
+        }
+        .start-btn{
+            position: absolute;
+            left: 50%;
+            width: 66vw;
+            margin-left: -33vw;
+            bottom: 8vh;
+            height: 16vw;
+
+            //position: relative;
+            //width: 66vw;
+            //height: 16vw;
+            //top: 21vh;
+            //left: 18vw;
+            
+
+            color: #fff;
+            border: 1px solid #fff;
+            background: none;
+            @include fontInfo(6vw, 11vw, 0);
+            @include ProximaNova;
+        }
+        &--cover{
+            //.test{
+            //    background: #fff;
+            //    position: absolute;
+            //    top: 0;
+            //    overflow: hidden;
+            //    width: 100%;
+            //    height: 40%;
+            //}
+            clip: rect(120px, 400px, 340px, 0px);
+
+            background: #fff;
+            color: #B10000;
+            .start-btn{
+                color: #B10000;
+                border: 1px solid #B10000;
+            }
+        }
+    }
 }
 
-.feature1_pin{
-    background: #000;
+.rooftop{
+    z-index: 0;
 }
-
 .brand-identity img{
-    //top: 2px;
+    top: 5px;
 }
-
