@@ -1,24 +1,14 @@
-// 스크립트 시작
-
-//global
-//const pageIntroAction;
-
-
-
 
 // onload
 window.onload = function(){
-    //console.log('onload');
     const pageIntroAction = new TimelineMax({paused:true})
     .to('.visual-intro__type-text', 0.8, {opacity: 1}, 0.2)
     .to('.visual-intro__illust', 0.6, {opacity: 1, x: 0, y: 0}, 0.4)
     .to('.visual-intro__type-text.before', 0.8, {opacity: 0}, 0.8)
     .to('.visual-intro__area--headline-first', 0.6, {opacity: 1, x: 0}, 0.8)
     .to('.visual-intro__area--headline-last', 0.6, {opacity: 1, x: 0}, 0.8)
-
     pageIntroAction.play();
 }
-
 // onload
 
 window.addEventListener('DOMContentLoaded', () => { 
@@ -32,14 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
     listActiveNum = 0,
     quizStep = 1,
     hoveHeroFlag = false;
-
-    //리로드
-    //window.onbeforeunload = function () {
-    //    //window.scrollTo(0, 0);
-    //    //console.clear(); 
-    //}
-
-    const ctrl = new ScrollMagic.Controller();
 
     // default setting
     const defaultSet = () => {
@@ -72,12 +54,10 @@ window.addEventListener('DOMContentLoaded', () => {
         gsap.to('.quiz-area__inner--question-step'+quizStep, 0.5, {opacity: 1, pointerEvents:'visible', delay: 0.4});
         $('.progress__box:nth-of-type('+quizStep+') .chk').addClass('active');
         $('.progress__box:nth-of-type('+quizStep+') .this-quoetion').addClass('thisActive');
-
    });
 
    $('.quiz__btn--finish').click( ()=>{
         let quizResult = $('#quiz-area__form').serializeArray();
-        //console.log(quizResult);
         //정답이랑 내가 체크한 값 비교하기
         let quizScore = 0;
         const quizCorrectResult = [ 2, 1, 2, 2, 1, 2, 2, 2, 1, 2 ];
@@ -89,16 +69,13 @@ window.addEventListener('DOMContentLoaded', () => {
             }else {
                 //console.log((k + 1) +' = 틀림 ');
                 $('.explain__list-item.q'+( k + 1 )+' .answer-status--false').addClass('active');
-
             }
-
             if( Number(quizResult[k].value) == 1 ){
                 $('.explain__list-item.q'+( k + 1 )+' .select_true').addClass('active');
             }else {
                 $('.explain__list-item.q'+( k + 1 )+' .select_false').addClass('active');
             }
         }
-        //console.log('quizScore = ' + quizScore);
         //해설지 ox표기
         quizResultPage(quizScore);
    });
@@ -110,7 +87,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         $('.number-text-strong .sc-num').html( (score * 10) );
         $('.number-text-default .sc-num').html( score );
-
         // grade 표기
         let gradeTitle, gradeEtc;
         if( score == 0 ){
@@ -128,7 +104,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         $('.grade-title').html( gradeTitle );
         $('.grade-etc').html( gradeEtc );
-
         gsap.to('.quiz-area__inner--question', 0.5, {opacity: 0, pointerEvents: 'none'});
         gsap.to('.quiz-area__inner--result', 0.5, {opacity: 1, pointerEvents: 'visible'});
     }
@@ -221,7 +196,6 @@ window.addEventListener('DOMContentLoaded', () => {
     .to('.cell-area .scene_two .cell-1.num21', 0.7, {scale: 1, ease: 'none'}, 3.6)
     .to('.cell-area .scene_two .cell-2.num2', 0.5, {scale: 1, ease: 'none'}, 3.5)
     .to('.cell-area .scene_two .cell-1.num12', 0.8, {scale: 1, ease: 'none'}, 3.7)
-
     
     //back
     .to('.cell-area .scene_two .cell-1.num21', 0.5, {scale: 0, ease: 'none'}, 5)
@@ -291,12 +265,9 @@ window.addEventListener('DOMContentLoaded', () => {
     .to('.cell-area .scene_two .cell-1.num9', 0.2, {scale: 0, ease: 'none'}, 8.2)
     .to('.cell-area .scene_two .cell-1.num10', 0.2, {scale: 0, ease: 'none'}, 8.5)
     .to('.cell-area .scene_one .cancer.num15', 0.5, {scale: 1, ease: 'none'}, 8.5)
-    
-
 
 
     // immunity-relation
-
     const hoverOriginAction = new TimelineLite({paused: true})
     .to('.assassin-info__visual--character-origin', 2, {x: -80}, 0)
 
@@ -339,7 +310,6 @@ window.addEventListener('DOMContentLoaded', () => {
             hoverHeroAction.restart();
         },
         heroReverse(){
-            //hoverHeroAction.reverse();
             if(!hoveHeroFlag){
                 hoverHeroAction.reverse();
             }
@@ -350,17 +320,14 @@ window.addEventListener('DOMContentLoaded', () => {
         villainReverse(){
             hoverVillainAction.seek(0);
             hoverVillainAction.pause(0);
-
         }
     }
-
 
     // assassin-info
     $(".assassin-info .grayscale").hover(function(){
         hoverItem = $(this).attr('class').replace('grayscale', '');
         gsap.to( '.'+hoverItem, 1, {'-webkit-filter':'grayscale(0%)', filter: 'grayscale(0%)'} );
         hoverAction = String(hoverItem.replace('assassin-info__visual--list-', '').trim());
-        
         if(hoverAction == 'origin'){
             assasinHoverControl.originPlay();
         }else if(hoverAction == 'talent'){
@@ -370,12 +337,10 @@ window.addEventListener('DOMContentLoaded', () => {
         }else if(hoverAction == 'villain'){
             assasinHoverControl.villainPlay();
         }
-
     }, function(){
         if(listActiveNum == 0){
             gsap.to( '.'+hoverItem, 1, {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)'} );
         }
-
         if(hoverAction == 'origin'){
             assasinHoverControl.originReverse();
         }else if(hoverAction == 'talent'){
@@ -420,7 +385,6 @@ window.addEventListener('DOMContentLoaded', () => {
     
     const assassinContent = {
         hideContent(){
-            //컨텐츠 display none
             gsap.to('.assassin-info__visual--content--origin', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--talent', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--hero', 0.3, {opacity: 0});
@@ -431,45 +395,30 @@ window.addEventListener('DOMContentLoaded', () => {
             gsap.to('.assassin-info__visual--content--villain-typo', 0.3, {opacity: 0});
         },
         origin(){
-            console.log('origin content!!');
             gsap.to('.assassin-info__visual--content--origin-typo', 1, {opacity: 1});
             gsap.to('.assassin-info__visual--content--talent-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--hero-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--villain-typo', 0.3, {opacity: 0});
-            
             gsap.to('.assassin-info__visual--content--origin', 0.5, {opacity: 1, delay: 0.5});
             gsap.to('.assassin-info__visual--content--talent', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--hero', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--villain', 0.3, {opacity: 0});
         },
         talent(){
-            console.log('talent content!!');
             gsap.to('.assassin-info__visual--content--origin-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--talent-typo', 1, {opacity: 1});
             gsap.to('.assassin-info__visual--content--hero-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--villain-typo', 0.3, {opacity: 0});
-
             gsap.to('.assassin-info__visual--content--origin', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--talent', 0.5, {opacity: 1, delay: 0.5});
             gsap.to('.assassin-info__visual--content--hero', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--villain', 0.3, {opacity: 0});
         },
-        talentAnimation(){
-            //console.log('talentAnimation');
-            
-
-            //tMechanismAnimation.pause();
-            //nkMechanismAnimation.pause();
-            //tMechanismAnimation.restart();
-            //nkMechanismAnimation.restart();
-        },
         hero(){
-            console.log('hero content!!');
             gsap.to('.assassin-info__visual--content--origin-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--talent-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--hero-typo', 1, {opacity: 1});
             gsap.to('.assassin-info__visual--content--villain-typo', 0.3, {opacity: 0});
-
             gsap.to('.assassin-info__visual--content--origin', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--talent', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--hero', 0.5, {opacity: 1, delay: 0.5});
@@ -485,15 +434,12 @@ window.addEventListener('DOMContentLoaded', () => {
             .set('.procedure-step1 .procedure-line', {scaleX: 0}, 0)
             .set('.procedure-step1 .procedure-arrow-text', {opacity: 0}, 0)
             .set('.procedure-step1 .procedure-arrow', {opacity: 0}, 0)
-
             .set('.procedure-step2 .procedure-line', {scaleX: 0, rotate: -45}, 0)
             .set('.procedure-step2 .procedure-arrow-text', {opacity: 0}, 0)
             .set('.procedure-step2 .procedure-arrow', {opacity: 0}, 0)
-
             .set('.procedure-step3 .procedure-line', {scaleX: 0}, 0)
             .set('.procedure-step3 .procedure-arrow-text', {opacity: 0}, 0)
             .set('.procedure-step3 .procedure-arrow', {opacity: 0}, 0)
-
             .set('.procedure-step4 .procedure-line', {rotate: -45, scaleX: 0}, 0)
             .set('.procedure-step4 .procedure-arrow-text', {opacity: 0}, 0)
             .set('.procedure-step4 .procedure-arrow', {opacity: 0}, 0)
@@ -515,40 +461,29 @@ window.addEventListener('DOMContentLoaded', () => {
             .to('.procedure-step4 .procedure-line', 0.5, {scaleX: 1}, 3.5)
             .to('.procedure-step4 .procedure-arrow-text', 0.5, {opacity: 1}, 3.5)
             .to('.procedure-step4 .procedure-arrow', 0.4, {opacity: 1}, 4)
-
             procedureAnimation.pause();
             procedureAnimation.restart();
-
         },
         villain(){
-            console.log('villain content!!');
             gsap.to('.assassin-info__visual--content--origin-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--talent-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--hero-typo', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--villain-typo', 1, {opacity: 1});
-
             gsap.to('.assassin-info__visual--content--origin', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--talent', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--hero', 0.3, {opacity: 0});
             gsap.to('.assassin-info__visual--content--villain', 0.5, {opacity: 1, delay: 0.5});
         },
     }
-    
-    
 
     const visualList = {
         origin(){
             const listOriginAction = new TimelineLite({paused: true})
-            //assassin-info__visual--character-origin
-            // scale(1.3) translateX(40px)
             .set('.assassin-info__visual--list-origin', {overflow: 'visible'}, 0)
             .set('.assassin-info__visual--list-talent', {overflow: 'hidden'}, 0)
             .set('.assassin-info__visual--list-hero', {overflow: 'hidden'}, 0)
             .set('.assassin-info__visual--list-villain', {overflow: 'hidden'}, 0)
-
-            //.to('.assassin-info__visual--list-origin', 1.2, {y: "10%"}, 0.7)
             .to('.assassin-info__visual--character-origin', 1, {scale: 1.2, y: 100, x: 80}, 0.7)
-
             .to('.assassin-info__visual--bg-origin', 0.5, {opacity: 0}, 0)
             .to('.assassin-info__visual--list-talent', 1, {x: "301%"}, 0)
             .to('.assassin-info__visual--list-hero', 1, {x: "301%"}, 0)
@@ -566,9 +501,7 @@ window.addEventListener('DOMContentLoaded', () => {
             .set('.assassin-info__visual--list-talent', {overflow: 'visible'}, 0)
             .set('.assassin-info__visual--list-hero', {overflow: 'hidden'}, 0)
             .set('.assassin-info__visual--list-villain', {overflow: 'hidden'}, 0)
-
             .to('.assassin-info__visual--character-talent', 0.8, {x: 0, scale: 1.2}, 0.7)
-
             .to('.assassin-info__visual--bg-talent', 1, {opacity: 0}, 0)
             .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
             .to('.assassin-info__visual--list-talent', 1, {x: "-80%"}, 0.7)
@@ -580,25 +513,19 @@ window.addEventListener('DOMContentLoaded', () => {
             listActiveNum = 2;
             listTalentAction.restart();
             assassinContent.talent();
-            //assassinContent.talentAnimation();
             tMechanismAnimation.restart();
             nkMechanismAnimation.restart();
         },
         hero(){
             const listHeroAction = new TimelineLite({paused: true})
-            //.to('.assassin-info__visual--character-hero', 0.8, {x: 0, y: 0}, 0)
-            //.set('.assassin-info__visual--character-hero', {x: 0, y: 0}, 0)
             .to('.assassin-info__visual--character-hero', 1.2, {x: 400, y: 200}, 0)
-
             .set('.assassin-info__visual--list-origin', {overflow: 'hidden'}, 0)
             .set('.assassin-info__visual--list-talent', {overflow: 'hidden'}, 0)
             .set('.assassin-info__visual--list-hero', {overflow: 'visible'}, 0)
             .set('.assassin-info__visual--list-villain', {overflow: 'hidden'}, 0)
-
             .to('.assassin-info__visual--bg-hero', 0.5, {opacity: 0}, 0)
             .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
             .to('.assassin-info__visual--list-talent', 1, {x: "-201%"}, 0)
-            //.to('.assassin-info__visual--list-hero', 1.2, {x: "90%", y: "20%"}, 0.7)
             .to('.assassin-info__visual--list-hero', 1.2, {x: "0%", y: "0%"}, 0.7)
             .to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
             .to('.assassin-info__visual', 0.5, {background: '#f2f2f2'}, 0.5);
@@ -615,14 +542,11 @@ window.addEventListener('DOMContentLoaded', () => {
             .set('.assassin-info__visual--list-talent', {overflow: 'hidden'}, 0)
             .set('.assassin-info__visual--list-hero', {overflow: 'hidden'}, 0)
             .set('.assassin-info__visual--list-villain', {overflow: 'visible'}, 0)
-
             .to('.assassin-info__visual--bg-villain', 0.5, {opacity: 0}, 0)
             .to('.assassin-info__visual--list-origin', 1, {x: "-101%"}, 0)
             .to('.assassin-info__visual--list-talent', 1, {x: "-201%"}, 0)
             .to('.assassin-info__visual--list-hero', 1, {x: "-301%"}, 0)
-            //.to('.assassin-info__visual--list-villain', 1, {x: "301%"}, 0)
             .to('.assassin-info__visual', 0.5, {background: '#f2f2f2'}, 0.5)
-            //.to('.assassin-info__visual--character-villain', 1, {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 1)
     
             $('.assassin-info__visual--list-villain').addClass('active');
             listActiveNum = 4;
@@ -634,38 +558,24 @@ window.addEventListener('DOMContentLoaded', () => {
     const navi = {
         home(){
             isListAnimating = false;
-            console.log('isListAnimating == ' + isListAnimating);
-
-            // 네비 비활성화
-            //gsap.set('.assassin-info__visual--list', {pointerEvents: 'visible'});
             gsap.set('.assassin-info__visual--navigation', {pointerEvents: 'none', opacity: 0});
-            //gsap.to('.assassin-info__visual--navigation', 0.5, {opacity: 0});
             gsap.to('.assassin-info__visual--scene', 0.7, {opacity: 1});
             $('.assassin-info__visual--navigation-btn').removeClass('active');
 
-            //gsap.set('.assassin-info__visual--navigation', {pointerEvents: 'none'});
-
             const naviHomeAction = new TimelineLite({paused: true})
             .set('.assassin-info__visual--list', {opacity: 0}, 0)
-
             .to('.assassin-info__visual--character-origin', 0.4, {scale: 1.5, y: 0, x: 0}, 0)
             .to('.assassin-info__visual--character-talent', 0.4, {x: 40, scale: 1.6}, 0)
             .to('.assassin-info__visual--character-hero', 0.4, {x: 30, y: 0}, 0)
-            
-            //.to('.assassin-info__visual--character-villain', 0.5, {backgroundSize: '200%', backgroundPosition: 'center 100%'}, 0)
             .set('.assassin-info__visual--list-origin', {overflow: 'hidden'}, 0.3)
             .set('.assassin-info__visual--list-talent', {overflow: 'hidden'}, 0.3)
             .set('.assassin-info__visual--list-hero', {overflow: 'hidden'}, 0.3)
             .set('.assassin-info__visual--list-villain', {overflow: 'hidden'}, 0.3)
-
             .set('.assasin_bg', {opacity: 1}, 0.4)
             .set('.assassin-info__visual--list-villain', {x: '101%'}, 0)
-            
             .to('.assassin-info__visual', 1, {background: '#d00116'}, 0)
             .to('.assassin-info__visual--list li', 0.5, {x: 0, y: 0, opacity: 1, filter: 'grayscale(100%)'}, 0.2)
-
             .to('.assassin-info__visual--list', 0.4, {opacity: 1}, 0.5)
-
     
             $('.assassin-info__visual--list li').removeClass('active');
 
@@ -673,8 +583,6 @@ window.addEventListener('DOMContentLoaded', () => {
             listActiveNum = 0;
             naviHomeAction.restart();
             assassinContent.hideContent();
-            //tMechanismAnimation.paused();
-            //nkMechanismAnimation.paused();
 
             hoveHeroFlag = false; 
 
@@ -687,7 +595,6 @@ window.addEventListener('DOMContentLoaded', () => {
             .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
             .set('.assassin-info__visual--bg-origin', {opacity: 0}, 0)
             .set('.assassin-info__visual--list-origin', {opacity: 0, x: 0, y: 0}, 0.2)
-
             .set('.assassin-info__visual--character-origin', {scale: 1.2, y: 0, x: 0}, 0.2)
             .to('.assassin-info__visual--list-origin', 0.8, {opacity: 1}, 0.4)
             .to('.assassin-info__visual--character-origin', 0.8, {y: 100, x: 80}, 0.4)
@@ -712,10 +619,8 @@ window.addEventListener('DOMContentLoaded', () => {
             .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
             .set('.assassin-info__visual--bg-talent', {opacity: 0}, 0)
             .set('.assassin-info__visual--list-talent', {opacity: 0, x: "-50%"}, 0.2)
-
             .set('.assassin-info__visual--character-talent', {scale: 1.2, x: 0}, 0.2)
             .to('.assassin-info__visual--list-talent', 0.8, {x: "-80%", opacity: 1}, 0.4)
-
     
             setTimeout(() => {
                 $('.assassin-info__visual--list li').removeClass('active');
@@ -727,24 +632,18 @@ window.addEventListener('DOMContentLoaded', () => {
     
             naviTalentAction.restart();
             assassinContent.talent();
-            //assassinContent.talentAnimation();
             tMechanismAnimation.restart();
             nkMechanismAnimation.restart();
-            
         },
         hero(){
             const naviHeroAction = new TimelineLite({paused: true})
-
             .set('.assassin-info__visual--list-hero', {overflow: 'visible', opacity: 0, x: '0%', y: '0%'}, 0.2)
             .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
             .set('.assassin-info__visual--bg-hero', {opacity: 0}, 0)
-
             .to('.assassin-info__visual--list-hero', 0.8, {opacity: 1}, 0.4)
-
             .set('.assassin-info__visual--character-hero', {x: 300, y: 200}, 0.2)
             .to('.assassin-info__visual--character-hero', 0.8, {x: 400}, 0.4)
 
-    
             setTimeout(() => {
                 $('.assassin-info__visual--list li').removeClass('active');
                 $('.assassin-info__visual--list-hero').addClass('active');
@@ -765,11 +664,8 @@ window.addEventListener('DOMContentLoaded', () => {
             .set('.assassin-info__visual--list-villain', {overflow: 'visible'}, 0.2)
             .to('.assassin-info__visual--list li.active', 0.5, {opacity: 0})
             .set('.assassin-info__visual--bg-villain', {opacity: 0}, 0)
-            //.set('.assassin-info__visual--character-villain',  {backgroundSize: '140%', backgroundPosition: 'center 10%'}, 0)
             .set('.assassin-info__visual--list-villain', {opacity: 0, x: "0", y: "0"}, 0.2)
             .to('.assassin-info__visual--list-villain', 0.8, {opacity: 1}, 0.4)
-            //.to('assassin-info__visual--list-villain', 0.5, {filter: 'grayscale(0%)'}, 0.4)
-            //gsap.to('.assassin-info__visual--list .grayscale', 0.4, {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)', delay: 0.5 });
             .set('.assassin-info__visual--list .grayscale', {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)' }, 0.2)
             .to('.assassin-info__visual--list .grayscale', 0.8, {'-webkit-filter':'grayscale(0%)', filter: 'grayscale(0%)' }, 0.5)
     
@@ -793,21 +689,13 @@ window.addEventListener('DOMContentLoaded', () => {
     assassinList.addEventListener("click", assassinListClick);
     function assassinListClick(e){
         let listValue = Number(e.target.getAttribute('data-value'));
-        //console.log('!!!! listValue = ' + listValue);
         if( listValue != 4 ){
             gsap.to('.assassin-info__visual--list .grayscale', 0.4, {'-webkit-filter':'grayscale(100%)', filter: 'grayscale(100%)', delay: 0.5 });
         }
-
         $('.assassin-info__visual--navigation-btn:nth-of-type('+ (listValue + 1) +')').addClass('active');
-        //console.log(e.target);
-        //if(!naviFlag){
-        //    naviFlag = true;
-        //    navigationShow(true);
-        //}
         gsap.set('.assassin-info__visual--list', {pointerEvents: 'none'});
         gsap.to('.assassin-info__visual--navigation', 0.5, {opacity: 1, pointerEvents: "visible", delay: 0.8});
         gsap.to('.assassin-info__visual--scene', 0.7, {opacity: 0});
-
         switch ( listValue ){
             case 1:
                 visualList.origin();
@@ -830,13 +718,12 @@ window.addEventListener('DOMContentLoaded', () => {
     assassinNavigation.addEventListener("click", assassinNaviClick);
 
     function assassinNaviClick(e){
-        console.log('isListAnimating == ' + isListAnimating);
-
+        //console.log('isListAnimating == ' + isListAnimating);
         let naviValue = Number(e.target.getAttribute('data-value'));
         if(listActiveNum == naviValue) return false;
         if(!isListAnimating){
             isListAnimating = true;
-            console.log('isListAnimating == ' + isListAnimating);
+            //console.log('isListAnimating == ' + isListAnimating);
             switch ( naviValue ){
                 case 0:
                     navi.home();
@@ -860,7 +747,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     // assassin-info
 
-
     // outro
     $('.outro__inner--video-play').click( () => {
         gsap.to('.outro', 1, {background: '#212121'});
@@ -872,7 +758,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 800)
     });
     // outro
-
 
    const pageNextScene = {
         quiz(){
@@ -996,7 +881,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const horizontalEvent = (htEvent) => {
-        console.log('horizontalEvent');
+        //console.log('horizontalEvent');
         if(htEvent == 1){
             const naturalTypeOn = new TimelineLite({paused: true})
             .to('.natural-killer__type', 1, {opacity: 1}, 0)
@@ -1026,13 +911,10 @@ window.addEventListener('DOMContentLoaded', () => {
     //page controll
     const goToNextSlide = () => {
         if(pageNum >= 8) return false; //index: 0 기준 false 처리
-        
         if(!isAnimating){
             isAnimating = true;
             pageNum +=1;
-
-            console.log('next page = ' + pageNum);
-
+            //console.log('next page = ' + pageNum);
             switch(pageNum){
                 case 0:
                     break;
@@ -1062,7 +944,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     $(".outro__video--panel-in").get(0).pause();
                     break;
             }
-
             setTimeout(() => {
                 onSlideChangeEnd();
             }, 1200)
@@ -1070,13 +951,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     const goToPrevSlide = () => {
         if(pageNum <= 0) return false; //총 페이지 수를 넘어가면 false처리
-        
         if(!isAnimating){
             isAnimating = true;
             pageNum -=1;
-
-            console.log('prev page = ' + pageNum);
-
+            //console.log('prev page = ' + pageNum);
             switch(pageNum){
                 case 0:
                     verticalPageSwapPrev.quiz();
@@ -1104,22 +982,19 @@ window.addEventListener('DOMContentLoaded', () => {
                     verticalPageSwapPrev.copyright();
                     break;
             }
-
             setTimeout(() => {
                 onSlideChangeEnd();
             }, 1200)
         }
-        
     }
     const onSlideChangeEnd = () => {
-        console.log('isAnimating == false');
+        //console.log('isAnimating == false');
         isAnimating = false;
     }
 
     // scroll controll
     window.addEventListener("wheel", (event) => {
         let delta = Math.sign(event.deltaY);
-        
         if(delta > 0){ //down
             goToNextSlide();
         }else { //up
@@ -1144,7 +1019,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     defaultSet(); // 기본 셋팅 실행
-
+    
 });
 
 var explainBtnActive;

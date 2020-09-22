@@ -57,7 +57,6 @@ $white : #fff;
     width: 100%;
     height: 100%;
     background: #A81B21;
-    
     &__type-text{
         background: url($imgPath + 'intro-NatureKillerCell.png') no-repeat;
         position: absolute;
@@ -123,13 +122,10 @@ $white : #fff;
     width: 100%;
     height: 100%;
     background: #A81B21;
-
     transform: translateY(100vh);
     position: absolute;
     top: 0;
-
     &__inner{
-        //opacity: 0;
         @include box_container( 1400px, -300px, 0, 0, -700px, 50%, 50% );
         height: 600px;
         &--headline{
@@ -141,7 +137,6 @@ $white : #fff;
                 }
             }
         }
-
         &--cover{
             background: #fff;
             width: 848px;
@@ -405,7 +400,6 @@ $white : #fff;
             z-index: 2;
             background: #A81B21; 
             &--list{
-                
                 &-title{
                     color: #fff;
                     float: left;
@@ -448,7 +442,6 @@ $white : #fff;
                 background: #fff;
                 width: 100%;
                 height: 57px;
-                //margin-bottom: 10px;
                 position: relative;
                 .number{
                     color: #212121;
@@ -523,7 +516,6 @@ $white : #fff;
                     height: 55px;
                     margin: 0 auto;
                 }
-
             }
             &-more{
                 width: 100%;
@@ -531,13 +523,9 @@ $white : #fff;
                 height: 135px;
                 margin-bottom: 10px;
                 position: relative;
-                //padding-top: 20px;
                 height: 0;
                 overflow: hidden;
                 transition: all 0.6s;
-                //&.view-long{
-                //    height: 205px;
-                //}
                 &.view{
                     height: 135px;
                     &.long{
@@ -550,9 +538,6 @@ $white : #fff;
                     position: absolute;
                     top: 20px;
                     left: 75px;
-                    //position: relative;
-                    //top: -20px;
-                    //margin-left: 70px;
                     &--title{
                         color: #D0D0D0;
                         @include fontInfo(14px, 33px, -0.05em);
@@ -588,7 +573,6 @@ $white : #fff;
                     margin-top: 20px;
                     @include fontInfo(20px, 33px, -0.05em);
                     @include fw-regular;
-                    
                 }
             }
         }
@@ -611,7 +595,6 @@ $white : #fff;
                 @include headlineText();
             }
         }
-
         &--chart{
             width: 1025px;
             height: 470px;
@@ -621,57 +604,6 @@ $white : #fff;
             margin-left: -512px;
             box-shadow: 30px 30px 40px #00000027;
             background: #fff;
-
-            .test1{
-                background: url($imgPath + 'test1.PNG') no-repeat;
-                width: 1124px;
-                height: 770px;
-                position: absolute;
-                top: -145px;
-                left: -50px;
-                opacity: 0;
-                
-                
-            }
-            .test2{
-                background: url($imgPath + 'test2.PNG') no-repeat;
-                width: 1146px;
-                height: 747px;
-                position: absolute;
-                top: -135px;
-                left: -60px;
-                opacity: 0;
-                //opacity: 0.2;
-            }
-            .test3{
-                background: url($imgPath + 'test3.PNG') no-repeat;
-                width: 1148px;
-                height: 723px;
-                position: absolute;
-                top: -120px;
-                left: -35px;
-                opacity: 0;
-                
-            }
-            .test4{
-                background: url($imgPath + 'test4.PNG') no-repeat;
-                width: 1142px;
-                height: 772px;
-                position: absolute;
-                top: -150px;
-                left: -55px;
-                opacity: 0;
-            }
-            .test5{
-                background: url($imgPath + 'test5.PNG') no-repeat;
-                width: 1139px;
-                height: 763px;
-                position: absolute;
-                top: -145px;
-                left: -55px;
-                opacity: 0;
-                
-            }
             .cell-area{
                 .cancer{
                     background: url($imgPath + 'immunity-cancer.png') no-repeat;
@@ -694,13 +626,10 @@ $white : #fff;
                     background-size: 100% 100%;
                     position: absolute;
                 }
-
                 .scene_one{
-                    
                     $sceneOneCancer-size: 30, 110, 45, 30, 30, 65, 90, 60, 30, 120, 110, 70, 80, 70, 130, 110, 30, 30, 55, 55, 80, 30, 130, 70;
                     $sceneOneCancer-top: 40, 165, 380, 140, 35, 200, 290, 30, 95, 150, 310, 40, 220, 140, 280, 40, 390, 40, 140, 340, 40, 170, 200, 360;
                     $sceneOneCancer-left: 30, 40, 40, 145, 200, 200, 150, 330, 415, 310, 290, 490, 470, 580, 540, 660, 700, 800, 790, 770, 880, 940, 700, 900;
-
                     @for $i from 1 through 24{
                         .cancer{
                             &.num#{$i}{
@@ -712,11 +641,9 @@ $white : #fff;
                             }
                         }
                     }
-
                     $sceneOneCell-1-size: 50, 25, 25, 23, 45, 90;
                     $sceneOneCell-1-top: 60, 320, 405, 150, 365, 60; 
                     $sceneOneCell-1-left: 100, 90, 225, 510, 460, 230;
-
                     @for $i from 1 through 6{
                         .cell-1{
                             &.num#{$i}{
@@ -727,11 +654,9 @@ $white : #fff;
                             }
                         }
                     }
-
                     $sceneOneCell-2-size: 80, 95;
                     $sceneOneCell-2-top: 85, 230;
                     $sceneOneCell-2-left: 225, 890;
-
                     @for $i from 1 through 2{
                         .cell-2{
                             &.num#{$i}{
@@ -750,7 +675,6 @@ $white : #fff;
                     $sceneTwoCancer-size: 40, 35, 40, 35;
                     $sceneTwoCancer-top: 140, 360, 240, 150;
                     $sceneTwoCancer-left: 180, 320, 480, 790;
-
                     @for $i from 1 through 4{
                         .cancer{
                             &.num#{$i}{
@@ -761,11 +685,9 @@ $white : #fff;
                             }
                         }
                     }
-
                     $sceneTwoCell-1-size: 40, 40, 70, 25, 45, 50, 90, 50, 40, 70, 25, 20, 45, 90, 25, 50, 25, 50, 50, 25, 90, 25, 25, 50;
                     $sceneTwoCell-1-top: 45, 55, 100, 220, 375, 360, 45, 160, 160, 230, 300, 295, 40, 330, 45, 80, 165, 240, 320, 400, 335, 395, 190, 380;
                     $sceneTwoCell-1-left: 40, 170, 90, 50, 50, 200, 300, 270, 380, 320, 265, 425, 440, 440, 560, 640, 715, 725, 600, 575, 705, 845, 940, 920;
-
                     @for $i from 1 through 24{
                         .cell-1{
                             &.num#{$i}{
@@ -776,12 +698,10 @@ $white : #fff;
                             }
                         }
                     }
-
                     $sceneTwoCell-2-size: 125, 80, 110, 80, 90, 90;
                     $sceneTwoCell-2-top: 220, 105, 155, 50, 45, 210;
                     $sceneTwoCell-2-left: 110, 460, 575, 740, 865, 830;
                     $sceneTwoCell-2-rotate: 0, 120, 60, 325, 35, 175;
-
                     @for $i from 1 through 6{
                         .cell-2{
                             &.num#{$i}{
@@ -795,19 +715,16 @@ $white : #fff;
                     }
                 }
             }
-
             .cell-bar-graph{
                 position: absolute;
                 bottom: -80px;
                 left: 50%;
                 margin-left: -320px;
-                
                 &-low, &-high{
                     @include fontInfo(12px, 33px, 0);
                     @include fw-light;
                     color: #212121;
                 }
-
                 &--chart{
                     width: 620px;
                     height: 20px;
@@ -874,11 +791,9 @@ $white : #fff;
     }
     &__type{
         opacity: 0;
-        //outline: 1px solid #000;
         position: absolute;
         width: 1560px;
         left: 50%;
-        //width: 100%;
         height: 350px;
         top: 50%;
         bottom: 0;
@@ -889,7 +804,6 @@ $white : #fff;
         &--text{
             width: 1560px;
             height: 170px;
-            
         }
         .st0{
             fill:#BA0000;
@@ -897,7 +811,6 @@ $white : #fff;
         .st1{
             fill:#212121;
         }
-
     }
 }
 
@@ -918,10 +831,6 @@ $white : #fff;
             top: 0;
             margin-top: 0;
             overflow: hidden;
-
-            //$talentObjWidth : 448, 514, 664, 399;
-            //$talentObjHeight : 156, 315, 425, 197;
-
             @for $i from 1 through 4{
                 .talent__object-#{$i}{
                     opacity: 0;
@@ -944,14 +853,12 @@ $white : #fff;
                 width: 100%;
                 bottom: 0;
                 height: 100%;
-                
                 background-position: 50% 100%;
                 height: 150%;
                 background-size: 160%;
                 transform: scale(1.3) translateY(-350px);
                 opacity: 0;
             }
-            
         }
         @each $obj in origin, talent, hero, villain {
             &--list-#{$obj} {
@@ -960,7 +867,6 @@ $white : #fff;
                 height: 100%;
                 cursor: pointer;
                 overflow: hidden;
-                //overflow: visible;
                 position: relative;
                 &:after{
                     @include clear;
@@ -976,7 +882,6 @@ $white : #fff;
                 bottom: 0;
                 background-size: 100%;
                 height: 100%;
-
                 @if($obj == 'origin'){
                     transform: scale(1.5);
                     background-position: 0% 70%;
@@ -987,11 +892,9 @@ $white : #fff;
                 }
                 @if($obj == 'hero'){
                     background-size: 72%;
-                    //transform: translate(30px, -20px);
                     transform: translate(30px, 0px);
                 }
                 @if($obj == 'villain'){
-                    //background-position: bottom;
                     background-position: 50% 100%;
                     height: 150%;
                     background-size: 160%;
@@ -1014,8 +917,6 @@ $white : #fff;
                     background-size: 300% 100%;
                 }
                 @if($obj == 'villain'){
-                    //background-size: 300% 120%;
-                    //background-position: 50% 160%;
                     height: 120%;
                     background-position: 50% 100%;
                     background-size: 350% 150%;
@@ -1027,14 +928,11 @@ $white : #fff;
                 top: 0;
                 pointer-events: none;
             }
-            
         }
-
         &--scene{
             color: #fff;
             position: absolute;
             bottom: 50px;
-            //outline: 1px solid;
             width: 100%;
             pointer-events: none;
             &-feature{
@@ -1053,9 +951,7 @@ $white : #fff;
                 text-align: center;
                 pointer-events: none;
             }
-
         }
-
         &--navigation{
             opacity: 0;
             pointer-events: none;
@@ -1099,7 +995,6 @@ $white : #fff;
                }
            }
         }
-
         &--content{
             position: absolute;
             top: 0;
@@ -1171,7 +1066,6 @@ $white : #fff;
                     width: 410px;
                     right: -160px;
                     height: 100%;
-                    //right: 300px;
                     &--title{
                         color: #212121;
                         @include fontInfo(12px, 33px, -0.05em);
@@ -1189,14 +1083,12 @@ $white : #fff;
                             width: 132px;
                             height: 132px;
                             position: absolute;
-                            //animation: rotating 10s linear infinite;
                             top: 50px;
                             left: 235px;
                         }
                     }
                     $cellTopData : 75, 130, 70;
                     $cellLeftData : 55, 55, 110;
-
                     &--t{
                         margin-top: 125px;
                         margin-bottom: 25px;
@@ -1418,7 +1310,6 @@ $white : #fff;
                             left: 16px;
                         }
                     }
-
                 }
             }
             &--villain{
@@ -1481,7 +1372,6 @@ $white : #fff;
                 hero: 160,
                 villain: -55
             );
-
             @each $exContent in origin, talent, hero, villain {
                 &--#{$exContent}-typo{
                     background: url($imgPath + '#{$exContent}__typo.png') no-repeat;
@@ -1512,7 +1402,6 @@ $white : #fff;
         &--area{
             width: 450px;
             float: right;
-            //outline: 1px solid #fff;
             &-headline{
                 @include headlineText(#fff);
             }
@@ -1644,23 +1533,6 @@ $white : #fff;
     bottom: 0;
     transform: translateY(195px);
 }
-
-@keyframes rotating {
-    from {
-      -ms-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    to {
-      -ms-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-  }
 
 @media all and (max-height: 820px){
     .quiz-area__explain{

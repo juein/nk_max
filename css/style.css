@@ -1099,56 +1099,6 @@ i {
   background: #fff;
 }
 
-.immunity-relation__inner--chart .test1 {
-  background: url("../img/test1.PNG") no-repeat;
-  width: 1124px;
-  height: 770px;
-  position: absolute;
-  top: -145px;
-  left: -50px;
-  opacity: 0;
-}
-
-.immunity-relation__inner--chart .test2 {
-  background: url("../img/test2.PNG") no-repeat;
-  width: 1146px;
-  height: 747px;
-  position: absolute;
-  top: -135px;
-  left: -60px;
-  opacity: 0;
-}
-
-.immunity-relation__inner--chart .test3 {
-  background: url("../img/test3.PNG") no-repeat;
-  width: 1148px;
-  height: 723px;
-  position: absolute;
-  top: -120px;
-  left: -35px;
-  opacity: 0;
-}
-
-.immunity-relation__inner--chart .test4 {
-  background: url("../img/test4.PNG") no-repeat;
-  width: 1142px;
-  height: 772px;
-  position: absolute;
-  top: -150px;
-  left: -55px;
-  opacity: 0;
-}
-
-.immunity-relation__inner--chart .test5 {
-  background: url("../img/test5.PNG") no-repeat;
-  width: 1139px;
-  height: 763px;
-  position: absolute;
-  top: -145px;
-  left: -55px;
-  opacity: 0;
-}
-
 .immunity-relation__inner--chart .cell-area .cancer {
   background: url("../img/immunity-cancer.png") no-repeat;
   width: 130px;
@@ -2864,28 +2814,6 @@ i {
   bottom: 0;
   -webkit-transform: translateY(195px);
           transform: translateY(195px);
-}
-
-@-webkit-keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
 }
 
 @media all and (max-height: 820px) {
