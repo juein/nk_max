@@ -26,14 +26,113 @@ $white : #fff;
     letter-spacing: $ls;
 }
 
+.quiz__container{
+    width: 100%;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+    position: absolute;
+    top: 50px;
+    pointer-events: none;
+    z-index: 10;
+    //맨 밑에서 버튼 클릭시 position: fixed로 , z-index: 10;
+    
+}
+
+.content__container{
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 50px);
+    position: absolute;
+    top: 50px;
+}
+
+.visual-intro{
+    width: 100%;
+    height: calc(100vh - 50px);
+    background: #BA0000;
+    &__illust{
+        //opacity: 0;
+        //transform: translate(20px, 20px);
+        background: url($imgPath + 'intro_illust.png') no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        width: 31vh;
+        height: 79vh;
+        left: 50%;
+        top: 50%;
+        margin-left: -16vh;
+        margin-top: -39vh;
+    }
+    &__area{
+        @include box_container(88vw, 0, 0, 0, -44vw, 0, 50%);
+        height: 100%;
+        &--headline{
+            &-first, &-last{
+                //opacity: 0;
+                text-indent: -99999px;
+                display: inline-block;
+                position: absolute;
+            }
+            &-first{
+                //transform: translateX(440px);
+                background: url($mimgPath + 'title_text_1.png') no-repeat;
+                background-size: 100%;
+                width: 62vw;
+                height: 18vw;
+                margin-top: -5vh;
+                top: 50%;
+                left: 0;
+            }
+            &-last{
+                //transform: translateX(-500px);
+                background: url($mimgPath + 'title_text_2.png') no-repeat;
+                background-size: 100%;
+                width: 65vw;
+                height: 18vw;
+                margin-top: 6vh;
+                top: 50%;
+                right: 0;
+            }
+        }
+        &-button{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        &--goToTest, &--goToStory{
+            width: 67vw;
+            height: 16vw;
+            color: #fff;
+            border: 2px solid #fff;
+            @include fontInfo(5.5vw, 9vw, -0.05em);
+            @include fw-medium;
+            background: none;
+            position: absolute;
+            //opacity: 0;
+            top: 50%;
+            left: 50%;
+            margin-left: -33.5vw;
+        }
+        &--goToTest{
+            margin-top: 21vh;
+        }
+        &--goToStory{
+            margin-top: 31vh;
+        }
+    }
+    
+}
+
 .quiz-area{
     position: absolute;
     width: 100%;
-    //height: calc(100vh - 50px);
-    height: 100vh;
+    height: 100%;
     top: 0;
     overflow: hidden;
     background: #BA0000;
+
+    transform: translateY(100vh);
+    
     &__inner{
         @include box_container(88vw, 0, 0, 0, -44vw, 0, 50%);
         height: 100%;
@@ -72,12 +171,6 @@ $white : #fff;
             bottom: 25vh;
             left: 50%;
             margin-left: -40vw;
-
-            //position: relative;
-            //width: 80vw;
-            //left: 10vw;
-            //top: 12vh;
-
            &--center{
                 display: block;
                 text-align: center;
@@ -90,14 +183,6 @@ $white : #fff;
             margin-left: -33vw;
             bottom: 8vh;
             height: 16vw;
-
-            //position: relative;
-            //width: 66vw;
-            //height: 16vw;
-            //top: 21vh;
-            //left: 18vw;
-            
-
             color: #fff;
             border: 1px solid #fff;
             background: none;
@@ -105,15 +190,9 @@ $white : #fff;
             @include ProximaNova;
         }
         &--cover{
-            //.test{
-            //    background: #fff;
-            //    position: absolute;
-            //    top: 0;
-            //    overflow: hidden;
-            //    width: 100%;
-            //    height: 40%;
-            //}
-            clip: rect(120px, 400px, 340px, 0px);
+            // $('.quiz-area__start').height();
+            clip: rect(230px, 400px, 340px, 0px);
+            //clip: rect(340px, 400px, 340px, 0px);
 
             background: #fff;
             color: #B10000;
@@ -125,9 +204,635 @@ $white : #fff;
     }
 }
 
-.rooftop{
-    z-index: 0;
+.natural-killer-cell{
+    width: 100%;
+    height: 282vw;
+    &__type{
+        transform: rotate(90deg);
+        width: 240vw;
+        left: 50%;
+        position: absolute;
+        margin-left: -120vw;
+        top: 128vw;
+        .killer__type--text{
+            .st0{
+                fill:#BA0000;
+            }
+            .st1{
+                fill: #212121
+            }
+        }
+    }
+
 }
+
+.natural-killer{
+    background: #1C1C1C;
+    width: 100%;
+    height: 195vw;
+
+    &__explain{
+        @include box_container(88vw, 0, 0, 0, -44vw, 0, 50%);
+        color: #CCCCCC;
+        top: 10vw;
+        
+        &--headline{
+            @include fontInfo(7vw, 9vw, -0.05em);
+            .demilight{
+                @include fw-demilight;
+                display: block;
+                text-align: center;
+            }
+            .highlight{
+                @include fw-bold;
+                display: block;
+                text-align: center;
+            }
+        }
+        &--text-box{
+            text-align: justify;
+            @include fontInfo(4.2vw, 7vw, -0.05em);
+            @include fw-regular;
+            &-mg{
+                margin: 8vw 0;
+                &:last-child{
+                    margin: 0;
+                }
+            }
+            
+        }
+
+    }
+}
+
+.assassin-info{
+    padding: 0;
+    overflow: hidden;
+
+    .title{
+        @include fontInfo(6.5vw, 8vw, -0.05em);
+        &-thin{
+            @include fw-demilight;
+            display: block;
+        }
+        &-strong{
+            @include fw-bold;
+            display: block;
+        }
+        .underline{
+            background: url($mimgPath + 'assassin-info__underline.png') no-repeat;
+            background-size: 100%;
+            width: 100%;
+            height: 2vw;
+            display: block;
+            margin-top: 4vw;
+            margin-bottom: 5vw;
+        }
+    }
+    .text-area{
+        color: #212121;
+        @include fontInfo(4.2vw, 7.5vw, -0.05em );
+        @include fw-demilight;
+        &--pro{
+            margin-bottom: 8vw;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &--origin{
+        background: #F5F5F5;
+        &--visual{
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vw;
+            // from 
+            //clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            // to
+            clip-path : polygon(0 0, 100% 0, 100% 100%, 0 80%);
+
+            .background{
+                background: #A81B21;
+                width: 100%;
+                height: 100%;
+            }
+            .typo{
+                position: absolute;
+                text-indent: -99999px;
+                background: url($mimgPath + 'origin__typo.png') no-repeat;
+                background-size: 100%;
+                width: 32vw;
+                height: 22vw;
+                top: 41vw;
+                right: 6vw;
+            }
+            .illust{
+                position: absolute;
+                background: url($mimgPath + 'origin__character.png') no-repeat;
+                background-size: 100%;
+                width: 66vw;
+                height: 100vw;
+                top: 15vw;
+            }
+        }
+        &--content{
+            position: relative;
+            width: 88vw;
+            left: 6vw;
+            //outline: 1px solid red;
+        }
+    }
+    &--talent{
+        background: #F5F5F5;
+        &--visual{
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 90vw;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+            .background{
+                background: url($mimgPath + 'talent__bg.jpg') no-repeat;
+                background-size: 100% 100%;
+                width: 100%;
+                height: 100%;
+            }
+            .typo{
+                position: absolute;
+                text-indent: -99999px;
+                background: url($mimgPath + 'talent__typo.png') no-repeat;
+                background-size: 100%;
+                width: 36vw;
+                height: 24vw;
+                top: 55vw;
+                left: 8vw;
+            }
+
+            .illust{
+                position: absolute;
+                background: url($mimgPath + 'talent__character.png') no-repeat;
+                background-size: 100%;
+                width: 55vw;
+                height: 100vw;
+                top: 0;
+                right: 0;
+            }
+            @for $i from 1 through 4{
+                .talent-obj#{$i}{
+                    position: absolute;
+                    background: url($mimgPath + 'talent__object-#{$i}.png') no-repeat;
+                    background-size: 100%;
+                    width: 55vw;
+                    height: 100vw;
+                    top: 0;
+                    right: 0;
+                }
+            }
+        }
+        &--content{
+            position: relative;
+            width: 88vw;
+            left: 6vw;
+            top: 10vw;
+            .mechanism__box{
+                margin-top: 8vw;
+                height: 115vw;
+
+                &--title{
+                    color: #212121;
+                    @include fontInfo(3.4vw, 9vw, -0.05em);
+                    @include fw-regular;
+                    padding-top: 1vw;
+                    padding-left: 3vw;
+                }
+                &--t, &--nk{
+                    background: #fff;
+                    width: 100%;
+                    height: 45vw;
+                    position: relative;
+                    border-bottom: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
+                    margin-bottom: 5vw;
+                    .cancer-cell{
+                        background: url($imgPath + 'cancer-cell.png') no-repeat;
+                        background-size: 100% 100%;
+                        width: 28vw;
+                        height: 28vw;
+                        position: absolute;
+                        top: 10vw;
+                        left: 50vw;
+                    }
+                }
+                $cellTopData : 16, 28, 15;
+                $cellLeftData : 11, 13, 24;
+                &--t{
+                    $tCellSize: 6.5, 11, 18.6;
+                    @for $i from 1 through 3{
+                        .t-cell-#{$i}{
+                            position: absolute;
+                            background: url($imgPath + 't-cell-#{$i}.png') no-repeat;
+                            background-size: 100% 100%;
+                            width: #{nth($tCellSize, $i)}vw;
+                            height: #{nth($tCellSize, $i)}vw;
+                            top: #{nth($cellTopData, $i)}vw;
+                            left: #{nth($cellLeftData, $i)}vw;
+                        }
+                    }
+                    .t-cell-3{
+                        z-index: 2;
+                    }
+                }
+
+                &--nk{
+                    $nkCellSize: 6.5, 11, 18.6;
+                    @for $i from 1 through 3{
+                        .nk-cell-#{$i}{
+                            position: absolute;
+                            background: url($imgPath + 'nk-cell-#{$i}.png') no-repeat;
+                            background-size: 100% 100%;
+                            width: #{nth($nkCellSize, $i)}vw;
+                            height: #{nth($nkCellSize, $i)}vw;
+                            top: #{nth($cellTopData, $i)}vw;
+                            left: #{nth($cellLeftData, $i)}vw;
+                        }
+                    }
+                    .nk-cell-2{
+                        left: 35px;
+                    }
+                    .nk-boom{
+                        position: absolute;
+                        background: url($imgPath + 'nk-boom.png') no-repeat;
+                        background-size: 100%;
+                        top: 7vw;
+                        left: 40vw;
+                        width: 15vw;
+                        height: 11vw;
+                        //transform: scale(0);
+                    }
+                    .nk-weapon-1, .nk-weapon-2{
+                        position: absolute;
+                        background: #3B5AC3;
+                        transform-origin: left;
+                    }
+                    .nk-weapon-1{
+                        width: 14vw;
+                        height: 2vw;
+                        top: 23vw;
+                        left: 40vw;
+                    }
+                    .nk-weapon-2{
+                        width: 6vw;
+                        height: 1.5vw;
+                        top: 27vw;
+                        left: 40vw;
+                    }
+                    .cancer-cell{
+                        z-index: 2;
+                    }
+                }
+            }
+        }
+    }
+    &--hero{
+        background: #000001;
+        color: #fff;
+
+        &--visual{
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vw;
+            color: #fff;
+
+            .background{
+                background: url($mimgPath + 'hero__bg.jpg') no-repeat;
+                background-size: 100% 100%;
+                width: 65%;
+                height: 100%;
+            }
+            
+            .typo{
+                position: absolute;
+                text-indent: -99999px;
+                background: url($mimgPath + 'hero__typo.png') no-repeat;
+                background-size: 100%;
+                width: 24vw;
+                height: 18vw;
+                top: 31vw;
+                right: 8vw;
+            }
+            .illust{
+                position: absolute;
+                background: url($mimgPath + 'hero__character.png') no-repeat;
+                background-size: 100%;
+                width: 32vw;
+                height: 100vw;
+                top: 12vw;
+                left: 10vw;
+            }
+        }
+        &--content{
+            &-area{
+                position: relative;
+                width: 88vw;
+                left: 6vw;
+                top: 10vw;
+            }
+            .title{
+                .underline{
+                    background: url($mimgPath + 'assassin-info__underline-white.png') no-repeat;
+                    background-size: 100%;
+                }
+            }
+            .text-area{
+                color: #fff;
+            }
+            .procedure{
+                background: #F5F5F5;
+                width: 100%;
+                height: 72vw;
+                margin-top: 18vw;
+                &-board{
+                    position: relative;
+                    background: #fff;
+                    border-right: 1px solid #c8c8c8;
+                    border-bottom: 1px solid #c8c8c8;
+                    width: 88vw;
+                    left: 6vw;
+                    top: 6vw;
+                    height: 60vw;
+                }
+                &__inner-text{
+                    @include fontInfo(2vw, 4vw, -0.06em);
+                    @include fw-demilight;
+                    color: #212121;
+                    display: block;
+                    text-align: center;
+                    &-str{
+                        @include fontInfo(3.2vw, 9vw, -0.06em);
+                        @include fw-demilight;
+                        color: #fff;
+                        position: relative;
+                        display: block;
+                        text-align: center;
+                    }
+                }
+                &-nk{
+                    background: url($imgPath + 'procedure-nk.png') no-repeat;
+                    background-size: 100%;
+                    width: 17vw;
+                    height: 17vw;
+                    position: absolute;
+                    top: 10vw;
+                    left: 14vw;
+                }
+                &-cancer{
+                    background: url($imgPath + 'procedure-cancer.png') no-repeat;
+                    background-size: 100%;
+                    width: 20vw;
+                    height: 20vw;
+                    position: absolute;
+                    top: 6vw;
+                    right: 5vw;
+                }
+                &-etc{
+                    background: #C6C6C6;
+                    width: 15vw;
+                    height: 15vw;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: 6vw;
+                    .procedure__inner-text{
+                        margin-top: 5vw;
+                    }
+                    &.num2{
+                        left: 5vw;
+                    }
+                    &.num3{
+                        left: 22vw;
+                    }
+                    &.num4{
+                        left: 66vw;
+                        .procedure__inner-text{
+                            margin-top: 3vw;
+                        }
+                    }
+                }
+                .procedure-arrow-text{
+                    color: #212121;
+                    @include fontInfo(14px, 0, -0.06em);
+                    @include fw-demilight;
+                    text-align: center;
+                    display: block;
+                }
+                &-line{
+                    height: 2px;
+                    background: #C6C6C6;
+                    display: inline-block;
+                }
+                &-arrow{
+                    background: url($imgPath + 'procedure-arrow.png') no-repeat;
+                    width: 8px;
+                    height: 9px;
+                    display: inline-block;
+                    position: absolute;
+                }
+                .procedure-step1{
+                    position: absolute;
+                    top: 230px;
+                    left: 525px;
+                    .procedure-line{
+                        width: 290px;
+                        transform-origin: left;
+                    }
+                    .procedure-arrow{
+                        top: 12px;
+                        right: -2px;
+                    }
+                }
+                .procedure-step2{
+                    position: absolute;
+                    top: 360px;
+                    left: 240px;
+                    .procedure-line{
+                        width: 110px;
+                        position: absolute;
+                        left: -81px;
+                        top: -54px;
+                        transform-origin: right;
+                    }
+                    .procedure-arrow{
+                        top: 20px;
+                        left: -51px;
+                    }
+                }
+                .procedure-step3{
+                    position: absolute;
+                    top: 465px;
+                    left: 360px;
+                    .procedure-line{
+                       width: 220px;
+                       transform-origin: left;
+                    }
+                    .procedure-arrow{
+                        top: 12px;
+                    }
+                }
+                .procedure-step4{
+                    position: absolute;
+                    right: 230px;
+                    top: 360px;
+                    .procedure-line{
+                        position: absolute;
+                        width: 110px;
+                        transform-origin: left;
+                        top: 30px;
+                        left: -60px;
+                    }
+                    .procedure-arrow{
+                        transform: rotate(75deg);
+                        top: -52px;
+                        left: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.epilogue{
+    width: 100%;
+    height: calc(100vh - 50px);
+    //height: 205vw;
+    background: #000;
+    overflow: hidden;
+    &__background{
+        width: 100%;
+        height: 100%;
+
+        &-illust{
+            background: url($mimgPath + 'epilogue_illust.png') no-repeat;
+            position: absolute;
+            background-size: 100%;
+            width: 100vw;
+            height: 200vw;
+            //top: 5vw;
+            top: 0;
+            opacity: 0;
+        }
+        @for $i from 1 through 3{
+            &-rain#{$i}{
+                background: url($mimgPath + 'epilogue_rain_#{$i}.png') no-repeat;
+                @if $i >= 2{
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-size: cover;
+                }
+            }
+        }
+        &-rain1{
+            position: absolute;
+            background-size: 100%;
+            width: 100vw;
+            height: 150vw;
+            z-index: 2;
+            //top: 5vw;
+            top: 0;
+        }
+    }
+    &__inner{
+        opacity: 0;
+
+        width: 100%;
+        height: 68vw;
+        position: absolute;
+        bottom: 10vw;
+        color: #fff;
+        width: 88vw;
+        left: 6vw;
+        outline: 1px solid;
+        &--area{
+            &-headline{
+                @include fontInfo(7vw, 9vw, -0.05em);
+                @include fw-medium;
+            }
+            &-explain{
+                margin-top: 14vw;
+                @include fontInfo(4.4vw, 7.2vw, -0.05em);
+                @include fw-demilight;
+            }
+        }
+        &--gradient{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80vw;
+            background: linear-gradient(transparent, 30%, #000);
+        }
+    }
+
+    .outro__inner{
+        //opacity: 0;
+        // epilogue  height 205vw;
+        pointer-events: none;
+
+        @include box_container(88vw, 0, 0, 0, -44vw, 0, 50%);
+        z-index: 2;
+        height: 100%;
+
+        &--headline{
+            color: #fff;
+            @include fontInfo(12.5vw, 15vw, 0);
+            @include fw-bold;
+            margin-top: 15vw;
+            margin-bottom: 3vw;
+        }
+        &--text{
+            &-first{
+                color: #B5B5B5;
+                margin-bottom: 6vw;
+                @include fontInfo(3.6vw, 6.5vw, -0.05em);
+                @include fw-demilight;
+            }
+            &-second{
+                color: #fff;
+                margin-bottom: 6vw;
+                @include fontInfo(3.6vw, 6.5vw, -0.05em);
+                @include fw-demilight;
+            }
+        }
+        &--quiz{
+            border: 2px solid #A81B21;
+            border-radius: 7vw;
+            width: 58vw;
+            height: 15vw;
+            background: none;
+            position: absolute;
+            left: 50%;
+            margin-left: -29vw;
+            margin-top: 6vw;
+            //bottom: 8vw;
+        }
+        &--btn-text{
+            color: #D63636;
+            @include fontInfo(4.2vw, 9vw, -0.05em);
+            @include fw-medium;
+        }
+        .outro__video--panel-in{
+            display: block;
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+    }
+}
+
+
 .brand-identity img{
     top: 5px;
 }
+
+

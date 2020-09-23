@@ -7,8 +7,8 @@
   text-align: center;
   font-size: .75rem;
   font-weight: 200;
-  background: #efefef;
-  color: #818181;
+  background: #020300;
+  color: #cacaca;
 }
 
 .copyright p {
@@ -27,7 +27,7 @@
   letter-spacing: 1px;
   height: 15px;
   margin: 8px 0;
-  color: #818181;
+  color: #cacaca;
 }
 
 .copyright p.eng01 {
@@ -83,7 +83,7 @@
 .copyright .copyrightfooter_btnset .footer_tel {
   -webkit-transition: color .3s ease;
   transition: color .3s ease;
-  color: #818181;
+  color: #cacaca;
   text-decoration: none;
 }
 
@@ -98,13 +98,13 @@
   margin-right: 0px;
   vertical-align: baseline;
   margin-left: 10px;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .copyright .footer_mail {
   -webkit-transition: color .3s ease;
   transition: color .3s ease;
-  color: #666;
+  color: #cacaca;
   text-decoration: none;
 }
 
@@ -117,7 +117,7 @@
   display: inline-block;
   margin-right: 2px;
   vertical-align: baseline;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 /* 하단 카피라이트 관련 클레스 영역 끝 */
