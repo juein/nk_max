@@ -278,7 +278,7 @@ video {
 /* 하단 카피라이트 관련 클레스 영역 끝 */
 .quiz__container {
   width: 100%;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
   overflow: hidden;
   position: absolute;
   top: 50px;
@@ -318,7 +318,6 @@ video {
   top: 0;
   left: 50%;
   margin: 0 0 0 -44vw;
-  outline: 1px solid #ddd;
   height: 100%;
 }
 
@@ -366,17 +365,16 @@ video {
   font-weight: 500;
   background: none;
   position: absolute;
-  top: 50%;
   left: 50%;
   margin-left: -33.5vw;
 }
 
 .visual-intro__area--goToTest {
-  margin-top: 21vh;
+  bottom: 19vh;
 }
 
 .visual-intro__area--goToStory {
-  margin-top: 31vh;
+  bottom: 8vh;
 }
 
 .quiz-area {
@@ -396,7 +394,6 @@ video {
   top: 0;
   left: 50%;
   margin: 0 0 0 -44vw;
-  outline: 1px solid #ddd;
   height: 100%;
   color: #fff;
 }
@@ -472,7 +469,6 @@ video {
 }
 
 .quiz-area__start--cover {
-  clip: rect(230px, 400px, 340px, 0px);
   background: #fff;
   color: #B10000;
 }
@@ -480,6 +476,524 @@ video {
 .quiz-area__start--cover .start-btn {
   color: #B10000;
   border: 1px solid #B10000;
+}
+
+.quiz-area__question {
+  -webkit-transform: translateX(101vw);
+          transform: translateX(101vw);
+  position: absolute;
+  top: 0;
+  background: #BA0000;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  color: #fff;
+}
+
+.quiz-area__question .quiz-skip {
+  background: none;
+  color: #fff;
+  top: 6vw;
+  left: 8vw;
+  z-index: 10;
+  position: absolute;
+  font-size: 3.8vw;
+  line-height: 11vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 500;
+}
+
+.quiz-area__question .question--text {
+  font-size: 8vw;
+  line-height: 11vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+  z-index: 10;
+  position: absolute;
+  pointer-events: none;
+  width: 72vw;
+  top: 50%;
+  left: 14vw;
+  margin-top: -20vw;
+}
+
+.quiz-area__question .question__input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 5;
+}
+
+.quiz-area__question .question__input input[type='radio'] {
+  display: none;
+}
+
+.quiz-area__question .question__input input[type='radio'] + label {
+  cursor: pointer;
+  color: #fff;
+  font-size: 6.5vw;
+  line-height: 11vw;
+  letter-spacing: 0;
+  font-family: 'ProximaNova', sans-serif;
+  font-weight: 400;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+}
+
+.quiz-area__question .question__input input[type='radio'] + label.true {
+  background: #BA0000;
+  left: 0;
+}
+
+.quiz-area__question .question__input input[type='radio'] + label.false {
+  background: #B10000;
+  right: 0;
+}
+
+.quiz-area__question .question__input input[type='radio'] + label .text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 18vw;
+}
+
+.quiz-area__question--progress {
+  position: absolute;
+  width: 100%;
+  height: 10vw;
+  bottom: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.quiz-area__question--progress .line {
+  position: relative;
+  background: #fff;
+  height: 0.5vw;
+  width: 88vw;
+  top: 0;
+  left: 6vw;
+}
+
+.quiz-area__question--progress .process {
+  position: absolute;
+  width: 88vw;
+  height: 1vw;
+  display: inline-block;
+  top: -0.2vw;
+  left: 6vw;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  background: #fff;
+}
+
+.quiz-area__question--finish {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #BA0000;
+  opacity: 0;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.quiz-area__question--finish .show-result {
+  position: absolute;
+  border: 1px solid #fff;
+  background: none;
+  color: #fff;
+  width: 68vw;
+  height: 16vw;
+  left: 16vw;
+  top: 50%;
+  margin-top: -8vw;
+  font-size: 5.5vw;
+  line-height: 6vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+}
+
+.quiz-area__question-step2, .quiz-area__question-step3, .quiz-area__question-step4, .quiz-area__question-step5, .quiz-area__question-step6, .quiz-area__question-step7, .quiz-area__question-step8, .quiz-area__question-step9, .quiz-area__question-step10 {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.quiz-area__question-step2 .question--text, .quiz-area__question-step3 .question--text, .quiz-area__question-step4 .question--text, .quiz-area__question-step5 .question--text, .quiz-area__question-step6 .question--text, .quiz-area__question-step7 .question--text, .quiz-area__question-step8 .question--text, .quiz-area__question-step9 .question--text, .quiz-area__question-step10 .question--text {
+  -webkit-transform: translateX(101vw);
+          transform: translateX(101vw);
+}
+
+.quiz-area__result {
+  position: absolute;
+  background: #BA0000;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.quiz-area__result .result-area {
+  position: absolute;
+  width: 68vw;
+  left: 16vw;
+  top: 15vh;
+  color: #fff;
+}
+
+.quiz-area__result .result-area .number-graph {
+  width: 90%;
+  margin-left: 5%;
+  display: block;
+}
+
+.quiz-area__result .result-area .number-graph path {
+  fill: none;
+}
+
+.quiz-area__result .result-area .number-graph path.active {
+  fill: #fff;
+}
+
+.quiz-area__result .result-area .number-text-strong {
+  position: absolute;
+  width: 25vw;
+  top: 26vw;
+  left: 50%;
+  margin-left: -12.5vw;
+  text-align: center;
+  font-size: 4vw;
+  line-height: 0;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 500;
+}
+
+.quiz-area__result .result-area .number-text-strong .sc-num {
+  font-size: 16vw;
+  line-height: 0;
+  letter-spacing: 0;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+}
+
+.quiz-area__result .result-area .number-text-default {
+  position: absolute;
+  top: 35vw;
+  left: 20vw;
+  font-size: 3.5vw;
+  line-height: 7vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 200;
+}
+
+.quiz-area__result .quiz-explain-btn {
+  position: absolute;
+  border: 1px solid #fff;
+  background: none;
+  color: #fff;
+  width: 68vw;
+  height: 16vw;
+  left: 16vw;
+  bottom: 5vh;
+  font-size: 5.5vw;
+  line-height: 6vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+}
+
+.quiz-area__result .score-grade {
+  color: #fff;
+  position: relative;
+  top: 8vh;
+  width: 80vw;
+  left: -5vw;
+  text-align: center;
+}
+
+.quiz-area__result .score-grade .grade-title {
+  font-size: 6.5vw;
+  line-height: 9vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 500;
+}
+
+.quiz-area__result .score-grade .grade-etc {
+  margin-top: 2vw;
+  font-size: 3.5vw;
+  line-height: 6vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 200;
+}
+
+.quiz-area__explain {
+  background: #F5F5F5;
+  z-index: 16;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 190vw;
+  min-height: calc(100vh - 50px);
+  padding: 20vw 6vw;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quiz-area__explain .explain__header {
+  position: relative;
+  width: 100%;
+}
+
+.quiz-area__explain .explain__header--list-title {
+  position: absolute;
+  bottom: 0;
+  color: #343434;
+  text-align: center;
+  font-size: 3.2vw;
+  line-height: 9vw;
+  letter-spacing: -0.06em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 500;
+}
+
+.quiz-area__explain .explain__header--list-title:nth-of-type(1) {
+  text-align: left;
+  width: 56vw;
+  padding-left: 2vw;
+}
+
+.quiz-area__explain .explain__header--list-title:nth-of-type(2) {
+  left: 56vw;
+  width: 8vw;
+}
+
+.quiz-area__explain .explain__header--list-title:nth-of-type(3) {
+  left: 65vw;
+  width: 15vw;
+}
+
+.quiz-area__explain .explain__header--list-title:nth-of-type(4) {
+  left: 80vw;
+  width: 10vw;
+}
+
+.quiz-area__explain .explain__list-item {
+  background: #fff;
+  height: 12vw;
+  position: relative;
+  border-bottom: 1px solid #00000029;
+  padding: 4vw;
+}
+
+.quiz-area__explain .explain__list-item .number {
+  color: #212121;
+  display: inline-block;
+  width: 5vw;
+  text-align: center;
+  position: relative;
+  top: -2.4vw;
+  font-size: 4vw;
+  line-height: 6vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 500;
+}
+
+.quiz-area__explain .explain__list-item .quistion-text {
+  color: #212121;
+  display: inline-block;
+  width: 45vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  top: -1vw;
+  font-size: 4vw;
+  line-height: 6vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 500;
+}
+
+.quiz-area__explain .explain__list-item .answer-status--true {
+  background: url("../../img/answer-status--true.png") no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  display: inline-block;
+  width: 5vw;
+  height: 5vw;
+  margin: 0 3vw;
+  opacity: 0;
+}
+
+.quiz-area__explain .explain__list-item .answer-status--true.active {
+  opacity: 1;
+}
+
+.quiz-area__explain .explain__list-item .answer-status--false {
+  background: url("../../img/answer-status--false.png") no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  display: inline-block;
+  width: 5vw;
+  height: 5vw;
+  margin: 0 3vw;
+  opacity: 0;
+}
+
+.quiz-area__explain .explain__list-item .answer-status--false.active {
+  opacity: 1;
+}
+
+.quiz-area__explain .explain__list-item .select_true {
+  background: url("../../img/select_true.png") no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+  position: absolute;
+  width: 4vw;
+  height: 4vw;
+  margin: 0.5vw 3vw;
+  left: 64vw;
+  opacity: 0.3;
+}
+
+.quiz-area__explain .explain__list-item .select_true.active {
+  opacity: 1;
+}
+
+.quiz-area__explain .explain__list-item .select_false {
+  background: url("../../img/select_false.png") no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+  position: absolute;
+  width: 4vw;
+  height: 4vw;
+  margin: 0.5vw 3vw;
+  left: 72vw;
+  opacity: 0.3;
+}
+
+.quiz-area__explain .explain__list-item .select_false.active {
+  opacity: 1;
+}
+
+.quiz-area__explain .explain__list-item .moreExplain {
+  background: url("../../img/more-explain.png") no-repeat;
+  background-size: 100%;
+  background-position: center;
+  display: inline-block;
+  text-indent: -99999px;
+  position: absolute;
+  margin: 0;
+  width: 2.5vw;
+  left: 83vw;
+}
+
+.quiz-area__explain .explain__list-item .moreExplain:after {
+  content: '';
+  display: inline-block;
+  width: 8vw;
+  position: absolute;
+  height: 12vw;
+  left: -3vw;
+  top: -4vw;
+}
+
+.quiz-area__explain .explain__list-more {
+  width: 100%;
+  background: #212121;
+  position: relative;
+  color: #D0D0D0;
+  padding: 6vw 3vw;
+  margin-bottom: 4vw;
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.quiz-area__explain .explain__list-more.view {
+  height: 36vw;
+}
+
+.quiz-area__explain .explain__list-more.view.md1 {
+  height: 42vw;
+}
+
+.quiz-area__explain .explain__list-more.view.md2 {
+  height: 50vw;
+}
+
+.quiz-area__explain .explain__list-more.view.long {
+  height: 60vw;
+}
+
+.quiz-area__explain .explain__list-more .status-chk {
+  width: 12vw;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  top: 4vw;
+  left: 3vw;
+}
+
+.quiz-area__explain .explain__list-more .status-chk--title {
+  color: #D0D0D0;
+  font-size: 3.2vw;
+  line-height: 8vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+  display: block;
+  text-align: center;
+}
+
+.quiz-area__explain .explain__list-more .status-chk .chk-false {
+  background: url("../../img/chk-false.png") no-repeat;
+  background-size: 100%;
+  position: relative;
+  height: 8vw;
+  width: 8vw;
+  background-size: 100%;
+  background-position: center;
+  display: inline-block;
+}
+
+.quiz-area__explain .explain__list-more .status-chk .chk-true {
+  background: url("../../img/chk-true.png") no-repeat;
+  background-size: 100%;
+  position: relative;
+  height: 8vw;
+  width: 8vw;
+  background-size: 100%;
+  background-position: center;
+  display: inline-block;
+}
+
+.quiz-area__explain .explain__list-more .status-explain {
+  font-size: 4vw;
+  line-height: 6.5vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
+  margin-left: 15vw;
+  position: absolute;
+  top: 5vw;
+  left: 2vw;
+  padding-right: 4vw;
 }
 
 .natural-killer-cell {
@@ -517,7 +1031,6 @@ video {
   top: 0;
   left: 50%;
   margin: 0 0 0 -44vw;
-  outline: 1px solid #ddd;
   color: #CCCCCC;
   top: 10vw;
 }
@@ -842,10 +1355,6 @@ video {
   left: 24vw;
 }
 
-.assassin-info--talent--content .mechanism__box--nk .nk-cell-2 {
-  left: 35px;
-}
-
 .assassin-info--talent--content .mechanism__box--nk .nk-boom {
   position: absolute;
   background: url("../../img/nk-boom.png") no-repeat;
@@ -985,8 +1494,12 @@ video {
   width: 17vw;
   height: 17vw;
   position: absolute;
-  top: 10vw;
+  top: 5vw;
   left: 14vw;
+}
+
+.assassin-info--hero--content .procedure-nk .procedure__inner-text-str {
+  margin-top: 4vw;
 }
 
 .assassin-info--hero--content .procedure-cancer {
@@ -995,8 +1508,12 @@ video {
   width: 20vw;
   height: 20vw;
   position: absolute;
-  top: 6vw;
+  top: 4vw;
   right: 5vw;
+}
+
+.assassin-info--hero--content .procedure-cancer .procedure__inner-text-str {
+  margin-top: 5vw;
 }
 
 .assassin-info--hero--content .procedure-etc {
@@ -1030,7 +1547,7 @@ video {
 
 .assassin-info--hero--content .procedure .procedure-arrow-text {
   color: #212121;
-  font-size: 14px;
+  font-size: 2.5vw;
   line-height: 0;
   letter-spacing: -0.06em;
   font-family: 'Noto Sans CJK KR', sans-serif;
@@ -1045,87 +1562,189 @@ video {
   display: inline-block;
 }
 
-.assassin-info--hero--content .procedure-arrow {
+.assassin-info--hero--content .procedure-line:after {
+  content: '';
   background: url("../../img/procedure-arrow.png") no-repeat;
-  width: 8px;
-  height: 9px;
-  display: inline-block;
-  position: absolute;
+  width: 1.5vw;
+  height: 2vw;
+  margin-top: -0.8vw;
+  float: right;
+  background-size: 100% 100%;
 }
 
 .assassin-info--hero--content .procedure .procedure-step1 {
-  position: absolute;
-  top: 230px;
-  left: 525px;
+  position: relative;
+  width: 27vw;
+  top: 9vw;
+  left: 33vw;
 }
 
 .assassin-info--hero--content .procedure .procedure-step1 .procedure-line {
-  width: 290px;
+  width: 28vw;
   -webkit-transform-origin: left;
           transform-origin: left;
-}
-
-.assassin-info--hero--content .procedure .procedure-step1 .procedure-arrow {
-  top: 12px;
-  right: -2px;
 }
 
 .assassin-info--hero--content .procedure .procedure-step2 {
-  position: absolute;
-  top: 360px;
-  left: 240px;
+  position: relative;
+  top: 26vw;
+  left: 26vw;
+  width: 7vw;
 }
 
 .assassin-info--hero--content .procedure .procedure-step2 .procedure-line {
-  width: 110px;
-  position: absolute;
-  left: -81px;
-  top: -54px;
-  -webkit-transform-origin: right;
-          transform-origin: right;
-}
-
-.assassin-info--hero--content .procedure .procedure-step2 .procedure-arrow {
-  top: 20px;
-  left: -51px;
+  position: relative;
+  width: 14vw;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  top: -5vw;
+  left: -10vw;
+  -webkit-transform-origin: top;
+          transform-origin: top;
 }
 
 .assassin-info--hero--content .procedure .procedure-step3 {
-  position: absolute;
-  top: 465px;
-  left: 360px;
+  position: relative;
+  top: 30vw;
+  width: 20vw;
+  left: 40vw;
 }
 
 .assassin-info--hero--content .procedure .procedure-step3 .procedure-line {
-  width: 220px;
+  width: 22vw;
   -webkit-transform-origin: left;
           transform-origin: left;
-}
-
-.assassin-info--hero--content .procedure .procedure-step3 .procedure-arrow {
-  top: 12px;
 }
 
 .assassin-info--hero--content .procedure .procedure-step4 {
-  position: absolute;
-  right: 230px;
-  top: 360px;
+  position: relative;
+  left: 18vw;
+  top: 14vw;
 }
 
 .assassin-info--hero--content .procedure .procedure-step4 .procedure-line {
-  position: absolute;
-  width: 110px;
-  -webkit-transform-origin: left;
-          transform-origin: left;
-  top: 30px;
-  left: -60px;
+  position: relative;
+  width: 11vw;
+  top: -5vw;
+  left: 50vw;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
 }
 
-.assassin-info--hero--content .procedure .procedure-step4 .procedure-arrow {
-  -webkit-transform: rotate(75deg);
-          transform: rotate(75deg);
-  top: -52px;
-  left: 16px;
+.assassin-info--villain {
+  background: #000;
+}
+
+.assassin-info--villain--visual {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 88vw;
+  color: #fff;
+}
+
+.assassin-info--villain--visual .background {
+  background: url("../img/villain__bg.jpg") no-repeat;
+  background-size: 120% 100%;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.assassin-info--villain--visual .typo {
+  position: absolute;
+  text-indent: -99999px;
+  background: url("../img/villain__typo.png") no-repeat;
+  background-size: 100%;
+  width: 30vw;
+  height: 18vw;
+  top: 10vw;
+  left: 9vw;
+}
+
+.assassin-info--villain--visual .illust {
+  position: absolute;
+  background: url("../img/villain__character.png") no-repeat;
+  background-size: 100%;
+  top: 0;
+  width: 108vw;
+  height: 100vw;
+  right: -21vw;
+  background-position: bottom;
+}
+
+.assassin-info--villain--content {
+  background: -webkit-gradient(linear, left top, left bottom, from(#B60912), color-stop(50%), to(#000));
+  background: linear-gradient(#B60912, 50%, #000);
+  padding-bottom: 4vw;
+}
+
+.assassin-info--villain--content .title {
+  padding-top: 8vw;
+  color: #fff;
+  text-align: center;
+}
+
+.assassin-info--villain--content .title .title-thin, .assassin-info--villain--content .title .title-strong {
+  display: inline-block;
+}
+
+.assassin-info--villain--content .list-area {
+  width: 88vw;
+  left: 6vw;
+  position: relative;
+  margin-top: 8vw;
+}
+
+.assassin-info--villain--content .list-area__block--item {
+  background: #F4F4F4;
+  width: 100%;
+  margin-bottom: 5vw;
+  color: #212121;
+  padding: 6vw;
+}
+
+.assassin-info--villain--content .list-area__block--item .item-title {
+  font-size: 5.5vw;
+  line-height: 9vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+}
+
+.assassin-info--villain--content .list-area__block--item .item-title--sub {
+  font-size: 4vw;
+  line-height: 9vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 500;
+  float: right;
+}
+
+.assassin-info--villain--content .list-area__block--item .item-title--sub:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.assassin-info--villain--content .list-area__block--item .underline {
+  background: url("../img/assassin-info__underline.png") no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 2vw;
+  display: block;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.assassin-info--villain--content .list-area__block--item .item-content {
+  font-size: 4vw;
+  line-height: 6.8vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 400;
 }
 
 .epilogue {
@@ -1190,7 +1809,6 @@ video {
   color: #fff;
   width: 88vw;
   left: 6vw;
-  outline: 1px solid;
 }
 
 .epilogue__inner--area-headline {
@@ -1226,7 +1844,6 @@ video {
   top: 0;
   left: 50%;
   margin: 0 0 0 -44vw;
-  outline: 1px solid #ddd;
   z-index: 2;
   height: 100%;
 }
@@ -1292,5 +1909,53 @@ video {
 
 .brand-identity img {
   top: 5px;
+}
+
+@-webkit-keyframes checked-ture {
+  0% {
+    background: #BA0000;
+  }
+  60% {
+    background: #C22C2C;
+  }
+  100% {
+    background: #BA0000;
+  }
+}
+
+@keyframes checked-ture {
+  0% {
+    background: #BA0000;
+  }
+  60% {
+    background: #C22C2C;
+  }
+  100% {
+    background: #BA0000;
+  }
+}
+
+@-webkit-keyframes checked-false {
+  0% {
+    background: #B10000;
+  }
+  60% {
+    background: #8F0101;
+  }
+  100% {
+    background: #B10000;
+  }
+}
+
+@keyframes checked-false {
+  0% {
+    background: #B10000;
+  }
+  60% {
+    background: #8F0101;
+  }
+  100% {
+    background: #B10000;
+  }
 }
 /*# sourceMappingURL=mobile_style.css.map */

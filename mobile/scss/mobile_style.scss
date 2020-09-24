@@ -17,7 +17,7 @@ $white : #fff;
     top: $top;
     left: $left;
     margin: $mgTop $mgRight $mgBottom $mgLeft;
-    outline: 1px solid #ddd;
+    //outline: 1px solid #ddd;
 }
 
 @mixin fontInfo($size, $lh, $ls){
@@ -28,7 +28,8 @@ $white : #fff;
 
 .quiz__container{
     width: 100%;
-    height: calc(100vh - 50px);
+    //height: calc(100vh - 50px);
+    min-height: calc(100vh - 50px);
     overflow: hidden;
     position: absolute;
     top: 50px;
@@ -109,15 +110,17 @@ $white : #fff;
             background: none;
             position: absolute;
             //opacity: 0;
-            top: 50%;
+            //top: 50%;
             left: 50%;
             margin-left: -33.5vw;
         }
         &--goToTest{
-            margin-top: 21vh;
+            //margin-top: 19vh;
+            bottom: 19vh;
         }
         &--goToStory{
-            margin-top: 31vh;
+            //margin-top: 31vh;
+            bottom: 8vh;
         }
     }
     
@@ -190,10 +193,6 @@ $white : #fff;
             @include ProximaNova;
         }
         &--cover{
-            // $('.quiz-area__start').height();
-            clip: rect(230px, 400px, 340px, 0px);
-            //clip: rect(340px, 400px, 340px, 0px);
-
             background: #fff;
             color: #B10000;
             .start-btn{
@@ -202,6 +201,448 @@ $white : #fff;
             }
         }
     }
+
+    &__question{
+        transform: translateX(101vw);
+        position: absolute;
+        top: 0;
+        background: #BA0000;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        color: #fff;
+
+        .quiz-skip{
+            background: none;
+            color: #fff;
+            top: 6vw;
+            left: 8vw;
+            z-index: 10;
+            position: absolute;
+            @include fontInfo(3.8vw, 11vw, -0.05em);
+            @include fw-medium;
+        }
+        .question--text{
+            @include fontInfo(8vw, 11vw, -0.05em);
+            @include fw-regular;
+            z-index: 10;
+            position: absolute;
+            pointer-events: none;
+            width: 72vw;
+            top: 50%;
+            left: 14vw;
+            margin-top: -20vw;
+            
+        }
+        .question__input{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            z-index: 5;
+            input[type='radio']{
+                display: none;
+                + label{
+                    cursor: pointer;
+                    color: #fff;
+                    @include fontInfo(6.5vw, 11vw, 0);
+                    @include ProximaNova;
+                    //float: left;
+                    width: 50%;
+                    height: 100%;
+                    position: absolute;
+                    &.true{
+                        background: #BA0000;
+                        left: 0;
+                    }
+                    &.false{
+                        background: #B10000;
+                        right: 0;
+                    }
+                    .text{
+                        position: absolute;
+                        width: 100%;
+                        text-align: center;
+                        bottom: 18vw;
+                    }
+                }
+                //&:checked{
+                //    + label{
+                //        &.true{
+                //            animation: checked-ture 0.8s;
+                //        }
+                //        &.false{
+                //            animation: checked-false 0.8s;
+                //        }
+                //    }
+                //}
+            }
+        }
+
+        &--progress{
+            position: absolute;
+            width: 100%;
+            height: 10vw;
+            bottom: 0;
+            z-index: 6;
+            pointer-events: none;
+            .line{
+                position: relative;
+                background: #fff;
+                height: 0.5vw;
+                width: 88vw;
+                top: 0;
+                left: 6vw;
+            }
+            .process{
+                position: absolute;
+                width: 88vw;
+                height: 1vw;
+                display: inline-block;
+                top: -0.2vw;
+                left: 6vw;
+                transform-origin: left;
+                background: #fff;
+            }
+        }
+
+        &--finish{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #BA0000;
+            //opacity: 0.9;
+            opacity: 0;
+            z-index: 11;
+            pointer-events: none;
+            .show-result{
+                position: absolute;
+                border: 1px solid #fff;
+                background: none;
+                color: #fff;
+                width: 68vw;
+                height: 16vw;
+                left: 16vw;
+                top: 50%;
+                margin-top: -8vw;
+                @include fontInfo(5.5vw, 6vw, -0.05em);
+                @include fw-regular;
+            }
+        }        
+
+        &-step2, &-step3, &-step4, &-step5, &-step6, &-step7, &-step8, &-step9, &-step10{
+            visibility: hidden;
+            pointer-events: none;
+            .question--text{
+                transform: translateX(101vw);
+            }
+        }
+    }
+
+    &__result{
+        position: absolute;
+        background: #BA0000;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 15;
+        pointer-events: none;
+        opacity: 0;
+
+        .result-area{
+            position: absolute;
+            width: 68vw;
+            left: 16vw;
+            top: 15vh;
+            color: #fff;
+            .number-graph{
+                width: 90%;
+                margin-left: 5%;
+                display: block;
+                path{
+                    fill: none;
+                    //fill: #fff;
+                    &.active{
+                        fill: #fff;
+                    }
+                }
+            }
+            .number-text-strong{
+                position: absolute;
+                width: 25vw;
+                top: 26vw;
+                left: 50%;
+                margin-left: -12.5vw;
+                text-align: center;
+                @include fontInfo(4vw, 0, -0.05em);
+                @include fw-medium;
+                .sc-num{
+                    @include fontInfo(16vw, 0, 0);
+                    @include fw-bold;
+                }
+            }
+            .number-text-default{
+                position: absolute;
+                top: 35vw;
+                left: 20vw;
+                @include fontInfo(3.5vw, 7vw, -0.05em);
+                @include fw-light;
+            }
+        }
+        
+        .quiz-explain-btn{
+            position: absolute;
+            border: 1px solid #fff;
+            background: none;
+            color: #fff;
+            width: 68vw;
+            height: 16vw;
+            left: 16vw;
+            bottom: 5vh;
+            @include fontInfo(5.5vw, 6vw, -0.05em);
+            @include fw-regular;
+        }
+
+        .score-grade{
+            color: #fff;
+            position: relative;
+            top: 8vh;
+            width: 80vw;
+            left: -5vw;
+            text-align: center;
+            .grade-title{
+                @include fontInfo(6.5vw, 9vw, -0.05em);
+                @include fw-medium;
+            }
+            .grade-etc{
+                margin-top: 2vw;
+                @include fontInfo(3.5vw, 6vw, -0.05em);
+                @include fw-light;
+            }
+        }
+    }
+
+    &__explain{
+        background: #F5F5F5;
+        z-index: 16;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 190vw;
+        min-height: calc(100vh - 50px);
+        padding: 20vw 6vw;
+        opacity: 0;
+        pointer-events: none;
+        .explain__header{
+            position: relative;
+            width: 100%;
+            &--list{
+                &-title{
+                    position: absolute;
+                    bottom: 0;
+                    color: #343434;
+                    text-align: center;
+                    @include fontInfo(3.2vw, 9vw, -0.06em);
+                    @include fw-medium;
+                    &:nth-of-type(1){
+                        text-align: left;
+                        width: 56vw;
+                        padding-left: 2vw;
+                    }
+                    &:nth-of-type(2){
+                        left: 56vw;
+                        width: 8vw;
+                    }
+                    &:nth-of-type(3){
+                        left: 65vw;
+                        width: 15vw;
+                    }
+                    &:nth-of-type(4){
+                        left: 80vw;
+                        width: 10vw;
+                    }
+                }
+            }
+        }
+        .explain__list{
+            &-item{
+                background: #fff;
+                height: 12vw;
+                position: relative;
+                border-bottom: 1px solid #00000029;
+                padding: 4vw;
+                .number{
+                    color: #212121;
+                    display: inline-block;
+                    width: 5vw;
+                    text-align: center;
+                    position: relative;
+                    top: -2.4vw;
+                    @include fontInfo(4vw, 6vw, -0.05em);
+                    @include fw-medium;
+                }
+                .quistion-text{
+                    color: #212121;
+                    display: inline-block;
+                    width: 45vw;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    position: relative;
+                    top: -1vw;
+                    @include fontInfo(4vw, 6vw, -0.05em);
+                    @include fw-medium;
+                }
+                .answer-status--true{
+                    background: url($imgPath + 'answer-status--true.png') no-repeat;
+                    background-size: 100% 100%;
+                    position: absolute;
+                    display: inline-block;
+                    width: 5vw;
+                    height: 5vw;
+                    margin: 0 3vw;
+                    opacity: 0;
+                    &.active{
+                        opacity: 1;
+                    }
+                }
+                .answer-status--false{
+                    background: url($imgPath + 'answer-status--false.png') no-repeat;
+                    background-size: 100% 100%;
+                    position: absolute;
+                    display: inline-block;
+                    width: 5vw;
+                    height: 5vw;
+                    margin: 0 3vw;
+                    opacity: 0;
+                    &.active{
+                        opacity: 1;
+                    }
+                }
+                .select_true{
+                    background: url($imgPath + 'select_true.png') no-repeat;
+                    background-size: 100% 100%;
+                    display: inline-block;
+                    position: absolute;
+                    width: 4vw;
+                    height: 4vw;
+                    margin: 0.5vw 3vw;
+                    left: 64vw;
+                    opacity: 0.3;
+                    &.active{
+                        opacity: 1;
+                    }
+                }
+                .select_false{
+                    background: url($imgPath + 'select_false.png') no-repeat;
+                    background-size: 100% 100%;
+                    display: inline-block;
+                    position: absolute;
+                    width: 4vw;
+                    height: 4vw;
+                    margin: 0.5vw 3vw;
+                    left: 72vw;
+                    opacity: 0.3;
+                    &.active{
+                        opacity: 1;
+                    }
+                }
+                .moreExplain{
+                    background: url($imgPath + 'more-explain.png') no-repeat;
+                    background-size: 100%;
+                    background-position: center;
+                    display: inline-block;
+                    text-indent: -99999px;
+                    position: absolute;
+                    margin: 0;
+                    width: 2.5vw;
+                    left: 83vw;
+                    &:after{
+                        content: '';
+                        display: inline-block;
+                        width: 8vw;
+                        position: absolute;
+                        height: 12vw;
+                        left: -3vw;
+                        top: -4vw;
+                    }
+                }
+            }
+            &-more{
+                width: 100%;
+                background: #212121;
+                position: relative;
+                color: #D0D0D0;
+                padding: 6vw 3vw;
+                margin-bottom: 4vw;
+                padding: 0;
+                height: 0;
+                overflow: hidden;
+                transition: all 0.6s;
+
+                &.view{
+                    height: 36vw;
+                    &.md1{
+                        height: 42vw;
+                    }
+                    &.md2{
+                        height: 50vw;
+                    }
+                    &.long{
+                        height: 60vw;
+                    }
+                }
+                .status-chk{
+                    width: 12vw;
+                    display: inline-block;
+                    position: absolute;
+                    text-align: center;
+                    top: 4vw;
+                    left: 3vw;
+                    &--title{
+                        color: #D0D0D0;
+                        @include fontInfo(3.2vw, 8vw, -0.05em);
+                        @include fw-regular;
+                        display: block;
+                        text-align: center;
+                    }
+                    .chk-false{
+                        background: url($imgPath + 'chk-false.png') no-repeat;
+                        background-size: 100%;
+                        position: relative;
+                        height: 8vw;
+                        width: 8vw;
+                        background-size: 100%;
+                        background-position: center;
+                        display: inline-block;
+                    }
+                    .chk-true{
+                        background: url($imgPath + 'chk-true.png') no-repeat;
+                        background-size: 100%;
+                        position: relative;
+                        height: 8vw;
+                        width: 8vw;
+                        background-size: 100%;
+                        background-position: center;
+                        display: inline-block;
+                    }
+                }
+                .status-explain{
+                    @include fontInfo(4vw, 6.5vw, -0.05em);
+                    @include fw-regular;
+                    margin-left: 15vw;
+                    position: absolute;
+                    top: 5vw;
+                    left: 2vw;
+                    padding-right: 4vw;
+                }
+            }
+        }
+
+    }
+    
 }
 
 .natural-killer-cell{
@@ -457,9 +898,9 @@ $white : #fff;
                             left: #{nth($cellLeftData, $i)}vw;
                         }
                     }
-                    .nk-cell-2{
-                        left: 35px;
-                    }
+                    //.nk-cell-2{
+                    //    //left: 35px;
+                    //}
                     .nk-boom{
                         position: absolute;
                         background: url($imgPath + 'nk-boom.png') no-repeat;
@@ -584,8 +1025,11 @@ $white : #fff;
                     width: 17vw;
                     height: 17vw;
                     position: absolute;
-                    top: 10vw;
+                    top: 5vw;
                     left: 14vw;
+                    .procedure__inner-text-str{
+                        margin-top: 4vw;
+                    }
                 }
                 &-cancer{
                     background: url($imgPath + 'procedure-cancer.png') no-repeat;
@@ -593,8 +1037,11 @@ $white : #fff;
                     width: 20vw;
                     height: 20vw;
                     position: absolute;
-                    top: 6vw;
+                    top: 4vw;
                     right: 5vw;
+                    .procedure__inner-text-str{
+                        margin-top: 5vw;
+                    }
                 }
                 &-etc{
                     background: #C6C6C6;
@@ -621,7 +1068,7 @@ $white : #fff;
                 }
                 .procedure-arrow-text{
                     color: #212121;
-                    @include fontInfo(14px, 0, -0.06em);
+                    @include fontInfo(2.5vw, 0, -0.06em);
                     @include fw-demilight;
                     text-align: center;
                     display: block;
@@ -630,74 +1077,155 @@ $white : #fff;
                     height: 2px;
                     background: #C6C6C6;
                     display: inline-block;
-                }
-                &-arrow{
-                    background: url($imgPath + 'procedure-arrow.png') no-repeat;
-                    width: 8px;
-                    height: 9px;
-                    display: inline-block;
-                    position: absolute;
+                    &:after{
+                        content : '';
+                        background: url($imgPath + 'procedure-arrow.png') no-repeat;
+                        width: 1.5vw;
+                        height: 2vw;
+                        margin-top: -0.8vw;
+                        float: right;
+                        background-size: 100% 100%;
+                    }
                 }
                 .procedure-step1{
-                    position: absolute;
-                    top: 230px;
-                    left: 525px;
+                    position: relative;
+                    width: 27vw;
+                    top: 9vw;
+                    left: 33vw;
                     .procedure-line{
-                        width: 290px;
+                        width: 28vw;
                         transform-origin: left;
-                    }
-                    .procedure-arrow{
-                        top: 12px;
-                        right: -2px;
                     }
                 }
                 .procedure-step2{
-                    position: absolute;
-                    top: 360px;
-                    left: 240px;
+                    position: relative;
+                    top: 26vw;
+                    left: 26vw;
+                    width: 7vw;
                     .procedure-line{
-                        width: 110px;
-                        position: absolute;
-                        left: -81px;
-                        top: -54px;
-                        transform-origin: right;
-                    }
-                    .procedure-arrow{
-                        top: 20px;
-                        left: -51px;
+                        position: relative;
+                        width: 14vw;
+                        transform: rotate(90deg);
+                        top: -5vw;
+                        left: -10vw;
+                        transform-origin: top;
                     }
                 }
                 .procedure-step3{
-                    position: absolute;
-                    top: 465px;
-                    left: 360px;
+                    position: relative;
+                    top: 30vw;
+                    width: 20vw;
+                    left: 40vw;
                     .procedure-line{
-                       width: 220px;
+                       width: 22vw;
                        transform-origin: left;
-                    }
-                    .procedure-arrow{
-                        top: 12px;
                     }
                 }
                 .procedure-step4{
-                    position: absolute;
-                    right: 230px;
-                    top: 360px;
+                    position: relative;
+                    left: 18vw;
+                    top: 14vw;
                     .procedure-line{
-                        position: absolute;
-                        width: 110px;
-                        transform-origin: left;
-                        top: 30px;
-                        left: -60px;
-                    }
-                    .procedure-arrow{
-                        transform: rotate(75deg);
-                        top: -52px;
-                        left: 16px;
+                        position: relative;
+                        width: 11vw;
+                        top: -5vw;
+                        left: 50vw;
+                        transform: rotate(-90deg);
+                        transform-origin: bottom;
                     }
                 }
             }
         }
+    }
+    &--villain{
+        background: #000;
+        &--visual{
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 88vw;
+            color: #fff;
+            .background{
+                background: url($mimgPath + 'villain__bg.jpg') no-repeat;
+                background-size: 120% 100%;
+                background-position: center;
+                width: 100%;
+                height: 100%;
+            }
+            .typo{
+                position: absolute;
+                text-indent: -99999px;
+                background: url($mimgPath + 'villain__typo.png') no-repeat;
+                background-size: 100%;
+                width: 30vw;
+                height: 18vw;
+                top: 10vw;
+                left: 9vw;
+            }
+            .illust{
+                position: absolute;
+                background: url($mimgPath + 'villain__character.png') no-repeat;
+                background-size: 100%;
+                top: 0;
+                width: 108vw;
+                height: 100vw;
+                right: -21vw;
+                background-position: bottom;
+            }
+        }
+        &--content{
+            background: linear-gradient(#B60912, 50%, #000);
+            padding-bottom: 4vw;
+            .title{
+                padding-top: 8vw;
+                color: #fff;
+                text-align: center;
+                .title-thin, .title-strong{
+                    display: inline-block;
+                }
+            }
+            .list-area{
+                width: 88vw;
+                left: 6vw;
+                position: relative;
+                margin-top: 8vw;
+                &__block{
+                    &--item{
+                        background: #F4F4F4;
+                        width: 100%;
+                        margin-bottom: 5vw;
+                        color: #212121;
+                        padding: 6vw;
+                        .item-title{
+                            @include fontInfo(5.5vw, 9vw, -0.05em);
+                            @include fw-bold;
+                            &--sub{
+                                @include fontInfo(4vw, 9vw, -0.05em);
+                                @include fw-medium;
+                                float: right;
+                                &:after{
+                                    @include clear;
+                                }
+                            }
+                        }
+                        .underline{
+                            background: url($mimgPath + 'assassin-info__underline.png') no-repeat;
+                            background-size: 100%;
+                            width: 100%;
+                            height: 2vw;
+                            display: block;
+                            margin-top: 2vw;
+                            margin-bottom: 2vw;
+                        }
+                        .item-content{
+                            @include fontInfo(4vw, 6.8vw, -0.05em);
+                            @include fw-regular;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
 
@@ -753,7 +1281,7 @@ $white : #fff;
         color: #fff;
         width: 88vw;
         left: 6vw;
-        outline: 1px solid;
+        //outline: 1px solid;
         &--area{
             &-headline{
                 @include fontInfo(7vw, 9vw, -0.05em);
@@ -835,4 +1363,28 @@ $white : #fff;
     top: 5px;
 }
 
+
+@keyframes checked-ture{
+    0%{
+        background: #BA0000;
+    }
+    60%{
+        background: #C22C2C;
+    }
+    100%{
+        background: #BA0000;
+    }
+}
+
+@keyframes checked-false{
+    0%{
+        background: #B10000;
+    }
+    60%{
+        background: #8F0101;
+    }
+    100%{
+        background: #B10000;
+    }
+}
 
