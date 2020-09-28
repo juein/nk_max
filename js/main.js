@@ -17,9 +17,12 @@ window.addEventListener('DOMContentLoaded', function () {
         hoverAction = void 0,
         listActiveNum = 0,
         quizStep = 1,
+        isQuizAnimation = false,
         furstquizAreaFlag = false,
         quizAreaFlag = false,
-        hoveHeroFlag = false;
+        hoveHeroFlag = false,
+        naviActiveNum = 1,
+        assassinAreaKeyPressed = false;
 
     // default setting
     var defaultSet = function defaultSet() {
@@ -49,31 +52,27 @@ window.addEventListener('DOMContentLoaded', function () {
         _loop($i);
     }
 
-    /*
-    $('.quiz__btn--next').click( () => {
-        $('.this-quoetion').removeClass('thisActive');
-        gsap.to('.quiz-area__inner--question-step'+quizStep, 0.5, {opacity: 0, pointerEvents:'none'});
-        gsap.to('.quiz__btn--next', 0.5, {opacity: 0, pointerEvents: 'none'});
-        quizStep += 1;
-        gsap.to('.quiz-area__inner--question-step'+quizStep, 0.5, {opacity: 1, pointerEvents:'visible', delay: 0.4});
-        $('.progress__box:nth-of-type('+quizStep+') .chk').addClass('active');
-        $('.progress__box:nth-of-type('+quizStep+') .this-quoetion').addClass('thisActive');
-    });
-    */
     var quizNextQuestion = function quizNextQuestion(num) {
-        console.log('test ==== ' + num);
-        gsap.to('.quiz-area__inner--question-step' + quizStep, 0.5, { opacity: 0, pointerEvents: 'none' });
-        quizStep += 1;
-        gsap.to('.quiz-area__inner--question-step' + quizStep, 0.5, { opacity: 1, pointerEvents: 'visible', delay: 0.4 });
-        $('.progress__box:nth-of-type(' + quizStep + ') .chk').addClass('active');
-        $('.progress__box:nth-of-type(' + quizStep + ') .this-quoetion').addClass('thisActive');
+        if (!isQuizAnimation) {
+            isQuizAnimation = true;
+            console.log('test ==== ' + num);
+            gsap.to('.quiz-area__inner--question-step' + quizStep, 0.5, { opacity: 0, pointerEvents: 'none' });
+            quizStep += 1;
+            gsap.to('.quiz-area__inner--question-step' + quizStep, 0.5, { opacity: 1, pointerEvents: 'visible', delay: 0.4 });
+            $('.progress__box:nth-of-type(' + quizStep + ') .chk').addClass('active');
+            $('.progress__box:nth-of-type(' + quizStep + ') .this-quoetion').addClass('thisActive');
+
+            setTimeout(function () {
+                isQuizAnimation = false;
+            }, 600);
+        }
     };
 
     $('.quiz__btn--finish').click(function () {
         var quizResult = $('#quiz-area__form').serializeArray();
         //정답이랑 내가 체크한 값 비교하기
         var quizScore = 0;
-        var quizCorrectResult = [2, 1, 2, 2, 1, 2, 2, 2, 1, 2];
+        var quizCorrectResult = [1, 1, 2, 1, 1, 2, 2, 1, 1, 2]; // 1 : true, 2 : false
         for (var k = 0; k < quizCorrectResult.length; k++) {
             if (quizCorrectResult[k] == Number(quizResult[k].value)) {
                 quizScore += 1;
@@ -94,6 +93,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     var quizResultPage = function quizResultPage(score) {
+        //console.log('score = ' + score);
         // score graph 표기
         for (var $j = 1; $j <= score; $j++) {
             $('.number-graph path:nth-of-type(' + $j + ')').addClass('active');
@@ -113,6 +113,9 @@ window.addEventListener('DOMContentLoaded', function () {
             gradeTitle = '당신은 면역 상식은 학생수준 입니다.';
             gradeEtc = '어느 정도 더 관심을 기울인다면, <br>곧 면역 상식왕이 되겠습니다!';
         } else if (score <= 8) {
+            gradeTitle = '당신은 면역 상식 박사입니다.';
+            gradeEtc = '혹시 면역학 공부를 따로 하셨나요? <br>면역 상식으론 따라 잡을 이가 없네요.';
+        } else {
             gradeTitle = '당신은 면역 상식 박사입니다.';
             gradeEtc = '혹시 면역학 공부를 따로 하셨나요? <br>면역 상식으론 따라 잡을 이가 없네요.';
         }
@@ -204,9 +207,15 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    var tMechanismAnimation = new TimelineLite({ paused: true, repeat: -1 }).to('.t-cell-1', 1.4, { x: 170, ease: 'none' }, 0).to('.t-cell-2', 1.4, { x: 140, ease: 'none' }, 0).to('.t-cell-3', 1.4, { x: 150, ease: 'none' }, 0).to('.cancer-cell.tarea', 1.4, { x: -180, ease: 'none' }, 0).to('.cancer-cell.tarea', 0.4, { opacity: 0.8, ease: 'none' }, 0.3).to('.cancer-cell.tarea', 0.4, { opacity: 1, ease: 'none' }, 0.8).to('.t-cell-1', 1.4, { x: 0, ease: 'none' }, 1.4).to('.t-cell-2', 1.4, { x: 0, ease: 'none' }, 1.4).to('.t-cell-3', 1.4, { x: 0, ease: 'none' }, 1.4).to('.cancer-cell.tarea', 1.4, { x: 0, ease: 'none' }, 1.4).to('.cancer-cell.tarea', 0.4, { opacity: 0.8, ease: 'none' }, 1.7).to('.cancer-cell.tarea', 0.4, { opacity: 1, ease: 'none' }, 2.2);
+    var tMechanismAnimation = new TimelineLite({ paused: true, repeat: -1 }).set('.t-question-mark', { scale: 0 }, 0).to('.t-cell-3', 1.4, { x: 150, ease: 'none' }, 0).to('.cancer-cell.tarea', 1.4, { x: -180, ease: 'none' }, 0).to('.cancer-cell.tarea', 0.4, { opacity: 0.8, ease: 'none' }, 0.3).to('.cancer-cell.tarea', 0.4, { opacity: 1, ease: 'none' }, 0.8).to('.t-cell-3', 1.4, { x: 0, ease: 'none' }, 1.4).to('.cancer-cell.tarea', 1.4, { x: 0, ease: 'none' }, 1.4).to('.cancer-cell.tarea', 0.4, { opacity: 0.8, ease: 'none' }, 1.7).to('.cancer-cell.tarea', 0.4, { opacity: 1, ease: 'none' }, 2.2).to('.t-question-mark', 0.7, { scale: 1, ease: Back.easeOut.config(3) }, 2.7);
 
-    var nkMechanismAnimation = new TimelineLite({ paused: true, repeat: -1 }).set('.cancer-cell.nkarea', { opacity: 1 }, 0).to('.nk-weapon-1', 0.2, { scaleX: 0.45 }, 0).to('.nk-weapon-2', 0.2, { scaleX: 1 }, 0).to('.nk-cell-1', 1, { x: 20, ease: 'none' }, 0).to('.nk-cell-2', 0.8, { x: 30, ease: 'none' }, 0).to('.nk-weapon-1', 0.4, { scaleX: 1 }, 0.2).to('.nk-weapon-1', 0.4, { scaleX: 0.45 }, 0.6).to('.nk-weapon-2', 0.4, { scaleX: 2 }, 0.6).to('.nk-weapon-2', 0.4, { scaleX: 1 }, 1).to('.nk-weapon-1', 0.4, { scaleX: 1 }, 1).to('.nk-cell-1', 1, { x: 0, ease: 'none' }, 1.1).to('.nk-cell-2', 1.1, { x: 0, ease: 'none' }, 0.8).to('.nk-boom', 0.3, { scale: 1, ease: 'back.out(1.7)' }, 1.2).to('.nk-boom', 0.2, { scale: 0 }, 1.5).to('.cancer-cell.nkarea', 0.6, { opacity: 0, scale: 1.5 }, 1.5);
+    var nkMechanismAnimation = new TimelineLite({ paused: true, repeat: -1 }).set('.cancer-cell.nkarea', { opacity: 1 }, 0).to('.nk-weapon-1', 0.2, { scaleX: 0.45 }, 0).to('.nk-weapon-2', 0.2, { scaleX: 1 }, 0)
+    //.to('.nk-cell-1', 1, {x: 20, ease: 'none'}, 0)
+    //.to('.nk-cell-2', 0.8, {x: 30, ease: 'none'}, 0)
+    .to('.nk-weapon-1', 0.4, { scaleX: 1 }, 0.2).to('.nk-weapon-1', 0.4, { scaleX: 0.45 }, 0.6).to('.nk-weapon-2', 0.4, { scaleX: 2 }, 0.6).to('.nk-weapon-2', 0.4, { scaleX: 1 }, 1).to('.nk-weapon-1', 0.4, { scaleX: 1 }, 1)
+    //.to('.nk-cell-1', 1, {x: 0, ease: 'none'}, 1.1)
+    //.to('.nk-cell-2', 1.1, {x: 0, ease: 'none'}, 0.8)
+    .to('.nk-boom', 0.3, { scale: 1, ease: 'back.out(1.7)' }, 1.2).to('.nk-boom', 0.2, { scale: 0 }, 1.5).to('.cancer-cell.nkarea', 0.6, { opacity: 0, scale: 1.5 }, 1.5);
 
     var assassinContent = {
         hideContent: function hideContent() {
@@ -251,7 +260,8 @@ window.addEventListener('DOMContentLoaded', function () {
         },
         heroAnimation: function heroAnimation() {
             var procedureAnimation = new TimelineLite({ paused: true }).set('.procedure-nk', { scale: 0 }, 0).set('.procedure-cancer', { scale: 0 }, 0).set('.procedure-etc.num2', { scale: 0 }, 0).set('.procedure-etc.num3', { scale: 0 }, 0).set('.procedure-etc.num4', { scale: 0 }, 0).set('.procedure-step1 .procedure-line', { scaleX: 0 }, 0).set('.procedure-step1 .procedure-arrow-text', { opacity: 0 }, 0).set('.procedure-step1 .procedure-arrow', { opacity: 0 }, 0).set('.procedure-step2 .procedure-line', { scaleX: 0, rotate: -45 }, 0).set('.procedure-step2 .procedure-arrow-text', { opacity: 0 }, 0).set('.procedure-step2 .procedure-arrow', { opacity: 0 }, 0).set('.procedure-step3 .procedure-line', { scaleX: 0 }, 0).set('.procedure-step3 .procedure-arrow-text', { opacity: 0 }, 0).set('.procedure-step3 .procedure-arrow', { opacity: 0 }, 0).set('.procedure-step4 .procedure-line', { rotate: -45, scaleX: 0 }, 0).set('.procedure-step4 .procedure-arrow-text', { opacity: 0 }, 0).set('.procedure-step4 .procedure-arrow', { opacity: 0 }, 0).to('.procedure-nk', 0.6, { scale: 1 }, 0.5).to('.procedure-cancer', 0.6, { scale: 1 }, 0.7).to('.procedure-step1 .procedure-line', 0.5, { scaleX: 1 }, 1.1).to('.procedure-step1 .procedure-arrow-text', 0.5, { opacity: 1 }, 1.1).to('.procedure-step1 .procedure-arrow', 0.4, { opacity: 1 }, 1.6).to('.procedure-etc.num2', 0.6, { scale: 1 }, 1.3).to('.procedure-etc.num3', 0.6, { scale: 1 }, 1.5).to('.procedure-step2 .procedure-line', 0.5, { scaleX: 1 }, 1.9).to('.procedure-step2 .procedure-arrow-text', 0.5, { opacity: 1 }, 1.9).to('.procedure-step2 .procedure-arrow', 0.4, { opacity: 1 }, 2.4).to('.procedure-etc.num4', 0.6, { scale: 1 }, 2.3).to('.procedure-step3 .procedure-line', 0.5, { scaleX: 1 }, 2.9).to('.procedure-step3 .procedure-arrow-text', 0.5, { opacity: 1 }, 2.9).to('.procedure-step3 .procedure-arrow', 0.4, { opacity: 1 }, 3.4).to('.procedure-step4 .procedure-line', 0.5, { scaleX: 1 }, 3.5).to('.procedure-step4 .procedure-arrow-text', 0.5, { opacity: 1 }, 3.5).to('.procedure-step4 .procedure-arrow', 0.4, { opacity: 1 }, 4);
-            procedureAnimation.pause();
+
+            //procedureAnimation.kill();
             procedureAnimation.restart();
         },
         villain: function villain() {
@@ -268,7 +278,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
     var visualList = {
         origin: function origin() {
-            var listOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0).to('.assassin-info__visual--character-origin', 1, { scale: 1.2, y: 100, x: 80 }, 0.7).to('.assassin-info__visual--bg-origin', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-talent', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#F2F2F2' }, 0.5);
+            gsap.to('.arrow-btn-left', 0.3, { opacity: 0, pointerEvents: 'none' });
+
+            var listOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0)
+            //.to('.assassin-info__visual--character-origin', 1, {scale: 1.2, y: 100, x: 80}, 0.7)
+            .to('.assassin-info__visual--character-origin', 1, { scale: 1.5, y: 0, x: 110 }, 0.7).to('.assassin-info__visual--bg-origin', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-talent', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#F2F2F2' }, 0.5);
 
             $('.assassin-info__visual--list-origin').addClass('active');
             listActiveNum = 1;
@@ -276,6 +290,9 @@ window.addEventListener('DOMContentLoaded', function () {
             assassinContent.origin();
         },
         talent: function talent() {
+            gsap.to('.arrow-btn-left', 0.3, { opacity: 1, pointerEvents: 'visible' });
+            gsap.to('.arrow-btn-right', 0.3, { opacity: 1, pointerEvents: 'visible' });
+
             var listTalentAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0).to('.assassin-info__visual--character-talent', 0.8, { x: 0, scale: 1.2 }, 0.7).to('.assassin-info__visual--bg-talent', 1, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-80%" }, 0.7).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5);
 
             $('.assassin-info__visual--list-talent').addClass('active');
@@ -286,6 +303,9 @@ window.addEventListener('DOMContentLoaded', function () {
             nkMechanismAnimation.restart();
         },
         hero: function hero() {
+            gsap.to('.arrow-btn-left', 0.3, { opacity: 1, pointerEvents: 'visible' });
+            gsap.to('.arrow-btn-right', 0.3, { opacity: 1, pointerEvents: 'visible' });
+
             var listHeroAction = new TimelineLite({ paused: true }).to('.assassin-info__visual--character-hero', 1.2, { x: 400, y: 200 }, 0).set('.assassin-info__visual--list-origin', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0).to('.assassin-info__visual--bg-hero', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1.2, { x: "0%", y: "0%" }, 0.7).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5);
 
             $('.assassin-info__visual--list-hero').addClass('active');
@@ -295,6 +315,8 @@ window.addEventListener('DOMContentLoaded', function () {
             assassinContent.heroAnimation();
         },
         villain: function villain() {
+            gsap.to('.arrow-btn-right', 0.3, { opacity: 0, pointerEvents: 'none' });
+
             var listVillainAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'visible' }, 0).to('.assassin-info__visual--bg-villain', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-origin', 1, { x: "-101%" }, 0).to('.assassin-info__visual--list-talent', 1, { x: "-201%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "-301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#f2f2f2' }, 0.5);
 
             $('.assassin-info__visual--list-villain').addClass('active');
@@ -307,6 +329,10 @@ window.addEventListener('DOMContentLoaded', function () {
     var navi = {
         home: function home() {
             isListAnimating = false;
+
+            naviFlag = false;
+            //console.log('naviFlag = false');
+            gsap.set('.assassin-info__visual--navigation-LeftRight', { opacity: 0, pointerEvents: 'none' });
             gsap.set('.assassin-info__visual--navigation', { pointerEvents: 'none', opacity: 0 });
             gsap.to('.assassin-info__visual--scene', 0.7, { opacity: 1 });
             $('.assassin-info__visual--navigation-btn').removeClass('active');
@@ -327,7 +353,13 @@ window.addEventListener('DOMContentLoaded', function () {
             nkMechanismAnimation.pause();
         },
         origin: function origin() {
-            var naviOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-origin', { opacity: 0 }, 0).set('.assassin-info__visual--list-origin', { opacity: 0, x: 0, y: 0 }, 0.2).set('.assassin-info__visual--character-origin', { scale: 1.2, y: 0, x: 0 }, 0.2).to('.assassin-info__visual--list-origin', 0.8, { opacity: 1 }, 0.4).to('.assassin-info__visual--character-origin', 0.8, { y: 100, x: 80 }, 0.4);
+            gsap.to('.arrow-btn-left', 0.3, { opacity: 0, pointerEvents: 'none' });
+
+            var naviOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-origin', { opacity: 0 }, 0).set('.assassin-info__visual--list-origin', { opacity: 0, x: 0, y: 0 }, 0.2)
+            //.set('.assassin-info__visual--character-origin', {scale: 1.2, y: 0, x: 0}, 0.2)
+            .set('.assassin-info__visual--character-origin', { scale: 1.5, y: 0, x: 0 }, 0.2).to('.assassin-info__visual--list-origin', 0.8, { opacity: 1 }, 0.4)
+            //.to('.assassin-info__visual--character-origin', 0.8, {y: 100, x: 80}, 0.4)
+            .to('.assassin-info__visual--character-origin', 0.8, { y: 0, x: 110 }, 0.4);
 
             setTimeout(function () {
                 $('.assassin-info__visual--list li').removeClass('active');
@@ -344,6 +376,9 @@ window.addEventListener('DOMContentLoaded', function () {
             nkMechanismAnimation.pause();
         },
         talent: function talent() {
+            gsap.to('.arrow-btn-left', 0.3, { opacity: 1, pointerEvents: 'visible' });
+            gsap.to('.arrow-btn-right', 0.3, { opacity: 1, pointerEvents: 'visible' });
+
             var naviTalentAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-talent', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-talent', { opacity: 0 }, 0).set('.assassin-info__visual--list-talent', { opacity: 0, x: "-50%" }, 0.2).set('.assassin-info__visual--character-talent', { scale: 1.2, x: 0 }, 0.2).to('.assassin-info__visual--list-talent', 0.8, { x: "-80%", opacity: 1 }, 0.4);
 
             setTimeout(function () {
@@ -360,7 +395,10 @@ window.addEventListener('DOMContentLoaded', function () {
             nkMechanismAnimation.restart();
         },
         hero: function hero() {
-            var naviHeroAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-hero', { overflow: 'visible', opacity: 0, x: '0%', y: '0%' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-hero', { opacity: 0 }, 0).to('.assassin-info__visual--list-hero', 0.8, { opacity: 1 }, 0.4).set('.assassin-info__visual--character-hero', { x: 300, y: 200 }, 0.2).to('.assassin-info__visual--character-hero', 0.8, { x: 400 }, 0.4);
+            gsap.to('.arrow-btn-left', 0.3, { opacity: 1, pointerEvents: 'visible' });
+            gsap.to('.arrow-btn-right', 0.3, { opacity: 1, pointerEvents: 'visible' });
+
+            var naviHeroAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-hero', { overflow: 'visible', opacity: 0, x: '0%', y: '0%' }, 0.2).set('.assassin-info__visual--bg-hero', { opacity: 0 }, 0).set('.assassin-info__visual--character-hero', { x: 300, y: 200 }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).to('.assassin-info__visual--list-hero', 0.8, { opacity: 1 }, 0.4).to('.assassin-info__visual--character-hero', 0.8, { x: 400 }, 0.4);
 
             setTimeout(function () {
                 $('.assassin-info__visual--list li').removeClass('active');
@@ -371,6 +409,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }, 3000);
 
             naviHeroAction.restart();
+
             assassinContent.hero();
             assassinContent.heroAnimation();
 
@@ -378,6 +417,8 @@ window.addEventListener('DOMContentLoaded', function () {
             nkMechanismAnimation.pause();
         },
         villain: function villain() {
+            gsap.to('.arrow-btn-right', 0.3, { opacity: 0, pointerEvents: 'none' });
+
             var naviVillainAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-villain', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-villain', { opacity: 0 }, 0).set('.assassin-info__visual--list-villain', { opacity: 0, x: "0", y: "0" }, 0.2).to('.assassin-info__visual--list-villain', 0.8, { opacity: 1 }, 0.4).set('.assassin-info__visual--list .grayscale', { '-webkit-filter': 'grayscale(100%)', filter: 'grayscale(100%)' }, 0.2).to('.assassin-info__visual--list .grayscale', 0.8, { '-webkit-filter': 'grayscale(0%)', filter: 'grayscale(0%)' }, 0.5);
 
             setTimeout(function () {
@@ -398,29 +439,44 @@ window.addEventListener('DOMContentLoaded', function () {
 
     var assassinList = document.querySelector('.assassin-info__visual--list');
     assassinList.addEventListener("click", assassinListClick);
-    function assassinListClick(e) {
-        var listValue = Number(e.target.getAttribute('data-value'));
+    function assassinListClick(e, secondVal) {
+        var listValue = void 0;
+        try {
+            listValue = Number(e.target.getAttribute('data-value'));
+        } catch (e) {
+            listValue = secondVal;
+        }
+
         if (listValue != 4) {
             gsap.to('.assassin-info__visual--list .grayscale', 0.4, { '-webkit-filter': 'grayscale(100%)', filter: 'grayscale(100%)', delay: 0.5 });
         }
+
         $('.assassin-info__visual--navigation-btn:nth-of-type(' + (listValue + 1) + ')').addClass('active');
         $('.assassin-info__visual--navigation-btn:nth-of-type(' + (listValue + 1) + ') .active-motion').addClass('bounce');
         gsap.set('.assassin-info__visual--list', { pointerEvents: 'none' });
         gsap.to('.assassin-info__visual--navigation', 0.5, { opacity: 1, pointerEvents: "visible", delay: 0.8 });
         gsap.to('.assassin-info__visual--scene', 0.7, { opacity: 0 });
+
+        naviFlag = true;
+        gsap.to('.assassin-info__visual--navigation-LeftRight', 0.5, { opacity: 1, pointerEvents: 'visible', delay: 0.3 });
+
         switch (listValue) {
             case 1:
+                naviActiveNum = 2;
                 visualList.origin();
                 break;
             case 2:
+                naviActiveNum = 3;
                 visualList.talent();
                 break;
             case 3:
+                naviActiveNum = 4;
                 hoverHeroAction.pause();
                 hoveHeroFlag = true;
                 visualList.hero();
                 break;
             case 4:
+                naviActiveNum = 5;
                 visualList.villain();
                 break;
         }
@@ -429,9 +485,15 @@ window.addEventListener('DOMContentLoaded', function () {
     var assassinNavigation = document.querySelector('.assassin-info__visual--navigation');
     assassinNavigation.addEventListener("click", assassinNaviClick);
 
-    function assassinNaviClick(e) {
+    function assassinNaviClick(e, secondVal) {
         //console.log('isListAnimating == ' + isListAnimating);
-        var naviValue = Number(e.target.getAttribute('data-value'));
+        var naviValue = void 0;
+        try {
+            naviValue = Number(e.target.getAttribute('data-value'));
+        } catch (e) {
+            naviValue = secondVal;
+        }
+
         if (listActiveNum == naviValue) return false;
         if (!isListAnimating) {
             isListAnimating = true;
@@ -443,43 +505,91 @@ window.addEventListener('DOMContentLoaded', function () {
 
             switch (naviValue) {
                 case 0:
+                    naviActiveNum = 1;
                     navi.home();
                     break;
                 case 1:
+                    naviActiveNum = 2;
                     navi.origin();
                     break;
                 case 2:
+                    naviActiveNum = 3;
                     navi.talent();
                     break;
                 case 3:
+                    naviActiveNum = 4;
                     navi.hero();
                     break;
                 case 4:
+                    naviActiveNum = 5;
                     navi.villain();
                     break;
             }
         }
     }
+
+    var naviKeyControls = function naviKeyControls(pressKey) {
+        switch (naviActiveNum) {
+            case 1:
+                if (pressKey == keyCodes.LEFT) {
+                    return false;
+                } else if (pressKey == keyCodes.RIGHT) {
+                    if (!isListAnimating) {
+                        isListAnimating = true;
+                        assassinListClick('', 1);
+                        setTimeout(function () {
+                            isListAnimating = false;
+                        }, 1400);
+                    }
+                }
+                break;
+            case 2:
+                if (pressKey == keyCodes.LEFT) {
+                    assassinNaviClick('', 0);
+                } else if (pressKey == keyCodes.RIGHT) {
+                    assassinNaviClick('', 2);
+                }
+                break;
+            case 3:
+                if (pressKey == keyCodes.LEFT) {
+                    assassinNaviClick('', 1);
+                } else if (pressKey == keyCodes.RIGHT) {
+                    assassinNaviClick('', 3);
+                }
+                break;
+            case 4:
+                if (pressKey == keyCodes.LEFT) {
+                    assassinNaviClick('', 2);
+                } else if (pressKey == keyCodes.RIGHT) {
+                    assassinNaviClick('', 4);
+                }
+                break;
+            case 5:
+                if (pressKey == keyCodes.LEFT) {
+                    assassinNaviClick('', 3);
+                } else if (pressKey == keyCodes.RIGHT) {
+                    return false;
+                }
+                break;
+        }
+    };
+
+    $('.arrow-btn-left').click(function () {
+        assassinNaviClick('', naviActiveNum - 2);
+    });
+
+    $('.arrow-btn-right').click(function () {
+        assassinNaviClick('', naviActiveNum);
+    });
+
     // assassin-info
 
     // outro
     $('.outro__inner--video-play').click(function () {
-        //gsap.to('.outro', 1, {background: '#212121'});
-        isAnimating = true;
-
-        gsap.to('.epilogue', 1, { background: '#212121' });
-        gsap.to('.epilogue__background', 0.5, { opacity: 0 });
-
-        gsap.to('.outro__inner', 0.5, { opacity: 0 });
-        gsap.to('.outro__video', 0.5, { opacity: 1, pointerEvents: 'visible', delay: 0.2 });
-        gsap.to('.outro__background', 0.5, { opacity: 0 });
-
+        gsap.to('.video__cover', 0.5, { opacity: 1, pointerEvents: 'visible', delay: 0.2 });
         setTimeout(function () {
             $(".outro__video--panel-in").get(0).play();
         }, 800);
-        setTimeout(function () {
-            onSlideChangeEnd();
-        }, 1200);
     });
 
     $('.outro__inner--quiz').click(function () {
@@ -487,6 +597,11 @@ window.addEventListener('DOMContentLoaded', function () {
         console.log('★quizAreaFlag = true');
         gsap.set('.quiz-area', { zIndex: 10, y: "100vh", delay: 0 });
         gsap.to('.quiz-area', 1.2, { y: 0, ease: "power4.out" });
+    });
+
+    $('.video__cover').click(function () {
+        gsap.to('.video__cover', 0.5, { opacity: 0, pointerEvents: 'none' });
+        $(".outro__video--panel-in").get(0).pause();
     });
     // outro
 
@@ -512,13 +627,14 @@ window.addEventListener('DOMContentLoaded', function () {
             naturalPageScene.restart();
         },
         epilogue: function epilogue() {
-            var epiloguePageScene = new TimelineLite({ paused: true }).set('.epilogue__background-illust', { opacity: 0 }, 0).set('.epilogue__background-rain1', { opacity: 0, y: -30 }, 0).set('.epilogue__background-rain2', { opacity: 0, y: -50, scale: 1.2 }, 0).set('.epilogue__background-rain3', { opacity: 0, scale: 1.2 }, 0).set('.epilogue__inner--area-headline', { opacity: 0, y: 40 }, 0).set('.epilogue__inner--area-explain', { opacity: 0, y: 40 }, 0).to('.epilogue__background-illust', 0.5, { opacity: 1 }, 0.5).to('.epilogue__background-rain2', 0.8, { opacity: 1, y: 0 }, 0.5)
+            var epiloguePageScene = new TimelineLite({ paused: true }).set('.epilogue__background-illust', { opacity: 0 }, 0).set('.epilogue__background-rain1', { opacity: 0, y: -30 }, 0).set('.epilogue__background-rain2', { opacity: 0, y: -50, scale: 1.2 }, 0).set('.epilogue__background-rain3', { opacity: 0, scale: 1.2 }, 0).set('.epilogue__inner--area-headline', { opacity: 0, y: 40 }, 0).set('.epilogue__inner--area-explain', { opacity: 0, y: 40 }, 0).set('.outro__inner--video-play', { opacity: 0 }, 0).to('.epilogue__background-illust', 0.5, { opacity: 1 }, 0.5).to('.epilogue__background-rain2', 0.8, { opacity: 1, y: 0 }, 0.5)
             //.to('.epilogue__background-rain3', 1.5, {opacity: 1, y: 0}, 1.3)
-            .to('.epilogue__background-rain1', 1.2, { opacity: 1, y: 0 }, 1.3).to('.epilogue__inner--area-headline', 0.8, { opacity: 1, y: 0 }, 0.5).to('.epilogue__inner--area-explain', 0.8, { opacity: 1, y: 0 }, 0.9);
+            .to('.epilogue__background-rain1', 1.2, { opacity: 1, y: 0 }, 1.3).to('.epilogue__inner--area-headline', 0.8, { opacity: 1, y: 0 }, 0.5).to('.epilogue__inner--area-explain', 0.8, { opacity: 1, y: 0 }, 0.9).to('.outro__inner--video-play', 0.5, { opacity: 1 }, 0.8);
             epiloguePageScene.restart();
         },
         outro: function outro() {
-            var outroPageScene = new TimelineLite({ paused: true }).set('.epilogue .outro__inner', { opacity: 0, pointerEvents: 'none' }, 0).set('.outro__inner--headline', { opacity: 0, y: 40 }, 0).set('.outro__inner--text-first', { opacity: 0, y: 40 }, 0).set('.outro__inner--text-second', { opacity: 0, y: 40 }, 0).set('.outro__inner--video-play', { opacity: 0 }, 0).set('.outro__inner--quiz', { opacity: 0 }, 0).to('.epilogue__background-rain3', 1, { opacity: 1 }, 0.5).to('.epilogue__inner', 1, { opacity: 0 }, 0.5).to('.epilogue__background-illust', 1, { opacity: 0 }, 0.5).to('.epilogue__background-rain1', 1, { opacity: 0 }, 0.5).to('.epilogue .outro__inner', 1, { opacity: 1, pointerEvents: 'visible' }, 0.8).to('.outro__inner--headline', 0.8, { opacity: 1, y: 0 }, 0.5).to('.outro__inner--text-first', 0.8, { opacity: 1, y: 0 }, 0.8).to('.outro__inner--text-second', 0.8, { opacity: 1, y: 0 }, 1.1).to('.outro__inner--video-play', 1, { opacity: 1 }, 1.3).to('.outro__inner--quiz', 1, { opacity: 1 }, 1.5);
+
+            var outroPageScene = new TimelineLite({ paused: true }).set('.outro__inner--headline', { opacity: 0, y: 40 }, 0).set('.outro__inner--text-first', { opacity: 0, y: 40 }, 0).set('.outro__inner--text-second', { opacity: 0, y: 40 }, 0).set('.outro__inner--homepage', { opacity: 0 }, 0).set('.outro__inner--quiz', { opacity: 0 }, 0).to('.outro__inner--headline', 0.8, { opacity: 1, y: 0 }, 0.5).to('.outro__inner--text-first', 0.8, { opacity: 1, y: 0 }, 0.8).to('.outro__inner--text-second', 0.8, { opacity: 1, y: 0 }, 1.1).to('.outro__inner--homepage', 1, { opacity: 1 }, 1.3).to('.outro__inner--quiz', 1, { opacity: 1 }, 1.5);
 
             outroPageScene.restart();
         }
@@ -542,49 +658,12 @@ window.addEventListener('DOMContentLoaded', function () {
             pageNextScene.epilogue();
         },
         outro: function outro() {
-            //gsap.to('.outro', 1.2, {y: 0, ease: "power4.out"});
+            gsap.to('.outro', 1.2, { y: 0, ease: "power4.out" });
             pageNextScene.outro();
         },
         copyright: function copyright() {
             gsap.to('.copyright', 1.2, { y: 0, ease: "power4.out" });
         }
-
-        /*
-        visual() {
-            gsap.to('.quiz-area', 1.2, {y: 0, ease: "power4.out"});
-            pageNextScene.quiz();
-            immunityMorph.pause();
-        },
-        quiz(){
-            gsap.to('.immunity-relation', 1.2, {y: 0, ease: "power4.out"});
-            pageNextScene.immunity();
-            immunityMorph.restart();
-        },
-        naturalKillerCell(){
-            gsap.to('.natural-killer-cell', 1.2, {y: 0, ease: "power4.out"});
-            pageNextScene.naturalKillerCell();
-        },
-        immunity(){
-            gsap.to('.natural-killer', 1.2, {y: 0, ease: "power4.out"});
-            pageNextScene.natural();
-            immunityMorph.pause();
-        },
-        natural(){
-            gsap.to('.assassin-info', 1.2, {y: 0, ease: "power4.out"});
-        },
-        assassin(){
-            gsap.to('.epilogue', 1.2, {y: 0, ease: "power4.out"});
-            pageNextScene.epilogue();
-        },
-        epilogue(){
-            gsap.to('.outro', 1.2, {y: 0, ease: "power4.out"});
-            pageNextScene.outro();
-        },
-        outro(){
-            gsap.to('.copyright', 1.2, {y: 0, ease: "power4.out"});
-        }
-        */
-
     };
 
     var verticalPageSwapPrev = {
@@ -608,15 +687,7 @@ window.addEventListener('DOMContentLoaded', function () {
             gsap.to('.epilogue', 1.2, { y: "100vh", ease: "power4.out" });
         },
         outro: function outro() {
-            gsap.to('.epilogue .outro__inner', 0.5, { opacity: 0, pointerEvents: 'none' });
-            gsap.to('.epilogue__inner', 0.8, { opacity: 1, delay: 0.4 });
-            gsap.to('.epilogue__background-illust', 0.4, { opacity: 1, delay: 0.4 });
-            gsap.to('.epilogue__background-rain1', 0.5, { opacity: 1, delay: 0.4 });
-            gsap.to('.epilogue__background-rain3', 0.4, { opacity: 0, delay: 0.2 });
-
-            gsap.to('.epilogue', 1, { background: '#000' });
-            gsap.to('.epilogue__background', 0.5, { opacity: 1 });
-            gsap.to('.outro__video', 0.3, { opacity: 0, pointerEvents: 'none' });
+            gsap.to('.outro', 1.2, { y: "100vh", ease: "power4.out" });
             $(".outro__video--panel-in").get(0).pause();
         },
         copyright: function copyright() {
@@ -629,15 +700,8 @@ window.addEventListener('DOMContentLoaded', function () {
         goToNextSlide();
     });
     $('.visual-intro__area--goToTest').click(function () {
-        //pageNum = -1;
-        //goToNextSlide();
-        //verticalPageSwapNext.quiz();
-        //pageNum = 0;
-
         gsap.to('.quiz-area', 1.2, { y: 0, ease: "power4.out" });
         furstquizAreaFlag = true;
-        //quizAreaFlag = true;
-
     });
 
     //page controll
@@ -663,9 +727,11 @@ window.addEventListener('DOMContentLoaded', function () {
                     break;
                 case 3:
                     verticalPageSwapNext.assassin();
+                    assassinAreaKeyPressed = true;
                     break;
                 case 4:
                     verticalPageSwapNext.epilogue();
+                    assassinAreaKeyPressed = false;
                     break;
                 case 5:
                     verticalPageSwapNext.outro();
@@ -674,35 +740,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     $(".outro__video--panel-in").get(0).pause();
                     verticalPageSwapNext.copyright();
                     break;
-                /*
-                case 0:
-                    break;
-                case 1:
-                    verticalPageSwapNext.visual();
-                    break;
-                case 2:
-                    verticalPageSwapNext.quiz();
-                    break;
-                case 3:
-                    verticalPageSwapNext.immunity();
-                    break;
-                case 4:
-                    horizontalEvent(1);
-                    break;
-                case 5:
-                    verticalPageSwapNext.natural();
-                    break;
-                case 6:
-                    verticalPageSwapNext.assassin();
-                    break;
-                case 7:
-                    verticalPageSwapNext.epilogue();
-                    break;
-                case 8:
-                    verticalPageSwapNext.outro();
-                    $(".outro__video--panel-in").get(0).pause();
-                    break;
-                */
+
             }
             setTimeout(function () {
                 onSlideChangeEnd();
@@ -740,69 +778,19 @@ window.addEventListener('DOMContentLoaded', function () {
                     break;
                 case 2:
                     verticalPageSwapPrev.assassin();
+                    assassinAreaKeyPressed = false;
                     break;
                 case 3:
                     verticalPageSwapPrev.epilogue();
                     $(".outro__video--panel-in").get(0).pause();
+                    assassinAreaKeyPressed = true;
                     break;
                 case 4:
-                    /*
-                    if(quizAreaFlag){
-                        gsap.to('.quiz-area', 1.2, {y: "100vh", ease: "power4.out"});
-                        gsap.set('.quiz-area',{zIndex: 1, delay: 1});
-                        quizAreaFlag = false;
-                        
-                        //setTimeout(() => {
-                            //verticalPageSwapPrev.outro();
-                        //}, 400)
-                    }else {
-                        verticalPageSwapPrev.outro();
-                    }
-                    */
                     verticalPageSwapPrev.outro();
-                    //console.log('여기서 변화 및 체크');
-
-
                     break;
                 case 5:
-                    //console.log('여기서 변화 및 체크');
-                    /*
-                    if(quizAreaFlag){
-                        gsap.to('.quiz-area', 1.2, {y: "100vh", ease: "power4.out"});
-                        gsap.set('.quiz-area',{zIndex: 1, delay: 1});
-                        quizAreaFlag = false;
-                    }
-                    */
-                    //gsap.to('.quiz-area', 1.2, {y: 0, ease: "power4.out"});
                     verticalPageSwapPrev.copyright();
                     break;
-                /*
-                case 0:
-                    verticalPageSwapPrev.quiz();
-                    break;
-                case 1:
-                    verticalPageSwapPrev.immunity();
-                    break;
-                case 2:
-                    verticalPageSwapPrev.natural();
-                    break;
-                case 3:
-                    horizontalEvent(2);
-                    break;
-                case 4:
-                    verticalPageSwapPrev.assassin();
-                    break;
-                case 5:
-                    verticalPageSwapPrev.epilogue();
-                    break;
-                case 6:
-                    verticalPageSwapPrev.outro();
-                    $(".outro__video--panel-in").get(0).pause();
-                    break;
-                case 7:
-                    verticalPageSwapPrev.copyright();
-                    break;
-                */
             }
             setTimeout(function () {
                 onSlideChangeEnd();
@@ -829,7 +817,9 @@ window.addEventListener('DOMContentLoaded', function () {
     // key controll
     var keyCodes = {
         UP: 38,
-        DOWN: 40
+        DOWN: 40,
+        LEFT: 37,
+        RIGHT: 39
     };
     window.addEventListener("keydown", function (event) {
         var PRESSED_KEY = event.keyCode;
@@ -839,6 +829,9 @@ window.addEventListener('DOMContentLoaded', function () {
         } else if (PRESSED_KEY == keyCodes.UP) {
             goToPrevSlide();
             event.preventDefault();
+        }
+        if (assassinAreaKeyPressed) {
+            naviKeyControls(PRESSED_KEY);
         }
     });
 

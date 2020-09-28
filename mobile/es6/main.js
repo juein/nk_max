@@ -122,7 +122,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 isQuizAnimation = false;
-            }, 600)
+            }, 600);
         }
     }
 
@@ -133,7 +133,7 @@ window.addEventListener('DOMContentLoaded', () => {
         //정답이랑 내가 체크한 값 비교하기
 
         let quizScore = 0;
-        const quizCorrectResult = [ 2, 1, 2, 2, 1, 2, 2, 2, 1, 2 ];
+        const quizCorrectResult = [ 1, 1, 2, 1, 1, 2, 2, 1, 1, 2 ];  // 1 : true, 2 : false
         for(let k = 0; k < quizCorrectResult.length; k++){
             if( quizCorrectResult[k] == Number(quizResult[k].value) ){
                 quizScore += 1;
@@ -170,6 +170,9 @@ window.addEventListener('DOMContentLoaded', () => {
             gradeTitle = '당신은 면역 상식은 <br>학생수준 입니다.';
             gradeEtc = '어느 정도 더 관심을 기울인다면, <br>곧 면역 상식왕이 되겠습니다!';
         }else if( score <= 8 ){
+            gradeTitle = '당신은 면역 상식 박사입니다.';
+            gradeEtc = '혹시 면역학 공부를 따로 하셨나요? <br>면역 상식으론 따라 잡을 이가 없네요.';
+        }else {
             gradeTitle = '당신은 면역 상식 박사입니다.';
             gradeEtc = '혹시 면역학 공부를 따로 하셨나요? <br>면역 상식으론 따라 잡을 이가 없네요.';
         }
