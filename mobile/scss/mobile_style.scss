@@ -80,18 +80,18 @@ $white : #fff;
                 background-size: 100%;
                 width: 62vw;
                 height: 18vw;
-                margin-top: -5vh;
-                top: 50%;
+                //top: 50%;
+                top: 80vw;
                 left: 0;
             }
             &-last{
                 //transform: translateX(-500px);
                 background: url($mimgPath + 'title_text_2.png') no-repeat;
                 background-size: 100%;
-                width: 65vw;
+                width: 48vw;
                 height: 18vw;
-                margin-top: 6vh;
-                top: 50%;
+                //top: 50%;
+                top: 95vw;
                 right: 0;
             }
         }
@@ -168,16 +168,17 @@ $white : #fff;
         .start-explanatory{
             @include fontInfo(4vw, 6vw, -0.05em);
             @include fw-regular;
-            text-align: justify;
+            //text-align: justify;
+            text-align: center;
             width: 80vw;
             position: absolute;
             bottom: 25vh;
             left: 50%;
             margin-left: -40vw;
-           &--center{
-                display: block;
-                text-align: center;
-            }
+           //&--center{
+           //     display: block;
+           //     text-align: center;
+           // }
         }
         .start-btn{
             position: absolute;

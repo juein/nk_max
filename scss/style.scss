@@ -1048,6 +1048,12 @@ $white : #fff;
                             top: 50px;
                             left: 205px;
                         }
+                        .cell-name{
+                            color: #fff;
+                            @include fontInfo(13px, 33px, -0.05em);
+                            @include fw-bold;
+                            position: relative;
+                        }
                     }
                     &--t{
                         .t-cell-3{
@@ -1058,6 +1064,10 @@ $white : #fff;
                             top: 70px;
                             left: 80px;
                             z-index: 2;
+                            .cell-name{
+                                top: 45px;
+                                left: 35px;
+                            }
                         }
                         .t-question-mark{
                             position: absolute;
@@ -1067,7 +1077,15 @@ $white : #fff;
                             height: 55px;
                             top: 30px;
                             left: 170px;
+
                         }
+                        .cancer-cell{
+                            .cell-name{
+                                top: 45px;
+                                left: 43px;
+                            }
+                        }
+                        
                     }
                     //$cellTopData : 75, 130, 70;
                     //$cellLeftData : 55, 55, 110;
@@ -1098,7 +1116,12 @@ $white : #fff;
                             top: 70px;
                             left: 80px;
                             z-index: 1;
+                            .cell-name{
+                                top: 30px;
+                                left: 45px;
+                            }
                         }
+                        
                         //$nkCellSize: 35, 50, 90;
                         //@for $i from 1 through 3{
                         //    .nk-cell-#{$i}{
@@ -1141,6 +1164,10 @@ $white : #fff;
                         }
                         .cancer-cell{
                             z-index: 2;
+                            .cell-name{
+                                top: 45px;
+                                left: 44px;
+                            }
                         }
                     }
                 }
@@ -1171,19 +1198,38 @@ $white : #fff;
                     margin-left: -570px;
                     width: 1100px;
                     height: 580px;
+                    &-mechanism{
+                        background: #4E4E4E;
+                        width: 178px;
+                        height: 38px;
+                        border-radius: 20px;
+                        text-align: center;
+                        position: absolute;
+                        top: 330px;
+                        left: 430px;
+                        &--text{
+                            color: #fff;
+                            @include fontInfo(16px, 38px, -0.05em);
+                            @include fw-bold;
+                        }
+                    }
                     &__inner-text{
-                        @include fontInfo(22px, 34px, -0.06em);
-                        @include fw-regular;
-                        color: #212121;
+                        @include fontInfo(18px, 34px, -0.06em);
+                        @include fw-bold;
+                        color: #4e4e4e;
                         display: block;
                         text-align: center;
-                        margin-top: 50px;
+                        margin-top: 100px;
+                        position: relative;
                         &-str{
-                            @include fontInfo(22px, 54px, -0.06em);
-                            @include fw-regular;
-                            color: #fff;
+                            //@include fontInfo(22px, 54px, -0.06em);
+                            //@include fw-regular;
+                            //color: #fff;
+                            @include fontInfo(18px, 54px, -0.06em);
+                            @include fw-bold;
+                            color: #4E4E4E;
                             position: relative;
-                            top: 60px;
+                            //top: 60px;
                             display: block;
                             text-align: center;
                         }
@@ -1195,6 +1241,10 @@ $white : #fff;
                         position: absolute;
                         top: 162px;
                         left: 308px;
+                        .procedure__inner-text-str{
+                            top: 115px;
+                            left: -30px;
+                        }
                     }
                     &-cancer{
                         background: url($imgPath + 'procedure-cancer.png') no-repeat;
@@ -1203,27 +1253,58 @@ $white : #fff;
                         position: absolute;
                         top: 155px;
                         right: 50px;
+                        .procedure__inner-text-str{
+                            top: 120px;
+                            left: -35px;
+                        }
                     }
-                    &-etc{
-                        background: #C6C6C6;
-                        width: 130px;
-                        height: 130px;
-                        border-radius: 50%;
+                    &-etc1{
+                        background: url($imgPath + 'procedure-etc1.png') no-repeat;
+                        width: 100px;
+                        height: 100px;
                         position: absolute;
-                        bottom: 30px;
-                        &.num2{
-                            left: 40px;
-                        }
-                        &.num3{
-                            left: 190px;
-                        }
-                        &.num4{
-                            left: 610px;
-                            .procedure__inner-text{
-                                margin-top: 30px;
-                            }
-                        }
+                        bottom: 60px;   
+                        left: 70px;
                     }
+                    &-etc2{
+                        background: url($imgPath + 'procedure-etc2.png') no-repeat;
+                        width: 100px;
+                        height: 100px;
+                        position: absolute;
+                        bottom: 60px;   
+                        left: 175px;
+                    }
+                    &-etc3{
+                        background: url($imgPath + 'procedure-etc3.png') no-repeat;
+                        width: 81px;
+                        height: 79px;
+                        position: absolute;
+                        bottom: 140px;   
+                        left: 650px;
+                        .procedure__inner-text{
+                            margin-top: 160px;
+                            margin-left: -55px;
+                            width: 200px;
+                        }
+
+                    }
+                    &-etc4{
+                        background: url($imgPath + 'procedure-etc4.png') no-repeat;
+                        width: 100px;
+                        height: 100px;
+                        position: absolute;
+                        bottom: 50px;   
+                        left: 600px;
+                    }
+                    &-etc5{
+                        background: url($imgPath + 'procedure-etc5.png') no-repeat;
+                        width: 80px;
+                        height: 78px;
+                        position: absolute;
+                        bottom: 60px;   
+                        left: 700px;
+                    }
+
                     .procedure-arrow-text{
                         color: #212121;
                         @include fontInfo(14px, 0, -0.06em);
@@ -1233,8 +1314,8 @@ $white : #fff;
                     }
                     &-line{
                         height: 2px;
-                        background: #C6C6C6;
                         display: inline-block;
+                        border-top: 3px dotted #838383;
                     }
                     &-arrow{
                         background: url($imgPath + 'procedure-arrow.png') no-repeat;

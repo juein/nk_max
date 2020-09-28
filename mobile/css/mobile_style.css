@@ -332,18 +332,16 @@ video {
   background-size: 100%;
   width: 62vw;
   height: 18vw;
-  margin-top: -5vh;
-  top: 50%;
+  top: 80vw;
   left: 0;
 }
 
 .visual-intro__area--headline-last {
   background: url("../img/title_text_2.png") no-repeat;
   background-size: 100%;
-  width: 65vw;
+  width: 48vw;
   height: 18vw;
-  margin-top: 6vh;
-  top: 50%;
+  top: 95vw;
   right: 0;
 }
 
@@ -438,17 +436,12 @@ video {
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 400;
-  text-align: justify;
+  text-align: center;
   width: 80vw;
   position: absolute;
   bottom: 25vh;
   left: 50%;
   margin-left: -40vw;
-}
-
-.quiz-area__start .start-explanatory--center {
-  display: block;
-  text-align: center;
 }
 
 .quiz-area__start .start-btn {

@@ -36,10 +36,19 @@ window.addEventListener('DOMContentLoaded', () => {
         quizResultHeight = $('.quiz-area__result').height();
 
         if( (quizResultWidth * 2) > quizResultHeight ){
+            gsap.set('.visual-intro__area--headline-first', {top: '50vw'});
+            gsap.set('.visual-intro__area--headline-last', {top: '65vw'});
+
+
             gsap.set('.quiz-area__result .result-area', {scale: 0.9, top: '8vh'});
             gsap.set('.quiz-area__result .score-grade', {top: '5vh'});
             gsap.set('.visual-intro__area--goToTest, .visual-intro__area--goToStory', {scale: 0.8});
+
+
         }else {
+            gsap.set('.visual-intro__area--headline-first', {top: '80vw'});
+            gsap.set('.visual-intro__area--headline-last', {top: '95vw'});
+
             gsap.set('.quiz-area__result .result-area', {scale: 1, top: '15vh'});
             gsap.set('.quiz-area__result .score-grade', {top: '8vh'});
             gsap.set('.visual-intro__area--goToTest, .visual-intro__area--goToStory', {scale: 1});
