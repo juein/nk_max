@@ -2459,6 +2459,8 @@ i {
   background: none;
   margin-top: 40px;
   margin-left: 10px;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
 }
 
 .outro .outro__inner--quiz .outro__inner--btn-text, .outro .outro__inner--homepage .outro__inner--btn-text {
@@ -2468,6 +2470,15 @@ i {
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 600;
+}
+
+.outro .outro__inner--quiz:hover, .outro .outro__inner--homepage:hover {
+  background: #10A0DB;
+  color: #fff;
+}
+
+.outro .outro__inner--quiz:hover .outro__inner--btn-text, .outro .outro__inner--homepage:hover .outro__inner--btn-text {
+  color: #fff;
 }
 
 .copyright {
@@ -2565,5 +2576,9 @@ body.ie11 .quiz__btn--next:after, body.ie11 .quiz__btn--finish:after, body.ie10 
 
 body.ie11 .quiz-area__inner--result .result-area .score-number .number-graph, body.ie10 .quiz-area__inner--result .result-area .score-number .number-graph {
   top: 0;
+}
+
+body.ie .quiz-area__inner--progress .progress__box .this-quoetion:before {
+  opacity: 0;
 }
 /*# sourceMappingURL=style.css.map */

@@ -19,7 +19,6 @@ $white : #fff;
     top: $top;
     left: $left;
     margin: $mgTop $mgRight $mgBottom $mgLeft;
-    //outline: 1px solid #ddd;
 }
 
 @mixin coverBg($imgName){
@@ -150,7 +149,6 @@ $white : #fff;
     transform: translateY(100vh);
     position: absolute;
     top: 0;
-    //z-index: 10;
     &__inner{
         @include box_container( 1400px, -300px, 0, 0, -700px, 50%, 50% );
         height: 600px;
@@ -836,16 +834,6 @@ $white : #fff;
                 margin-left: -125px;
 
             }
-            //&-feature{
-            //    font-family: Alternate Gothic Compressed ATF;
-            //    @include fontInfo(80px, 115px, 0);
-            //    width: 250px;
-            //    border-bottom: 1px solid #fff;
-            //    display: block;
-            //    text-align: center;
-            //    margin: 0 auto;
-            //    pointer-events: none;
-            //}
             &-concise{
                 @include fontInfo(29px, 54px, -0.06em);
                 @include fw-bold;
@@ -908,11 +896,6 @@ $white : #fff;
                     .home{
                         fill: #BA0000;
                     }
-                    //.active-motion{
-                    //    opacity: 0.17;
-                    //    //sk-bounce
-                    //    //animation: sk-bounce 1.2s infinite ease-in-out;
-                    //}
                }
                
                &:after{
@@ -969,7 +952,6 @@ $white : #fff;
                 @include fontInfo(20px, 33px, -0.05em);
                 color: #212121;
                 margin: 35px 0;
-                //text-align: justify;
                 text-align: left;
             }
             &--origin{
@@ -980,11 +962,8 @@ $white : #fff;
                 height: 100%;
                 .content--title{
                     position: absolute;
-                    //top: 100px;
                     left: 600px;
-                    //top: 235px;
                     top: 30px;
-                    //left: 315px;
                     .title-thin{
                         display: block;
                     }
@@ -992,17 +971,12 @@ $white : #fff;
                 &-text-area{
                     position: absolute;
                     width: 530px;
-                    //top: 10px;
-                    //right: 10px;
                     top: 70px;
-                    //top: 30px;
                     right: 70px;
                     .text-pro{
                         &:nth-of-type(1){
-                            //margin-top: 170px;  
                             margin-top: 90px;  
                         }
-                        //margin-top: 170px;
                     }
                 }
             }
@@ -1087,24 +1061,6 @@ $white : #fff;
                         }
                         
                     }
-                    //$cellTopData : 75, 130, 70;
-                    //$cellLeftData : 55, 55, 110;
-                    //&--t{
-                    //    $tCellSize: 31, 51, 90;
-                    //    @for $i from 1 through 3{
-                    //        .t-cell-#{$i}{
-                    //            position: absolute;
-                    //            background: url($imgPath + 't-cell-#{$i}.png') no-repeat;
-                    //            width: #{nth($tCellSize, $i)}px;
-                    //            height: #{nth($tCellSize, $i)}px;
-                    //            top: #{nth($cellTopData, $i)}px;
-                    //            left: #{nth($cellLeftData, $i)}px;
-                    //        }
-                    //    }
-                    //    .t-cell-3{
-                    //        z-index: 2;
-                    //    }
-                    //}
                     &--nk{
                         margin-top: 125px;
                         margin-bottom: 25px;
@@ -1122,20 +1078,6 @@ $white : #fff;
                             }
                         }
                         
-                        //$nkCellSize: 35, 50, 90;
-                        //@for $i from 1 through 3{
-                        //    .nk-cell-#{$i}{
-                        //        position: absolute;
-                        //        background: url($imgPath + 'nk-cell-#{$i}.png') no-repeat;
-                        //        width: #{nth($nkCellSize, $i)}px;
-                        //        height: #{nth($nkCellSize, $i)}px;
-                        //        top: #{nth($cellTopData, $i)}px;
-                        //        left: #{nth($cellLeftData, $i)}px;
-                        //    }
-                        //}
-                        //.nk-cell-2{
-                        //    left: 35px;
-                        //}
                         .nk-boom{
                             position: absolute;
                             background: url($imgPath + 'nk-boom.png') no-repeat;
@@ -1222,14 +1164,10 @@ $white : #fff;
                         margin-top: 100px;
                         position: relative;
                         &-str{
-                            //@include fontInfo(22px, 54px, -0.06em);
-                            //@include fw-regular;
-                            //color: #fff;
                             @include fontInfo(18px, 54px, -0.06em);
                             @include fw-bold;
                             color: #4E4E4E;
                             position: relative;
-                            //top: 60px;
                             display: block;
                             text-align: center;
                         }
@@ -1398,13 +1336,11 @@ $white : #fff;
                     .card-list{
                         &__panel{
                             width: 378px;
-                            //height: 527px;
                             height: 467px;
                             background: #fff;
                             float: left;
                             margin-top: 35px;
                             color: #212121;
-                            //padding: 30px 24px 0 24px;
                             padding: 40px 24px 0 24px;
                             &:nth-of-type(2){
                                 margin: 35px 33px 0 33px;
@@ -1539,7 +1475,6 @@ $white : #fff;
         z-index: 10;
         opacity: 0;
         pointer-events: none;
-        //visibility: hidden;
     }
     .outro__inner--video-play{
         background: #0C0D0E;
@@ -1547,7 +1482,6 @@ $white : #fff;
         border-radius: 70px;
         width: 298px;
         height: 76px;
-        //background: none;
         margin-top: 40px;
         margin-left: 10px;
         transition: color 0.6s;
@@ -1558,7 +1492,6 @@ $white : #fff;
             color: #D63636;
             @include fontInfo(22px, 33px, -0.05em);
             @include fw-bold;
-            //pointer-events: none;
             cursor: pointer;
             pointer-events: none;
             margin-left: 8px;
@@ -1631,8 +1564,6 @@ $white : #fff;
     top: 0;
     overflow: hidden;
     .outro__inner{
-        //opacity: 0;
-        //pointer-events: none;
         z-index: 2;
         @include box_container( 1120px, -270px, 0, 0, -560px, 50%, 50% );
         height: 540px;
@@ -1646,19 +1577,16 @@ $white : #fff;
             color: #1D1D1D;
             @include fontInfo(20px, 33px, -0.05em);
             @include fw-regular;
-            //margin: 65px 0;
             margin: 25px 0;
         }
         &--text{
             &-second{
-                //color: #fff;
                 color: #015AAB;
                 @include fontInfo(20px, 33px, -0.05em);
                 @include fw-bold;
             }
         }
         &--quiz, &--homepage{
-            //border: 2px solid #A81B21;
             border: 2px solid #10A0DB;
             border-radius: 70px;
             width: 298px;
@@ -1666,11 +1594,18 @@ $white : #fff;
             background: none;
             margin-top: 40px;
             margin-left: 10px;
+            transition: all 0.6s;
             .outro__inner--btn-text{
-                //color: #D63636;
                 color: #10A0DB;
                 @include fontInfo(22px, 33px, -0.05em);
                 @include fw-bold;
+            }
+            &:hover{
+                background: #10A0DB;
+                color: #fff;
+                .outro__inner--btn-text{
+                    color: #fff;
+                }
             }
         }
     }
@@ -1756,6 +1691,11 @@ body{
         }
         .quiz-area__inner--result .result-area .score-number .number-graph{
             top: 0;
+        }
+    }
+    &.ie{
+        .quiz-area__inner--progress .progress__box .this-quoetion:before{
+            opacity: 0;
         }
     }
 }

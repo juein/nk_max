@@ -296,20 +296,20 @@ video {
 
 .visual-intro {
   width: 100%;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
+  height: 180vw;
   background: #BA0000;
+  overflow: hidden;
 }
 
 .visual-intro__illust {
+  opacity: 0;
   background: url("../../img/intro_illust.png") no-repeat;
   background-size: 100% 100%;
   position: absolute;
-  width: 31vh;
-  height: 79vh;
-  left: 50%;
-  top: 50%;
-  margin-left: -16vh;
-  margin-top: -39vh;
+  width: 60vw;
+  height: 155vw;
+  left: 17vw;
 }
 
 .visual-intro__area {
@@ -322,26 +322,31 @@ video {
 }
 
 .visual-intro__area--headline-first, .visual-intro__area--headline-last {
+  opacity: 0;
   text-indent: -99999px;
   display: inline-block;
   position: absolute;
 }
 
 .visual-intro__area--headline-first {
+  -webkit-transform: translateX(15vw);
+          transform: translateX(15vw);
   background: url("../img/title_text_1.png") no-repeat;
   background-size: 100%;
   width: 62vw;
   height: 18vw;
-  top: 80vw;
+  top: 85vw;
   left: 0;
 }
 
 .visual-intro__area--headline-last {
+  -webkit-transform: translateX(-18vw);
+          transform: translateX(-18vw);
   background: url("../img/title_text_2.png") no-repeat;
   background-size: 100%;
   width: 48vw;
   height: 18vw;
-  top: 95vw;
+  top: 100vw;
   right: 0;
 }
 
@@ -363,16 +368,17 @@ video {
   font-weight: 500;
   background: none;
   position: absolute;
+  opacity: 0;
   left: 50%;
   margin-left: -33.5vw;
 }
 
 .visual-intro__area--goToTest {
-  bottom: 19vh;
+  bottom: 35vw;
 }
 
 .visual-intro__area--goToStory {
-  bottom: 8vh;
+  bottom: 15vw;
 }
 
 .quiz-area {
@@ -401,7 +407,7 @@ video {
   line-height: 12vw;
   letter-spacing: -0.05em;
   text-align: center;
-  margin-top: 21vh;
+  margin-top: 30vw;
 }
 
 .quiz-area__inner--headline .demilight {
@@ -420,7 +426,7 @@ video {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 48vh;
+  height: 50%;
   color: #fff;
 }
 
@@ -439,7 +445,7 @@ video {
   text-align: center;
   width: 80vw;
   position: absolute;
-  bottom: 25vh;
+  top: 15vw;
   left: 50%;
   margin-left: -40vw;
 }
@@ -449,11 +455,11 @@ video {
   left: 50%;
   width: 66vw;
   margin-left: -33vw;
-  bottom: 8vh;
   height: 16vw;
   color: #fff;
   border: 1px solid #fff;
   background: none;
+  bottom: 15vw;
   font-size: 6vw;
   line-height: 11vw;
   letter-spacing: 0;
@@ -551,13 +557,13 @@ video {
   position: absolute;
   width: 100%;
   text-align: center;
-  bottom: 18vw;
+  bottom: 25vw;
 }
 
 .quiz-area__question--progress {
   position: absolute;
   width: 100%;
-  height: 10vw;
+  height: 20vw;
   bottom: 0;
   z-index: 6;
   pointer-events: none;
@@ -638,7 +644,8 @@ video {
   position: absolute;
   width: 68vw;
   left: 16vw;
-  top: 15vh;
+  top: 50%;
+  margin-top: -60vw;
   color: #fff;
 }
 
@@ -697,7 +704,7 @@ video {
   width: 68vw;
   height: 16vw;
   left: 16vw;
-  bottom: 5vh;
+  bottom: 15vw;
   font-size: 5.5vw;
   line-height: 6vw;
   letter-spacing: -0.05em;
@@ -708,7 +715,6 @@ video {
 .quiz-area__result .score-grade {
   color: #fff;
   position: relative;
-  top: 8vh;
   width: 80vw;
   left: -5vw;
   text-align: center;
@@ -790,20 +796,6 @@ video {
   padding: 4vw;
 }
 
-.quiz-area__explain .explain__list-item .number {
-  color: #212121;
-  display: inline-block;
-  width: 5vw;
-  text-align: center;
-  position: relative;
-  top: -2.4vw;
-  font-size: 4vw;
-  line-height: 6vw;
-  letter-spacing: -0.05em;
-  font-family: 'Noto Sans CJK KR', sans-serif;
-  font-weight: 500;
-}
-
 .quiz-area__explain .explain__list-item .quistion-text {
   color: #212121;
   display: inline-block;
@@ -818,6 +810,10 @@ video {
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 500;
+}
+
+.quiz-area__explain .explain__list-item .quistion-text .number {
+  margin-right: 1.5vw;
 }
 
 .quiz-area__explain .explain__list-item .answer-status--true {
@@ -919,11 +915,15 @@ video {
 }
 
 .quiz-area__explain .explain__list-more.view {
+  height: 42vw;
+}
+
+.quiz-area__explain .explain__list-more.view.ss {
   height: 36vw;
 }
 
 .quiz-area__explain .explain__list-more.view.md1 {
-  height: 42vw;
+  height: 48vw;
 }
 
 .quiz-area__explain .explain__list-more.view.md2 {
@@ -932,6 +932,14 @@ video {
 
 .quiz-area__explain .explain__list-more.view.long {
   height: 60vw;
+}
+
+.quiz-area__explain .explain__list-more.view.super {
+  height: 66vw;
+}
+
+.quiz-area__explain .explain__list-more.view.sudo {
+  height: 74vw;
 }
 
 .quiz-area__explain .explain__list-more .status-chk {
@@ -1032,24 +1040,25 @@ video {
   font-size: 7vw;
   line-height: 9vw;
   letter-spacing: -0.05em;
+  text-align: center;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
+  opacity: 0;
 }
 
 .natural-killer__explain--headline .demilight {
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 300;
-  display: block;
   text-align: center;
 }
 
 .natural-killer__explain--headline .highlight {
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 600;
-  display: block;
   text-align: center;
 }
 
 .natural-killer__explain--text-box {
-  text-align: justify;
   font-size: 4.2vw;
   line-height: 7vw;
   letter-spacing: -0.05em;
@@ -1059,6 +1068,9 @@ video {
 
 .natural-killer__explain--text-box-mg {
   margin: 8vw 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
+  opacity: 0;
 }
 
 .natural-killer__explain--text-box-mg:last-child {
@@ -1124,8 +1136,8 @@ video {
   overflow: hidden;
   width: 100%;
   height: 100vw;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .assassin-info--origin--visual .background {
@@ -1143,6 +1155,7 @@ video {
   height: 22vw;
   top: 41vw;
   right: 6vw;
+  opacity: 0;
 }
 
 .assassin-info--origin--visual .illust {
@@ -1152,12 +1165,16 @@ video {
   width: 66vw;
   height: 100vw;
   top: 15vw;
+  opacity: 0;
 }
 
 .assassin-info--origin--content {
   position: relative;
   width: 88vw;
   left: 6vw;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
 .assassin-info--talent {
@@ -1169,8 +1186,8 @@ video {
   overflow: hidden;
   width: 100%;
   height: 90vw;
-  -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
-          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 100%);
 }
 
 .assassin-info--talent--visual .background {
@@ -1189,6 +1206,7 @@ video {
   height: 24vw;
   top: 55vw;
   left: 8vw;
+  opacity: 0;
 }
 
 .assassin-info--talent--visual .illust {
@@ -1199,6 +1217,7 @@ video {
   height: 100vw;
   top: 0;
   right: 0;
+  opacity: 0;
 }
 
 .assassin-info--talent--visual .talent-obj1 {
@@ -1209,6 +1228,9 @@ video {
   height: 100vw;
   top: 0;
   right: 0;
+  opacity: 0;
+  -webkit-transform: translateX(40px);
+          transform: translateX(40px);
 }
 
 .assassin-info--talent--visual .talent-obj2 {
@@ -1219,6 +1241,9 @@ video {
   height: 100vw;
   top: 0;
   right: 0;
+  opacity: 0;
+  -webkit-transform: translateX(40px);
+          transform: translateX(40px);
 }
 
 .assassin-info--talent--visual .talent-obj3 {
@@ -1229,6 +1254,9 @@ video {
   height: 100vw;
   top: 0;
   right: 0;
+  opacity: 0;
+  -webkit-transform: translateX(40px);
+          transform: translateX(40px);
 }
 
 .assassin-info--talent--visual .talent-obj4 {
@@ -1239,6 +1267,9 @@ video {
   height: 100vw;
   top: 0;
   right: 0;
+  opacity: 0;
+  -webkit-transform: translateX(40px);
+          transform: translateX(40px);
 }
 
 .assassin-info--talent--content {
@@ -1246,22 +1277,31 @@ video {
   width: 88vw;
   left: 6vw;
   top: 10vw;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
 .assassin-info--talent--content .mechanism__box {
-  margin-top: 8vw;
-  height: 115vw;
+  margin-top: 10vw;
+  height: 120vw;
 }
 
 .assassin-info--talent--content .mechanism__box--title {
-  color: #212121;
   font-size: 3.4vw;
   line-height: 9vw;
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 400;
-  padding-top: 1vw;
-  padding-left: 3vw;
+  color: #fff;
+  background: #9D9D9D;
+  border-radius: 5vw;
+  display: inline-block;
+  width: 45vw;
+  text-align: center;
+  position: relative;
+  top: -5vw;
+  left: 22vw;
 }
 
 .assassin-info--talent--content .mechanism__box--t, .assassin-info--talent--content .mechanism__box--nk {
@@ -1271,7 +1311,7 @@ video {
   position: relative;
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  margin-bottom: 5vw;
+  margin-bottom: 10vw;
 }
 
 .assassin-info--talent--content .mechanism__box--t .cancer-cell, .assassin-info--talent--content .mechanism__box--nk .cancer-cell {
@@ -1281,71 +1321,66 @@ video {
   height: 28vw;
   position: absolute;
   top: 10vw;
-  left: 50vw;
+  left: 48vw;
 }
 
-.assassin-info--talent--content .mechanism__box--t .t-cell-1 {
-  position: absolute;
-  background: url("../../img/t-cell-1.png") no-repeat;
-  background-size: 100% 100%;
-  width: 6.5vw;
-  height: 6.5vw;
-  top: 16vw;
-  left: 11vw;
-}
-
-.assassin-info--talent--content .mechanism__box--t .t-cell-2 {
-  position: absolute;
-  background: url("../../img/t-cell-2.png") no-repeat;
-  background-size: 100% 100%;
-  width: 11vw;
-  height: 11vw;
-  top: 28vw;
-  left: 13vw;
+.assassin-info--talent--content .mechanism__box--t .cell-name, .assassin-info--talent--content .mechanism__box--nk .cell-name {
+  color: #fff;
+  font-size: 3.2vw;
+  line-height: 9vw;
+  letter-spacing: -0.05em;
+  font-family: 'Noto Sans CJK KR', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  position: relative;
 }
 
 .assassin-info--talent--content .mechanism__box--t .t-cell-3 {
   position: absolute;
-  background: url("../../img/t-cell-3.png") no-repeat;
+  background: url("../../img/t-cell.png") no-repeat;
   background-size: 100% 100%;
-  width: 18.6vw;
-  height: 18.6vw;
+  width: 22vw;
+  height: 22vw;
   top: 15vw;
-  left: 24vw;
-}
-
-.assassin-info--talent--content .mechanism__box--t .t-cell-3 {
+  left: 18vw;
   z-index: 2;
 }
 
-.assassin-info--talent--content .mechanism__box--nk .nk-cell-1 {
-  position: absolute;
-  background: url("../../img/nk-cell-1.png") no-repeat;
-  background-size: 100% 100%;
-  width: 6.5vw;
-  height: 6.5vw;
-  top: 16vw;
-  left: 11vw;
+.assassin-info--talent--content .mechanism__box--t .t-cell-3 .cell-name {
+  top: 8vw;
+  left: 6vw;
 }
 
-.assassin-info--talent--content .mechanism__box--nk .nk-cell-2 {
+.assassin-info--talent--content .mechanism__box--t .t-question-mark {
   position: absolute;
-  background: url("../../img/nk-cell-2.png") no-repeat;
+  background: url("../../img/question-mark.png") no-repeat;
+  z-index: 3;
   background-size: 100% 100%;
-  width: 11vw;
-  height: 11vw;
-  top: 28vw;
-  left: 13vw;
+  width: 10vw;
+  height: 14vw;
+  top: 6vw;
+  left: 40vw;
+}
+
+.assassin-info--talent--content .mechanism__box--t .cancer-cell .cell-name {
+  top: 9.5vw;
+  left: 9.5vw;
 }
 
 .assassin-info--talent--content .mechanism__box--nk .nk-cell-3 {
   position: absolute;
-  background: url("../../img/nk-cell-3.png") no-repeat;
+  background: url("../../img/nk-cell.png") no-repeat;
   background-size: 100% 100%;
-  width: 18.6vw;
-  height: 18.6vw;
+  width: 22vw;
+  height: 22vw;
   top: 15vw;
-  left: 24vw;
+  left: 21vw;
+  z-index: 2;
+}
+
+.assassin-info--talent--content .mechanism__box--nk .nk-cell-3 .cell-name {
+  top: 6vw;
+  left: 7vw;
 }
 
 .assassin-info--talent--content .mechanism__box--nk .nk-boom {
@@ -1353,7 +1388,7 @@ video {
   background: url("../../img/nk-boom.png") no-repeat;
   background-size: 100%;
   top: 7vw;
-  left: 40vw;
+  left: 38vw;
   width: 15vw;
   height: 11vw;
 }
@@ -1369,18 +1404,23 @@ video {
   width: 14vw;
   height: 2vw;
   top: 23vw;
-  left: 40vw;
+  left: 41vw;
 }
 
 .assassin-info--talent--content .mechanism__box--nk .nk-weapon-2 {
   width: 6vw;
   height: 1.5vw;
   top: 27vw;
-  left: 40vw;
+  left: 41vw;
 }
 
 .assassin-info--talent--content .mechanism__box--nk .cancer-cell {
   z-index: 2;
+}
+
+.assassin-info--talent--content .mechanism__box--nk .cancer-cell .cell-name {
+  top: 9.5vw;
+  left: 9.5vw;
 }
 
 .assassin-info--hero {
@@ -1412,6 +1452,7 @@ video {
   height: 18vw;
   top: 31vw;
   right: 8vw;
+  opacity: 0;
 }
 
 .assassin-info--hero--visual .illust {
@@ -1422,6 +1463,13 @@ video {
   height: 100vw;
   top: 12vw;
   left: 10vw;
+  opacity: 0;
+}
+
+.assassin-info--hero--content {
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
 .assassin-info--hero--content-area {
@@ -1443,28 +1491,52 @@ video {
 .assassin-info--hero--content .procedure {
   background: #F5F5F5;
   width: 100%;
-  height: 72vw;
+  height: 100vw;
   margin-top: 18vw;
+  position: relative;
+}
+
+.assassin-info--hero--content .procedure__cover {
+  opacity: 0;
 }
 
 .assassin-info--hero--content .procedure-board {
-  position: relative;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
   background: #fff;
-  border-right: 1px solid #c8c8c8;
-  border-bottom: 1px solid #c8c8c8;
-  width: 88vw;
-  left: 6vw;
+  width: 92vw;
+  height: 80vw;
+  position: absolute;
+  top: 10vw;
+  left: 4vw;
+}
+
+.assassin-info--hero--content .procedure-mechanism {
+  background: #9D9D9D;
+  display: inline-block;
+  position: absolute;
+  width: 45vw;
+  text-align: center;
+  border-radius: 5vw;
   top: 6vw;
-  height: 60vw;
+  left: 28vw;
+  height: 8vw;
+}
+
+.assassin-info--hero--content .procedure-mechanism--text {
+  font-weight: 600;
+  color: #fff;
+  font-size: 4vw;
+  line-height: 8vw;
 }
 
 .assassin-info--hero--content .procedure__inner-text {
-  font-size: 2vw;
+  font-size: 3.2vw;
   line-height: 4vw;
   letter-spacing: -0.06em;
   font-family: 'Noto Sans CJK KR', sans-serif;
-  font-weight: 300;
-  color: #212121;
+  font-weight: 600;
+  color: #4e4e4e;
   display: block;
   text-align: center;
 }
@@ -1474,8 +1546,8 @@ video {
   line-height: 9vw;
   letter-spacing: -0.06em;
   font-family: 'Noto Sans CJK KR', sans-serif;
-  font-weight: 300;
-  color: #fff;
+  font-weight: 600;
+  color: #4e4e4e;
   position: relative;
   display: block;
   text-align: center;
@@ -1487,12 +1559,12 @@ video {
   width: 17vw;
   height: 17vw;
   position: absolute;
-  top: 5vw;
+  top: 20vw;
   left: 14vw;
 }
 
 .assassin-info--hero--content .procedure-nk .procedure__inner-text-str {
-  margin-top: 4vw;
+  margin-top: 16vw;
 }
 
 .assassin-info--hero--content .procedure-cancer {
@@ -1501,41 +1573,59 @@ video {
   width: 20vw;
   height: 20vw;
   position: absolute;
-  top: 4vw;
-  right: 5vw;
+  top: 19vw;
+  left: 68vw;
 }
 
 .assassin-info--hero--content .procedure-cancer .procedure__inner-text-str {
-  margin-top: 5vw;
+  margin-top: 17.5vw;
 }
 
-.assassin-info--hero--content .procedure-etc {
-  background: #C6C6C6;
+.assassin-info--hero--content .procedure-etc1 {
+  background: url("../../img/procedure-etc1.png") no-repeat;
+  background-size: 100% 100%;
   width: 15vw;
-  height: 15vw;
-  border-radius: 50%;
+  height: 16vw;
   position: absolute;
-  bottom: 6vw;
+  top: 61vw;
+  left: 7vw;
 }
 
-.assassin-info--hero--content .procedure-etc .procedure__inner-text {
-  margin-top: 5vw;
+.assassin-info--hero--content .procedure-etc1 .procedure__inner-text {
+  position: relative;
+  top: 18vw;
 }
 
-.assassin-info--hero--content .procedure-etc.num2 {
-  left: 5vw;
-}
-
-.assassin-info--hero--content .procedure-etc.num3 {
+.assassin-info--hero--content .procedure-etc2 {
+  background: url("../../img/procedure-etc2.png") no-repeat;
+  background-size: 100% 100%;
+  width: 16vw;
+  height: 16vw;
+  position: absolute;
+  top: 61vw;
   left: 22vw;
 }
 
-.assassin-info--hero--content .procedure-etc.num4 {
-  left: 66vw;
+.assassin-info--hero--content .procedure-etc2 .procedure__inner-text {
+  position: relative;
+  top: 18vw;
 }
 
-.assassin-info--hero--content .procedure-etc.num4 .procedure__inner-text {
-  margin-top: 3vw;
+.assassin-info--hero--content .procedure-etc3 {
+  background: url("../../img/procedure-etc.png") no-repeat;
+  background-size: 100% 100%;
+  width: 20vw;
+  height: 20vw;
+  position: absolute;
+  top: 58vw;
+  left: 65vw;
+}
+
+.assassin-info--hero--content .procedure-etc3 .procedure__inner-text {
+  width: 30vw;
+  position: relative;
+  top: 21vw;
+  left: -4vw;
 }
 
 .assassin-info--hero--content .procedure .procedure-arrow-text {
@@ -1550,9 +1640,9 @@ video {
 }
 
 .assassin-info--hero--content .procedure-line {
-  height: 2px;
-  background: #C6C6C6;
   display: inline-block;
+  border-top: 0.5vw dotted #838386;
+  margin-top: 3vw;
 }
 
 .assassin-info--hero--content .procedure-line:after {
@@ -1560,7 +1650,7 @@ video {
   background: url("../../img/procedure-arrow.png") no-repeat;
   width: 1.5vw;
   height: 2vw;
-  margin-top: -0.8vw;
+  margin-top: -1.3vw;
   float: right;
   background-size: 100% 100%;
 }
@@ -1568,8 +1658,8 @@ video {
 .assassin-info--hero--content .procedure .procedure-step1 {
   position: relative;
   width: 27vw;
-  top: 9vw;
-  left: 33vw;
+  top: 24vw;
+  left: 36vw;
 }
 
 .assassin-info--hero--content .procedure .procedure-step1 .procedure-line {
@@ -1580,7 +1670,7 @@ video {
 
 .assassin-info--hero--content .procedure .procedure-step2 {
   position: relative;
-  top: 26vw;
+  top: 48vw;
   left: 26vw;
   width: 7vw;
 }
@@ -1598,7 +1688,7 @@ video {
 
 .assassin-info--hero--content .procedure .procedure-step3 {
   position: relative;
-  top: 30vw;
+  top: 53vw;
   width: 20vw;
   left: 40vw;
 }
@@ -1611,8 +1701,8 @@ video {
 
 .assassin-info--hero--content .procedure .procedure-step4 {
   position: relative;
-  left: 18vw;
-  top: 14vw;
+  top: 36vw;
+  left: 22vw;
 }
 
 .assassin-info--hero--content .procedure .procedure-step4 .procedure-line {
@@ -1624,6 +1714,10 @@ video {
           transform: rotate(-90deg);
   -webkit-transform-origin: bottom;
           transform-origin: bottom;
+}
+
+.assassin-info--hero--content .procedure .procedure-step4 .procedure-arrow-text {
+  margin-right: 6vw;
 }
 
 .assassin-info--villain {
@@ -1644,6 +1738,7 @@ video {
   background-position: center;
   width: 100%;
   height: 100%;
+  opacity: 0;
 }
 
 .assassin-info--villain--visual .typo {
@@ -1655,6 +1750,7 @@ video {
   height: 18vw;
   top: 10vw;
   left: 9vw;
+  opacity: 0;
 }
 
 .assassin-info--villain--visual .illust {
@@ -1666,15 +1762,19 @@ video {
   height: 100vw;
   right: -21vw;
   background-position: bottom;
+  opacity: 0;
 }
 
 .assassin-info--villain--content {
-  background: -webkit-gradient(linear, left top, left bottom, from(#B60912), color-stop(50%), to(#000));
-  background: linear-gradient(#B60912, 50%, #000);
+  background: -webkit-gradient(linear, left top, left bottom, from(#be000c), color-stop(50%), to(#000));
+  background: linear-gradient(#be000c, 50%, #000);
   padding-bottom: 4vw;
 }
 
 .assassin-info--villain--content .title {
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
   padding-top: 8vw;
   color: #fff;
   text-align: center;
@@ -1697,6 +1797,9 @@ video {
   margin-bottom: 5vw;
   color: #212121;
   padding: 6vw;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
 .assassin-info--villain--content .list-area__block--item .item-title {
@@ -1742,7 +1845,7 @@ video {
 
 .epilogue {
   width: 100%;
-  height: calc(100vh - 50px);
+  height: 170vw;
   background: #000;
   overflow: hidden;
 }
@@ -1773,6 +1876,7 @@ video {
   width: 100%;
   height: 100%;
   background-size: cover;
+  opacity: 0;
 }
 
 .epilogue__background-rain3 {
@@ -1782,6 +1886,7 @@ video {
   width: 100%;
   height: 100%;
   background-size: cover;
+  opacity: 0;
 }
 
 .epilogue__background-rain1 {
@@ -1791,14 +1896,16 @@ video {
   height: 150vw;
   z-index: 2;
   top: 0;
+  opacity: 0;
+  -webkit-transform: translateY(-30px);
+          transform: translateY(-30px);
 }
 
 .epilogue__inner {
-  opacity: 0;
   width: 100%;
   height: 68vw;
   position: absolute;
-  bottom: 10vw;
+  bottom: 0;
   color: #fff;
   width: 88vw;
   left: 6vw;
@@ -1810,6 +1917,9 @@ video {
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 500;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
 .epilogue__inner--area-explain {
@@ -1819,6 +1929,9 @@ video {
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 300;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
 .epilogue__inner--gradient {
@@ -1830,8 +1943,26 @@ video {
   background: linear-gradient(transparent, 30%, #000);
 }
 
-.epilogue .outro__inner {
-  pointer-events: none;
+.video-area {
+  padding: 0;
+  background: #000;
+}
+
+.video-area .outro__video--panel-in {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.outro {
+  padding: 0;
+  background: #F5F5F5;
+  height: 150vw;
+}
+
+.outro__inner {
+  color: #212121;
   position: absolute;
   width: 88vw;
   top: 0;
@@ -1841,8 +1972,8 @@ video {
   height: 100%;
 }
 
-.epilogue .outro__inner--headline {
-  color: #fff;
+.outro__inner--headline {
+  color: #10A0DB;
   font-size: 12.5vw;
   line-height: 15vw;
   letter-spacing: 0;
@@ -1850,30 +1981,39 @@ video {
   font-weight: 600;
   margin-top: 15vw;
   margin-bottom: 3vw;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
-.epilogue .outro__inner--text-first {
-  color: #B5B5B5;
+.outro__inner--text-first {
+  color: #1D1D1D;
   margin-bottom: 6vw;
   font-size: 3.6vw;
   line-height: 6.5vw;
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 300;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
-.epilogue .outro__inner--text-second {
-  color: #fff;
+.outro__inner--text-second {
+  color: #015AAB;
   margin-bottom: 6vw;
   font-size: 3.6vw;
   line-height: 6.5vw;
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
-  font-weight: 300;
+  font-weight: 600;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
 }
 
-.epilogue .outro__inner--quiz {
-  border: 2px solid #A81B21;
+.outro__inner--quiz, .outro__inner--homepage {
+  border: 2px solid #10A0DB;
   border-radius: 7vw;
   width: 58vw;
   height: 15vw;
@@ -1882,22 +2022,20 @@ video {
   left: 50%;
   margin-left: -29vw;
   margin-top: 6vw;
+  opacity: 0;
 }
 
-.epilogue .outro__inner--btn-text {
-  color: #D63636;
+.outro__inner--quiz {
+  margin-top: 25vw;
+}
+
+.outro__inner--btn-text {
+  color: #10A0DB;
   font-size: 4.2vw;
   line-height: 9vw;
   letter-spacing: -0.05em;
   font-family: 'Noto Sans CJK KR', sans-serif;
   font-weight: 500;
-}
-
-.epilogue .outro__inner .outro__video--panel-in {
-  display: block;
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
 }
 
 .brand-identity img {

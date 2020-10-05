@@ -43,7 +43,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 gsap.to('.quiz__btn--finish', 0.5, { opacity: 1, pointerEvents: 'visible' });
             } else {
                 quizNextQuestion($i);
-                //gsap.to('.quiz__btn--next', 0.5, {opacity: 1, pointerEvents: 'visible'});
             }
         });
     };
@@ -55,13 +54,12 @@ window.addEventListener('DOMContentLoaded', function () {
     var quizNextQuestion = function quizNextQuestion(num) {
         if (!isQuizAnimation) {
             isQuizAnimation = true;
-            console.log('test ==== ' + num);
+            //console.log('test ==== ' + num);
             gsap.to('.quiz-area__inner--question-step' + quizStep, 0.5, { opacity: 0, pointerEvents: 'none' });
             quizStep += 1;
             gsap.to('.quiz-area__inner--question-step' + quizStep, 0.5, { opacity: 1, pointerEvents: 'visible', delay: 0.4 });
             $('.progress__box:nth-of-type(' + quizStep + ') .chk').addClass('active');
             $('.progress__box:nth-of-type(' + quizStep + ') .this-quoetion').addClass('thisActive');
-
             setTimeout(function () {
                 isQuizAnimation = false;
             }, 600);
@@ -76,10 +74,8 @@ window.addEventListener('DOMContentLoaded', function () {
         for (var k = 0; k < quizCorrectResult.length; k++) {
             if (quizCorrectResult[k] == Number(quizResult[k].value)) {
                 quizScore += 1;
-                //console.log((k + 1) +' = 정답 ');
                 $('.explain__list-item.q' + (k + 1) + ' .answer-status--true').addClass('active');
             } else {
-                //console.log((k + 1) +' = 틀림 ');
                 $('.explain__list-item.q' + (k + 1) + ' .answer-status--false').addClass('active');
             }
             if (Number(quizResult[k].value) == 1) {
@@ -93,8 +89,6 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     var quizResultPage = function quizResultPage(score) {
-        //console.log('score = ' + score);
-        // score graph 표기
         for (var $j = 1; $j <= score; $j++) {
             $('.number-graph path:nth-of-type(' + $j + ')').addClass('active');
         }
@@ -209,13 +203,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     var tMechanismAnimation = new TimelineLite({ paused: true, repeat: -1 }).set('.t-question-mark', { scale: 0 }, 0).to('.t-cell-3', 1.4, { x: 150, ease: 'none' }, 0).to('.cancer-cell.tarea', 1.4, { x: -120, ease: 'none' }, 0).to('.cancer-cell.tarea', 0.4, { opacity: 0.8, ease: 'none' }, 0.3).to('.cancer-cell.tarea', 0.4, { opacity: 1, ease: 'none' }, 0.8).to('.t-cell-3', 1.4, { x: 0, ease: 'none' }, 1.4).to('.cancer-cell.tarea', 1.4, { x: 0, ease: 'none' }, 1.4).to('.cancer-cell.tarea', 0.4, { opacity: 0.8, ease: 'none' }, 1.7).to('.cancer-cell.tarea', 0.4, { opacity: 1, ease: 'none' }, 2.2).to('.t-question-mark', 0.7, { scale: 1, ease: Back.easeOut.config(3) }, 2.7);
 
-    var nkMechanismAnimation = new TimelineLite({ paused: true, repeat: -1 }).set('.cancer-cell.nkarea', { opacity: 1 }, 0).to('.nk-weapon-1', 0.2, { scaleX: 0.45 }, 0).to('.nk-weapon-2', 0.2, { scaleX: 1 }, 0)
-    //.to('.nk-cell-1', 1, {x: 20, ease: 'none'}, 0)
-    //.to('.nk-cell-2', 0.8, {x: 30, ease: 'none'}, 0)
-    .to('.nk-weapon-1', 0.4, { scaleX: 1 }, 0.2).to('.nk-weapon-1', 0.4, { scaleX: 0.45 }, 0.6).to('.nk-weapon-2', 0.4, { scaleX: 2 }, 0.6).to('.nk-weapon-2', 0.4, { scaleX: 1 }, 1).to('.nk-weapon-1', 0.4, { scaleX: 1 }, 1)
-    //.to('.nk-cell-1', 1, {x: 0, ease: 'none'}, 1.1)
-    //.to('.nk-cell-2', 1.1, {x: 0, ease: 'none'}, 0.8)
-    .to('.nk-boom', 0.3, { scale: 1, ease: 'back.out(1.7)' }, 1.2).to('.nk-boom', 0.2, { scale: 0 }, 1.5).to('.cancer-cell.nkarea', 0.6, { opacity: 0, scale: 1.5 }, 1.5);
+    var nkMechanismAnimation = new TimelineLite({ paused: true, repeat: -1 }).set('.cancer-cell.nkarea', { opacity: 1 }, 0).to('.nk-weapon-1', 0.2, { scaleX: 0.45 }, 0).to('.nk-weapon-2', 0.2, { scaleX: 1 }, 0).to('.nk-weapon-1', 0.4, { scaleX: 1 }, 0.2).to('.nk-weapon-1', 0.4, { scaleX: 0.45 }, 0.6).to('.nk-weapon-2', 0.4, { scaleX: 2 }, 0.6).to('.nk-weapon-2', 0.4, { scaleX: 1 }, 1).to('.nk-weapon-1', 0.4, { scaleX: 1 }, 1).to('.nk-boom', 0.3, { scale: 1, ease: 'back.out(1.7)' }, 1.2).to('.nk-boom', 0.2, { scale: 0 }, 1.5).to('.cancer-cell.nkarea', 0.6, { opacity: 0, scale: 1.5 }, 1.5);
 
     var assassinContent = {
         hideContent: function hideContent() {
@@ -261,7 +249,6 @@ window.addEventListener('DOMContentLoaded', function () {
         heroAnimation: function heroAnimation() {
             var procedureAnimation = new TimelineLite({ paused: true }).set('.procedure-nk', { scale: 0 }, 0).set('.procedure-cancer', { scale: 0 }, 0).set('.procedure-etc1', { scale: 0 }, 0).set('.procedure-etc2', { scale: 0 }, 0).set('.procedure-etc3', { scale: 0 }, 0).set('.procedure-etc4', { scale: 0 }, 0).set('.procedure-etc5', { scale: 0 }, 0).set('.procedure-etc3 .procedure__inner-text', { opacity: 0 }, 0).set('.procedure-step1 .procedure-line', { scaleX: 0 }, 0).set('.procedure-step1 .procedure-arrow-text', { opacity: 0 }, 0).set('.procedure-step1 .procedure-arrow', { opacity: 0 }, 0).set('.procedure-step2 .procedure-line', { scaleX: 0, rotate: -45 }, 0).set('.procedure-step2 .procedure-arrow-text', { opacity: 0 }, 0).set('.procedure-step2 .procedure-arrow', { opacity: 0 }, 0).set('.procedure-step3 .procedure-line', { scaleX: 0 }, 0).set('.procedure-step3 .procedure-arrow-text', { opacity: 0 }, 0).set('.procedure-step3 .procedure-arrow', { opacity: 0 }, 0).set('.procedure-step4 .procedure-line', { rotate: -45, scaleX: 0 }, 0).set('.procedure-step4 .procedure-arrow-text', { opacity: 0 }, 0).set('.procedure-step4 .procedure-arrow', { opacity: 0 }, 0).to('.procedure-nk', 0.6, { scale: 1 }, 0.5).to('.procedure-cancer', 0.6, { scale: 1 }, 0.7).to('.procedure-step1 .procedure-line', 0.5, { scaleX: 1 }, 1.1).to('.procedure-step1 .procedure-arrow-text', 0.5, { opacity: 1 }, 1.1).to('.procedure-step1 .procedure-arrow', 0.4, { opacity: 1 }, 1.6).to('.procedure-etc1', 0.6, { scale: 1 }, 1.3).to('.procedure-etc2', 0.6, { scale: 1 }, 1.5).to('.procedure-step2 .procedure-line', 0.5, { scaleX: 1 }, 1.9).to('.procedure-step2 .procedure-arrow-text', 0.5, { opacity: 1 }, 1.9).to('.procedure-step2 .procedure-arrow', 0.4, { opacity: 1 }, 2.4).to('.procedure-etc3', 0.6, { scale: 1 }, 2.3).to('.procedure-etc4', 0.6, { scale: 1 }, 2.5).to('.procedure-etc5', 0.6, { scale: 1 }, 2.7).to('.procedure-etc3 .procedure__inner-text', 0.6, { opacity: 1 }, 2.3).to('.procedure-step3 .procedure-line', 0.5, { scaleX: 1 }, 2.9).to('.procedure-step3 .procedure-arrow-text', 0.5, { opacity: 1 }, 2.9).to('.procedure-step3 .procedure-arrow', 0.4, { opacity: 1 }, 3.4).to('.procedure-step4 .procedure-line', 0.5, { scaleX: 1 }, 3.5).to('.procedure-step4 .procedure-arrow-text', 0.5, { opacity: 1 }, 3.5).to('.procedure-step4 .procedure-arrow', 0.4, { opacity: 1 }, 4);
 
-            //procedureAnimation.kill();
             procedureAnimation.restart();
         },
         villain: function villain() {
@@ -280,9 +267,7 @@ window.addEventListener('DOMContentLoaded', function () {
         origin: function origin() {
             gsap.to('.arrow-btn-left', 0.3, { opacity: 0, pointerEvents: 'none' });
 
-            var listOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0)
-            //.to('.assassin-info__visual--character-origin', 1, {scale: 1.2, y: 100, x: 80}, 0.7)
-            .to('.assassin-info__visual--character-origin', 1, { scale: 1.5, y: 0, x: 110 }, 0.7).to('.assassin-info__visual--bg-origin', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-talent', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#F2F2F2' }, 0.5);
+            var listOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0).set('.assassin-info__visual--list-talent', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-hero', { overflow: 'hidden' }, 0).set('.assassin-info__visual--list-villain', { overflow: 'hidden' }, 0).to('.assassin-info__visual--character-origin', 1, { scale: 1.5, y: 0, x: 110 }, 0.7).to('.assassin-info__visual--bg-origin', 0.5, { opacity: 0 }, 0).to('.assassin-info__visual--list-talent', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-hero', 1, { x: "301%" }, 0).to('.assassin-info__visual--list-villain', 1, { x: "301%" }, 0).to('.assassin-info__visual', 0.5, { background: '#F2F2F2' }, 0.5);
 
             $('.assassin-info__visual--list-origin').addClass('active');
             listActiveNum = 1;
@@ -331,7 +316,6 @@ window.addEventListener('DOMContentLoaded', function () {
             isListAnimating = false;
 
             naviFlag = false;
-            //console.log('naviFlag = false');
             gsap.set('.assassin-info__visual--navigation-LeftRight', { opacity: 0, pointerEvents: 'none' });
             gsap.set('.assassin-info__visual--navigation', { pointerEvents: 'none', opacity: 0 });
             gsap.to('.assassin-info__visual--scene', 0.7, { opacity: 1 });
@@ -355,18 +339,14 @@ window.addEventListener('DOMContentLoaded', function () {
         origin: function origin() {
             gsap.to('.arrow-btn-left', 0.3, { opacity: 0, pointerEvents: 'none' });
 
-            var naviOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-origin', { opacity: 0 }, 0).set('.assassin-info__visual--list-origin', { opacity: 0, x: 0, y: 0 }, 0.2)
-            //.set('.assassin-info__visual--character-origin', {scale: 1.2, y: 0, x: 0}, 0.2)
-            .set('.assassin-info__visual--character-origin', { scale: 1.5, y: 0, x: 0 }, 0.2).to('.assassin-info__visual--list-origin', 0.8, { opacity: 1 }, 0.4)
-            //.to('.assassin-info__visual--character-origin', 0.8, {y: 100, x: 80}, 0.4)
-            .to('.assassin-info__visual--character-origin', 0.8, { y: 0, x: 110 }, 0.4);
+            var naviOriginAction = new TimelineLite({ paused: true }).set('.assassin-info__visual--list-origin', { overflow: 'visible' }, 0.2).to('.assassin-info__visual--list li.active', 0.5, { opacity: 0 }).set('.assassin-info__visual--bg-origin', { opacity: 0 }, 0).set('.assassin-info__visual--list-origin', { opacity: 0, x: 0, y: 0 }, 0.2).set('.assassin-info__visual--character-origin', { scale: 1.5, y: 0, x: 0 }, 0.2).to('.assassin-info__visual--list-origin', 0.8, { opacity: 1 }, 0.4).to('.assassin-info__visual--character-origin', 0.8, { y: 0, x: 110 }, 0.4);
 
             setTimeout(function () {
                 $('.assassin-info__visual--list li').removeClass('active');
                 $('.assassin-info__visual--list-origin').addClass('active');
                 listActiveNum = 1;
                 isListAnimating = false;
-                console.log('isListAnimating == ' + isListAnimating);
+                //console.log('isListAnimating == ' + isListAnimating);
             }, 1400);
 
             naviOriginAction.restart();
@@ -386,7 +366,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 $('.assassin-info__visual--list-talent').addClass('active');
                 listActiveNum = 2;
                 isListAnimating = false;
-                console.log('isListAnimating == ' + isListAnimating);
+                //console.log('isListAnimating == ' + isListAnimating);
             }, 1400);
 
             naviTalentAction.restart();
@@ -405,7 +385,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 $('.assassin-info__visual--list-hero').addClass('active');
                 listActiveNum = 3;
                 isListAnimating = false;
-                console.log('isListAnimating == ' + isListAnimating);
+                //console.log('isListAnimating == ' + isListAnimating);
             }, 3000);
 
             naviHeroAction.restart();
@@ -426,7 +406,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 $('.assassin-info__visual--list-villain').addClass('active');
                 listActiveNum = 4;
                 isListAnimating = false;
-                console.log('isListAnimating == ' + isListAnimating);
+                //console.log('isListAnimating == ' + isListAnimating);
             }, 1400);
 
             naviVillainAction.restart();
@@ -486,7 +466,6 @@ window.addEventListener('DOMContentLoaded', function () {
     assassinNavigation.addEventListener("click", assassinNaviClick);
 
     function assassinNaviClick(e, secondVal) {
-        //console.log('isListAnimating == ' + isListAnimating);
         var naviValue = void 0;
         try {
             naviValue = Number(e.target.getAttribute('data-value'));
@@ -497,7 +476,6 @@ window.addEventListener('DOMContentLoaded', function () {
         if (listActiveNum == naviValue) return false;
         if (!isListAnimating) {
             isListAnimating = true;
-            //console.log('isListAnimating == ' + isListAnimating);
             $('.assassin-info__visual--navigation-btn').removeClass('active');
             $('.assassin-info__visual--navigation-btn .active-motion').removeClass('bounce');
             $('.assassin-info__visual--navigation-btn:nth-of-type(' + (naviValue + 1) + ')').addClass('active');
@@ -594,7 +572,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     $('.outro__inner--quiz').click(function () {
         quizAreaFlag = true;
-        console.log('★quizAreaFlag = true');
+        //console.log('★quizAreaFlag = true');
         gsap.set('.quiz-area', { zIndex: 10, y: "100vh", delay: 0 });
         gsap.to('.quiz-area', 1.2, { y: 0, ease: "power4.out" });
     });
@@ -627,9 +605,7 @@ window.addEventListener('DOMContentLoaded', function () {
             naturalPageScene.restart();
         },
         epilogue: function epilogue() {
-            var epiloguePageScene = new TimelineLite({ paused: true }).set('.epilogue__background-illust', { opacity: 0 }, 0).set('.epilogue__background-rain1', { opacity: 0, y: -30 }, 0).set('.epilogue__background-rain2', { opacity: 0, y: -50, scale: 1.2 }, 0).set('.epilogue__background-rain3', { opacity: 0, scale: 1.2 }, 0).set('.epilogue__inner--area-headline', { opacity: 0, y: 40 }, 0).set('.epilogue__inner--area-explain', { opacity: 0, y: 40 }, 0).set('.outro__inner--video-play', { opacity: 0 }, 0).to('.epilogue__background-illust', 0.5, { opacity: 1 }, 0.5).to('.epilogue__background-rain2', 0.8, { opacity: 1, y: 0 }, 0.5)
-            //.to('.epilogue__background-rain3', 1.5, {opacity: 1, y: 0}, 1.3)
-            .to('.epilogue__background-rain1', 1.2, { opacity: 1, y: 0 }, 1.3).to('.epilogue__inner--area-headline', 0.8, { opacity: 1, y: 0 }, 0.5).to('.epilogue__inner--area-explain', 0.8, { opacity: 1, y: 0 }, 0.9).to('.outro__inner--video-play', 0.5, { opacity: 1 }, 0.8);
+            var epiloguePageScene = new TimelineLite({ paused: true }).set('.epilogue__background-illust', { opacity: 0 }, 0).set('.epilogue__background-rain1', { opacity: 0, y: -30 }, 0).set('.epilogue__background-rain2', { opacity: 0, y: -50, scale: 1.2 }, 0).set('.epilogue__background-rain3', { opacity: 0, scale: 1.2 }, 0).set('.epilogue__inner--area-headline', { opacity: 0, y: 40 }, 0).set('.epilogue__inner--area-explain', { opacity: 0, y: 40 }, 0).set('.outro__inner--video-play', { opacity: 0 }, 0).to('.epilogue__background-illust', 0.5, { opacity: 1 }, 0.5).to('.epilogue__background-rain2', 0.8, { opacity: 1, y: 0 }, 0.5).to('.epilogue__background-rain1', 1.2, { opacity: 1, y: 0 }, 1.3).to('.epilogue__inner--area-headline', 0.8, { opacity: 1, y: 0 }, 0.5).to('.epilogue__inner--area-explain', 0.8, { opacity: 1, y: 0 }, 0.9).to('.outro__inner--video-play', 0.5, { opacity: 1 }, 0.8);
             epiloguePageScene.restart();
         },
         outro: function outro() {
@@ -714,10 +690,9 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!isAnimating) {
             isAnimating = true;
             pageNum += 1;
-            console.log('next page = ' + pageNum);
+            //console.log('next page = ' + pageNum);
             switch (pageNum) {
                 case 0:
-                    //verticalPageSwapNext.quiz();
                     break;
                 case 1:
                     verticalPageSwapNext.naturalKillerCell();
@@ -767,7 +742,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!isAnimating) {
             isAnimating = true;
             pageNum -= 1;
-            console.log('prev page = ' + pageNum);
+            //console.log('prev page = ' + pageNum);
             switch (pageNum) {
                 case 0:
                     gsap.set('.quiz-area', { y: "100vh" });
@@ -798,7 +773,6 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     };
     var onSlideChangeEnd = function onSlideChangeEnd() {
-        //console.log('isAnimating == false');
         isAnimating = false;
     };
 
